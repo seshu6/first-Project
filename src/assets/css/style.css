@@ -2547,6 +2547,30 @@ footer{
     margin:0;
     display: inline-block;
 }
+.crytocurrency-view-form .form-group .select-group{
+    display: inline-block;
+}
+.crytocurrency-view-form .form-group .select-group select{
+    color: #ABB3D0;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+.crytocurrency-view-form .form-group .select-group input{
+    color: #ABB3D0;
+    font-weight: bold;
+    border: none;
+    outline: none;  
+}
+.crytocurrency-view-form .form-group .select-group input:-moz-placeholder{
+    color: #ABB3D0;
+}
+.crytocurrency-view-form .form-group .select-group input:-ms-input-placeholder{
+    color: #ABB3D0;
+}
+.crytocurrency-view-form .form-group .select-group input::-webkit-input-placeholder{
+    color: #ABB3D0;
+}
 .wallet-01btn{
     border: 1px solid #0097FF;
     outline: none;
