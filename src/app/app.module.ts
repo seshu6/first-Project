@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CardComponent } from './card/card.component';
 import { VaultComponent } from './vault/vault.component';
 import { BuyAndSellComponent } from './buy-and-sell/buy-and-sell.component';
+import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BuyAndSellComponent } from './buy-and-sell/buy-and-sell.component';
     ProfileComponent,
     CardComponent,
     VaultComponent,
-    BuyAndSellComponent
+    BuyAndSellComponent,
+    CreateWalletComponent
   ],
   imports: [
     BrowserModule,
