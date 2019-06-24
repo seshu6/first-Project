@@ -102,6 +102,8 @@ $(document).ready(function () {
     $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     $("#transferscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
+    $('.fadeOut').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme' });
+
 });
 $(document).on("click", function () {
     $(".dropdown-list-search").hide();
