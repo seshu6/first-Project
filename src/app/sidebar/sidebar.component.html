@@ -1,0 +1,55 @@
+<div class="dashboard-header">
+  <div class="dash-bluewallet-wrap">
+      <div class="dash-header-logo">
+          <a href="javascript:void(0);">
+              <img src="assets/images/dashboard-logo.png" alt="logo" />
+          </a>
+      </div>
+      <div class="dash-bluewallet-menu">
+          <div class="sidemenu-scroll" id="boxscroll">
+              <ul>
+                  <!-- USER PROFILE -->
+                  <li>
+                      <a class="" [routerLinkActive]="['active']" [routerLink]="['/']"> 
+                          <span class="menu-link dashboardlink"></span>
+                      </a>
+                  </li>
+                  <!-- DASHBOARD -->
+                  <li>
+                      <a class="active" [routerLinkActive]="['active']" [routerLink]="['/dashboard']">
+                          <span class="menu-link dashboardlink1"></span>
+                      </a>
+                  </li>
+                  <!-- CARD -->
+                  <li>
+                      <a class="" [routerLinkActive]="['active']" [routerLink]="['/card']">
+                          <span class="menu-link dashboardlink2"></span>
+                      </a>
+                  </li>
+                  <!-- VAULT -->
+                  <li>
+                      <a class="" [routerLinkActive]="['active']" [routerLink]="['/vault']">
+                          <span class="menu-link dashboardlink3"></span>
+                      </a>
+                  </li>
+                  <!-- BUY AND SELL -->
+                  <li>
+                      <a class="" [routerLinkActive]="['active']" [routerLink]="['/buyandsell']">
+                          <span class="menu-link dashboardlink4"></span>
+                      </a>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
+      <div class="signout">
+          <a [routerLinkActive]="['active']" [routerLink]="['/card']">
+              <img src="assets/images/signout.png" /> Sign Off</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+

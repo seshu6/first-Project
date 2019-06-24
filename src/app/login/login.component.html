@@ -1,0 +1,100 @@
+<div class="login-body-bg">
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark wow fadeInDown" data-wow-duration="0.8s">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/bluewallet-logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Bluewallet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">To buy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-btn loginlink" href="#">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="login-form-wraper">
+    <div class="center-form-login">
+      <div class="loging-form-center">
+        <div class="login-form-div">
+          <form [formGroup]="loginForm">
+            <h1>Login</h1>
+            <div class="form-group">
+              <input type="text" placeholder="Email" formControlName="email">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span class="validationError" *ngIf="loginForm.get('email').errors && loginForm.get('email').touched">
+                <span *ngIf="loginForm.get('email').errors.required">
+                  Email is required
+                </span>
+              </span>
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" formControlName="password">
+              <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              <span class="validationError" *ngIf="loginForm.get('password').errors && loginForm.get('password').touched">
+                  <span *ngIf="loginForm.get('password').errors.required">
+                      Password is required
+                  </span>
+                </span>
+            </div>
+            <div class="form-group text-center">
+              <button type="button" class="loginbtn" (click)="onGetAccessToken()">Login</button>
+            </div>
+            <div class="form-group">
+              <a class="forgotpassword" href="javascript:void(0);">Did you forget your password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="login-contact-bot">
+        <div class="login-bottom-dv">
+          <h1>We are here to help you</h1>
+          <div class="login-contact-group">
+            <p>Support is a few steps away from you. </p>
+            <p>You can get an immediate answer to your question.</p>
+            <button type="button" class="dirctcontactbtn">Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="login-help">
+  <img src="assets/images/helpicon.png">
+</div>
+<div class="scrollTop">
+  <a href="javascript:void(0);">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </a>
+</div>
+
+<!-- Loginpopup-->
+<div class="send-email-login" style="display:none;">
+  <div class="email-login">
+    <div class="login-verify-email">
+      <img src="assets/images/login-email-icon.png" />
+      <p>We’ll send you a email, to show you how to take back your password.</p>
+      <div class="loginimg">
+        <img src="assets/images/loginpopupimg.png" />
+      </div>
+    </div>
+  </div>
+</div>

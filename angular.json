@@ -58,11 +58,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "blue-wallet:build"
+            "browserTarget": "blue-wallet:build",
+            "host":"192.168.2.39"
           },
           "configurations": {
             "production": {
-              "browserTarget": "blue-wallet:build:production"
+              "browserTarget": "blue-wallet:build:production" 
             }
           }
         },

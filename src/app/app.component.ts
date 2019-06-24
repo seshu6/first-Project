@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'blue-wallet';
+  title: string = 'blue-wallet';
+  showOrHideSidebar: boolean = false;
+  constructor(private route: Router) {
+    route.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == "/" || event['url'] == "/login") {
+          this.showOrHideSidebar = false;
+        } else {
+          this.showOrHideSidebar = true;
+        }
+      }
+    })
+  }
+
 }
+
+
+
+

@@ -1,0 +1,923 @@
+
+@media only screen and (min-width:1401px) and (max-width:1500px){
+    .send-cop-inputgroup{
+        width: 350px;
+    }
+    .qr-code-head .qr-request{
+        padding: 6px;
+    }
+    .moneit-input-group .inputtype-moneit input{
+        font-size: 12px;
+        padding: 0 70px 0 9px;
+    }
+    .moneit-input-group .inputtype-moneit span {
+            position: absolute;
+            color: #ABB3D0;
+            top: 10px;
+            right: 8px;
+            font-size: 11px;
+    }
+    .moneit-input-group .inputtype-moneit{
+        margin-right: 4px;
+    }
+    .qr-code-head .qr-request .request-lft .moneit-input-group{
+        width: 270px;
+    }
+    .qr-rezt-btn .qr-request-btn{
+        padding: 4px 12px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li{
+        padding: 0px;
+    }
+    .buy-sell-card .buy-view-card{
+        margin-right: 10px;
+    }
+    .blue-buy-viewbody{
+        padding: 10px;
+    }
+    .buy-fraction ul li{
+        padding: 8px 2px;
+    }
+    .card-details-view{
+        padding: 0 6px;
+    }
+    .card-details-view .card-currency .currency-view{
+        width: 75px;
+    }
+}
+@media only screen and (min-width:1301px) and (max-width:1400px){
+    .send-cop-inputgroup{
+        width: 316px;
+    }
+    .qr-code-head .qr-request{
+        padding: 6px;
+    }
+    .moneit-input-group .inputtype-moneit input{
+        font-size: 12px;
+        padding: 0 70px 0 9px;
+    }
+    .moneit-input-group .inputtype-moneit span {
+            position: absolute;
+            color: #ABB3D0;
+            top: 10px;
+            right: 8px;
+            font-size: 11px;
+    }
+    .moneit-input-group .inputtype-moneit{
+        margin-right: 4px;
+    }
+    .qr-code-head .qr-request .request-lft .moneit-input-group{
+        width: 230px;
+    }
+    .qr-rezt-btn .qr-request-btn{
+        padding: 4px 12px;
+    }
+    .blue-body-div .slider-coins ul li{
+        width: 120px;
+    }
+    .bitcoinimg1, .bitcoinimg2, .bitcoinimg3, .bitcoinimg4, .bitcoinimg5{
+        background-size:60%; 
+    }
+    .blue-body-div .wallet-dailyupdate ul li{
+        padding: 0px;
+    }
+    .buy-sell-card .buy-view-card{
+        margin-right: 10px;
+    }
+    .blue-buy-viewbody{
+        padding: 10px;
+    }
+    .buy-fraction ul li{
+        padding: 8px 2px;
+    }
+    .card-details-view{
+        padding: 0 6px;
+    }
+    .card-details-view .card-currency .currency-view{
+        width: 75px;
+    }
+    .verify-stepbystep ul li{
+        padding: 0 60px;
+    }
+    .verify-stepbystep ul li img{
+        max-width: 100%;
+        height: 250px;
+        object-fit: contain;
+    }
+}
+@media only screen and (min-width:1201px) and (max-width:1300px){
+    .blueway-banner-div{
+        background-size: 60%;
+    }
+    .qr-code-head .qr-request .request-lft .moneit-input-group{
+        width: 308px;
+    }
+    .send-cop-inputgroup{
+        width: 280px;
+    }
+    .blue-body-div .slider-coins ul li{
+        width: 100px;
+    }
+    .bitcoinimg1, .bitcoinimg2, .bitcoinimg3, .bitcoinimg4, .bitcoinimg5{
+        background-size:70%; 
+    }
+    .select-crypto-wallet1{
+        display: block;
+    }
+    .select-crytocurrency-list{
+        float: none;
+        width: 100%;
+    }
+    .crytocurrency-view-form{
+        float: none;
+        width: 100%;
+    }
+    .select-crytocurrency-list .carousel{
+        height: 240px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li{
+        padding: 0px;
+    }
+    .buy-sell-card .buy-view-card{
+        margin-right: 10px;
+    }
+    .blue-buy-viewbody{
+        padding: 10px;
+    }
+    .buy-fraction ul li{
+        padding: 8px 2px;
+    }
+    .card-details-view{
+        padding: 0 6px;
+    }
+    .card-details-view .card-currency .currency-view{
+        width: 75px;
+    }
+    .verify-stepbystep ul li{
+        padding: 0 60px;
+    }
+    .verify-stepbystep ul li img{
+        max-width: 100%;
+        height: 200px;
+        object-fit: contain;
+    }
+}
+@media only screen and (min-width:1025px) and (max-width:1200px){
+    header .navbar .navbar-nav{
+        margin-left: 40px;
+    }
+    header .navbar .navbar-nav .nav-link{
+       padding:4px 30px 7px 25px;
+    }
+    header .navbar .navbar-nav .nav-item.active .nav-link::before {
+        left: 8px;
+        top: 12px;
+    }
+    .blueway-banner-div{
+        padding: 110px 0 100px 0;
+        background-image: 55%;
+    }
+    .blueway-banner-content h1{
+        font-size: 30px;
+        margin: 0;
+    }
+    .bgblue{
+        margin: 0;
+    }
+    .blueway-bann-exchange ul{
+        margin-top: 40px;
+        padding-left: 40px;
+    }
+    .blueway-bann-exchange ul li{
+        float: none;
+        display: inline-block;
+    }
+    .blueway-bann-exchange ul li a{
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+    .blueway-bann-exchange ul li:last-child a{
+        margin-right: 0px;
+    }
+    .blueway-bann-exchange ul li a img{
+        width: 46px;
+        height: 46px;
+    }
+    .blueway-banner-wrapper{
+        border-bottom-left-radius: 190px;
+    }
+    .app-container{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content .request-api{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content h1{
+        font-size: 32px;
+    }
+    .api-mobileicon img{
+        height: 300px;
+    }
+    .api-bgimage .our-api-content .request-api .requestapi-btn{
+        padding: 14px 10px;
+    }
+    .api-bgimage .our-api-content .request-api input{
+        padding: 0 40px;
+    }
+    .api-bgimage .our-api-content .request-api i {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            font-size: 19px;
+            color: #B1B1BE;
+    }
+    .footer-social ul li a{
+        padding-right: 140px;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1024px){
+    header .navbar .navbar-nav{
+        margin-left: 40px;
+    }
+    header .navbar .navbar-nav .nav-link{
+       padding:4px 30px 7px 25px;
+    }
+    header .navbar .navbar-nav .nav-item.active .nav-link::before {
+        left: 8px;
+        top: 12px;
+    }
+    .blueway-banner-div{
+        padding: 110px 0 60px 0;
+        background-image: 55%;
+    }
+    .blueway-banner-content h1{
+        font-size: 30px;
+        margin: 0;
+    }
+    .bgblue{
+        margin: 0;
+    }
+    .blueway-bann-exchange ul{
+        margin-top: 40px;
+        padding-left: 40px;
+    }
+    .blueway-bann-exchange ul li{
+        float: none;
+        display: inline-block;
+    }
+    .blueway-bann-exchange ul li a{
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+    .blueway-bann-exchange ul li:last-child a{
+        margin-right: 0px;
+    }
+    .blueway-bann-exchange ul li a img{
+        width: 46px;
+        height: 46px;
+    }
+    .blueway-banner-wrapper{
+        border-bottom-left-radius: 190px;
+    }
+    .app-container{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content .request-api{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content h1{
+        font-size: 32px;
+    }
+    .api-mobileicon img{
+        height: 300px;
+    }
+    .api-bgimage .our-api-content .request-api .requestapi-btn{
+        padding: 14px 10px;
+    }
+    .api-bgimage .our-api-content .request-api input{
+        padding: 0 40px;
+    }
+    .api-bgimage .our-api-content .request-api i {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            font-size: 19px;
+            color: #B1B1BE;
+    }
+    .footer-social ul li a{
+        padding-right: 140px;
+    }
+        /* Login */
+        .login-form-wraper{
+        margin-top: 120px;
+    }
+    .loging-form-center, .login-contact-bot{
+        width: 100%;
+        padding: 0 15px;
+        display: block;
+    }
+    .login-form-div{
+        margin: auto;
+    }
+    .login-bottom-dv{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .login-bottom-dv h1{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .loginlink{
+        padding: 4px 17px 7px 12px !important;
+    }
+    /* Dashboard */
+    .blue-body-div .wallet-dailyupdate ul li h4{
+        font-size: 14px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li .blue-value p{
+        font-size: 14px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li{
+        margin-bottom: 10px;
+        padding: 0 21px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li .todayvalue{
+        font-size: 15px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li .blue-value-dollar h4, .blue-body-div .wallet-dailyupdate ul li .blue-value-dollar p{
+        font-size: 12px;
+        margin-right: 5px;
+    }
+    .bluewallet-balance .balance-wallet .balance-count .bal-totle-count p, .income-expense .incoem-expense-value .income-contet p{
+        font-size: 15px;
+    }
+    .income-expense .incoem-expense-value .income-contet h4{
+        font-size: 14px;
+    }
+    .search-mandory-list{
+        padding: 0px;
+    }
+    .search-mandory-list li a{
+        padding: 0 6px 0 9px;
+        font-size: 13px;
+    }
+    .graph-history-title h1{
+        font-size: 16px;
+    }
+    .graph-activy-list-box ul li a{
+        padding: 12px 12px;
+    }
+    .graph-activy-list-box ul li a .activity-list .activy-paid-text{
+        padding-left: 10px;
+    }
+    .graph-activy-list-box ul li a .activity-list h1, .graph-activy-list-box ul li a .activity-list .activy-paid-text p{
+        font-size: 12px;
+    }
+    .graph-activy-list-box ul li a .activity-list .activiy-count span, .graph-activy-list-box ul li a .activity-list .activiy-count p{
+        font-size: 12px;
+    }
+    /* platform */
+    .fast-buy-list .buy-paypal .paypal-input-group{
+        margin-bottom: 6px;
+    }
+    .exchange-onebox .exchange-body{
+        padding: 10px;
+    }
+    .transfer-bitcoin a.bitoicnlink{
+        padding: 12px 6px;
+    }
+    .transfer-bitcoin a.bitoicnlink::after, .transfer-bitcoin a.bitoicnlink1::after{
+        right:4px;
+    }
+    .transfer-bitcoin a.bitoicnlink1{
+        padding: 12px 2px;
+    }
+    .transfer-bitcoin a.bitoicnlink img, .transfer-bitcoin .coin-list-view ul li a img, .transfer-bitcoin a.bitoicnlink1 img{
+        width: 20px;
+        height: 20px;
+        margin-right: 3px;
+    }
+    .transfer-bitcoin .coin-list-view ul li a{
+        padding: 6px 4px;
+    }
+    .transfer-bitcoin .coin-list-view1 ul li a{
+        padding: 6px 2px;
+    }
+    .minmax-value .minmax-val-box input{
+        margin-bottom: 6px;
+    }
+    .exchange-wraper .exchange-onebox{
+        margin-bottom: 16px;
+    }
+    .twostepdiables .twostepdiables-cont{
+        margin-left: 40px;
+        float: none;
+    }
+    .verify-center-div{
+        width: 100%;
+        padding: 0 15px;
+    }
+    .sinverify-list, .sinverify-list1{
+        padding: 6px 0;
+    }
+    .verfiy-send-bttn .verifybttn{
+        margin-bottom: 4px;
+    }
+    .graph-history-title{
+        margin-bottom: 6px;
+    }
+    .qr-code-view{
+        margin: auto;
+    }
+    .qr-code-head{
+        display: block;
+    }
+    .qr-code-head .qr-request, .qr-code-head .qr-send{
+        width: 100%;
+    }
+    .qr-rezt-btn{
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    .qr-code-head .qr-request .request-lft .moneit-input-group{
+        display: block;
+        width: 100%;
+    }
+    .moneit-input-group .inputtype-moneit{
+        margin-bottom: 6px;
+        margin-right: 0px;
+    }
+    .qr-rezt-btn .qr-request-btn{
+        margin-left: 10px;
+    }
+    .send-cop-inputgroup{
+        width: 100%;
+    }
+
+    .bluewallet1{
+        display: block;
+    }
+    .blue-body-div .slider-coins ul li{
+        width: 80px;
+    }
+    .bitcoinimg1, .bitcoinimg2, .bitcoinimg3, .bitcoinimg4, .bitcoinimg5{
+        background-size:70%; 
+    }
+    .select-crypto-wallet1{
+        display: block;
+    }
+    .select-crytocurrency-list{
+        float: none;
+        width: 100%;
+    }
+    .crytocurrency-view-form{
+        float: none;
+        width: 100%;
+    }
+    .select-crytocurrency-list .carousel{
+        height: 240px;
+    }
+    .blue-body-div .wallet-dailyupdate ul li{
+        padding: 0px;
+    }
+    .payment-method-card .buy-sell-card{
+        display: block;
+    }
+    .buy-sell-card .buy-view-card{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .buy-sell-card .buy-view-card1{
+        width: 100%;
+    }
+    .card-details-view .card-currency .currency-view{
+        width: 85px;
+    }
+    .buy-link-tab1 .buylinktab1-body{
+        padding: 0px;
+    }
+    .account-details{
+        padding: 6px;
+    }
+    .account-details .account-view-list label{
+        width: 100%;
+    }
+    .homeaddress-center-box{
+        width: 100%;
+    }
+    .address-send-box .address-termscond{
+        margin-top: 20px;
+    }
+    .create-walbtn{
+        margin-top: 6px;
+    }
+    .verified-center-div{
+        width: 100%;
+    }
+    .verify-stepbystep ul li{
+        padding: 0px;
+        margin-bottom: 12px;
+    }
+    .verify-stepbystep ul li::after{
+        display: none;
+    }
+    .proof-container{
+        width: 100%;
+    }
+    .info-continue{
+        margin: 6px 0;
+    }
+    .info-continue1{
+        margin-bottom:6px;
+    }
+    .welcome-wallet-blue .wallet-sms-content{
+        width: 100%;
+    }
+    .wallet-sms-content .sms-content-bg{
+        width: 100%;
+    }
+    .welcome-wallet-blue .wallet-sms-logo{
+        width: 100%; 
+    }
+}
+@media only screen and (min-width:480px) and (max-width:767px){
+    .blueway-banner-wrapper{
+        border-bottom-left-radius:0px;
+    }
+    .blueway-banner-div{
+       background-image: none;
+       padding: 105px 0 60px 0;
+    }
+    header .navbar a img{
+        height: 55px;
+    }
+    .navbar-dark .navbar-toggler{
+        background: -moz-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -webkit-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -o-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -ms-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: linear-gradient(90deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);   
+        border:none;
+    }
+    .navbar-dark .navbar-toggler-icon{
+        background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") 
+    }
+    .blueway-banner-content h1{
+        font-size: 30px;
+        margin: 0;
+    }
+    .blueway-bann-exchange ul{
+        margin-top: 30px;
+    }
+    .blueway-bann-exchange ul li{
+        float: none;
+        display: inline-block;
+    }
+    .blueway-bann-exchange ul li.exhange2{
+        margin-left: auto; top: inherit;
+    }
+    .blueway-bann-exchange ul li.exhange3{
+        margin-left: auto; top: inherit;
+    }
+    .blueway-bann-exchange ul li a{
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+    .blueway-bann-exchange ul li:last-child a{
+        margin-right: 0px;
+    }
+    .blueway-bann-exchange ul li a img{
+        width: 46px;
+        height: 46px;
+    }
+    .bgblue{
+        margin: 0;
+    }
+    .purchase-wrapper .purchase-content{
+        padding: 30px 0;
+    }
+    header .navbar .navbar-nav{
+        margin-left: 0px;
+        background: #212529;
+    }
+    header .navbar .navbar-nav .nav-link{
+        padding: 12px 22px;
+    }
+    header .navbar .navbar-nav .nav-item.active .nav-link::before {
+        left: 8px;
+        top: 22px;
+    }
+    header .navbar .navbar-nav .nav-link-btn{
+        display: block;
+        margin: 0px;
+        background: transparent;
+        color: #99A2DD;
+    }
+    .aboutus-wrapper{
+        padding: 30px 0;
+    }
+    .about-div .blueway-abt-content p, .purchase-wrapper .purchase-content p{
+        text-align: justify;
+    }
+    .about-listbox .blueway-box{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .app-container{
+        width: 100%;
+        padding: 10px 50px;
+    }
+    .bluewallet-appstore .appstore-halfdiv{
+        width: 100%;
+    }
+    .bluewallet-appstore .appstore-halfdiv ul li{
+        margin-bottom: 6px;
+    }
+    .bluewallet-appstore{
+        padding: 12px;
+    }
+    .purchase-wrapper{
+        padding: 30px 0;
+    }
+    .purchase-content .purchase-bttn-grp a{
+        margin-bottom: 8px;
+    }
+    .api-wrapper{
+        padding: 100px 0 0 0;
+    }
+    .purchase-wrapper .purchase-img img{
+        height: auto;
+    }
+    .api-mobileicon img{
+        position: relative;
+    }
+    .api-mobileicon{
+        float: right;
+    }
+    .purchaseimg-right, .purchaseimg-left{
+        text-align: center;
+    }
+    .api-bgimage .our-api-content .request-api{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content .request-api .requestapi-btn{
+        position: static;
+        width: 100%;
+        padding: 8px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    footer{
+        padding: 30px 0 30px 0;
+    }
+    .footer-bgcolr{
+        display: none;
+    }
+    .footer-menu ul{
+        margin-top: 10px;
+    }
+    .footer-menu ul li a{
+        padding: 0 7px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .footer-social ul{
+        margin-top: 20px;
+    }
+    .footer-social ul li a{
+        padding-right: 30px;
+    }
+    .footer-social ul li:last-child a{
+        padding-right:0px; 
+    }
+    .footer-submenu ul{
+        margin-top: 16px;
+    }
+    .footer-submenu ul li a{
+        padding-right: 30px;
+        font-size: 14px;
+    }
+    .helpyou-wraper{
+        padding: 30px 0;
+    }
+    .helpimage img{
+        height: 150px;
+    }
+    .api-bgimage .our-api-content .request-api input{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 0 50px;
+    }
+        /* Login */
+        .login-form-wraper{
+            margin-top: 120px;
+        }
+        .loging-form-center, .login-contact-bot{
+            width: 100%;
+            padding: 0 15px;
+            display: block;
+        }
+        .login-form-div{
+            margin: auto;
+        }
+        .login-bottom-dv{
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .login-bottom-dv h1{
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+}
+@media only screen and (max-width:479px){
+    .blueway-banner-wrapper{
+        border-bottom-left-radius:0px;
+    }
+    .blueway-banner-div{
+       background-image: none;
+       padding: 105px 0 60px 0;
+    }
+    header .navbar a img{
+        height: 55px;
+    }
+    .navbar-dark .navbar-toggler{
+        background: -moz-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -webkit-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -o-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: -ms-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+        background: linear-gradient(90deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);   
+        border:none;
+    }
+    .navbar-dark .navbar-toggler-icon{
+        background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") 
+    }
+    .blueway-banner-content h1{
+        font-size: 30px;
+        margin: 0;
+    }
+    .blueway-bann-exchange ul{
+        margin-top: 30px;
+        text-align: center;
+        padding: 0;
+    }
+    .blueway-bann-exchange ul li{
+        float: none;
+        display: inline-block;
+    }
+    .blueway-bann-exchange ul li.exhange2{
+        margin-left: auto; top: inherit;
+    }
+    .blueway-bann-exchange ul li.exhange3{
+        margin-left: auto; top: inherit;
+    }
+    .blueway-bann-exchange ul li a{
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+    .blueway-bann-exchange ul li:last-child a{
+        margin-right: 0px;
+    }
+    .blueway-bann-exchange ul li a img{
+        width: 46px;
+        height: 46px;
+    }
+    .bgblue{
+        margin: 0;
+    }
+    header .navbar .navbar-nav{
+        margin-left: 0px;
+        background: #212529;
+    }
+    header .navbar .navbar-nav .nav-link{
+        padding: 12px 22px;
+    }
+    header .navbar .navbar-nav .nav-item.active .nav-link::before {
+        left: 8px;
+        top: 22px;
+    }
+    header .navbar .navbar-nav .nav-link-btn{
+        display: block;
+        margin: 0px;
+        background: transparent;
+        color: #99A2DD;
+    }
+    .aboutus-wrapper{
+        padding: 30px 0;
+    }
+    .about-div .blueway-abt-content p, .purchase-wrapper .purchase-content p{
+        text-align: justify;
+    }
+    .about-listbox .blueway-box{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .app-container{
+        width: 100%;
+        padding: 10px 16px;
+    }
+    .bluewallet-appstore .appstore-halfdiv{
+        width: 100%;
+    }
+    .bluewallet-appstore .appstore-halfdiv ul li{
+        margin-bottom: 6px;
+    }
+    .bluewallet-appstore{
+        padding: 12px;
+    }
+    .purchase-wrapper{
+        padding: 30px 0;
+    }
+    .purchase-content .purchase-bttn-grp a{
+        margin-bottom: 8px;
+    }
+    .api-wrapper{
+        padding: 100px 0 0 0;
+    }
+    .api-mobileicon img{
+        height: auto;
+        position: relative;
+    }
+    .purchaseimg-right, .purchaseimg-left{
+        text-align: center;
+    }
+    .api-bgimage .our-api-content .request-api{
+        width: 100%;
+    }
+    .api-bgimage .our-api-content .request-api .requestapi-btn{
+        position: static;
+        width: 100%;
+        padding: 8px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    footer{
+        padding: 30px 0 30px 0;
+    }
+    .footer-bgcolr{
+        display: none;
+    }
+    .footer-menu ul{
+        margin-top: 10px;
+    }
+    .footer-menu ul li a{
+        padding: 0 7px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .footer-social ul{
+        margin-top: 20px;
+    }
+    .footer-social ul li a{
+        padding-right: 30px;
+    }
+    .footer-social ul li:last-child a{
+        padding-right:0px; 
+    }
+    .footer-submenu ul{
+        margin-top: 16px;
+    }
+    .footer-submenu ul li a{
+        padding-right: 30px;
+        font-size: 14px;
+    }
+    .helpyou-wraper{
+        padding: 30px 0;
+    }
+    .helpimage img{
+        height: 150px;
+    }
+    .api-bgimage .our-api-content .request-api input{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 0 50px;
+    }
+    /* Login */
+    .login-form-wraper{
+        margin-top: 120px;
+    }
+    .loging-form-center, .login-contact-bot{
+        width: 100%;
+        padding: 0 15px;
+        display: block;
+    }
+    .login-form-div{
+        width: 100%;
+    }
+    .login-form-div form .form-group input{
+        margin-left: 0px;
+        padding: 0 20px;
+    }
+    .login-bottom-dv{
+        display: block;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .login-bottom-dv h1{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+}
