@@ -1,5 +1,8 @@
 
 @media only screen and (min-width:1401px) and (max-width:1500px){
+    .blue-body-div .slider-coins ul li{
+        width: 140px;
+    }
     .send-cop-inputgroup{
         width: 350px;
     }
@@ -116,7 +119,7 @@
         width: 280px;
     }
     .blue-body-div .slider-coins ul li{
-        width: 100px;
+        width: 110px;
     }
     .bitcoinimg1, .bitcoinimg2, .bitcoinimg3, .bitcoinimg4, .bitcoinimg5{
         background-size:70%; 
@@ -163,6 +166,16 @@
     }
 }
 @media only screen and (min-width:1025px) and (max-width:1200px){
+    .iconimg{
+        height: 70px;
+    }
+    .bitcoinimg1, .bitcoinimg2, .bitcoinimg3, .bitcoinimg4, .bitcoinimg5{
+        background-size:70%; 
+    }
+    .blue-body-div .slider-coins ul li
+    {
+        width: 100px;
+    }
     header .navbar .navbar-nav{
         margin-left: 40px;
     }
