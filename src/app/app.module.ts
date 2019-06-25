@@ -16,6 +16,10 @@ import { VaultComponent } from './vault/vault.component';
 import { BuyAndSellComponent } from './buy-and-sell/buy-and-sell.component';
 import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 
+
+// PACKAGES
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,8 @@ import { CreateWalletComponent } from './create-wallet/create-wallet.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

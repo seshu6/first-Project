@@ -3,6 +3,7 @@ import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -16,48 +17,57 @@ export class VaultComponent implements OnInit {
   estimatedFee: number | string;
   estimatedTotal: number | string;
   estimatedWallet: number | string;
-  availabeAmount: number | string;
+  availabeBalance: number | string;
   usdBtc: number | string;
   usdEstimation: number | string;
   termsAndCondition: boolean = false;
+  ethOrBtc: string = "ETH";
+  usdForEthOrBtc: number | string;
 
   addVaultForm: FormGroup;
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
-    })
-
-
-    // this.addVaultForm = this.fb.group({
-    //   time: ['', Validators.required],
-    //   eth: ['', Validators.required],
-    //   fee: ['', Validators.required],
-    //   total: ['', Validators.required],
-    //   wallet: ['', Validators.required],
-    //   // amount: ['', Validators.required],
-    //   btcUsd: ['', Validators.required],
-    //   estimationUsd: ['', Validators.required]
-    // });
+    });
+    this.onSliderCryptoCurrency("ETH");
   }
 
-  // AUTO COMPLETE BTC ESTIMATION
-  onAutoChangeEthEstimation() {
-    let jsonData = {
-      "etherAmount": this.estimatedEth
+  // AUTO COMPLETE BTC ESTIMATION 
+  onAutoChangeEthOrBtcEstimation() {
+    let jsonData = {};
+    if (this.ethOrBtc == "ETH") {
+      jsonData = {
+        "etherAmount": this.estimatedEth,
+        "cryptoType": this.ethOrBtc
+      }
+    } else {
+      jsonData = {
+        "btcAmount": this.estimatedEth,
+        "cryptoType": this.ethOrBtc
+      }
     }
-    this.vaultService.postAutoCompleteEthEstimation(jsonData).subscribe(success => {
+
+    this.vaultService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
       if (success['status'] == "success") {
         console.log("response", success);
-        this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
-        this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
-        this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
-        this.usdBtc = success['CalculatingAmountDTO'].usdforether;
-        this.usdEstimation = success['CalculatingAmountDTO'].usdforgasfee;
+        // this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
+        if (this.ethOrBtc == "ETH") {
+          this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
+          this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
+          this.usdBtc = success['CalculatingAmountDTO'].usdforEther;
+          this.usdEstimation = success['CalculatingAmountDTO'].usdforgasfee;
+        } else {
+          this.estimatedFee = success['CalculatingAmountDTO'].fee;
+          this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
+          this.usdBtc = success['CalculatingAmountDTO'].usdforBtc;
+          this.usdEstimation = success['CalculatingAmountDTO'].usdfoestimationfee;
+        }
+
 
       } else if (success['status'] == "failure") {
         // Swal.fire("Error", success['message'], "error");
@@ -70,46 +80,72 @@ export class VaultComponent implements OnInit {
 
 
   // SLIDER SELECTED CRYPTOCURRENCY
-  onSliderCryptoCurrency() {
+  onSliderCryptoCurrency(data: string) {
+    this.spinner.show();
+    this.ethOrBtc = data;
     let jsonData = {
-      "userId": "34"
+      "userId": "34",
+      "cryptoType": this.ethOrBtc
     }
     this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
+      this.spinner.hide();
       if (success['status'] == "success") {
-        this.availabeAmount = success['CalculatingAmountDTO'].ethercurrentvalue;
-
+        if (this.ethOrBtc == "ETH") {
+          this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforEther;
+        } else {
+          this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
+        }
       } else if (success['status'] == "failure") {
-        // Swal.fire("Error", success['message'], "error");
+        // Swal.fire("Error", success['message'], "error"); 
       }
     }, error => {
+      this.spinner.hide();
 
     })
   }
 
   onAddVault() {
-    // let jsonData = {
-    //   "email": sessionStorage.getItem("userEmail"),
-    //   "cryptoAmount": this.estimatedEth,
-    //   "typeOfInvestment": "BTC",
-    //   "investmentPeriod": this.estimatedTime
-    // }
-console.log("terms and condition",this.termsAndCondition);
-    let jsonData = {
-      "email": "vinaykumar2437@gmail.com",
-      "cryptoAmount": 0.01,
-      "typeOfInvestment": "BTC",
-      "investmentPeriod": 3
-    }
-    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
-      if (success['status'] == "success") {
-        Swal.fire("Success", success['message'], "success");
-
-      } else if (success['status'] == "failure") {
-        Swal.fire("Error", success['message'], "error");
+    if (!Boolean(this.estimatedEth)) {
+      Swal.fire("Info", "Please " + this.ethOrBtc + " details", "info");
+    } else if (!Boolean(this.estimatedWallet)) {
+      Swal.fire("Info", "Please provide wallet password", "info");
+    } else if (!this.termsAndCondition) {
+      Swal.fire("Info", "Please accept terms and conditon to proceed", "info");
+    } else {
+      this.spinner.show();
+      let jsonData = {};
+      if (this.ethOrBtc == "BTC") {
+        jsonData = {
+          "email": sessionStorage.getItem("userEmail"),
+          "cryptoAmount": this.estimatedEth,
+          "typeOfInvestment": this.ethOrBtc,
+          "investmentPeriod": this.estimatedTime
+        }
+      } else {
+        jsonData = {
+          "email": sessionStorage.getItem("userEmail"),
+          "cryptoAmount": this.estimatedEth,
+          "typeOfInvestment": this.ethOrBtc,
+          "investmentPeriod": this.estimatedTime,
+          "ethWalletPassword": this.estimatedWallet
+        }
       }
-    }, error => {
 
-    })
+      this.vaultService.postAddVault(jsonData).subscribe(success => {
+        this.spinner.hide();
+        if (success['status'] == "success") {
+          Swal.fire("Success", success['message'], "success");
+
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
+      }, error => {
+        this.spinner.hide();
+      })
+    }
   }
+
 
 }

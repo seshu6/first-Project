@@ -11,6 +11,6 @@ export class CreateWalletService {
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
   postCreateWallet(data: any) {
-    return this.http.post(this.url.apiUrl + "mobileregister", data, this.header.getHttpHeader());
+    return this.http.post(this.url.apiUrl + "bluewallet/mobileregister", data, this.header.getHttpHeader());
   }
 }

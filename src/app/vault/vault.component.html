@@ -14,9 +14,9 @@
                 <div class="crypto-currency-wallet">
                     <h1>Balance</h1>
                     <div class="etherum-blance">
-                        <h2>2.806600</h2>
+                        <h2>{{availabeBalance}}</h2>
                         <div class="etherum-usdolar">
-                            <p>880.660</p>
+                            <p>{{usdForEthOrBtc}}</p>
                             <div class="bal-exchange-dollar">
                                 <select>
                                     <option value="usdollar">USDollar</option>
@@ -78,10 +78,10 @@
                     <li>
                         <h4>Balance</h4>
                         <div class="blue-value">
-                            <p>2.806600</p>
+                            <p>{{availabeBalance}}</p>
                         </div>
                         <div class="blue-value-dollar">
-                            <h4>880.660</h4>
+                            <h4>{{usdForEthOrBtc}}</h4>
                             <p>USDollar</p>
                         </div>
                     </li>
@@ -362,15 +362,15 @@
                     <div class="select-crypto-wallet1">
                         <div class="select-crytocurrency-list">
                             <div class="carousel">
-                                <a class="carousel-item1" href="#two!">
+                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('ETH')">
                                     <h1>Ethereum</h1>
                                     <img src="assets/images/etheriumswipe.png" />
                                 </a>
-                                <a class="carousel-item1" href="#one!">
+                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('MON')">
                                     <h1>Monero</h1>
                                     <img src="assets/images/moneroswipe.png" />
                                 </a>
-                                <a class="carousel-item1" href="#three!">
+                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('BTC')">
                                     <h1>BitCoin</h1>
                                     <img src="assets/images/bitcoinswipe.png" />
                                 </a>
@@ -393,15 +393,15 @@
                                 <div class="col-lg-6 col-md-12 col-12">
                                     <div class="form-group">
                                         <label>Available Amount</label>
-                                        <p>{{availabeAmount}}</p>
+                                        <p>{{availabeBalance}}</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-12">
                                     <div class="form-group">
-                                        <label>ETH</label>
+                                        <label>{{ethOrBtc}}</label>
                                         <div class="select-group">
-                                            <input type="text" placeholder="0.010000" [(ngModel)]="estimatedEth"
-                                                (ngModelChange)="onAutoChangeEthEstimation($event)">
+                                            <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
+                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)">
                                         </div>
                                     </div>
                                 </div>
@@ -436,7 +436,8 @@
                                             <div class="accet-toggle">
                                                 <label class="label">
                                                     <div class="toggle">
-                                                        <input class="toggle-state" type="checkbox" name="check" [(ngModel)]="termsAndCondition">
+                                                        <input class="toggle-state" type="checkbox" name="check"
+                                                            [(ngModel)]="termsAndCondition">
                                                         <div class="toggle-inner">
                                                             <div class="indicator"></div>
                                                         </div>
@@ -448,9 +449,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-12">
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="ethOrBtc == 'ETH'">
                                         <label>Wallet</label>
-                                        <p class="wallet-01">{{estimatedWallet}}</p>
+                                        <div class="select-group">
+                                            <input type="password"  [(ngModel)]="estimatedWallet">
+                                        </div>
+                                        <!-- <p class="wallet-01">{{estimatedWallet}}</p> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-12">

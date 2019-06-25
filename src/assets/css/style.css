@@ -4964,7 +4964,7 @@ footer{
     border:none;
     background: transparent;
     border-bottom: 1px solid #ffffff;
-    padding: 6px 0px;
+    padding: 6px 10px;
     height: 36px;
     outline: none;
     color:#ffffff;
@@ -5124,5 +5124,8 @@ footer{
 /* SWEET ALERT CSS STARTS HERE   */
 .swal-wide{
     width:100px !important;
+}
+.overlay{
+    position: fixed !important;
 }
 /* ENDS HERE */

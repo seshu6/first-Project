@@ -11,15 +11,15 @@ export class VaultService {
 
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
-  postAutoCompleteEthEstimation(data: any) {
-    return this.http.post(this.url.apiUrl + "amountestimationforether", data, this.header.getHttpHeader());
+  postAutoCompleteEthOrBtcEstimation(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/vaultcalculation", data, this.header.getHttpHeader());
   }
 
-  postSliderCryptocurrency(data:any){
-    return this.http.post(this.url.dummyUrl, data, this.header.getHttpHeader());
+  postSliderCryptocurrency(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
   }
 
-  postAddVault(data:any){
-    return this.http.post(this.url.dummyUrl, data, this.header.getHttpHeader());
+  postAddVault(data: any) {
+    return this.http.post(this.url.apiUrl + "useractivities/ethOrbtc/investment", data, this.header.getHttpHeader());
   }
 }

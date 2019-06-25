@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   postLogin(data: any) {
-    return this.http.post(this.url.apiUrl + "login", data, this.header.getHttpHeader());
+    return this.http.post(this.url.apiUrl + "bluewallet/login", data, this.header.getHttpHeader());
   }
 
 }
