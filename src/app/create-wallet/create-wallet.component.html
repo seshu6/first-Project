@@ -1,0 +1,276 @@
+<div class="bluewallet-dashboard-fullwrap">
+  <!-- Dashboard Header -->
+
+  <!-- Bluewallet-second-sidebar -->
+  <div class="bluewallet-profile-sidebar">
+    <div class="profile-setting-sidebar primaryscroll" id="boxscroll1">
+      <div class="profile-setting">
+        <div class="setting-image">
+          <img src="assets/images/profile.jpg" alt="image" />
+        </div>
+      </div>
+      <div class="platform-user-tabs">
+        <div class="platuser-tabs">
+          <ul>
+            <li>
+              <a class="plataform-link active" href="javascript:void(0);">Plataform</a>
+            </li>
+            <li>
+              <a class="users-link" href="javascript:void(0);">Users</a>
+            </li>
+          </ul>
+          <div class="platform-content">
+            <ul>
+              <li>
+                <a class="" href="javascript:void(0);">
+                  <span class="userwalleticon user-wallet-img4"></span>
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="wallet-eth-list">
+        <div class="info">
+          <a href="javascript:void(0);" class="infobtn">Information</a>
+        </div>
+        <ul>
+          <li>
+            <a href="javascript:void(0);">
+              <span class="wal-eth">ETH
+                <img src="assets/images/downarrowred.png" />
+              </span>
+              <span class="wal-amt">435 $</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <span class="wal-eth">BTC
+                <img src="assets/images/uparrowgreen.png" />
+              </span>
+              <span class="wal-amt">20.000 $</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">
+              <span class="wal-eth">XRP
+                <img src="assets/images/uparrowgreen.png" />
+              </span>
+              <span class="wal-amt">200 $</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Bluewallet Body -->
+  <div class="bluewallet-body-wrap">
+    <div class="bluewallet-create-wallet">
+      <div class="create-wallet-title">
+        <h1>Create a New Wallet</h1>
+      </div>
+      <div class="create-wallet-body">
+        <div class="bluewallet-creating">
+          <form [formGroup]="createWalletForm">
+            <div class="form-group">
+              <label>Email</label>
+              <div class="form-input-group">
+                <input type="text" formControlName="email">
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
+                  <span *ngIf="createWalletForm.get('email').errors.required">Email is required.</span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="form-input-group">
+                <input type="password" formControlName="password">
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
+                  <span *ngIf="createWalletForm.get('password').errors.required">Password is required.</span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="form-input-group">
+                <input type="password" formControlName="conformPassword">
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
+                  <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is required.</span>
+                </span>
+                <span class="validationError"
+                  *ngIf="!(createWalletForm.get('password').value == createWalletForm.get('conformPassword').value)">
+                  password must be same.
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="terms-condition-wallet">
+                <p>When you create a Wallet, you accept
+                </p>
+                <p><a href="javascript:void(0);">Terms of Service</a> & <a href="javascript:void(0);">Politic and
+                    Privacy</a></p>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button type="button" class="create-walbtn" (click)="onCreateNewWallet()">Create Wallet</button>
+            </div>
+          </form>
+        </div>
+        <div class="bluewallet-creating">
+          <form>
+            <div class="form-group">
+              <label>Please, Introduce Your new pin</label>
+              <div class="form-input-group">
+                <input type="text">
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button type="button" class="create-walbtn">Accept</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--fastbuy-popup-->
+<div class="wantbuy-bluewallet" style="display: none;">
+  <div class="wantbuy-pop-center">
+    <div class="buy-bluewt-div">
+      <div class="wantbuy-paypal-title">
+        <h1>How much you want to buy?</h1>
+      </div>
+      <div class="wantbuy-droplist">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="droplist-fastbuy">
+              <input type="text">
+              <span>Min. 0.0124</span>
+              <div class="list-cop1">
+                <a href="javascript:void(0);">COP
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </a>
+                <ul class="list-cop-dropdown">
+                  <li>
+                    <a href="javascript:void(0);">
+                      ETH
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      BTC
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      COP
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="droplist-fastbuy1">
+              <a href="javascript:void(0);">Paypal</a>
+              <ul class="pay-methd-1">
+                <li>
+                  <a href="javascript:void(0);">
+                    Paypal
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    Paypal
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    Paypal
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wantbuy-body-form">
+        <ul>
+          <li>
+            <div class="form-user-list">
+              <label>User</label>
+              <span>Yotemplario
+                <sup>500+</sup>
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="form-user-list">
+              <label>Price</label>
+              <span>15,650,000.00 COP </span>
+            </div>
+          </li>
+          <li>
+            <div class="form-user-list">
+              <label>Country</label>
+              <span>Colombia</span>
+            </div>
+          </li>
+          <li>
+            <div class="form-user-list">
+              <label>Comercial Limits</label>
+              <span>100,00 - 1,000,000 COP</span>
+            </div>
+          </li>
+          <li>
+            <div class="form-user-list">
+              <label>Title</label>
+              <span>Bank Transfer.</span>
+            </div>
+          </li>
+          <li>
+            <div class="form-user-list">
+              <label>Description</label>
+              <span>Details of transfer.</span>
+            </div>
+          </li>
+        </ul>
+        <div class="sen-req">
+          <button type="button" class="sendrequestbtn">Send Request </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Email Popup -->
+<div class="email-inbox-wrap" style="display: none;">
+  <div class="email-inbox-modal">
+    <div class="email-inbox-box">
+      <div class="inbox-box">
+        <img src="assets/images/emailinboxicon.png" />
+        <h2>Check Your Inbox...</h2>
+        <a href="javascript:void(0);">JohnDoe@gmail.com</a>
+        <p>search an email of BlueWallet And click the link of verification to complete the configuration of
+          your Wallet.</p>
+      </div>
+      <div class="goto-email">
+        <button type="button" class="gotemailbtn">Go to Email</button>
+        <button type="button" class="checkitlaterbtn disable">Check It Later</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/custom.js"></script>
