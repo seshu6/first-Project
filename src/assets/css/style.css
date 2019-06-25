@@ -785,8 +785,9 @@ header .navbar .navbar-nav .nav-link-btn:focus{
     color: #ffffff;
     border: none;
     display: inline-block;
-    padding: 6px 20px;
+    padding: 6px 30px;
     border-radius: 8px;
+    font-size: 20px;
 }
 .help-you-contact .contactbttn .contactusbtn:hover{
     -webkit-box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
@@ -799,7 +800,7 @@ header .navbar .navbar-nav .nav-link-btn:focus{
 }
 .help-you-contact .contactbttn .contactusbtn img{
     max-width: 100%;
-    height: 20px;
+    height: 30px;
     object-fit: contain;
     margin-left: 10px;
 }
@@ -5035,13 +5036,13 @@ footer{
 }
 .dirctcontactbtn{
     color: #ffffff;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: normal;
     border: none;
     outline: none;
     display: inline-block;
     border-radius: 8px;
-    padding: 8px 20px;
+    padding: 8px 30px;
     margin-top:20px;
     background: -moz-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
     background: -webkit-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
@@ -5049,7 +5050,12 @@ footer{
     background: -ms-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
     background: linear-gradient(90deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
 }
-
+.dirctcontactbtn img{
+    max-width: 100%;
+    height: 30px;
+    object-fit: contain;
+    margin-left: 20px;
+}
 .login-help{
     position: absolute;
     bottom: 0;
