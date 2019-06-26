@@ -133,30 +133,77 @@
                             <div class="active-list active-scroll" id="activyscroll">
                                 <div class="active-scroll1">
                                     <ul>
-                                        <li>
-                                            <a href="javascript:void(0);">
-                                                <div class="wallet-active">
-                                                    <div class="wallet-etherium-icon">
-                                                        <img src="assets/images/blockchainicon2.png">
-                                                    </div>
-                                                    <div class="wallet-etherium">
-                                                        <h1>ETH</h1>
-                                                        <p>$ 435</p>
-                                                    </div>
-                                                    <div class="wallet-etherium text-center">
-                                                        <div class="produced-walet">
-                                                            <h2>Produced</h2>
-                                                            <span>+ $ 245</span>
+                                        <li class="active">
+                                            <a href="javascript:void(0);" data-toggle="collapse" href="#valut_lnk" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <div class="wallet_view-link">
+                                                    <div class="wallet-active">
+                                                        <div class="wallet-etherium-icon">
+                                                            <img src="assets/images/blockchainicon2.png">
                                                         </div>
-                                                        <div class="produced-walet">
-                                                            <h2>Coins</h2>
-                                                            <span>+ $ 245</span>
+                                                        <div class="wallet-etherium">
+                                                            <h1>ETH</h1>
+                                                            <p>$ 435</p>
+                                                        </div>
+                                                        <div class="wallet-etherium text-center">
+                                                            <div class="produced-walet">
+                                                                <h2>Produced</h2>
+                                                                <span>+ $ 245</span>
+                                                            </div>
+                                                            <div class="produced-walet">
+                                                                <h2>Coins</h2>
+                                                                <span>+ $ 245</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="wallet-etherium">
+                                                            <p class="vaueamt">+ 8,57%
+                                                                <img src="assets/images/walletarrow.png" />
+                                                            </p>
                                                         </div>
                                                     </div>
-                                                    <div class="wallet-etherium">
-                                                        <p class="vaueamt">+ 8,57%
-                                                            <img src="assets/images/walletarrow.png" />
-                                                        </p>
+                                                </div>
+                                            </a>
+                                            <a href="javascript:void(0);" class="collapse" id="valut_lnk">
+                                                <div class="wallet_view-link">
+                                                    <div class="wallet-active">
+                                                        <div class="wallet-etherium ethcolr">
+                                                            <h1>ETH</h1>
+                                                            <p>$ 435</p>
+                                                        </div>
+                                                        <div class="wallet-etherium text-center">
+                                                            <div class="produced-walet ethcolr">
+                                                                <h2>Produced</h2>
+                                                                <span>+ $ 245</span>
+                                                            </div>
+                                                            <div class="produced-walet ethcolr">
+                                                                <h2>Coins</h2>
+                                                                <span>+ $ 245</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="wallet-etherium">
+                                                            <p class="vaueamt">+ 8,57%
+                                                                <img src="assets/images/walletarrow.png" />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="active_wallet_view">
+                                                    <div class="wallet-active wallet-topmove">
+                                                        <div class="startdate ethcolr">
+                                                            <h1>Started</h1>
+                                                            <p>12/02/2019</p>
+                                                        </div>
+                                                        <div class="startdate ethcolr">
+                                                            <h1>Proﬁt</h1>
+                                                            <p>3%</p>
+                                                        </div>
+                                                        <div class="startdate ethcolr">
+                                                            <h1>Duration</h1>
+                                                            <p>3 Months</p>
+                                                        </div>
+                                                        <div class="startdate ethcolr">
+                                                            <h1>Finish</h1>
+                                                            <p>12/05/2019</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -400,8 +447,7 @@
                                     <div class="form-group">
                                         <label>{{ethOrBtc}}</label>
                                         <div class="select-group">
-                                            <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
-                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)">
+                                            <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth" (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)">
                                         </div>
                                     </div>
                                 </div>
@@ -436,8 +482,7 @@
                                             <div class="accet-toggle">
                                                 <label class="label">
                                                     <div class="toggle">
-                                                        <input class="toggle-state" type="checkbox" name="check"
-                                                            [(ngModel)]="termsAndCondition">
+                                                        <input class="toggle-state" type="checkbox" name="check" [(ngModel)]="termsAndCondition">
                                                         <div class="toggle-inner">
                                                             <div class="indicator"></div>
                                                         </div>
@@ -452,7 +497,7 @@
                                     <div class="form-group" *ngIf="ethOrBtc == 'ETH'">
                                         <label>Wallet</label>
                                         <div class="select-group">
-                                            <input type="password"  [(ngModel)]="estimatedWallet">
+                                            <input type="password" [(ngModel)]="estimatedWallet">
                                         </div>
                                         <!-- <p class="wallet-01">{{estimatedWallet}}</p> -->
                                     </div>

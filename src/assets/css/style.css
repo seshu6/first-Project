@@ -2549,7 +2549,7 @@ footer{
     margin-top:6px;
     margin-bottom: 0;
 }
-.active-scroll ul li.active a{
+.active-scroll ul li.active a.collapse{
     background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(100%, rgba(53,78,145,1)));
     background: -webkit-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
@@ -2558,10 +2558,10 @@ footer{
     background: linear-gradient(90deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
     color:#ffffff;
 }
-.active-scroll ul li.active a .wallet-active h1{
+.active-scroll ul li.active a .wallet-active .ethcolr h1{
     color:#ffffff;
 }
-.active-scroll ul li.active a .wallet-active span{
+.active-scroll ul li.active a .wallet-active .ethcolr span{
     color:#ffffff;
 }
 
