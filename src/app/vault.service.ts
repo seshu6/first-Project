@@ -22,4 +22,8 @@ export class VaultService {
   postAddVault(data: any) {
     return this.http.post(this.url.apiUrl + "useractivities/ethOrbtc/investment", data, this.header.getHttpHeader());
   }
+
+  postActiveVaultList(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/cryptoinvestmnet", data, this.header.getHttpHeader());
+  }
 }

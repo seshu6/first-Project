@@ -23,8 +23,9 @@ export class VaultComponent implements OnInit {
   termsAndCondition: boolean = false;
   ethOrBtc: string = "ETH";
   usdForEthOrBtc: number | string;
-
   addVaultForm: FormGroup;
+  activeCryptoCurrencyDetails: any = [];
+  completedCryptoCurrencyDetails: any = [];
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
 
@@ -35,6 +36,7 @@ export class VaultComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     });
     this.onSliderCryptoCurrency("ETH");
+    this.getActiveVaultInformation();
   }
 
   // AUTO COMPLETE BTC ESTIMATION 
@@ -147,5 +149,27 @@ export class VaultComponent implements OnInit {
     }
   }
 
+  // GET ACTIVE VAULT INFORMATION
+
+  getActiveVaultInformation() {
+    this.spinner.show();
+    let jsonData = {
+      "email": sessionStorage.getItem("userEmail")
+    }
+    this.vaultService.postActiveVaultList(jsonData).subscribe(success => {
+      this.spinner.hide();
+      for (let i = 0; i < success['UserCryptoData'].length; i++) {
+        if (success['UserCryptoData'][i].status == 1) {
+          this.activeCryptoCurrencyDetails.push(success['UserCryptoData'][i]);
+        } else {
+          this.completedCryptoCurrencyDetails.push(success['UserCryptoData'][i]);
+        }
+      }
+      console.log("active",this.activeCryptoCurrencyDetails);
+      console.log("complete",this.completedCryptoCurrencyDetails);
+    }, error => {
+      this.spinner.hide();
+    })
+  }
 
 }
