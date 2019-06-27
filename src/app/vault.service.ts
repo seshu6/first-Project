@@ -26,4 +26,9 @@ export class VaultService {
   postActiveVaultList(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/cryptoinvestmnet", data, this.header.getHttpHeader());
   }
+
+postCommonActiveVaultList(data:any){
+  return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/investmentinfoforcrypto", data, this.header.getHttpHeader());
+}
+
 }

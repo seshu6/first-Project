@@ -26,6 +26,9 @@ export class VaultComponent implements OnInit {
   addVaultForm: FormGroup;
   activeCryptoCurrencyDetails: any = [];
   completedCryptoCurrencyDetails: any = [];
+  btcIsSelected:boolean = true;
+  ethIsSelected:boolean = false;
+  allSelected:boolean = false;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
 
@@ -36,10 +39,10 @@ export class VaultComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     });
     this.onSliderCryptoCurrency("ETH");
-    this.getActiveVaultInformation();
+    this.getActiveVaultInformation("BTC");
   }
 
-  // AUTO COMPLETE BTC ESTIMATION 
+  // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {
     let jsonData = {};
     if (this.ethOrBtc == "ETH") {
@@ -100,7 +103,7 @@ export class VaultComponent implements OnInit {
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
         }
       } else if (success['status'] == "failure") {
-        // Swal.fire("Error", success['message'], "error"); 
+        Swal.fire("Error", success['message'], "error");
       }
     }, error => {
       this.spinner.hide();
@@ -110,7 +113,7 @@ export class VaultComponent implements OnInit {
 
   onAddVault() {
     if (!Boolean(this.estimatedEth)) {
-      Swal.fire("Info", "Please " + this.ethOrBtc + " details", "info");
+      Swal.fire("Info", "Please provide " + this.ethOrBtc + " details", "info");
     } else if (!Boolean(this.estimatedWallet)) {
       Swal.fire("Info", "Please provide wallet password", "info");
     } else if (!this.termsAndCondition) {
@@ -138,6 +141,11 @@ export class VaultComponent implements OnInit {
       this.vaultService.postAddVault(jsonData).subscribe(success => {
         this.spinner.hide();
         if (success['status'] == "success") {
+          this.estimatedEth = "";
+          this.estimatedFee = "";
+          this.estimatedTotal = "";
+          this.usdBtc = "";
+          this.usdEstimation = "";
           Swal.fire("Success", success['message'], "success");
 
         } else if (success['status'] == "failure") {
@@ -151,25 +159,52 @@ export class VaultComponent implements OnInit {
 
   // GET ACTIVE VAULT INFORMATION
 
-  getActiveVaultInformation() {
+  getActiveVaultInformation(cryptoType:string) {
+    if(cryptoType == "BTC"){
+      this.btcIsSelected = true;
+      this.ethIsSelected = false;
+    }else if(cryptoType == "ETH"){
+      this.btcIsSelected = false;
+      this.ethIsSelected = true;
+    }else if(cryptoType == "all"){
+      this.btcIsSelected = true;
+      this.ethIsSelected = true;
+    }
     this.spinner.show();
     let jsonData = {
-      "email": sessionStorage.getItem("userEmail")
+      "email": sessionStorage.getItem("userEmail"),
+      "typeOfInvestment":cryptoType
     }
-    this.vaultService.postActiveVaultList(jsonData).subscribe(success => {
+    this.vaultService.postCommonActiveVaultList(jsonData).subscribe(success => {
+      // let stringss = JSON.stringify(success);
       this.spinner.hide();
-      for (let i = 0; i < success['UserCryptoData'].length; i++) {
-        if (success['UserCryptoData'][i].status == 1) {
-          this.activeCryptoCurrencyDetails.push(success['UserCryptoData'][i]);
-        } else {
-          this.completedCryptoCurrencyDetails.push(success['UserCryptoData'][i]);
+      if (success['status'] == "success") {
+        this.activeCryptoCurrencyDetails = [];
+        this.completedCryptoCurrencyDetails = [];
+        for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
+          if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
+            this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
+          } else {
+            this.completedCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
+          }
         }
+        console.log("active", this.activeCryptoCurrencyDetails);
+        console.log("complete", this.completedCryptoCurrencyDetails);
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
       }
-      console.log("active",this.activeCryptoCurrencyDetails);
-      console.log("complete",this.completedCryptoCurrencyDetails);
+
+
     }, error => {
       this.spinner.hide();
     })
+  }
+
+
+  // CRYPTOCURRENCY LIST
+  bitCoinClicked(){
+    
   }
 
 }

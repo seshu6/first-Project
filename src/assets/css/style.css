@@ -2472,6 +2472,7 @@ footer{
     border-radius: 10px;
     padding: 12px 30px;
     margin-bottom: 10px;
+    transition:  0.1s all ease-in-out 0s;
 }
 .active-scroll ul li a .wallet-active{
     display: flex;
@@ -2549,7 +2550,7 @@ footer{
     margin-top:6px;
     margin-bottom: 0;
 }
-.active-scroll ul li.active a.collapse{
+.active-scroll ul li a.addtransition{
     background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(100%, rgba(53,78,145,1)));
     background: -webkit-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
@@ -5143,3 +5144,6 @@ footer{
     position: fixed !important;
 }
 /* ENDS HERE */
+.addtransition{
+    transition:  0.1s all ease-in-out 0s;
+}
