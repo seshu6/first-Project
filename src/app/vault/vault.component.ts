@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as M from 'src/assets/materialize/js/materialize';
 
 
 @Component({
@@ -21,25 +22,29 @@ export class VaultComponent implements OnInit {
   usdBtc: number | string;
   usdEstimation: number | string;
   termsAndCondition: boolean = false;
-  ethOrBtc: string = "ETH";
+  ethOrBtc: string = "BTC";
   usdForEthOrBtc: number | string;
   addVaultForm: FormGroup;
   activeCryptoCurrencyDetails: any = [];
   completedCryptoCurrencyDetails: any = [];
-  btcIsSelected:boolean = true;
-  ethIsSelected:boolean = false;
-  allSelected:boolean = false;
+  btcIsSelected: boolean = true;
+  ethIsSelected: boolean = false;
+  allSelected: boolean = false;
+  options: any;
+  currentlySelectedCryptoType: string;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    // let elems = document.querySelector('.carousel');
+    // let instances = M.Carousel.init(elems, this.options);
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     });
-    this.onSliderCryptoCurrency("ETH");
-    this.getActiveVaultInformation("BTC");
+    this.onSliderCryptoCurrency("BTC");
+    this.getActiveVaultInformation("BTC", "initial");
   }
 
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
@@ -85,8 +90,13 @@ export class VaultComponent implements OnInit {
 
 
   // SLIDER SELECTED CRYPTOCURRENCY
-  onSliderCryptoCurrency(data: string) {
+  onSliderCryptoCurrency(data: string, index?: number | string) {
     this.spinner.show();
+    if (index != undefined) {
+      let elem = document.querySelector('.carousel');
+      let carouselInstances = M.Carousel.getInstance(elem);
+      carouselInstances.set(index);
+    }
     this.ethOrBtc = data;
     let jsonData = {
       "userId": "34",
@@ -108,6 +118,58 @@ export class VaultComponent implements OnInit {
     }, error => {
       this.spinner.hide();
 
+    })
+  }
+
+  // GET ACTIVE VAULT INFORMATION
+
+  getActiveVaultInformation(cryptoType: string, when?: string) {
+    this.currentlySelectedCryptoType = cryptoType;
+    if (cryptoType == "BTC") {
+      this.btcIsSelected = true;
+      this.ethIsSelected = false;
+    } else if (cryptoType == "ETH") {
+      this.btcIsSelected = false;
+      this.ethIsSelected = true;
+    } else if (cryptoType == "all") {
+      this.btcIsSelected = true;
+      this.ethIsSelected = true;
+    }
+    this.spinner.show();
+    let jsonData = {
+      "email": sessionStorage.getItem("userEmail"),
+      "typeOfInvestment": cryptoType
+    }
+    this.vaultService.postCommonActiveVaultList(jsonData).subscribe(success => {
+      // let stringss = JSON.stringify(success);
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.activeCryptoCurrencyDetails = [];
+        this.completedCryptoCurrencyDetails = [];
+        for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
+          if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
+            this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
+          } else {
+            this.completedCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
+          }
+        }
+        console.log("active", this.activeCryptoCurrencyDetails);
+        console.log("complete", this.completedCryptoCurrencyDetails);
+        if (this.currentlySelectedCryptoType != "all" && when != "initial") {
+          if (this.currentlySelectedCryptoType == "BTC") {
+            this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 0);
+          } else if (this.currentlySelectedCryptoType == "ETH") {
+            this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 1);
+          }
+        }
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+
+
+    }, error => {
+      this.spinner.hide();
     })
   }
 
@@ -157,54 +219,9 @@ export class VaultComponent implements OnInit {
     }
   }
 
-  // GET ACTIVE VAULT INFORMATION
-
-  getActiveVaultInformation(cryptoType:string) {
-    if(cryptoType == "BTC"){
-      this.btcIsSelected = true;
-      this.ethIsSelected = false;
-    }else if(cryptoType == "ETH"){
-      this.btcIsSelected = false;
-      this.ethIsSelected = true;
-    }else if(cryptoType == "all"){
-      this.btcIsSelected = true;
-      this.ethIsSelected = true;
-    }
-    this.spinner.show();
-    let jsonData = {
-      "email": sessionStorage.getItem("userEmail"),
-      "typeOfInvestment":cryptoType
-    }
-    this.vaultService.postCommonActiveVaultList(jsonData).subscribe(success => {
-      // let stringss = JSON.stringify(success);
-      this.spinner.hide();
-      if (success['status'] == "success") {
-        this.activeCryptoCurrencyDetails = [];
-        this.completedCryptoCurrencyDetails = [];
-        for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
-          if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
-            this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
-          } else {
-            this.completedCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
-          }
-        }
-        console.log("active", this.activeCryptoCurrencyDetails);
-        console.log("complete", this.completedCryptoCurrencyDetails);
-
-      } else if (success['status'] == "failure") {
-        Swal.fire("Error", success['message'], "error");
-      }
-
-
-    }, error => {
-      this.spinner.hide();
-    })
-  }
-
-
   // CRYPTOCURRENCY LIST
-  bitCoinClicked(){
-    
+  bitCoinClicked() {
+
   }
 
 }

@@ -29,19 +29,23 @@ export class LoginComponent implements OnInit {
 
   // OAUTH
   onGetAccessToken(): void {
-    const tokenObj = new HttpParams()
-      .set('username', "admin@gmail.com")
-      .set('password', "password")
-      .set('grant_type', "password");
-    this.spinner.show();
-    this.loginService.postAuthToken(tokenObj.toString()).subscribe(success => {
-      sessionStorage.setItem("tokenObj", JSON.stringify(success));
-      this.spinner.hide();
-      this.login();
-    }, error => {
-      this.spinner.hide();
-      alert("error");
-    })
+    if (this.loginForm.invalid) {
+      Swal.fire("Info", "Please check your data", "info");
+    } else {
+      const tokenObj = new HttpParams()
+        .set('username', this.loginForm.controls.email.value)
+        .set('password', this.loginForm.controls.password.value)
+        .set('grant_type', "password");
+      this.spinner.show();
+      this.loginService.postAuthToken(tokenObj.toString()).subscribe(success => {
+        sessionStorage.setItem("tokenObj", JSON.stringify(success));
+        this.spinner.hide();
+        this.login();
+      }, error => {
+        this.spinner.hide();
+        alert("error");
+      })
+    }
     // this.login();
   }
 

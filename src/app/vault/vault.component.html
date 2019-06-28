@@ -76,7 +76,7 @@
             <div class="wallet-dailyupdate bluewallet1">
                 <ul>
                     <li>
-                        <h4>Balance</h4>
+                        <h4>{{ethOrBtc}} Balance</h4>
                         <div class="blue-value">
                             <p>{{availabeBalance}}</p>
                         </div>
@@ -284,6 +284,10 @@
                     <div class="select-crypto-wallet1">
                         <div class="select-crytocurrency-list">
                             <div class="carousel">
+                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('BTC')">
+                                    <h1>BitCoin</h1>
+                                    <img src="assets/images/bitcoinswipe.png" />
+                                </a>
                                 <a class="carousel-item1" (click)="onSliderCryptoCurrency('ETH')">
                                     <h1>Ethereum</h1>
                                     <img src="assets/images/etheriumswipe.png" />
@@ -292,10 +296,7 @@
                                     <h1>Monero</h1>
                                     <img src="assets/images/moneroswipe.png" />
                                 </a>
-                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('BTC')">
-                                    <h1>BitCoin</h1>
-                                    <img src="assets/images/bitcoinswipe.png" />
-                                </a>
+
                             </div>
                         </div>
                         <div class="crytocurrency-view-form">
@@ -323,7 +324,7 @@
                                         <label>{{ethOrBtc}}</label>
                                         <div class="select-group">
                                             <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
-                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)">
+                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>

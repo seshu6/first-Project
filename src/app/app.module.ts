@@ -20,6 +20,7 @@ import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 // PACKAGES
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 @NgModule({
   declarations: [
     AppComponent,
