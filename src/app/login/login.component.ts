@@ -53,11 +53,17 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.spinner.show();
     this.loginService.postLogin(this.loginForm.value).subscribe(success => {
-      const datajson = JSON.stringify(success);
-      const dataParsed = JSON.parse(datajson);
+      // const datajson = JSON.stringify(success);
+      // const dataParsed = JSON.parse(datajson);
       this.spinner.hide();
       if (success['status'] == "success") {
-        Swal.fire("Success", success['message'], "success");
+        // Swal.fire("Success", success['message'], "success");
+        Swal.fire({
+          html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>OTP sent your email Successfully</p></div></div></div></div>',
+          showConfirmButton: true
+          
+          });
+        // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);
         this.route.navigate(['dashboard']);
       } else if (success['status'] == "failure") {

@@ -867,7 +867,7 @@ footer{
     margin-top: 40px;
 }
 .footer-social ul li a{
-    padding-right: 200px;
+    padding-right: 170px;
     display: block;
     color:#ffffff;
 }
@@ -5147,4 +5147,126 @@ footer{
 /* ENDS HERE */
 .addtransition{
     transition:  0.1s all ease-in-out 0s;
+}
+/* Login success */
+/* .login-success{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+} */
+.swal2-container .swal2-popup {
+    width: 400px;
+}
+.login-success .login-success-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.login-success .login-success-content{
+    background:#ffffff;
+    border-radius: 12px;
+    /* padding: 20px; */
+    width: 400px;
+    position: relative;
+}
+.login-success .login-mesg-cont{
+    text-align: center;
+}
+.login-success .login-mesg-cont img{
+    max-width: 100%;
+    height: 65px;
+    object-fit: contain;
+    object-position: center;
+}
+.login-success .login-mesg-cont h1{
+    color: #00a186;
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 16px;
+}
+.login-success .login-mesg-cont p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #555555;
+    margin-top: 16px;
+}
+.login-success .succokbtn{
+    border: none;
+    outline: none;
+    background: #00a186;
+    color: #ffffff;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 3px 20px;
+    /* margin-top: 20px; */
+    width: 101px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+/* Login error */
+/* .login-error{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background:rgba(0,0,0,0.7);
+    padding: 20px;
+} */
+.login-error .login-error-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.login-error .login-error-content{
+    background:#ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 400px;
+    position: relative;
+}
+.login-error .login-mesg-cont{
+    text-align: center;
+}
+.login-error .login-mesg-cont img{
+    max-width: 100%;
+    height: 65px;
+    object-fit: contain;
+    object-position: center;
+}
+.login-error .login-mesg-cont h1{
+    color: #CD473A;
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 16px;
+}
+.login-error .login-mesg-cont p{
+    font-size: 16px;
+    font-weight: 400;
+    color: #555555;
+    margin-top: 16px;
+}
+.login-error .errorkbtn{
+    border: none;
+    outline: none;
+    background: #CD473A;
+    color: #ffffff;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 3px 20px;
+    /* margin-top: 20px; */
+    width: 101px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.swal2-container.swal2-shown{
+    background: rgba(0,0,0,.8) !important;
 }
