@@ -4871,7 +4871,7 @@ label {
 ::placeholder {
 	color: #d1d1d1
 }
-input:not([type]),
+/* input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
 input[type=email]:not(.browser-default),
@@ -5243,7 +5243,7 @@ textarea.materialize-textarea+label:after,
 	opacity: 0;
 	-webkit-transition: .2s opacity ease-out, .2s color ease-out;
 	transition: .2s opacity ease-out, .2s color ease-out
-}
+} */
 .input-field {
 	position: relative;
 	margin-top: 1rem;
