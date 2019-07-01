@@ -1,0 +1,271 @@
+<div class="bluewallet-dashboard-fullwrap">
+    <!-- Dashboard Header -->
+
+    <!-- Bluewallet-second-sidebar -->
+    <div class="bluewallet-profile-sidebar">
+        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1">
+            <div class="profile-setting">
+                <div class="setting-image">
+                    <img src="assets/images/profile.jpg" alt="image" />
+                </div>
+            </div>
+            <div class="platform-user-tabs">
+                <div class="platuser-tabs">
+                    <ul>
+                        <li>
+                            <a class="plataform-link active" href="javascript:void(0);">Plataform</a>
+                        </li>
+                        <li>
+                            <a class="users-link" href="javascript:void(0);">Users</a>
+                        </li>
+                    </ul>
+                    <div class="platform-content">
+                        <ul>
+                            <li>
+                                <a class="active" href="javascript:void(0);">
+                                    <span class="userwalleticon user-wallet-img6"></span>
+                                    Verify With 2 Steps
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="wallet-eth-list">
+                <div class="info">
+                    <a href="javascript:void(0);" class="infobtn">Information</a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="wal-eth">ETH
+                                <img src="assets/images/downarrowred.png" />
+                            </span>
+                            <span class="wal-amt">435 $</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="wal-eth">BTC
+                                <img src="assets/images/uparrowgreen.png" />
+                            </span>
+                            <span class="wal-amt">20.000 $</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="wal-eth">XRP
+                                <img src="assets/images/uparrowgreen.png" />
+                            </span>
+                            <span class="wal-amt">200 $</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Bluewallet Body -->
+    <div class="bluewallet-body-wrap">
+        <div class="verify-details">
+            <div class="twostepdiables">
+                <button type="button" class="close-twostep">×</button>
+                <img src="assets/images/logo.png" />
+                <div class="twostepdiables-cont">
+                    <h1>2-Step is Disabled</h1>
+                    <p>Enable Verification through an SMS in your cell phone.</p>
+                </div>
+            </div>
+            <div class="twosetpverify-enable">
+                <div class="verification-icon-cont">
+                    <div class="verification-cion">
+                        <div class="verify-icon-img"><img src="assets/images/verify2stepsicon-color.png" /></div>
+                        <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to
+                            upgrade the security on your wallet.</p>
+                    </div>
+                    <div class="verification-enable-view">
+                        <div class="verify-center-div">
+                            <div class="verifcation-enable-wrap">
+                                <div class="enable-bttn-group">
+                                    <button type="button" class="enablebtn">Enable</button>
+                                </div>
+                                <div class="enable-phonumber">
+                                    <h1>CellPhone Number</h1>
+                                    <p>You can use your mobile to enable the Two-step authentication or to receive
+                                        alerts.</p>
+                                    <div class="sinverification">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-4 col-md-12 col-12">
+                                                <div class="sinverify-list">
+                                                    <input type="text" placeholder="+573166590227">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4  col-md-12 col-12">
+                                                <div class="sinverify-list1">
+                                                    <h1>Sin Verificar</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4  col-md-12 col-12">
+                                                <div class="sinverify-list2">
+                                                    <button type="button" class="actualizarbtn">Actualizar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="enable-phonumber disable"> -->
+                                        <div class="enable-phonumber">
+                                    <h1>Enter Your Verification Code</h1>
+                                    <p>You can use your mobile to enable the Two-step authentication or to receive
+                                        alerts.</p>
+                                    <p>Sent to <span>+573166590227</span></p>
+                                    <div class="sinverification">
+                                        <h4>Let's Confirm It's You</h4>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-12 col-12">
+                                                <div class="sinverify-list">
+                                                    <input type="text" placeholder="+573166590227" [(ngModel)]="otp">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="verfiy-send-bttn">
+                                            <button type="button" class="verifybttn" (click)="onVerifyOtp()">Verify</button>
+                                            <button type="button" class="verifybttn">Resend SMS</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="enable-phonumber disable">
+                                    <p>You can use your mobile to enable the Two-step authentication or to receive
+                                        alerts.</p>
+                                    <div class="sinverification">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-4 col-md-12 col-12">
+                                                <div class="sinverify-list">
+                                                    <input type="text" placeholder="+573166590227">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12 col-12">
+                                                <div class="sinverify-list1">
+                                                    <h1>Verification</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--fastbuy-popup-->
+<div class="wantbuy-bluewallet" style="display: none;">
+    <div class="wantbuy-pop-center">
+        <div class="buy-bluewt-div">
+            <div class="wantbuy-paypal-title">
+                <h1>How much you want to buy?</h1>
+            </div>
+            <div class="wantbuy-droplist">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="droplist-fastbuy">
+                            <input type="text">
+                            <span>Min. 0.0124</span>
+                            <div class="list-cop1">
+                                <a href="javascript:void(0);">COP
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="list-cop-dropdown">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            ETH
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            BTC
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            COP
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="droplist-fastbuy1">
+                            <a href="javascript:void(0);">Paypal</a>
+                            <ul class="pay-methd-1">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        Paypal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        Paypal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        Paypal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wantbuy-body-form">
+                <ul>
+                    <li>
+                        <div class="form-user-list">
+                            <label>User</label>
+                            <span>Yotemplario
+                                <sup>500+</sup>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-user-list">
+                            <label>Price</label>
+                            <span>15,650,000.00 COP </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-user-list">
+                            <label>Country</label>
+                            <span>Colombia</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-user-list">
+                            <label>Comercial Limits</label>
+                            <span>100,00 - 1,000,000 COP</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-user-list">
+                            <label>Title</label>
+                            <span>Bank Transfer.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-user-list">
+                            <label>Description</label>
+                            <span>Details of transfer.</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="sen-req">
+                    <button type="button" class="sendrequestbtn">Send Request </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -292,7 +292,7 @@
                                     <h1>Ethereum</h1>
                                     <img src="assets/images/etheriumswipe.png" />
                                 </a>
-                                <a class="carousel-item1" (click)="onSliderCryptoCurrency('MON')">
+                                <a class="carousel-item1">
                                     <h1>Monero</h1>
                                     <img src="assets/images/moneroswipe.png" />
                                 </a>
@@ -324,7 +324,7 @@
                                         <label>{{ethOrBtc}}</label>
                                         <div class="select-group">
                                             <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
-                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation($event)" autocomplete="off">
+                                                (ngModelChange)="onAutoChangeEthOrBtcEstimation()" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>

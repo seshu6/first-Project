@@ -8,7 +8,7 @@ import { CommonAuthenticationService } from './common-authentication.service';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
+  constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { } 
 
   postAuthToken(data: any) {
     return this.http.post(this.url.tokenUrl, data, this.header.getAuthHeader());

@@ -50,17 +50,20 @@ export class VaultComponent implements OnInit {
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {
     let jsonData = {};
-    if (this.ethOrBtc == "ETH") {
-      jsonData = {
-        "etherAmount": this.estimatedEth,
-        "cryptoType": this.ethOrBtc
-      }
-    } else {
-      jsonData = {
-        "btcAmount": this.estimatedEth,
-        "cryptoType": this.ethOrBtc
+    if (this.estimatedEth != "") {
+      if (this.ethOrBtc == "ETH") {
+        jsonData = {
+          "etherAmount": this.estimatedEth,
+          "cryptoType": this.ethOrBtc
+        }
+      } else {
+        jsonData = {
+          "btcAmount": this.estimatedEth,
+          "cryptoType": this.ethOrBtc
+        }
       }
     }
+
 
     this.vaultService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
       if (success['status'] == "success") {
@@ -80,7 +83,7 @@ export class VaultComponent implements OnInit {
 
 
       } else if (success['status'] == "failure") {
-        // Swal.fire("Error", success['message'], "error");
+        Swal.fire("Error", success['message'], "error");
       }
     }, error => {
 
@@ -92,6 +95,7 @@ export class VaultComponent implements OnInit {
   // SLIDER SELECTED CRYPTOCURRENCY
   onSliderCryptoCurrency(data: string, index?: number | string) {
     this.spinner.show();
+    this.clearInvestmentData();
     if (index != undefined) {
       let elem = document.querySelector('.carousel');
       let carouselInstances = M.Carousel.getInstance(elem);
@@ -203,11 +207,7 @@ export class VaultComponent implements OnInit {
       this.vaultService.postAddVault(jsonData).subscribe(success => {
         this.spinner.hide();
         if (success['status'] == "success") {
-          this.estimatedEth = "";
-          this.estimatedFee = "";
-          this.estimatedTotal = "";
-          this.usdBtc = "";
-          this.usdEstimation = "";
+          this.clearInvestmentData();
           Swal.fire("Success", success['message'], "success");
 
         } else if (success['status'] == "failure") {
@@ -220,8 +220,12 @@ export class VaultComponent implements OnInit {
   }
 
   // CRYPTOCURRENCY LIST
-  bitCoinClicked() {
-
+  clearInvestmentData() {
+    this.estimatedEth = "";
+    this.estimatedFee = "";
+    this.estimatedTotal = "";
+    this.usdBtc = "";
+    this.usdEstimation = "";
   }
 
 }
