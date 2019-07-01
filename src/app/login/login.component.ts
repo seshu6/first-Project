@@ -65,7 +65,8 @@ export class LoginComponent implements OnInit {
           });
         // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);
-        this.route.navigate(['dashboard']);
+        // this.route.navigate(['dashboard']);
+        this.route.navigate(['verification']);
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
       }

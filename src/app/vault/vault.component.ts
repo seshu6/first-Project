@@ -116,6 +116,10 @@ export class VaultComponent implements OnInit {
           this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
         }
+        if (index == undefined) {
+          this.getActiveVaultInformation(this.ethOrBtc, "initial");
+        }
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }

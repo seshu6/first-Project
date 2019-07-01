@@ -127,10 +127,16 @@
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
                                                                 <a class="bitoicnlink" href="javascript:void(0);">
-                                                                    <img src="assets/images/bitcoin-icon.png" />
-                                                                    <span>Bitcoin</span>
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="lhsBtcShowOrHide">
+                                                                    <span *ngIf="lhsBtcShowOrHide">Bitcoin</span>
+
+
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="!lhsBtcShowOrHide">
+                                                                    <span *ngIf="!lhsBtcShowOrHide">Ethereum</span>
                                                                 </a>
-                                                                <div class="coin-list-view">
+                                                                <!-- <div class="coin-list-view">
                                                                     <ul>
                                                                         <li>
                                                                             <a href="javascript:void(0);">
@@ -145,10 +151,11 @@
                                                                             </a>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-12">
+                                                        <div class="col-lg-2 col-md-2 col-12"
+                                                            (click)="changeBtcToEthAndViceVersa()">
                                                             <div class="exchange-icn-center">
                                                                 <img src="assets/images/exchange-icon.png" />
                                                             </div>
@@ -156,10 +163,15 @@
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
                                                                 <a class="bitoicnlink1" href="javascript:void(0);">
-                                                                    <img src="assets/images/etherium-icon.png" />
-                                                                    <span>Ethereum</span>
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="rhsEtherShowOrHide">
+                                                                    <span *ngIf="rhsEtherShowOrHide">Ethereum</span>
+
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="!rhsEtherShowOrHide">
+                                                                    <span *ngIf="!rhsEtherShowOrHide">Bitcoin</span>
                                                                 </a>
-                                                                <div class="coin-list-view1">
+                                                                <!-- <div class="coin-list-view1">
                                                                     <ul>
                                                                         <li>
                                                                             <a href="javascript:void(0);">
@@ -174,15 +186,17 @@
                                                                             </a>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
-                                                        <input type="text" placeholder="$ 0" />
-                                                        <p>0.00 BTC</p>
+                                                        <input type="text" placeholder="$ 0"
+                                                            [(ngModel)]="usdToBtcAndEth"
+                                                            (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
+                                                        <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="minmax-value">
@@ -230,7 +244,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -250,7 +265,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -270,7 +286,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -290,7 +307,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -310,7 +328,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -330,7 +349,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -349,7 +369,8 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
