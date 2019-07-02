@@ -3980,6 +3980,18 @@ footer{
     border-radius: 6px;
 }
 .minmax-value .minmax-val-box .minval{
+    margin: 0;
+    color: #abb3d0;
+    font-size: 20px;
+    font-weight: 500;
+}
+.minmax-value .minmax-val-box .maxval{
+    font-weight: 500;
+    color:#354E91;
+    margin-left: 20px;
+    font-size: 20px;
+}
+/* .minmax-value .minmax-val-box .minval{
     font-size: 12px;
     color: #abb3d0;
     font-weight: 500;
@@ -3994,7 +4006,7 @@ footer{
     position: absolute;
     top: 9px;
     right: 10px;
-}
+} */
 .exchange-bttn-group{
     text-align: center;
     margin-top: 20px;
