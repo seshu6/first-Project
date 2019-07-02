@@ -3923,6 +3923,7 @@ footer{
     height: 27px;
     object-fit: contain;
     object-position: center;
+
 }
 .exchange-dollar{
     width: 100%;
@@ -3969,14 +3970,13 @@ footer{
 .minmax-value .minmax-val-box{
     position: relative;
 }
-.minmax-value .minmax-val-box input{
+.minmax-value .minmax-val-box{
     border: 1px solid #d1c9ff;
-    height: 40px;
     background: #ffffff;
     position: relative;
     outline: none;
     width: 100%;
-    padding: 0 52px 0 44px;
+    padding: 10px 0px;
     border-radius: 6px;
 }
 .minmax-value .minmax-val-box .minval{

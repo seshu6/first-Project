@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BuyAndSellService } from '../buy-and-sell.service';
 import { Router } from '@angular/router';
+import $ from "jquery";
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
@@ -40,12 +41,22 @@ export class BuyAndSellComponent implements OnInit {
     let btcOrEth: string = "btc";
     this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
     this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
+    $("#bitoicnlink img").addClass("bounceInDown");
     if (this.lhsBtcShowOrHide) {
       this.whetherBtcOrEth = "BTC";
       btcOrEth = "btc";
+      setTimeout(function () {
+        $("#bitoicnlink img").addClass("slideInUp animated");
+        $("#bitoicnlink1 img").addClass("slideInUp animated");
+      }, 10)
     } else {
       this.whetherBtcOrEth = "ETH";
       btcOrEth = "eth";
+      setTimeout(function () {
+        this.whetherBtcOrEth = "ETH";
+        $("#bitoicnlink img").addClass("slideInDown animated");
+        $("#bitoicnlink1 img").addClass("slideInDown animated");
+      }, 10)
     }
     this.spinner.show();
     let jsonData = {
