@@ -9,10 +9,15 @@ import { CommonAuthenticationService } from './common-authentication.service';
 })
 export class BuyAndSellService {
 
+
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
 
   postAutoCompleteUsdToBtcAndEth(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/convertusdtocrypptovalue", data, this.header.getHttpHeader());
+  }
+
+  postExchangeBtcToEth(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/exchange/request", data, this.header.getHttpHeader());
   }
 }

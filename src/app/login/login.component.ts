@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
       if (success['status'] == "success") {
         // Swal.fire("Success", success['message'], "success");
         Swal.fire({
-          html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>OTP sent your email Successfully</p></div></div></div></div>',
-          showConfirmButton: true
-          
+          html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>'+success['message']+'</p></div></div></div></div>',
+          showConfirmButton: true,
+          confirmButtonColor: "#00a186"
           });
         // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);

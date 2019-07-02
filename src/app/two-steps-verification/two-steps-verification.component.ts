@@ -27,12 +27,16 @@ export class TwoStepsVerificationComponent implements OnInit {
       this.verificationService.postVerifyOtp(jsonData).subscribe(success => {
         this.spinner.hide();
         if (success['status'] == "success") {
-          Swal.fire("Success", success['message'], "success");
+          Swal.fire({
+            html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
+            showConfirmButton: true,
+            confirmButtonColor: "#00a186"
+          });
           this.route.navigate(['dashboard']);
         } else if (success['status'] == "failure") {
           Swal.fire("Failure", success['message'], "error");
         }
-        
+
       }, error => {
         this.spinner.hide();
       })
