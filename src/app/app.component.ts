@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private route: Router) {
     route.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event['url'] == "/" || event['url'] == "/login") {
+        if (event['url'] == "/" || event['url'] == "/login" || event['url'] == "/createwallet" || event['url'] == "/verification") {
           this.showOrHideSidebar = false;
         } else {
           this.showOrHideSidebar = true;

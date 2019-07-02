@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BuyAndSellService } from '../buy-and-sell.service';
 import { Router } from '@angular/router';
+// import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-buy-and-sell',
@@ -12,12 +13,15 @@ import { Router } from '@angular/router';
 })
 export class BuyAndSellComponent implements OnInit {
 
-  lhsBtcShowOrHide: boolean = true;
-  rhsEtherShowOrHide: boolean = true;
+  lhsBtcShowOrHide: boolean = false;
+  rhsEtherShowOrHide: boolean = false;
   whetherBtcOrEth: string = "BTC";
   usdToBtcAndEth: number | string = 0;
   calculatedBtcOrEth: number | string = 0;
   exchangeAndHistroyShowOrHide: boolean = true;
+  minimumBtcOrEthValue: string | number;
+  maximumBtcOrEthValue: string | number;
+  historyTabUserListArr: any = [];
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -27,19 +31,40 @@ export class BuyAndSellComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
-
+    this.changeBtcToEthAndViceVersa();
   }
 
 
   // CHANGE FROM BTC TO ETH AND VICE VERSA
   changeBtcToEthAndViceVersa() {
+    let btcOrEth: string = "btc";
     this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
     this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
     if (this.lhsBtcShowOrHide) {
       this.whetherBtcOrEth = "BTC";
+      btcOrEth = "btc";
     } else {
       this.whetherBtcOrEth = "ETH";
+      btcOrEth = "eth";
     }
+    this.spinner.show();
+    let jsonData = {
+      "cryptoType": btcOrEth
+    }
+    this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
+        this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+      }
+    })
     if (this.usdToBtcAndEth != 0) {
       this.onAutoCompleteUsdToBtcAndETh();
     }
@@ -80,7 +105,7 @@ export class BuyAndSellComponent implements OnInit {
         }
       }, error => {
         this.spinner.hide();
-        if (error.error == "invalid_token") {
+        if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
           this.route.navigate(['login']);
         }
@@ -101,13 +126,13 @@ export class BuyAndSellComponent implements OnInit {
       let jsonData = {};
       if (this.lhsBtcShowOrHide) {
         jsonData = {
-          "userId": "34",
+          "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "BTC_ETH",
           "amountToTrade": this.calculatedBtcOrEth
         }
       } else {
         jsonData = {
-          "userId": "34",
+          "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "ETH_BTC",
           "amountToTrade": this.calculatedBtcOrEth
         }
@@ -127,7 +152,7 @@ export class BuyAndSellComponent implements OnInit {
         }
       }, error => {
         this.spinner.hide();
-        if (error.error == "invalid_token") {
+        if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
           this.route.navigate(['login']);
         }
@@ -143,6 +168,27 @@ export class BuyAndSellComponent implements OnInit {
 
   historyTabSlected() {
     this.exchangeAndHistroyShowOrHide = !this.exchangeAndHistroyShowOrHide;
+    this.spinner.show();
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId")
+    }
+    this.buyAndSellService.postHistoryTabList(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.historyTabUserListArr = success['ListofExchangeRetrieveData'];
+        console.log("history tab list", this.historyTabUserListArr);
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", "Session Expired", "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
   }
 
 }

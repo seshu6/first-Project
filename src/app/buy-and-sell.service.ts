@@ -20,4 +20,12 @@ export class BuyAndSellService {
   postExchangeBtcToEth(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/exchange/request", data, this.header.getHttpHeader());
   }
+
+  postBtcOrEthMinAndMaxValue(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/getminmaxcryptovalue", data, this.header.getHttpHeader());
+  }
+
+  postHistoryTabList(data:any){
+    return this.http.post(this.url.apiUrl + "bluewallet/retrieve/exchange/userid", data, this.header.getHttpHeader());
+  }
 }

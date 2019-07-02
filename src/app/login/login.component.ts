@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.login();
       }, error => {
         this.spinner.hide();
-        alert("error");
+        Swal.fire("Error", error.error.error_description, "error");
       })
     }
     // this.login();
@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
           });
         // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);
+        sessionStorage.setItem("userId",success['loginInfo'].userId);
         // this.route.navigate(['dashboard']);
         this.route.navigate(['verification']);
       } else if (success['status'] == "failure") {

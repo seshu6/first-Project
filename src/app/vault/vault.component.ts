@@ -103,7 +103,7 @@ export class VaultComponent implements OnInit {
     }
     this.ethOrBtc = data;
     let jsonData = {
-      "userId": "34",
+      "userId": sessionStorage.getItem("userId"),
       "cryptoType": this.ethOrBtc
     }
     this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
