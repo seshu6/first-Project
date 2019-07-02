@@ -32,6 +32,7 @@ export class VaultComponent implements OnInit {
   allSelected: boolean = false;
   options: any;
   currentlySelectedCryptoType: string;
+  newVaultShadowEffect: boolean = false;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
 
@@ -212,6 +213,9 @@ export class VaultComponent implements OnInit {
         this.spinner.hide();
         if (success['status'] == "success") {
           this.clearInvestmentData();
+          if (this.newVaultShadowEffect) {
+            this.newVaultShadowEffect = false;
+          }
           Swal.fire("Success", success['message'], "success");
 
         } else if (success['status'] == "failure") {
@@ -230,6 +234,7 @@ export class VaultComponent implements OnInit {
     this.estimatedTotal = "";
     this.usdBtc = "";
     this.usdEstimation = "";
+    this.estimatedWallet = "";
   }
 
 }

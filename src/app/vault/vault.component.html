@@ -32,7 +32,7 @@
                         </a>
                     </div>
                     <div class="add-vault">
-                        <button type="type" class="addvaultbtn">
+                        <button type="type" class="addvaultbtn" (click)="newVaultShadowEffect = true">
                             <img src="assets/images/vault.png"> New Vault</button>
                     </div>
                 </div>
@@ -133,13 +133,17 @@
                             <div class="active-list active-scroll" id="activyscroll">
                                 <div class="active-scroll1">
                                     <ul>
-                                        <li class="active" *ngFor="let cryptoData of activeCryptoCurrencyDetails;let i = index;">
-                                            <a href="javascript:void(0);" data-toggle="collapse" href="#eth{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <li class="active"
+                                            *ngFor="let cryptoData of activeCryptoCurrencyDetails;let i = index;">
+                                            <a href="javascript:void(0);" data-toggle="collapse" href="#eth{{i}}"
+                                                role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <div class="wallet_view-link">
                                                     <div class="wallet-active">
                                                         <div class="wallet-etherium-icon">
-                                                            <img src="assets/images/blockchainicon2.png" *ngIf="cryptoData.typeOfInvestment == 'ETH'">
-                                                            <img src="assets/images/blockchainicon1.png" *ngIf="cryptoData.typeOfInvestment == 'BTC'">
+                                                            <img src="assets/images/blockchainicon2.png"
+                                                                *ngIf="cryptoData.typeOfInvestment == 'ETH'">
+                                                            <img src="assets/images/blockchainicon1.png"
+                                                                *ngIf="cryptoData.typeOfInvestment == 'BTC'">
                                                         </div>
                                                         <div class="wallet-etherium">
                                                             <h1>{{cryptoData.typeOfInvestment}}</h1>
@@ -155,10 +159,12 @@
                                                             <div class="produced-walet">
                                                                 <h2>Coins</h2>
                                                                 <!-- BTC -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $ {{cryptoData.btcValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $
+                                                                    {{cryptoData.btcValueInUsd}}
                                                                 </span>
                                                                 <!-- ETH -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $ {{cryptoData.ethValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
+                                                                    {{cryptoData.ethValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -188,10 +194,12 @@
                                                             <div class="produced-walet ethcolr">
                                                                 <h2>Coins</h2>
                                                                 <!-- BTC -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $ {{cryptoData.btcValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $
+                                                                    {{cryptoData.btcValueInUsd}}
                                                                 </span>
                                                                 <!-- ETH -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $ {{cryptoData.ethValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
+                                                                    {{cryptoData.ethValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -254,15 +262,18 @@
                                                     <div class="wallet-etherium text-center">
                                                         <div class="produced-walet">
                                                             <h2>Total</h2>
-                                                            <span>+ $ {{completedDetails.btcValueInUsd + completedDetails.investmentPercentInUsd}}</span>
+                                                            <span>+ $
+                                                                {{completedDetails.btcValueInUsd + completedDetails.investmentPercentInUsd}}</span>
                                                         </div>
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
                                                             <!-- BTC -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $ {{completedDetails.btcValueInUsd}}
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $
+                                                                {{completedDetails.btcValueInUsd}}
                                                             </span>
                                                             <!-- ETH -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $ {{completedDetails.ethValueInUsd}}
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
+                                                                {{completedDetails.ethValueInUsd}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -286,7 +297,7 @@
                     </div>
                 </div>
             </div>
-            <div class="moneitation-wrap">
+            <div class="moneitation-wrap" [ngClass]="{'active':newVaultShadowEffect}">
                 <div class="moneitation-bg-transparent">
                     <div class="wallet1-selectcryptocurrency">
                         <div class="select-crypto-wallet1">
@@ -331,7 +342,8 @@
                                         <div class="form-group">
                                             <label>{{ethOrBtc}}</label>
                                             <div class="select-group">
-                                                <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth" (ngModelChange)="onAutoChangeEthOrBtcEstimation()"
+                                                <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
+                                                    (ngModelChange)="onAutoChangeEthOrBtcEstimation()"
                                                     autocomplete="off">
                                             </div>
                                         </div>
@@ -367,7 +379,8 @@
                                                 <div class="accet-toggle">
                                                     <label class="label">
                                                         <div class="toggle">
-                                                            <input class="toggle-state" type="checkbox" name="check" [(ngModel)]="termsAndCondition">
+                                                            <input class="toggle-state" type="checkbox" name="check"
+                                                                [(ngModel)]="termsAndCondition">
                                                             <div class="toggle-inner">
                                                                 <div class="indicator"></div>
                                                             </div>

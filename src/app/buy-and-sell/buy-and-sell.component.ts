@@ -58,12 +58,12 @@ export class BuyAndSellComponent implements OnInit {
         $("#bitoicnlink1 img").addClass("slideInDown animated");
       }, 10)
     }
-    this.spinner.show();
+    // this.spinner.show();
     let jsonData = {
       "cryptoType": btcOrEth
     }
     this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
-      this.spinner.hide();
+      // this.spinner.hide();
       if (success['status'] == "success") {
         this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
         this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
@@ -71,7 +71,7 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+      // this.spinner.hide();
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
       }
