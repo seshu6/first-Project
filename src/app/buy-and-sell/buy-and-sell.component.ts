@@ -23,6 +23,8 @@ export class BuyAndSellComponent implements OnInit {
   minimumBtcOrEthValue: string | number;
   maximumBtcOrEthValue: string | number;
   historyTabUserListArr: any = [];
+  currentBtcValue: string;
+  currentEthValue: string;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -186,7 +188,9 @@ export class BuyAndSellComponent implements OnInit {
     this.buyAndSellService.postHistoryTabList(jsonData).subscribe(success => {
       this.spinner.hide();
       if (success['status'] == "success") {
-        this.historyTabUserListArr = success['ListofExchangeRetrieveData'];
+        this.historyTabUserListArr = success['fetchExchageRequestDTO'].exchangeDTOList;
+        this.currentBtcValue = success['fetchExchageRequestDTO'].btccurrentvalue;
+        this.currentEthValue = success['fetchExchageRequestDTO'].ethercurrentvalue;
         console.log("history tab list", this.historyTabUserListArr);
 
       } else if (success['status'] == "failure") {

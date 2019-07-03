@@ -20,6 +20,8 @@ import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 // PACKAGES
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TwoStepsVerificationComponent } from './two-steps-verification/two-steps-verification.component';
+import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
+import { ApiDetailsComponent } from './api-details/api-details.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { TwoStepsVerificationComponent } from './two-steps-verification/two-step
     VaultComponent,
     BuyAndSellComponent,
     CreateWalletComponent,
-    TwoStepsVerificationComponent
+    TwoStepsVerificationComponent,
+    PrivacyAndPoliciesComponent,
+    ApiDetailsComponent
   ],
   imports: [
     BrowserModule,

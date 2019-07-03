@@ -233,7 +233,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="data-found">
+                                    <div class="data-found" *ngIf="activeCryptoCurrencyDetails.length == 0">
                                         <div class="data-search">
                                             <img src="assets/images/datasearch.png">
                                             <h1>No Data Found</h1>
@@ -285,7 +285,7 @@
                                         </li>
 
                                     </ul>
-                                    <div class="data-found">
+                                    <div class="data-found" *ngIf="completedCryptoCurrencyDetails.length == 0">
                                         <div class="data-search">
                                             <img src="assets/images/datasearch.png">
                                             <h1>No Data Found</h1>
