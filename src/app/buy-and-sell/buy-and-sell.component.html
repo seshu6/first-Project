@@ -430,7 +430,9 @@
                                         <div class="history-list-scroll">
                                             <div id="accordion">
                                                 <div class="card"
-                                                    *ngFor="let historyObj of historyTabUserListArr;let i = index;">
+                                                    *ngFor="let historyObj of historyTabUserListArr;let i = index;"
+                                                    (click)="onUnActivePrevious(i)"
+                                                    [ngClass]="{'active':historyObj.active}">
                                                     <div class="card-header">
 
                                                         <a class="history-head-panel" data-toggle="collapse"

@@ -25,6 +25,10 @@ export class BuyAndSellComponent implements OnInit {
   historyTabUserListArr: any = [];
   currentBtcValue: string;
   currentEthValue: string;
+  historyTablistCollapse: boolean = false;
+  previousClickedIndex: number | string;
+  currentClickedIndex: number | string;
+  increOrDecreHistoryIndex: number = 0;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -204,6 +208,19 @@ export class BuyAndSellComponent implements OnInit {
       }
     })
 
+  }
+  
+
+  onUnActivePrevious(index: string | number) {
+    this.increOrDecreHistoryIndex++;
+    this.currentClickedIndex = index;
+    if (this.increOrDecreHistoryIndex == 1) {
+      this.historyTabUserListArr[this.currentClickedIndex].active = true;
+    } else {
+      this.historyTabUserListArr[this.previousClickedIndex].active = false;
+      this.historyTabUserListArr[this.currentClickedIndex].active = true;
+    }
+    this.previousClickedIndex = this.currentClickedIndex;
   }
 
 }

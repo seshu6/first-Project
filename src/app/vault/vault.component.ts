@@ -51,44 +51,49 @@ export class VaultComponent implements OnInit {
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {
     let jsonData = {};
-    if (this.estimatedEth != "") {
-      if (this.ethOrBtc == "ETH") {
-        jsonData = {
-          "etherAmount": this.estimatedEth,
-          "cryptoType": this.ethOrBtc
-        }
-      } else {
-        jsonData = {
-          "btcAmount": this.estimatedEth,
-          "cryptoType": this.ethOrBtc
+    if (this.estimatedEth > 0) {
+
+      if (this.estimatedEth != "") {
+        if (this.ethOrBtc == "ETH") {
+          jsonData = {
+            "etherAmount": this.estimatedEth,
+            "cryptoType": this.ethOrBtc
+          }
+        } else {
+          jsonData = {
+            "btcAmount": this.estimatedEth,
+            "cryptoType": this.ethOrBtc
+          }
         }
       }
+
+
+      this.vaultService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
+        if (success['status'] == "success") {
+          console.log("response", success);
+          // this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
+          if (this.ethOrBtc == "ETH") {
+            this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
+            this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
+            this.usdBtc = success['CalculatingAmountDTO'].usdforEther;
+            this.usdEstimation = success['CalculatingAmountDTO'].usdforgasfee;
+          } else {
+            this.estimatedFee = success['CalculatingAmountDTO'].fee;
+            this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
+            this.usdBtc = success['CalculatingAmountDTO'].usdforBtc;
+            this.usdEstimation = success['CalculatingAmountDTO'].usdfoestimationfee;
+          }
+
+
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
+      }, error => {
+
+      })
     }
 
 
-    this.vaultService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
-      if (success['status'] == "success") {
-        console.log("response", success);
-        // this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
-        if (this.ethOrBtc == "ETH") {
-          this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
-          this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
-          this.usdBtc = success['CalculatingAmountDTO'].usdforEther;
-          this.usdEstimation = success['CalculatingAmountDTO'].usdforgasfee;
-        } else {
-          this.estimatedFee = success['CalculatingAmountDTO'].fee;
-          this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
-          this.usdBtc = success['CalculatingAmountDTO'].usdforBtc;
-          this.usdEstimation = success['CalculatingAmountDTO'].usdfoestimationfee;
-        }
-
-
-      } else if (success['status'] == "failure") {
-        Swal.fire("Error", success['message'], "error");
-      }
-    }, error => {
-
-    })
 
   }
 
