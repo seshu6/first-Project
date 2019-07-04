@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./privacy-and-policies.component.css']
 })
 export class PrivacyAndPoliciesComponent implements OnInit {
-
+  showOrHideLegalAndPolicies:boolean = true;
   constructor() { }
 
   ngOnInit() {
