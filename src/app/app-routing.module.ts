@@ -10,6 +10,7 @@ import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 import { TwoStepsVerificationComponent } from './two-steps-verification/two-steps-verification.component';
 import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
 import { ApiDetailsComponent } from './api-details/api-details.component';
+import { ApiTermsServicesComponent } from './api-terms-services/api-terms-services.component';
 
 const routes: Routes = [{
   path: '',
@@ -41,6 +42,9 @@ const routes: Routes = [{
 }, {
   path: 'api',
   component: ApiDetailsComponent
+}, {
+  path: 'termsandservices',
+  component: ApiTermsServicesComponent
 }];
 
 @NgModule({

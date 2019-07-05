@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private route: Router) {
     route.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event['url'] == "/" || event['url'] == "/login" || event['url'] == "/createwallet" || event['url'] == "/verification" || event['url'] == "/privacy" || event['url'] == "/api") {
+        if (event['url'] == "/" || event['url'] == "/login" || event['url'] == "/createwallet" || event['url'] == "/verification" || event['url'] == "/privacy" || event['url'] == "/api" || event['url'] == "/termsandservices") {
           this.showOrHideSidebar = false;
         } else {
           this.showOrHideSidebar = true;
