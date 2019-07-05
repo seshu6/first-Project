@@ -1,3 +1,396 @@
-<p>
-  api-details works!
-</p>
+<div class="langing-body-bg">
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-privacy navbar-expand-md fixed-top navbar-dark wow fadeInDown" data-wow-duration="0.8s">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/bluwallet-logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Bluewallet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Buy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- API -->
+  <section class="api-bitcoin-wrap">
+    <div class="api-bitcoin-tophead">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12">
+            <div class="api-title-div">
+              <h1>Bitcoin developer API</h1>
+              <p>Use the Bitcoin APIs at no cost to help you start building bitcoin applications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="api-keyrequest">
+      <div class="container">
+        <div class="api-keyrequest-cont">
+          <ul>
+            <li>
+              <span>Request Limit:</span> To bypass the request limiter, request an API key.
+            </li>
+            <li>
+              <a href="javascript:void(0);">API key request ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="api-content-wrap">
+      <!--View-->
+      <div class="container">
+        <div class="api-box-view">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="processing-payment">
+                <h1>Processing Payment</h1>
+                <p>A very easy method for websites to receive Bitcoin payments.</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--View-->
+        <div class="api-box-view">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment">
+                <h1>BluWallet</h1>
+                <h4>BluWallet Service</h4>
+                <p>Our APIs to send and receive payments from BluWallets</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment-tabbox">
+                <ul>
+                  <li>
+                    <a class="paythontab" [ngClass]="{'active':showOrHidePython}" (click)="onTabChanged('python')">Python</a>
+                  </li>
+                  <li>
+                    <a class="Javatab" [ngClass]="{'active':showOrHideJava}" (click)="onTabChanged('java')">Java</a>
+                  </li>
+                  <li>
+                    <a class="nettab" [ngClass]="{'active':showOrHideNet}" (click)="onTabChanged('net')">.NET (C#)</a>
+                  </li>
+                  <li>
+                    <a class="rubytab" [ngClass]="{'active':showOrHideRuby}" (click)="onTabChanged('ruby')">Ruby</a>
+                  </li>
+                  <li>
+                    <a class="phptab" [ngClass]="{'active':showOrHidePhp}" (click)="onTabChanged('php')">PHP</a>
+                  </li>
+                  <li>
+                    <a class="Nodetab" [ngClass]="{'active':showOrHideNode}" (click)="onTabChanged('node')">Node</a>
+                  </li>
+                </ul>
+                <div class="payment-course-list">
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_1" *ngIf="showOrHidePython">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía PIP:</h1>
+                      <div class="install-block">
+                        <p>$ pip install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_2" *ngIf="showOrHideJava">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía Java:</h1>
+                      <div class="install-block">
+                        <p>$ Java install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_3" *ngIf="showOrHideNet">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía net:</h1>
+                      <div class="install-block">
+                        <p>$ net install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_4" *ngIf="showOrHideRuby">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía ruby:</h1>
+                      <div class="install-block">
+                        <p>$ ruby install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_5" *ngIf="showOrHidePhp">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía php:</h1>
+                      <div class="install-block">
+                        <p>$ php install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                  <!-- Course View -->
+                  <div class="course-view" id="courseview_6" *ngIf="showOrHideNode">
+                    <div class="course-view-installar">
+                      <h1>Instalar vía npm:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                    <div class="course-view-installar">
+                      <h1>Instalación a través de NPM:</h1>
+                      <div class="install-block">
+                        <p>$ npm install blockchain.info</p>
+                      </div>
+                      <p class="gitbubpara">Ir a GitHub para documentación e instrucciones</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--View-->
+        <div class="api-box-view">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment payment-bot">
+                <h1>Transaction data and blocks</h1>
+                <h4>Blockchain data API</h4>
+                <p>Query JSON data in blocks and transactions. Almost all the data you see on this website are available in
+                  JSON format.</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+              <div class="processing-payment payment-bot">
+                <h1>Simple query API</h1>
+                <h4>Flat text API to consult data from
+                  <a href="javascript:void(0);">BluWallet.io</a>
+                </h4>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+              <div class="processing-payment">
+                <h1>Websockets</h1>
+                <p>Low latency transmission channel socket that provides data on new blocks and transactions. Subscribe to blocks,
+                  transactions or notification to an address and receive JSON objects that describe transactions or blocks
+                  when an event occurs</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment-tabbox">
+                <div class="blockchininfo-title">
+                  <h1>Blockchain.info Uptime</h1>
+                </div>
+                <div class="transaction-data-block">
+                  <p>The uptime is verified every minute and updated every hour.</p>
+                  <ul>
+                    <li>
+                      <a href="javascript:void(0);">
+                        <span>Tiempo en Línea:</span>
+                        <h1>99.978%</h1>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">
+                        <span>Interrupciones</span>
+                        <h1>5</h1>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);">
+                        <span>Falta de tiempo</span>
+                        <h1>
+                          <span class="hours">0h</span>
+                          <span class="miliseconds">10m</span>
+                        </h1>
+                      </a>
+                    </li>
+                  </ul>
+                  <p>The data is from the last 31 days:
+                    <span class="date">27/5/2019</span> -
+                    <span class="date">27/6/2019</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--View-->
+        <div class="api-box-view">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="market-title">
+                <h1>Market Data</h1>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment payment-bot">
+                <h4>Exchange rates</h4>
+                <p>Monetary data of the largest Bitcoin markets.</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment payment-bot">
+                <h4>Graphs and Statistics</h4>
+                <p>JSON source that contains data of graphs and pages of statistics</p>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="processing-payment payment-bot">
+                <h4>API service terms</h4>
+                <a href="javascript:void(0);">See Documentation ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 colsm-12 col-12">
+          <div class="bluewalletfooter">
+            <a class="footer-logo-div" href="javascript:void(0);">
+              <img src="assets/images/footerlogo.png" alt="image" />
+            </a>
+            <div class="footer-menu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0);">BluWallet</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Buy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">API</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Contact</a>
+                </li>
+                <li>
+                  <a class="footer-login" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
+                  <!-- <a class="footer-login" href="javascript:void(0);">Login</a> -->
+                </li>
+              </ul>
+            </div>
+            <div class="footer-social">
+              <ul>
+                <li>
+                  <a href="javascript:void(0);">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <i class="fa fa-telegram" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0);">Legal</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Privacy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Policies</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bgcolr wow fadeInUp" data-wow-duration="1.5s"></div>
+  </footer>
+
+  <div class="scrollTop">
+    <a href="javascript:void(0);">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>

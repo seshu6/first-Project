@@ -8,6 +8,8 @@ import { VaultComponent } from './vault/vault.component';
 import { BuyAndSellComponent } from './buy-and-sell/buy-and-sell.component';
 import { CreateWalletComponent } from './create-wallet/create-wallet.component';
 import { TwoStepsVerificationComponent } from './two-steps-verification/two-steps-verification.component';
+import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
+import { ApiDetailsComponent } from './api-details/api-details.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,9 +32,15 @@ const routes: Routes = [{
 }, {
   path: 'createwallet',
   component: CreateWalletComponent
-},{
-  path:'verification',
-  component:TwoStepsVerificationComponent
+}, {
+  path: 'verification',
+  component: TwoStepsVerificationComponent
+}, {
+  path: 'privacy',
+  component: PrivacyAndPoliciesComponent
+}, {
+  path: 'api',
+  component: ApiDetailsComponent
 }];
 
 @NgModule({
