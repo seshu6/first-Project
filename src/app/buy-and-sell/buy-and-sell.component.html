@@ -13,10 +13,10 @@
                 <div class="platuser-tabs">
                     <ul>
                         <li>
-                            <a class="plataform-link active" href="javascript:void(0);">Plataform</a>
+                            <a class="plataform-link" [ngClass]="{'active':platformOrUserTab}" (click)="platformOrUserTab = !platformOrUserTab">Plataform</a>
                         </li>
                         <li>
-                            <a class="users-link" href="javascript:void(0);">Users</a>
+                            <a class="users-link" [ngClass]="{'active':!platformOrUserTab}" (click)="platformOrUserTab = !platformOrUserTab">Users</a>
                         </li>
                     </ul>
                     <div class="platform-content">
@@ -422,7 +422,7 @@
                                     </div>
                                     <div class="paypal-input-group">
                                         <div class="payment-search">
-                                            <button type="type" class="searchbtn">Search</button>
+                                            <button type="type" class="searchbtn">Search</button> 
                                         </div>
                                     </div>
                                 </div> -->

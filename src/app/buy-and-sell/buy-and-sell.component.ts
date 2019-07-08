@@ -29,6 +29,7 @@ export class BuyAndSellComponent implements OnInit {
   previousClickedIndex: number | string;
   currentClickedIndex: number | string;
   increOrDecreHistoryIndex: number = 0;
+  platformOrUserTab: boolean = true;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -141,19 +142,44 @@ export class BuyAndSellComponent implements OnInit {
     } else {
       this.spinner.show();
       let jsonData = {};
-      if (this.lhsBtcShowOrHide) {
+      if (this.lhsBtcShowOrHide && this.platformOrUserTab) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "BTC_ETH",
+          "exchangeMode": "BTC_ETH_ADMIN",
           "amountToTrade": this.calculatedBtcOrEth
         }
-      } else {
+      } else if ((!this.lhsBtcShowOrHide) && (this.platformOrUserTab)) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "ETH_BTC",
+          "exchangeMode": "ETH_BTC_ADMIN",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.lhsBtcShowOrHide) && (!this.platformOrUserTab)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "BTC_ETH_USER",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((!this.lhsBtcShowOrHide) && (!this.platformOrUserTab)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "ETH_BTC_USER",
           "amountToTrade": this.calculatedBtcOrEth
         }
       }
+      // if (this.lhsBtcShowOrHide) {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "BTC_ETH",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // } else {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "ETH_BTC",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // }
       this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
         this.spinner.hide();
         if (success['status'] == "success") {
@@ -209,7 +235,7 @@ export class BuyAndSellComponent implements OnInit {
     })
 
   }
-  
+
 
   onUnActivePrevious(index: string | number) {
     this.increOrDecreHistoryIndex++;
