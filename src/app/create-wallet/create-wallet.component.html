@@ -1,71 +1,121 @@
-<div class="bluewallet-dashboard-fullwrap">
-  <!-- Dashboard Header -->
-
-  <!-- Bluewallet-second-sidebar -->
-  <div class="bluewallet-profile-sidebar">
-    <div class="profile-setting-sidebar primaryscroll" id="boxscroll1">
-      <div class="profile-setting">
-        <div class="setting-image">
-          <img src="assets/images/profile.jpg" alt="image" />
-        </div>
-      </div>
-      <div class="platform-user-tabs">
-        <div class="platuser-tabs">
-          <ul>
-            <li>
-              <a class="plataform-link active" href="javascript:void(0);">Plataform</a>
+<div class="login-body-bg">
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark wow fadeInDown" data-wow-duration="0.8s">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/bluewallet-logo.png" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Bluewallet</a>
             </li>
-            <li>
-              <a class="users-link" href="javascript:void(0);">Users</a>
+            <li class="nav-item">
+              <a class="nav-link" href="#">To buy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-btn loginlink" [routerLinkActive]="['active']" [routerLink]="['/createwallet']">Register</a>
             </li>
           </ul>
-          <div class="platform-content">
-            <ul>
-              <li>
-                <a class="" href="javascript:void(0);">
-                  <span class="userwalleticon user-wallet-img4"></span>
-                  Login
-                </a>
-              </li>
-            </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bluewallet-body-wrap1">
+    <div class="bluewallet-create-wallet">
+      <div class="create-wallet-body">
+        <div class="bluewallet-creating">
+          <div class="create-wallet-title">
+            <h1>Create a New Wallet</h1>
+          </div>
+          <form [formGroup]="createWalletForm">
+            <div class="form-group">
+              <label>Email</label>
+              <div class="form-input-group">
+                <input type="text" formControlName="email">
+                <span class="validationError" *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
+                  <span *ngIf="createWalletForm.get('email').errors.required">Email is required.</span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="form-input-group">
+                <input type="password" formControlName="password">
+                <span class="validationError" *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
+                  <span *ngIf="createWalletForm.get('password').errors.required">Password is required.</span>
+                </span>
+              </div>
+              <div class="strongpwd weakclr mediumclr strongclr">
+                <ul>
+                  <li>Weak</li>
+                  <li>Medium</li>
+                  <li>Hard</li>
+                </ul>
+                <span class="pwdstrongline"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="form-input-group">
+                <input type="password" formControlName="conformPassword">
+                <span class="validationError" *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
+                  <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is required.</span>
+                </span>
+                <span class="validationError" *ngIf="!(createWalletForm.get('password').value == createWalletForm.get('conformPassword').value)">
+                  password must be same.
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="terms-condition-wallet">
+                <p>When you create a Wallet, you accept
+                </p>
+                <p>
+                  <a href="javascript:void(0);">Terms of Service</a> &
+                  <a href="javascript:void(0);">Politic and Privacy
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button type="button" class="create-walbtn" (click)="onCreateNewWallet()">Create Wallet</button>
+            </div>
+          </form>
+        </div>
+        <div class="bluewallet-creating">
+          <div class="login-bottom-dv">
+            <h1>We are here to help you</h1>
+            <div class="login-contact-group">
+              <p>Support is a few steps away from you. </p>
+              <p>You can get an immediate answer to your question.</p>
+              <button class="dirctcontactbtn" type="button">Contact
+                <img src="assets/images/helpicon1.png">
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="wallet-eth-list">
-        <div class="info">
-          <a href="javascript:void(0);" class="infobtn">Information</a>
-        </div>
-        <ul>
-          <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">ETH
-                <img src="assets/images/downarrowred.png" />
-              </span>
-              <span class="wal-amt">435 $</span>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">BTC
-                <img src="assets/images/uparrowgreen.png" />
-              </span>
-              <span class="wal-amt">20.000 $</span>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">XRP
-                <img src="assets/images/uparrowgreen.png" />
-              </span>
-              <span class="wal-amt">200 $</span>
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
+
+</div>
+<div class="bluewallet-dashboard-fullwrap">
+  <!-- Dashboard Header -->
+
   <!-- Bluewallet Body -->
-  <div class="bluewallet-body-wrap">
+  <!-- <div class="bluewallet-body-wrap">
     <div class="bluewallet-create-wallet">
       <div class="create-wallet-title">
         <h1>Create a New Wallet</h1>
@@ -77,8 +127,7 @@
               <label>Email</label>
               <div class="form-input-group">
                 <input type="text" formControlName="email">
-                <span class="validationError"
-                  *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
+                <span class="validationError" *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
                   <span *ngIf="createWalletForm.get('email').errors.required">Email is required.</span>
                 </span>
               </div>
@@ -87,8 +136,7 @@
               <label>Password</label>
               <div class="form-input-group">
                 <input type="password" formControlName="password">
-                <span class="validationError"
-                  *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
+                <span class="validationError" *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
                   <span *ngIf="createWalletForm.get('password').errors.required">Password is required.</span>
                 </span>
               </div>
@@ -97,12 +145,10 @@
               <label>Confirm Password</label>
               <div class="form-input-group">
                 <input type="password" formControlName="conformPassword">
-                <span class="validationError"
-                  *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
+                <span class="validationError" *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
                   <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is required.</span>
                 </span>
-                <span class="validationError"
-                  *ngIf="!(createWalletForm.get('password').value == createWalletForm.get('conformPassword').value)">
+                <span class="validationError" *ngIf="!(createWalletForm.get('password').value == createWalletForm.get('conformPassword').value)">
                   password must be same.
                 </span>
               </div>
@@ -111,8 +157,11 @@
               <div class="terms-condition-wallet">
                 <p>When you create a Wallet, you accept
                 </p>
-                <p><a href="javascript:void(0);">Terms of Service</a> & <a href="javascript:void(0);">Politic and
-                    Privacy</a></p>
+                <p>
+                  <a href="javascript:void(0);">Terms of Service</a> &
+                  <a href="javascript:void(0);">Politic and Privacy
+                  </a>
+                </p>
               </div>
             </div>
             <div class="form-group text-center">
@@ -135,11 +184,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <!--fastbuy-popup-->
-<div class="wantbuy-bluewallet" style="display: none;">
+<!-- <div class="wantbuy-bluewallet" style="display: none;">
   <div class="wantbuy-pop-center">
     <div class="buy-bluewt-div">
       <div class="wantbuy-paypal-title">
@@ -246,18 +295,17 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Email Popup -->
-<div class="email-inbox-wrap" style="display: none;">
+<!-- <div class="email-inbox-wrap" style="display: none;">
   <div class="email-inbox-modal">
     <div class="email-inbox-box">
       <div class="inbox-box">
         <img src="assets/images/emailinboxicon.png" />
         <h2>Check Your Inbox...</h2>
         <a href="javascript:void(0);">JohnDoe@gmail.com</a>
-        <p>search an email of BlueWallet And click the link of verification to complete the configuration of
-          your Wallet.</p>
+        <p>search an email of BlueWallet And click the link of verification to complete the configuration of your Wallet.</p>
       </div>
       <div class="goto-email">
         <button type="button" class="gotemailbtn">Go to Email</button>
@@ -265,7 +313,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js"></script>

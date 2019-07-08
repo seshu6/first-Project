@@ -6135,3 +6135,90 @@ footer {
 .ethval{
 	flex: 1;
 }
+.bluewallet-body-wrap1{
+	padding-top: 87px;
+}
+.bluewallet-body-wrap1 .create-wallet-title{
+	text-align: center;
+	margin-bottom:20px;
+}
+.bluewallet-body-wrap1 .create-wallet-title h1{
+	font-size: 50px;
+	color:#ffffff;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form{
+	width: 560px;
+	position: relative;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-input-group{
+    width: 500px;
+    position: relative;
+}
+.bluewallet-body-wrap1 .bluewallet-creating{
+	width: 900px;
+	margin:auto;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-group label{
+	color:#abb3d0;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-input-group input{
+	background: #485fa0;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-group .terms-condition-wallet{
+	background: #485fa0;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-group .terms-condition-wallet::after{
+	position: absolute;
+    content: '';
+    border-bottom: 10px solid #485fa0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    bottom: 100%;
+    right: 20%;
+}
+.bluewallet-body-wrap1 .bluewallet-creating form .form-group .terms-condition-wallet p{
+	color:#abb3d0;
+}
+.strongpwd{
+    position: absolute;
+    left: 100%;
+    margin-left: 20px;
+    width: 150px;
+}
+.strongpwd ul{
+    display: flex;
+    align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-bottom: 4px;
+}
+.strongpwd ul li{
+	font-size: 14px;
+}
+.strongpwd.weakclr ul li{
+	color:#f4317f;
+}
+.strongpwd.weakclr .pwdstrongline{
+	background: #f4317f;
+	width: 45px;
+}
+.strongpwd.mediumclr ul li {
+	color:#ff7c6e;
+}
+.strongpwd.mediumclr .pwdstrongline{
+	background: #ff7c6e;
+	width: 110px;
+}
+.strongpwd.strongclr ul li{
+	color:#41da9c;
+}
+.strongpwd.strongclr .pwdstrongline{
+	background: #41da9c;
+	width: 150px;
+}
+.strongpwd span.pwdstrongline{
+	height: 6px;
+	border-radius: 6px;
+    display: block;
+}
