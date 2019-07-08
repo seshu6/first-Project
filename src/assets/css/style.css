@@ -2852,11 +2852,15 @@ footer {
 }
 .platuser-tabs ul li a {
 	display: block;
-	color: #6880c2;
+	color: #6880c2 !important;
 	font-size: 15px;
 	font-weight: 500;
 	padding: 0 20px;
 	position: relative;
+	cursor: pointer;
+}
+.platuser-tabs ul li a.active{
+	color:#ffffff !important;
 }
 .platuser-tabs ul li a::after {
 	position: absolute;
@@ -6101,4 +6105,33 @@ footer {
 }
 .blockchain-walletimg img{
 	max-width: 100%;
+}
+.buy-view-exchangeprice ul{
+	margin-bottom: 20px;
+	border: 1px solid #48acff;
+}
+.buy-view-exchangeprice ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #48acff;
+	padding: 15px 40px;
+	flex-wrap: wrap;
+}
+.buy-view-exchangeprice ul li:last-child{
+	border-bottom: 0px;
+}
+.buy-view-exchangeprice ul li h4{
+	color:#5496ff;
+	font-size: 16px;
+}
+.buy-view-exchangeprice ul li span{
+	color:#abb3d0;
+	font-size: 14px;
+}
+.price-btc{
+	flex: 1;
+}
+.ethval{
+	flex: 1;
 }

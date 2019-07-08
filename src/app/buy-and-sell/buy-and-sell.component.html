@@ -127,15 +127,12 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink" id="bitoicnlink"
-                                                                    href="javascript:void(0);">
-                                                                    <img src="assets/images/bitcoin-icon.png"
-                                                                        *ngIf="lhsBtcShowOrHide">
+                                                                <a class="bitoicnlink" id="bitoicnlink" href="javascript:void(0);">
+                                                                    <img src="assets/images/bitcoin-icon.png" *ngIf="lhsBtcShowOrHide">
                                                                     <span *ngIf="lhsBtcShowOrHide">Bitcoin</span>
 
 
-                                                                    <img src="assets/images/etherium-icon.png"
-                                                                        *ngIf="!lhsBtcShowOrHide">
+                                                                    <img src="assets/images/etherium-icon.png" *ngIf="!lhsBtcShowOrHide">
                                                                     <span *ngIf="!lhsBtcShowOrHide">Ethereum</span>
                                                                 </a>
                                                                 <!-- <div class="coin-list-view">
@@ -156,22 +153,18 @@
                                                                 </div> -->
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-12"
-                                                            (click)="changeBtcToEthAndViceVersa()">
+                                                        <div class="col-lg-2 col-md-2 col-12" (click)="changeBtcToEthAndViceVersa()">
                                                             <div class="exchange-icn-center">
                                                                 <img src="assets/images/exchange-icon.png" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink1" id="bitoicnlink1"
-                                                                    href="javascript:void(0);">
-                                                                    <img src="assets/images/etherium-icon.png"
-                                                                        *ngIf="rhsEtherShowOrHide">
+                                                                <a class="bitoicnlink1" id="bitoicnlink1" href="javascript:void(0);">
+                                                                    <img src="assets/images/etherium-icon.png" *ngIf="rhsEtherShowOrHide">
                                                                     <span *ngIf="rhsEtherShowOrHide">Ethereum</span>
 
-                                                                    <img src="assets/images/bitcoin-icon.png"
-                                                                        *ngIf="!rhsEtherShowOrHide">
+                                                                    <img src="assets/images/bitcoin-icon.png" *ngIf="!rhsEtherShowOrHide">
                                                                     <span *ngIf="!rhsEtherShowOrHide">Bitcoin</span>
                                                                 </a>
                                                                 <!-- <div class="coin-list-view1">
@@ -196,9 +189,7 @@
                                                 </div>
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
-                                                        <input type="text" placeholder="$ 0"
-                                                            [(ngModel)]="usdToBtcAndEth"
-                                                            (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
+                                                        <input type="text" placeholder="$ 0" [(ngModel)]="usdToBtcAndEth" (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
                                                     </div>
                                                 </div>
@@ -221,15 +212,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="exchange-bttn-group">
-                                                    <button type="button" class="exchangebttn"
-                                                        (click)="onExchangeBtcToEth()">EXCHANGE</button>
+                                                    <button type="button" class="exchangebttn" (click)="onExchangeBtcToEth()">EXCHANGE</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-xs-12">
-                                    <div class="exchange-list-show">
+                                    <div class="exchange-list-show" style="display:none;">
                                         <div class="buy-view-card1">
                                             <div class="buy-transfer-scrol" id="transferscroll">
                                                 <ul>
@@ -248,8 +238,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -269,8 +258,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -290,8 +278,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -311,8 +298,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -332,8 +318,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -353,8 +338,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -373,8 +357,7 @@
                                                                     <span>COP</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad">Exchange</button>
+                                                                    <button type="button" class="banktrnsfbtn btn-default btngrad">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -382,6 +365,63 @@
 
                                                 </ul>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <!-- exchange-purchse -->
+                                    <div class="exchange-list-show">
+                                        <div class="buy-view-exchangeprice">
+                                            <ul>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>BTC Price</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>121 ETH</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>BTC Price Dollar</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>455 $</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Network Fees</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>12 ETH - 199 BTC</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Commercial Limits</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>100,00 - 1,000,000 $</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Send</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>0.26 BTC</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Receive </h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>189 ETH</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -429,19 +469,13 @@
                                     <div class="history-reusts-list">
                                         <div class="history-list-scroll">
                                             <div id="accordion">
-                                                <div class="card"
-                                                    *ngFor="let historyObj of historyTabUserListArr;let i = index;"
-                                                    (click)="onUnActivePrevious(i)"
-                                                    [ngClass]="{'active':historyObj.active}">
+                                                <div class="card" *ngFor="let historyObj of historyTabUserListArr;let i = index;" (click)="onUnActivePrevious(i)" [ngClass]="{'active':historyObj.active}">
                                                     <div class="card-header">
 
-                                                        <a class="history-head-panel" data-toggle="collapse"
-                                                            href="#h{{i}}" aria-expanded="false">
+                                                        <a class="history-head-panel" data-toggle="collapse" href="#h{{i}}" aria-expanded="false">
                                                             <div class="history-panel-lft">
-                                                                <img src="assets/images/paid.png"
-                                                                    *ngIf="historyObj.status == 0">
-                                                                <img src="assets/images/paid-green.png"
-                                                                    *ngIf="historyObj.status == 1">
+                                                                <img src="assets/images/paid.png" *ngIf="historyObj.status == 0">
+                                                                <img src="assets/images/paid-green.png" *ngIf="historyObj.status == 1">
                                                                 <div class="user-history">
                                                                     <h1>{{historyObj.userName}}</h1>
                                                                     <ul>
@@ -450,10 +484,8 @@
                                                                             </a>
                                                                         </li>
                                                                         <li>
-                                                                            <a
-                                                                                *ngIf="historyObj.status == 1">Available</a>
-                                                                            <a
-                                                                                *ngIf="historyObj.status == 0">Finished</a>
+                                                                            <a *ngIf="historyObj.status == 1">Available</a>
+                                                                            <a *ngIf="historyObj.status == 0">Finished</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -502,8 +534,7 @@
                                                                     </li>
                                                                 </ul>
                                                                 <div class="history-exchange-bttn">
-                                                                    <button type="button"
-                                                                        class="hisexchange_btn">Exchange</button>
+                                                                    <button type="button" class="hisexchange_btn">Exchange</button>
                                                                 </div>
                                                             </div>
                                                         </div>
