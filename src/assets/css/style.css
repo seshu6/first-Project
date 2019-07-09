@@ -6202,6 +6202,9 @@ footer {
 .strongpwd.weakclr .pwdstrongline{
 	background: #f4317f;
 	width: 45px;
+	transition: 0.5s all ease;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
 }
 .strongpwd.mediumclr ul li {
 	color:#ff7c6e;
@@ -6209,6 +6212,9 @@ footer {
 .strongpwd.mediumclr .pwdstrongline{
 	background: #ff7c6e;
 	width: 110px;
+	transition: 0.5s all ease;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
 }
 .strongpwd.strongclr ul li{
 	color:#41da9c;
@@ -6216,6 +6222,9 @@ footer {
 .strongpwd.strongclr .pwdstrongline{
 	background: #41da9c;
 	width: 150px;
+	transition: 0.5s all ease;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
 }
 .strongpwd span.pwdstrongline{
 	height: 6px;
