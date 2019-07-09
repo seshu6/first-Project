@@ -28,4 +28,8 @@ export class BuyAndSellService {
   postHistoryTabList(data:any){
     return this.http.post(this.url.apiUrl + "bluewallet/retrieve/exchange/userid", data, this.header.getHttpHeader());
   }
+
+  postRequestedEthOrBtc(data:any){
+    return this.http.post(this.url.apiUrl + "bluewallet/fetchrequestsbymode", data, this.header.getHttpHeader());
+  }
 }

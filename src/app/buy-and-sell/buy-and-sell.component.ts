@@ -30,6 +30,7 @@ export class BuyAndSellComponent implements OnInit {
   currentClickedIndex: number | string;
   increOrDecreHistoryIndex: number = 0;
   platformOrUserTab: boolean = true;
+  requestedEthOrBtcListArray: any[] = [];
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -40,6 +41,7 @@ export class BuyAndSellComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     })
     this.changeBtcToEthAndViceVersa();
+    this.postRequestedEthOrBtc();
   }
 
 
@@ -247,6 +249,53 @@ export class BuyAndSellComponent implements OnInit {
       this.historyTabUserListArr[this.currentClickedIndex].active = true;
     }
     this.previousClickedIndex = this.currentClickedIndex;
+  }
+
+
+
+  postRequestedEthOrBtc() {
+    this.spinner.show();
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "exchangeMode": "user"
+    }
+    // if (this.platformOrUserTab) {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "exchangeMode": "admin"
+    //   }
+    // } else {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "exchangeMode": "user"
+    //   }
+    // }
+    this.buyAndSellService.postRequestedEthOrBtc(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.requestedEthOrBtcListArray = success['fetchExchageRequestDTO'].exchangeDTOList;
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", "Session Expired", "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
+  }
+
+  platformTabSelected() {
+    this.platformOrUserTab = !this.platformOrUserTab;
+    this.postRequestedEthOrBtc();
+  }
+
+  userTabSelected() {
+    this.platformOrUserTab = !this.platformOrUserTab;
+    this.postRequestedEthOrBtc();
   }
 
 }
