@@ -274,7 +274,7 @@
                 an API with payment gateway capable of generating smart invoices and with a low percentage of fee.</p>
               <div class="request-api">
                 <input type="text" placeholder="Put your email" />
-                <button type="button" class="requestapi-btn">Request API</button>
+                <button type="button" class="requestapi-btn" data-toggle="modal" data-target="#apikey">Request API</button>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
               </div>
               <div class="documentation-bttn">
@@ -393,5 +393,74 @@
     <a href="javascript:void(0);">
       <i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
+  </div>
+</div>
+
+<div class="api-key-form">
+  <div class="modal fade" id="apikey" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <img src="/assets/images/bluwallet-logo.png">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="apikey-form-body">
+            <h1>Api Key</h1>
+            <p>Fill in the following form to request an API key for api.eyewallet.info.</p>
+            <form>
+              <div class="form-group">
+                <label>First name</label>
+                <input type="text">
+                <span>Your name or that of your organization.</span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text">
+              </div>
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text">
+                <span>URL of your website or application</span>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text">
+                <span>A description of your website / application</span>
+              </div>
+              <div class="form-group-termscondition">
+                <h1>Terms and Conditions</h1>
+                <div class="checkbox-list">
+                  <input type="checkbox" id="checkbox1">
+                  <label for="checkbox1">
+                    I accept the terms and conditions
+                  </label>
+                </div>
+                <div class="accept-content-read">
+                  <div class="accept-cont-para">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                      laoreet dolore magna aliquam erat volutpat. tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="captcha-condition">
+                <div class="captcha-tick">
+
+                </div>
+              </div> -->
+              <div class="form-bttn-group">
+                <button type="button" class="acceptbttn applyforbtn">Apply for</button>
+                <button type="button" class="acceptbttn applyforcancelbtn">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
