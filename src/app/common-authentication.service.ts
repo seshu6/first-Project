@@ -22,6 +22,20 @@ export class CommonAuthenticationService {
     return header;
   }
 
+  // UPLOAD HEADERS
+
+  getUploadHttpHeader():{}{
+    const tokenObj = JSON.parse(sessionStorage.getItem('tokenObj'));
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'bearer ' + tokenObj.access_token,
+    });
+
+    let header = {
+      headers: httpHeaders
+    }
+    return header;
+  }
+
   // OAUTH HEADERS
   getAuthHeader(): {} {
     let httpAuthHeaders = new HttpHeaders({

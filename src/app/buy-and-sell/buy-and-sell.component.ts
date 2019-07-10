@@ -257,7 +257,7 @@ export class BuyAndSellComponent implements OnInit {
     this.spinner.show();
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
-      "exchangeMode": "user"
+      "exchangeMode": sessionStorage.getItem("roleId")
     }
     // if (this.platformOrUserTab) {
     //   jsonData = {

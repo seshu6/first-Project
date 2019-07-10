@@ -23,6 +23,8 @@ import { TwoStepsVerificationComponent } from './two-steps-verification/two-step
 import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
 import { ApiDetailsComponent } from './api-details/api-details.component';
 import { ApiTermsServicesComponent } from './api-terms-services/api-terms-services.component';
+import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
+import { KycComponent } from './kyc/kyc.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ApiTermsServicesComponent } from './api-terms-services/api-terms-servic
     TwoStepsVerificationComponent,
     PrivacyAndPoliciesComponent,
     ApiDetailsComponent,
-    ApiTermsServicesComponent
+    ApiTermsServicesComponent,
+    ParentDashboardComponent,
+    KycComponent
   ],
   imports: [
     BrowserModule,

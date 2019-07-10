@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
         // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);
         sessionStorage.setItem("userId",success['loginInfo'].userId);
+        sessionStorage.setItem("roleId",success['loginInfo'].roleId);
         // this.route.navigate(['dashboard']);
         this.route.navigate(['verification']);
       } else if (success['status'] == "failure") {

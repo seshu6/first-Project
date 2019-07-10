@@ -11,6 +11,8 @@ import { TwoStepsVerificationComponent } from './two-steps-verification/two-step
 import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
 import { ApiDetailsComponent } from './api-details/api-details.component';
 import { ApiTermsServicesComponent } from './api-terms-services/api-terms-services.component';
+import { KycComponent } from './kyc/kyc.component';
+import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,7 +22,15 @@ const routes: Routes = [{
   component: LoginComponent
 }, {
   path: 'dashboard',
-  component: DashboardComponent
+  component: ParentDashboardComponent,
+  children: [{
+    path: '', redirectTo: 'default-dashboard', pathMatch: 'full'
+  }, {
+    path: 'default-dashboard', component: DashboardComponent
+  }, {
+    path: 'kyc',
+    component: KycComponent
+  }]
 }, {
   path: 'card',
   component: CardComponent

@@ -52,12 +52,13 @@
             <div class="form-group">
               <label>Password</label>
               <div class="form-input-group">
-                <input type="password" formControlName="password">
+                <input type="password" formControlName="password" (ngModelChange)="checkPasswordStrength()">
                 <span class="validationError" *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
                   <span *ngIf="createWalletForm.get('password').errors.required">Password is required.</span>
                 </span>
               </div>
-              <div class="strongpwd weakclr mediumclr strongclr">
+              <!-- <div class="strongpwd weakclr mediumclr strongclr"> -->
+                  <div class="strongpwd" [ngClass]="{'weakclr':weakPassword,'mediumclr':mediumPassword,'strongclr':strongPassword}" *ngIf="passwordMeterShowOrHide">
                 <ul>
                   <li>Weak</li>
                   <li>Medium</li>
@@ -69,11 +70,11 @@
             <div class="form-group">
               <label>Confirm Password</label>
               <div class="form-input-group">
-                <input type="password" formControlName="conformPassword">
+                <input type="password" formControlName="conformPassword" (ngModelChange)="confirmPasswordChecker()">
                 <span class="validationError" *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
                   <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is required.</span>
                 </span>
-                <span class="validationError" *ngIf="!(createWalletForm.get('password').value == createWalletForm.get('conformPassword').value)">
+                <span class="validationError" *ngIf="confirmPasswordShowOrHide">
                   password must be same.
                 </span>
               </div>
@@ -298,7 +299,7 @@
 </div> -->
 
 <!-- Email Popup -->
-<!-- <div class="email-inbox-wrap" style="display: none;">
+<div class="email-inbox-wrap" style="display: none;">
   <div class="email-inbox-modal">
     <div class="email-inbox-box">
       <div class="inbox-box">
@@ -308,17 +309,10 @@
         <p>search an email of BlueWallet And click the link of verification to complete the configuration of your Wallet.</p>
       </div>
       <div class="goto-email">
-        <button type="button" class="gotemailbtn">Go to Email</button>
+        <button type="button" class="gotemailbtn" (click)="goToMailPage()">Go to Email</button>
         <button type="button" class="checkitlaterbtn disable">Check It Later</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/loader.js"></script>
-<script src="js/custom.js"></script>
