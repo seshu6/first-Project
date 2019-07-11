@@ -79,7 +79,7 @@
                   <button type="button" class="sendbtn">Send
                       <img src="assets/images/sendicon.png" />
                   </button>
-                  <button type="button" class="requestbtn">Request
+                  <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
                       <img src="assets/images/receiveicon.png" />
                   </button>
               </div>
@@ -119,3 +119,25 @@
   </div>
 </div>
 <router-outlet></router-outlet>
+
+
+<!-- QR CODE MODAL -->
+<div class="qr-code-scanning" *ngIf="qrCodeModalShowOrHide">
+        <div class="qr-code-div">
+            <div class="qrcode-center">
+                <div class="code-qr-scan">
+                    <div class="qr-scan-amount">
+                        <h1>Amount</h1>
+                        <p>0.00173466</p>
+                    </div>
+                    <div class="amout-qrcode-scan">
+                        <img src="assets/images/scancode.png" />
+                    </div>
+                    <div class="qrcode-foot">
+                        <button type="button" class="copyallbtn">Copy All</button>
+                        <input type="text" placeholder="3DKsjshGSKJsgkgSs54SFu5sdS76F...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
