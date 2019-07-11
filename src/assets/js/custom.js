@@ -2,26 +2,23 @@
 $(document).ready(function () {
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
-        if (scroll < 150) {
+        if (scroll < 100) {
             $('.fixed-top').css("background", "transparent");
         }
         else {
             $('.fixed-top').css("background", "rgba(38,52,91,1)");
+            if (scroll > 400) {
+                $(".scrollTop").css("opacity", "1");
+            }
+            else {
+                $(".scrollTop").css("opacity", "0");
+            }
         }
     });
 
 
 
-    var scrollTop = $(".scrollTop");
-    $(window).scroll(function () {
-        var toppos = $(this).scrollTop();
-        if (toppos > 200) {
-            $(scrollTop).css("opacity", "1");
-        }
-        else {
-            $(scrollTop).css("opacity", "0");
-        }
-    });
+
     $(".scrollTop a").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 800);
     });
@@ -35,11 +32,6 @@ $(document).ready(function () {
     $(".dropdown-list-search").on("click", function (event) {
         event.stopPropagation();
     });
-    // $(".search-mandory-list li ul li").on("click", function (event) {
-    //     var text = $(this).find("a").text();
-    //     $(this).parents(".monthlist").find("a.dropdown-toggle1").text(text);
-    //     $(".dropdown-list-search").hide();
-    // });
     $('.carousel').carousel();
 
     $(".search-mandory-list li.ethbtclist").on("click", function (event) {
@@ -104,15 +96,6 @@ $(document).ready(function () {
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.fadeOut').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme' });
 
-});
-$(document).on("click", function () {
-    $(".dropdown-list-search").hide();
-});
-$(document).on("click", function () {
-    $(".dropdown-list-search2").hide();
-});
-
-$(document).ready(function () {
     $('.collapse').on('shown.bs.collapse', function () {
         $(this).parent().addClass('active');
     });
@@ -120,5 +103,13 @@ $(document).ready(function () {
     $('.collapse').on('hidden.bs.collapse', function () {
         $(this).parent().removeClass('active');
     });
+
+    $(this).on("click", function () {
+        $(".dropdown-list-search").hide();
+        $(".dropdown-list-search2").hide();
+    });
 });
+
+
+
 
