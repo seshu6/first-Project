@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
- 
+
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private dashboardService: CommonDashboardService) { }
 
   ngOnInit() {
@@ -29,6 +29,9 @@ export class DashboardComponent implements OnInit {
     this.route.navigate(['dashboard/kyc']);
   }
 
-  
+  goToHomeAddress() {
+    this.route.navigate(['dashboard/homeaddress']);
+  }
+
 }
 

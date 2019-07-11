@@ -25,6 +25,7 @@ import { ApiDetailsComponent } from './api-details/api-details.component';
 import { ApiTermsServicesComponent } from './api-terms-services/api-terms-services.component';
 import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
 import { KycComponent } from './kyc/kyc.component';
+import { HomeAddressComponent } from './home-address/home-address.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { KycComponent } from './kyc/kyc.component';
     ApiDetailsComponent,
     ApiTermsServicesComponent,
     ParentDashboardComponent,
-    KycComponent
+    KycComponent,
+    HomeAddressComponent
   ],
   imports: [
     BrowserModule,
