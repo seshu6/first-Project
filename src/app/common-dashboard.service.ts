@@ -17,4 +17,8 @@ export class CommonDashboardService {
   postQrCodeDetails(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/login/secure", data, this.header.getHttpHeader());
   }
+
+  postAddHomeAddressDetails(data:any){
+    return this.http.post(this.url.apiUrl + "", data, this.header.getHttpHeader());
+  }
 }
