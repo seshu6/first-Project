@@ -2207,6 +2207,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	position: relative;
 }
 .qr-code-head .qr-request {
 	flex: 1;
@@ -2219,6 +2220,12 @@ footer {
 	padding: 12px;
 	border-top-left-radius: 10px;
 	width: 50%;
+}
+.qr-bgshow{
+	position: absolute;
+    z-index: 9999;
+    top: 0;
+    height: 100%;
 }
 .qr-code-head .qr-send {
 	flex: 1;
