@@ -14,6 +14,7 @@ import { ApiTermsServicesComponent } from './api-terms-services/api-terms-servic
 import { KycComponent } from './kyc/kyc.component';
 import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
 import { HomeAddressComponent } from './home-address/home-address.component';
+import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +35,9 @@ const routes: Routes = [{
   }, {
     path: 'homeaddress',
     component: HomeAddressComponent
+  }, {
+    path: 'verify',
+    component: SmsVerifyComponent
   }]
 }, {
   path: 'card',

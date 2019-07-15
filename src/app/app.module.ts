@@ -26,6 +26,7 @@ import { ApiTermsServicesComponent } from './api-terms-services/api-terms-servic
 import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
 import { KycComponent } from './kyc/kyc.component';
 import { HomeAddressComponent } from './home-address/home-address.component';
+import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { HomeAddressComponent } from './home-address/home-address.component';
     ApiTermsServicesComponent,
     ParentDashboardComponent,
     KycComponent,
-    HomeAddressComponent
+    HomeAddressComponent,
+    SmsVerifyComponent
   ],
   imports: [
     BrowserModule,

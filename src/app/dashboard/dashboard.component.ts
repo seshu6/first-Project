@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
     this.route.navigate(['dashboard/kyc']);
   }
 
-  goToHomeAddress() {
-    this.route.navigate(['dashboard/homeaddress']);
+  goToSmsVerify() {
+    this.route.navigate(['dashboard/verify']);
   }
 
 }
