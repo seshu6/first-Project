@@ -13,8 +13,9 @@ import Swal from 'sweetalert2';
 })
 export class HomeAddressComponent implements OnInit {
   homeAddressForm: FormGroup;
-  profileAndCountryShowOrHide: boolean = false;
-  selectDate:any;
+  addressShowOrHide: boolean = false;
+  profileShowOrHide: boolean = false;
+  selectDate: any;
   constructor(private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
 
   ngOnInit() {
@@ -34,16 +35,35 @@ export class HomeAddressComponent implements OnInit {
   }
 
 
-  moveToProfileDetails() {
-    if (this.homeAddressForm.controls.addressLine1.invalid || this.homeAddressForm.controls.addressLine2.invalid
-      || this.homeAddressForm.controls.city.invalid || this.homeAddressForm.controls.state.invalid
-      || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid) {
+  // moveToProfileDetails() {
+  //   if (this.homeAddressForm.controls.addressLine1.invalid || this.homeAddressForm.controls.addressLine2.invalid
+  //     || this.homeAddressForm.controls.city.invalid || this.homeAddressForm.controls.state.invalid
+  //     || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid
+  //     || this.homeAddressForm.controls.countrySearch.invalid) {
+  //     Swal.fire("Info", "Please check your data", "info");
+  //   } else {
+  //     this.addressShowOrHide = !this.addressShowOrHide;
+  //   }
+  // }
+
+
+  validateCountrySearch() {
+    if (this.homeAddressForm.controls.countrySearch.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
-      this.profileAndCountryShowOrHide = !this.profileAndCountryShowOrHide;
+      this.addressShowOrHide = !this.addressShowOrHide;
     }
   }
 
+  validateAddressDetails() {
+    if (this.homeAddressForm.controls.addressLine1.invalid || this.homeAddressForm.controls.addressLine2.invalid
+      || this.homeAddressForm.controls.city.invalid || this.homeAddressForm.controls.state.invalid
+      || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid) {
+        Swal.fire("Info", "Please check your data", "info");
+    } else {
+      this.profileShowOrHide = !this.profileShowOrHide;
+    }
+  }
 
   addHomeAddressForm() {
     if (this.homeAddressForm.invalid) {

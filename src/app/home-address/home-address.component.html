@@ -12,7 +12,23 @@
             <div class="homeaddress-body">
                 <form [formGroup]="homeAddressForm">
                     <div class="homeaddress-center-box">
-                        <div class="address-search-area">
+
+                        <!-- STARTED -->
+                        <div>
+                                <div class="address-search-area">
+                                    <h1>Country of Residence</h1>
+                                    <p>Digital currency are only available in select countries</p>
+                                    <div class="searchbox-next">
+                                        <div class="search-option-box">
+                                            <input type="text" placeholder="search" formControlName="countrySearch">
+                                            <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                                        </div>
+                                        <button type="button" class="create-walbtn" (click)="validateCountrySearch()">Next</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- ENDED -->
+                        <div class="address-search-area" *ngIf="addressShowOrHide">
                             <p>This information is only used to help us verify</p>
                             <!-- <div class="address-searchbx">
                                 <input type="text" placeholder="Home Address">
@@ -98,7 +114,7 @@
                                 </ul> -->
                             </div>
                             <div class="address-send-box">
-                                <button type="button" class="addressend" (click)="moveToProfileDetails()">Send</button>
+                                <button type="button" class="addressend" (click)="validateAddressDetails()">Send</button>
                                 <div class="address-termscond">
                                     <p>When you "Sent", you accept</p>
                                     <p>
@@ -109,20 +125,9 @@
                             </div>
                         </div>
 
-                        <!-- STARTED -->
-                        <div *ngIf="profileAndCountryShowOrHide">
-                            <div class="address-search-area">
-                                <h1>Country of Residence</h1>
-                                <p>Digital currency are only available in select countries</p>
-                                <div class="searchbox-next">
-                                    <div class="search-option-box">
-                                        <input type="text" placeholder="search" formControlName="countrySearch">
-                                        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-                                    </div>
-                                    <button type="button" class="create-walbtn">Next</button>
-                                </div>
-                            </div>
-                            <div class="address-search-area">
+
+                        <!-- FIRST NAME DETAILS STARTS HERE -->
+                        <div class="address-search-area" *ngIf="profileShowOrHide">
                                 <h1>Profile</h1>
                                 <p>We need this to verify your identify, in order for you to use this improved feature.
                                     It
@@ -169,7 +174,8 @@
                                         (click)="addHomeAddressForm()">Next</button>
                                 </div>
                             </div>
-                            <!-- ENDED -->
+                        <!-- ENDS HERE -->
+                        
 
                         </div>
                     </div>
