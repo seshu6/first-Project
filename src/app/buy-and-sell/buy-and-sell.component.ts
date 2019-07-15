@@ -5,12 +5,22 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BuyAndSellService } from '../buy-and-sell.service';
 import { Router } from '@angular/router';
 import $ from "jquery";
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-buy-and-sell',
   templateUrl: './buy-and-sell.component.html',
-  styleUrls: ['./buy-and-sell.component.css']
+  styleUrls: ['./buy-and-sell.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(500px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class BuyAndSellComponent implements OnInit {
 

@@ -2,7 +2,7 @@
     <!-- Dashboard Header -->
 
     <!-- Bluewallet-second-sidebar -->
-    
+
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
         <div class="blue-body-div">
@@ -50,7 +50,7 @@
                 </ul>
             </div>
             <!-- KYC -->
-             <div class="more-info-full">
+            <div class="more-info-full">
                 <button type="button" class="closeicon">×</button>
                 <div class="more-info-lft">
                     <h1>More Info Needed</h1>
@@ -62,7 +62,7 @@
                 <div class="more-info-lft1">
                     <img src="assets/images/moreinfoicon.png" />
                 </div>
-            </div> 
+            </div>
             <div class="bluewallet-search-daily">
                 <div class="search-dailymonth">
                     <input type="text" placeholder="Search">
@@ -241,10 +241,10 @@
             <div class="moneitation-wrap">
                 <div class="moneitation-qr-code">
                     <div class="qr-code-head">
-                        <div class="qr-request">
+                        <div class="qr-request" [ngClass]="{'qr-bgshow':qrCodeClassShowOrHide}">
                             <div class="request-lft">
                                 <div class="qr-code-view">
-                                    <img src="assets/images/qr-code.png" />
+                                    <img src="assets/images/qr-code.png" /> 
                                 </div>
                                 <div class="moneit-input-group">
                                     <div class="inputtype-moneit">
@@ -257,7 +257,7 @@
                                     </div>
                                 </div>
                                 <div class="qr-rezt-btn">
-                                    <button type="button" class="qr-request-btn">Request
+                                    <button type="button" class="qr-request-btn" (click)="requestCryptoCurrency()">Request
                                         <img src="assets/images/receiveicon.png">
                                     </button>
                                 </div>
@@ -338,8 +338,9 @@
     </div>
 </div>
 
-<!-- QR-Code -->
-<!-- <div class="qr-code-scanning" *ngIf="qrCodeModalShowOrHide">
+
+<!-- QR CODE MODAL -->
+<div class="qr-code-scanning" *ngIf="qrCodeModalShowOrHide">
     <div class="qr-code-div">
         <div class="qrcode-center">
             <div class="code-qr-scan">
@@ -357,4 +358,4 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>

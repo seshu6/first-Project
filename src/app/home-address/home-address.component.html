@@ -142,7 +142,8 @@
                                         <button type="button" class="closeicon">×</button>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Birthday" formControlName="dateOfBirth">
+                                        <input class="datePickerInput" [owlDateTimeTrigger]="dt"  formControlName="dateOfBirth" readonly [owlDateTime]="dt">
+                                        <owl-date-time pickerType="calendar"  #dt></owl-date-time>
                                         <button type="button" class="closeicon">×</button>
                                     </div>
                                     <!-- <ul>

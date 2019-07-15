@@ -4,11 +4,21 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonDashboardService } from '../common-dashboard.service';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import Swal from 'sweetalert2';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 @Component({
   selector: 'app-parent-dashboard',
   templateUrl: './parent-dashboard.component.html',
-  styleUrls: ['./parent-dashboard.component.css']
+  styleUrls: ['./parent-dashboard.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class ParentDashboardComponent implements OnInit {
   qrCodeModalShowOrHide: boolean = false;
@@ -23,7 +33,7 @@ export class ParentDashboardComponent implements OnInit {
   }
 
   qrCodeModalOpenOrClose() {
-    this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
+    this.dashboardService.fromParentDashboardToDashboard();
   }
   qrCodeGenerate() {
     this.spinner.show();

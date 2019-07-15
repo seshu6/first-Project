@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,10 +16,6 @@ import { CardComponent } from './card/card.component';
 import { VaultComponent } from './vault/vault.component';
 import { BuyAndSellComponent } from './buy-and-sell/buy-and-sell.component';
 import { CreateWalletComponent } from './create-wallet/create-wallet.component';
-
-
-// PACKAGES
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { TwoStepsVerificationComponent } from './two-steps-verification/two-steps-verification.component';
 import { PrivacyAndPoliciesComponent } from './privacy-and-policies/privacy-and-policies.component';
 import { ApiDetailsComponent } from './api-details/api-details.component';
@@ -27,6 +24,15 @@ import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.co
 import { KycComponent } from './kyc/kyc.component';
 import { HomeAddressComponent } from './home-address/home-address.component';
 import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
+
+
+// PACKAGES
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
+
+
+
 
 
 @NgModule({
@@ -56,7 +62,10 @@ import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

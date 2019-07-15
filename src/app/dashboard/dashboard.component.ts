@@ -6,13 +6,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonDashboardService } from '../common-dashboard.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  qrCodeModalShowOrHide: boolean = false;
+  qrCodeClassShowOrHide: boolean = false;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private dashboardService: CommonDashboardService) { }
 
   ngOnInit() {
@@ -20,6 +22,12 @@ export class DashboardComponent implements OnInit {
 
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
+    })
+
+    this.dashboardService.communicationObservable$.subscribe(() => {
+      this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
+      this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide; 
+
     })
 
   }
@@ -31,6 +39,11 @@ export class DashboardComponent implements OnInit {
 
   goToSmsVerify() {
     this.route.navigate(['dashboard/verify']);
+  }
+
+  requestCryptoCurrency(){
+    this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
+    this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
   }
 
 }

@@ -8,6 +8,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonDashboardService {
+  _communicationSubject = new Subject<any>();
+  communicationObservable$ = this._communicationSubject.asObservable();
 
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
@@ -23,5 +25,7 @@ export class CommonDashboardService {
     return this.http.post(this.url.apiUrl + "bluewallet/mobileuserregupdate", data, this.header.getHttpHeader());
   }
 
-  
+  fromParentDashboardToDashboard(){
+    this._communicationSubject.next();
+  }
 }

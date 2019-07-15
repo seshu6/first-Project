@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class HomeAddressComponent implements OnInit {
   homeAddressForm: FormGroup;
   profileAndCountryShowOrHide: boolean = false;
+  selectDate:any;
   constructor(private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
 
   ngOnInit() {
@@ -53,9 +54,9 @@ export class HomeAddressComponent implements OnInit {
         "address": this.homeAddressForm.controls.addressLine1.value,
         "address1": this.homeAddressForm.controls.addressLine1.value,
         "postalCode": this.homeAddressForm.controls.addressLine1.value,
-        "cityId": this.homeAddressForm.controls.addressLine1.value,
-        "countryId": this.homeAddressForm.controls.addressLine1.value,
-        "stateId": this.homeAddressForm.controls.addressLine1.value,
+        "cityId": 1,
+        "countryId": 1,
+        "stateId": 1,
         "userId": sessionStorage.getItem("userId"),
         "firstName": this.homeAddressForm.controls.addressLine1.value,
         "middleName": this.homeAddressForm.controls.addressLine1.value,

@@ -5,12 +5,22 @@ import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as M from 'src/assets/materialize/js/materialize';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 
 @Component({
   selector: 'app-vault',
   templateUrl: './vault.component.html',
-  styleUrls: ['./vault.component.css']
+  styleUrls: ['./vault.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class VaultComponent implements OnInit {
   estimatedTime: number | string = "3";
