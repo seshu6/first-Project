@@ -1145,6 +1145,7 @@ footer {
 /* Second Sidebar */
 .bluewallet-profile-sidebar {
 	position: fixed;
+	bottom: 0;
 	width: 280px;
 	height: 100%;
 	margin-left: 110px;
@@ -4875,6 +4876,7 @@ footer {
 	flex-wrap: wrap;
 	border-radius: 6px;
 	position: relative;
+	margin-top: 10px;
 }
 .more-info-lft h1 {
 	color: #354e91;
