@@ -7249,3 +7249,185 @@ font-size: 14px !important;
     z-index: 1090;
   }
 /* ENDS HERE */
+
+/* Lets Verified */
+.letsverified{
+	width: 100%;
+	position: relative;
+	padding: 26px 0;
+}
+.backlink{
+	padding: 0 15px;
+	width: 100%;
+}
+.backlink a{
+    display: inline-block;
+    color: #ABB3D0;
+    font-size: 15px;
+    font-weight: bold;
+    background: url(/assets/images/smallrightarrow.png) no-repeat 0 0 / contain;
+    padding: 0px 23px;
+}
+
+.bluwallet-document h1{
+	font-size:21px;
+	font-weight:500;
+	font-family: 'Exo 2';
+	color:#272759;
+	margin-bottom: 20px;
+}
+.bluwallet-document p{
+	font-size:16px;
+	font-weight:normal;
+	font-family: 'Exo 2';
+	color:#354E91;
+}
+.choose-document-accordion{
+	position: relative;
+	width: 100%;
+	margin-top:20px;
+}
+.choose-document-accordion .card{
+	border:none;
+	background:transparent;
+}
+.choose-document-accordion .card .card-header{
+	border:none;
+	background:#EDEDED;
+	padding: 0;
+	margin-bottom: 8px;
+}
+.choose-document-accordion .card .card-header h5 button{
+	display: block;
+	width: 100%;
+	text-align: left;
+	text-decoration:none;
+	color:#5496FF;
+	font-size:14px;
+	font-family: 'Exo 2';
+	font-weight: normal;
+}
+.choose-document-accordion .card.active .card-header h5 button{
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(97,188,242,1)), color-stop(100%, rgba(63,109,208,1)));
+	background: -webkit-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: -o-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: -ms-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: linear-gradient(90deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	color:#ffffff;
+}
+.doucment-bttngroup{
+	text-align: center;
+}
+.doucment-bttngroup .startbttn{
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(97,188,242,1)), color-stop(100%, rgba(63,109,208,1)));
+	background: -webkit-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: -o-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: -ms-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	background: linear-gradient(90deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	display: inline-block;
+	width: 200px;
+	border:none;
+	outline:none;
+	border-radius: 6px;
+	color: #ffffff;
+	font-size:12px;
+	font-family: 'Exo 2';
+	font-weight:bold;
+	padding: 4px 12px;
+}
+.document-important h1{
+	font-size: 18px;
+	color:#9BA1AA;
+	font-family: 'Exo 2';
+	font-weight:normal;
+	text-transform: uppercase;
+	margin-bottom:20px;
+}
+.document-important  p{
+    font-size: 18px;
+    color: #9BA1AA;
+    font-family: 'Exo 2';
+    font-weight: normal;
+    line-height: 24px;
+}
+.choose-document-accordion .card .card-body{
+	padding: 0 8px;
+}
+.choose-document-accordion .card .card-body ul li a{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	flex-wrap: wrap;
+	position: relative;
+	margin-bottom: 6px;
+	padding: 0 22px 0 0;
+}
+.choose-document-accordion .card .card-body ul li a span.selfietext{
+	color:#5496FF;
+	font-size:14px;
+	font-family: 'Exo 2';
+    font-weight: normal;
+}
+.selfie-upload{
+	padding-left: 26px;
+}
+.selfie-upload img{
+	max-width: 100%;
+    height: 15px;
+	object-fit: contain;
+	margin-left:5px;
+}
+.selfie-upload label{
+	margin:0;
+	cursor:pointer;
+	color:#5496FF;
+	font-size:14px;
+	font-family: 'Exo 2';
+    font-weight: normal;
+}
+.selfie-upload label input{
+	display: none;
+}
+.flexdiv{
+	display: flex;
+	align-items: center;
+	flex-wrap:wrap;
+}
+.closeicon{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.closeicon img{
+	max-width:100%;
+	object-fit:contain;
+}
+.errormessage{
+	width:100%;
+	position:relative;
+	margin-top:10px;
+}
+.errormessage h1{
+	font-size:18px;
+	font-family: 'Exo 2';
+    font-weight: normal;
+	color:#F4317F;
+	margin-bottom:10px;
+}
+.errormessage p{
+	font-size:18px;
+	font-family: 'Exo 2';
+    font-weight: normal;
+	color:#F4317F;	
+}
+.correctmessage{
+	width:100%;
+	position:relative;
+	margin-top:10px;	
+}
+.correctmessage p{
+	font-size:18px;
+	font-family: 'Exo 2';
+    font-weight: normal;
+	color:#29E2C5;	
+}
