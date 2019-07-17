@@ -23,26 +23,26 @@ $(document).ready(function () {
         $("html, body").animate({ scrollTop: 0 }, 800);
     });
     /* Search List */
-    $(".search-mandory-list li.monthlist").on("click", function (event) {
-        $(".dropdown-toggle1").toggleClass('searchtoggleactive');
-        event.stopPropagation();
-        $(".dropdown-list-search").toggle();
+    // $(".search-mandory-list li.monthlist").on("click", function (event) {
+    //     $(".dropdown-toggle1").toggleClass('searchtoggleactive');
+    //     event.stopPropagation();
+    //     $(".dropdown-list-search").toggle();
 
-    });
-    $(".dropdown-list-search").on("click", function (event) {
-        event.stopPropagation();
-    });
+    // });
+    // $(".dropdown-list-search").on("click", function (event) {
+    //     event.stopPropagation();
+    // });
     $('.carousel').carousel();
 
-    $(".search-mandory-list li.ethbtclist").on("click", function (event) {
-        $(".dropdown-toggle2").toggleClass('searchtoggleactive');
-        event.stopPropagation();
-        $(".dropdown-list-search2").toggle();
+    // $(".search-mandory-list li.ethbtclist").on("click", function (event) {
+    //     $(".dropdown-toggle2").toggleClass('searchtoggleactive');
+    //     event.stopPropagation();
+    //     $(".dropdown-list-search2").toggle();
 
-    });
-    $(".dropdown-list-search2").on("click", function (event) {
-        event.stopPropagation();
-    });
+    // });
+    // $(".dropdown-list-search2").on("click", function (event) {
+    //     event.stopPropagation();
+    // });
 
     $('.fastbuy').click(function () {
         $('.fastbuy').addClass('active');
@@ -105,8 +105,8 @@ $(document).ready(function () {
     });
 
     $(this).on("click", function () {
-        $(".dropdown-list-search").hide();
-        $(".dropdown-list-search2").hide();
+        // $(".dropdown-list-search").hide();
+        // $(".dropdown-list-search2").hide();
     });
 });
 

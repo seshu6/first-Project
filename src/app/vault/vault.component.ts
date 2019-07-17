@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate, keyframes, group } from '@a
   animations: [
     trigger('slideUp', [
       transition(':enter', [
-        style({ transform: 'translateY(800px)' }),
+        style({ transform: 'translateY(-800px)' }),
         animate('500ms')
       ])
     ])

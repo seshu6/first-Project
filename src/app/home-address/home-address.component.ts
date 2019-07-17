@@ -49,7 +49,7 @@ export class HomeAddressComponent implements OnInit {
 
   validateCountrySearch() {
     if (this.homeAddressForm.controls.countrySearch.invalid) {
-      Swal.fire("Info", "Please check your data", "info");
+      Swal.fire("Info", "Please enter country to proceed", "info");
     } else {
       this.addressShowOrHide = !this.addressShowOrHide;
     }

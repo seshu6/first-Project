@@ -29,6 +29,7 @@ import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
 // PACKAGES
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -65,7 +66,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

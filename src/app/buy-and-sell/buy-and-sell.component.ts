@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate, keyframes, group } from '@a
   animations: [
     trigger('slideUp', [
       transition(':enter', [
-        style({ transform: 'translateY(500px)' }),
+        style({ transform: 'translateY(-800px)' }),
         animate('500ms')
       ])
     ])
@@ -29,7 +29,7 @@ export class BuyAndSellComponent implements OnInit {
   whetherBtcOrEth: string = "BTC";
   usdToBtcAndEth: number | string = 0;
   calculatedBtcOrEth: number | string = 0;
-  exchangeAndHistroyShowOrHide: boolean = true;
+  exchangeAndHistroyShowOrHide: boolean = false;
   minimumBtcOrEthValue: string | number;
   maximumBtcOrEthValue: string | number;
   historyTabUserListArr: any = [];
@@ -41,6 +41,16 @@ export class BuyAndSellComponent implements OnInit {
   increOrDecreHistoryIndex: number = 0;
   platformOrUserTab: boolean = true;
   requestedEthOrBtcListArray: any[] = [];
+
+  whenPlatformIsSelected: boolean = true;
+  whenPlatformExchangeIsSelected: boolean = false;
+  whenPlatformHistoryIsSelected: boolean = false;
+
+  platformTabShowOrHide: boolean = true;
+  platformExchangeShowOrHide: boolean = false;
+  platformHistoryShowOrHide: boolean = false;
+
+
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private buyAndSellService: BuyAndSellService) { }
 
@@ -91,9 +101,8 @@ export class BuyAndSellComponent implements OnInit {
       }
     }, error => {
       // this.spinner.hide();
-      if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info");
-      }
+      Swal.fire("Info", "Session Expired", "info");
+      this.route.navigate(['login']);
     })
     if (this.usdToBtcAndEth != 0) {
       this.onAutoCompleteUsdToBtcAndETh();
@@ -216,13 +225,35 @@ export class BuyAndSellComponent implements OnInit {
 
   }
 
+  platformSelected() {
+    this.whenPlatformIsSelected = true;
+    this.whenPlatformExchangeIsSelected = false;
+    this.whenPlatformHistoryIsSelected = false;
+
+    this.platformTabShowOrHide = true;
+    this.platformExchangeShowOrHide = false;
+    this.platformHistoryShowOrHide = true;
+
+
+  }
 
   exchangeTabSelected() {
-    this.exchangeAndHistroyShowOrHide = !this.exchangeAndHistroyShowOrHide;
+    this.whenPlatformIsSelected = true;
+    this.whenPlatformExchangeIsSelected = true;
+    this.whenPlatformHistoryIsSelected = false;
+    this.platformTabShowOrHide = false;
+    this.platformExchangeShowOrHide = true;
+    this.platformHistoryShowOrHide = true;
+
   }
 
   historyTabSlected() {
-    this.exchangeAndHistroyShowOrHide = !this.exchangeAndHistroyShowOrHide;
+    this.whenPlatformIsSelected = true;
+    this.whenPlatformExchangeIsSelected = false;
+    this.whenPlatformHistoryIsSelected = true;
+    this.platformTabShowOrHide = false;
+    this.platformExchangeShowOrHide = false;
+    this.platformHistoryShowOrHide = false;
     this.spinner.show();
     let jsonData = {
       "userId": sessionStorage.getItem("userId")

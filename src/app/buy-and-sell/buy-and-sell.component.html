@@ -1,7 +1,7 @@
 <div class="bluewallet-dashboard-fullwrap">
     <!-- Dashboard Header -->
 
-    <!-- Bluewallet-second-sidebar -->
+    <!-- Bluewallet-second-sidebar  -->
     <div class="bluewallet-profile-sidebar">
         <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
@@ -13,22 +13,25 @@
                 <div class="platuser-tabs">
                     <ul>
                         <li>
-                            <a class="plataform-link" [ngClass]="{'active':platformOrUserTab}" (click)="platformOrUserTab = !platformOrUserTab">Plataform</a>
+                            <a class="plataform-link" [ngClass]="{'active':whenPlatformIsSelected}"
+                                (click)="platformSelected()">Plataform</a>
                         </li>
                         <li>
-                            <a class="users-link" [ngClass]="{'active':!platformOrUserTab}" (click)="platformOrUserTab = !platformOrUserTab">Users</a>
+                            <a class="users-link" [ngClass]="{'active':!platformOrUserTab}"
+                                (click)="platformOrUserTab = !platformOrUserTab">Users</a>
                         </li>
                     </ul>
                     <div class="platform-content">
                         <ul>
                             <li>
-                                <a [ngClass]="{'active':exchangeAndHistroyShowOrHide}" (click)="exchangeTabSelected()">
+                                <a [ngClass]="{'active':whenPlatformExchangeIsSelected}"
+                                    (click)="exchangeTabSelected()">
                                     <span class="userwalleticon user-wallet-img4"></span>
                                     Exchange
                                 </a>
                             </li>
                             <li>
-                                <a [ngClass]="{'active':!exchangeAndHistroyShowOrHide}" (click)="historyTabSlected()">
+                                <a [ngClass]="{'active':whenPlatformHistoryIsSelected}" (click)="historyTabSlected()">
                                     <span class="userwalleticon user-wallet-img2"></span>
                                     History
                                 </a>
@@ -74,7 +77,7 @@
     <div class="bluewallet-body-wrap">
         <div class="bluewallet-fast-buysell">
             <div class="fastbuysell-tab-content">
-                <div class="fast-buy-list">
+                <div class="fast-buy-list" *ngIf="platformHistoryShowOrHide">
                     <div class="buy-paypal">
                         <div class="paypal-input-group">
                             <input type="text" />
@@ -111,7 +114,7 @@
 
                     <div class="payment-method-card">
                         <!-- EXCHANGE -->
-                        <div class="exchange-wraper" *ngIf="exchangeAndHistroyShowOrHide">
+                        <div class="exchange-wraper" *ngIf="platformHistoryShowOrHide">
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 col-xs-12">
                                     <div class="exchange-onebox">
@@ -229,7 +232,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-xs-12">
-                                    <div class="exchange-list-show">
+                                    <div class="exchange-list-show" *ngIf="platformTabShowOrHide">
                                         <div class="buy-view-card1">
                                             <div class="buy-transfer-scrol" id="transferscroll">
                                                 <ul>
@@ -245,8 +248,10 @@
                                                                 <div class="bank-transfer">
                                                                     <h1>{{exchange.amountToTrade}}
                                                                     </h1>
-                                                                    <span *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN'">BTC</span>
-                                                                    <span *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN'">ETH</span>
+                                                                    <span
+                                                                        *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN'">BTC</span>
+                                                                    <span
+                                                                        *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN'">ETH</span>
                                                                 </div>
                                                                 <div class="bank-transfer">
                                                                     <button type="button"
@@ -255,17 +260,75 @@
                                                             </div>
                                                         </a>
                                                     </li>
-                                                   
+
 
                                                 </ul>
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- exchange-purchse -->
+                                    <div class="exchange-list-show" *ngIf="platformExchangeShowOrHide">
+                                        <div class="buy-view-exchangeprice">
+                                            <ul>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>BTC Price</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>121 ETH</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>BTC Price Dollar</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>455 $</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Network Fees</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>12 ETH - 199 BTC</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Commercial Limits</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>100,00 - 1,000,000 $</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Send</h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>0.26 BTC</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="price-btc">
+                                                        <h4>Receive </h4>
+                                                    </div>
+                                                    <div class="ethval">
+                                                        <span>189 ETH</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- HISTORY -->
-                        <div class="fastbuysell-tab-content" *ngIf="!exchangeAndHistroyShowOrHide">
+                        <div class="fastbuysell-tab-content" *ngIf="!platformHistoryShowOrHide">
                             <div class="fast-buy-list">
                                 <div class="buy-paypal history-buy-paypal">
                                     <div class="paypal-input-group history-requests">
