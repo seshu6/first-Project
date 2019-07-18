@@ -15,7 +15,14 @@ export class HomeAddressComponent implements OnInit {
   homeAddressForm: FormGroup;
   addressShowOrHide: boolean = false;
   profileShowOrHide: boolean = false;
-  selectDate: any;
+  selectedDate: any = new Date();
+  selectedCountry: string;
+  selectedCity: string;
+  selectedstate: string;
+  selectedCountryAddress: string;
+  countryListArr: any[] = [];
+  stateListArr: any[] = [];
+  cityListArr: any[] = [];
   constructor(private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
 
   ngOnInit() {
@@ -32,6 +39,7 @@ export class HomeAddressComponent implements OnInit {
       lastName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
     });
+    this.getCountryList();
   }
 
 
@@ -59,13 +67,14 @@ export class HomeAddressComponent implements OnInit {
     if (this.homeAddressForm.controls.addressLine1.invalid || this.homeAddressForm.controls.addressLine2.invalid
       || this.homeAddressForm.controls.city.invalid || this.homeAddressForm.controls.state.invalid
       || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid) {
-        Swal.fire("Info", "Please check your data", "info");
+      Swal.fire("Info", "Please check your data", "info");
     } else {
       this.profileShowOrHide = !this.profileShowOrHide;
     }
   }
 
   addHomeAddressForm() {
+    console.log("selected date", this.selectedDate);
     if (this.homeAddressForm.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
@@ -74,9 +83,9 @@ export class HomeAddressComponent implements OnInit {
         "address": this.homeAddressForm.controls.addressLine1.value,
         "address1": this.homeAddressForm.controls.addressLine1.value,
         "postalCode": this.homeAddressForm.controls.addressLine1.value,
-        "cityId": 1,
-        "countryId": 1,
-        "stateId": 1,
+        "countryId": this.selectedCountryAddress,
+        "stateId": this.selectedstate,
+        "cityId": this.selectedCity,
         "userId": sessionStorage.getItem("userId"),
         "firstName": this.homeAddressForm.controls.addressLine1.value,
         "middleName": this.homeAddressForm.controls.addressLine1.value,
@@ -100,5 +109,71 @@ export class HomeAddressComponent implements OnInit {
     }
   }
 
+
+  // GET COUNTRY DETAILS API
+  getCountryList() {
+    this.spinner.show();
+
+    this.dashboardServices.getCountryList().subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.countryListArr = success['countryData'];
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+  // GET STATE DETAILS API
+  getStateList() {
+    this.spinner.show();
+    let jsonData = {
+      "countryid": this.selectedCountryAddress
+    };
+    this.dashboardServices.postStateList(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.stateListArr = success['StateData'];
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+  // GET CITY DETAILS API
+  getCityList() {
+    this.spinner.show();
+    let jsonData = {
+      "stateid": this.selectedstate
+    };
+    this.dashboardServices.postCityList(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        this.cityListArr = success['CityData'];
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
 
 }

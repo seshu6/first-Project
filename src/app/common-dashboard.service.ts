@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HostUrlService } from './host-url.service';
-import { CommonAuthenticationService } from './common-authentication.service'; 
+import { CommonAuthenticationService } from './common-authentication.service';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -25,7 +25,19 @@ export class CommonDashboardService {
     return this.http.post(this.url.apiUrl + "bluewallet/mobileuserregupdate", data, this.header.getHttpHeader());
   }
 
-  fromParentDashboardToDashboard(){
+  fromParentDashboardToDashboard() {
     this._communicationSubject.next();
+  }
+
+  getCountryList() {
+    return this.http.get(this.url.apiUrl + "bluewallet/countryData", this.header.getHttpHeader()); 
+  }
+
+  postStateList(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/statedata", data, this.header.getHttpHeader());
+  }
+
+  postCityList(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/citydata", data, this.header.getHttpHeader());
   }
 }

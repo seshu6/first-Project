@@ -15,6 +15,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  loginOrForgot: string = "Login";
+  loginOrForgotShowOrHide: boolean = true;
+  forgotPasswordEmail: string;
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -59,16 +62,21 @@ export class LoginComponent implements OnInit {
       if (success['status'] == "success") {
         // Swal.fire("Success", success['message'], "success");
         Swal.fire({
-          html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>'+success['message']+'</p></div></div></div></div>',
+          html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
           showConfirmButton: true,
           confirmButtonColor: "#00a186"
-          });
+        });
         // Swal("Hello world!");
         sessionStorage.setItem("userEmail", this.loginForm.controls.email.value);
-        sessionStorage.setItem("userId",success['loginInfo'].userId);
-        sessionStorage.setItem("roleId",success['loginInfo'].roleId);
+        sessionStorage.setItem("userId", success['loginInfo'].userId);
+        sessionStorage.setItem("roleId", success['loginInfo'].roleId);
+        if (success['loginInfo'].roleId == 1) {
+          this.route.navigate(['admin-vault']);
+        } else if (success['loginInfo'].roleId == 0) {
+          this.route.navigate(['verification']);
+        }
         // this.route.navigate(['dashboard']);
-        this.route.navigate(['verification']);
+        // this.route.navigate(['verification']);
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
       }
@@ -76,8 +84,15 @@ export class LoginComponent implements OnInit {
       this.spinner.hide();
       console.log("error from login", error);
     })
+  }
 
+  // FORGOT PASSWORD API
+  forgotPassword() {
+    if (!Boolean(this.forgotPasswordEmail)) {
+      Swal.fire("Info", "Please provide e-mail to proceed", "info");
+    } else {
 
+    }
   }
 
 }

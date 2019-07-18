@@ -15,78 +15,92 @@
 
                         <!-- STARTED -->
                         <div>
-                                <div class="address-search-area">
-                                    <h1>Country of Residence</h1>
-                                    <p>Digital currency are only available in select countries</p>
-                                    <div class="searchbox-next">
-                                        <div class="search-option-box">
+                            <div class="address-search-area">
+                                <h1>Country of Residence</h1>
+                                <p>Digital currency are only available in select countries</p>
+                                <!-- <div class="searchbox-next"> -->
+                                <!-- <div class="search-option-box">
                                             <input type="text" placeholder="search" formControlName="countrySearch">
-                                            <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-                                        </div>
-                                        <button type="button" class="create-walbtn" (click)="validateCountrySearch()">Next</button>
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </div> -->
+                                <div class="form-group">
+                                    <div class="selectgroup-list">
+                                        <select formControlName="countrySearch" [(ngModel)]="selectedCountry">
+                                            <option value="undefined" disabled>Select Country</option>
+                                            <option *ngFor="let country of countryListArr;let i = index;"
+                                                value="{{country.id}}">{{country.countryName}}</option>
+                                        </select>
                                     </div>
                                 </div>
-                                
-                                <!-- ENDED -->
-                        <div class="address-search-area" *ngIf="addressShowOrHide">
-                            <p>This information is only used to help us verify</p>
-                            <!-- <div class="address-searchbx">
+                                <button type="button" class="create-walbtn"
+                                    (click)="validateCountrySearch()">Next</button>
+                                <!-- </div> -->
+                            </div>
+
+                            <!-- ENDED -->
+                            <div class="address-search-area" *ngIf="addressShowOrHide">
+                                <p>This information is only used to help us verify</p>
+                                <!-- <div class="address-searchbx">
                                 <input type="text" placeholder="Home Address">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div> -->
-                            <div class="search-related-items">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Address Line 1 your indetity"
-                                        formControlName="addressLine1">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Address Line 2" formControlName="addressLine2">
-                                </div>
-                                <div class="form-group">
-                                    <!-- <input type="text" placeholder="City / Town / Village"> -->
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="city">
-                                                        <option value="1">City</option>
-                                                        <option value="city">City</option>
-                                                        <option value="city">City</option>
-                                                        <option value="city">City</option>
-                                                    </select>
+                                <div class="search-related-items">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Address Line 1 your indetity"
+                                            formControlName="addressLine1">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Address Line 2" formControlName="addressLine2">
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- <input type="text" placeholder="City / Town / Village"> -->
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="country"
+                                                            [(ngModel)]="selectedCountryAddress"
+                                                            (change)="getStateList()">
+                                                            <option value="undefined" disabled>Select Country</option>
+                                                            <option
+                                                                *ngFor="let country of countryListArr;let i = index;"
+                                                                value="{{country.id}}">{{country.countryName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="state">
-                                                        <option value="1">State</option>
-                                                        <option value="State">State</option>
-                                                        <option value="State">State</option>
-                                                        <option value="State">State</option>
-                                                    </select>
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="state" [(ngModel)]="selectedstate"
+                                                            (change)="getCityList()">
+                                                            <option value="undefined" disabled>Select State</option>
+                                                            <option *ngFor="let state of stateListArr;let i = index;"
+                                                                value="{{state.id}}">{{state.stateName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="country">
-                                                        <option value="1">Country</option>
-                                                        <option value="Country">Country</option>
-                                                        <option value="Country">Country</option>
-                                                        <option value="Country">Country</option>
-                                                    </select>
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="city" [(ngModel)]="selectedCity">
+                                                            <option value="undefined" disabled>Select City</option>
+                                                            <option value="chennai">chennai</option>
+                                                            <option *ngFor="let city of cityListArr;let i = index;"
+                                                                value="{{city.id}}">{{city.cityName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
+
+
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Postal code" formControlName="postalCode">
-                                </div>
-                                <!-- <ul>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Postal code" formControlName="postalCode">
+                                    </div>
+                                    <!-- <ul>
                                     <li>
                                         <a href="javascript:void(0);">Address Line 1 your indetity</a>
                                     </li>
@@ -112,22 +126,23 @@
                                         <a href="javascript:void(0);">Postal Code</a>
                                     </li>
                                 </ul> -->
-                            </div>
-                            <div class="address-send-box">
-                                <button type="button" class="addressend" (click)="validateAddressDetails()">Send</button>
-                                <div class="address-termscond">
-                                    <p>When you "Sent", you accept</p>
-                                    <p>
-                                        <a href="javascript:void(0);">Terms of Service</a> &amp;
-                                        <a href="javascript:void(0);">Politic and Privacy</a>
-                                    </p>
+                                </div>
+                                <div class="address-send-box">
+                                    <button type="button" class="addressend"
+                                        (click)="validateAddressDetails()">Send</button>
+                                    <div class="address-termscond">
+                                        <p>When you "Sent", you accept</p>
+                                        <p>
+                                            <a href="javascript:void(0);">Terms of Service</a> &amp;
+                                            <a href="javascript:void(0);">Politic and Privacy</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <!-- FIRST NAME DETAILS STARTS HERE -->
-                        <div class="address-search-area" *ngIf="profileShowOrHide">
+                            <!-- FIRST NAME DETAILS STARTS HERE -->
+                            <div class="address-search-area" *ngIf="profileShowOrHide">
                                 <h1>Profile</h1>
                                 <p>We need this to verify your identify, in order for you to use this improved feature.
                                     It
@@ -147,8 +162,9 @@
                                         <button type="button" class="closeicon">×</button>
                                     </div>
                                     <div class="form-group">
-                                        <input class="datePickerInput" [owlDateTimeTrigger]="dt"  formControlName="dateOfBirth" readonly [owlDateTime]="dt">
-                                        <owl-date-time pickerType="calendar"  #dt></owl-date-time>
+                                        <input class="datePickerInput" [owlDateTimeTrigger]="dt" [(ngModel)]="selectedDate"
+                                            formControlName="dateOfBirth" readonly [owlDateTime]="dt">
+                                        <owl-date-time pickerType="calendar" #dt></owl-date-time>
                                         <button type="button" class="closeicon">×</button>
                                     </div>
                                     <!-- <ul>
@@ -174,8 +190,8 @@
                                         (click)="addHomeAddressForm()">Next</button>
                                 </div>
                             </div>
-                        <!-- ENDS HERE -->
-                        
+                            <!-- ENDS HERE -->
+
 
                         </div>
                     </div>

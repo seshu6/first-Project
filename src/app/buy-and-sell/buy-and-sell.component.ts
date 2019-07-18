@@ -48,7 +48,8 @@ export class BuyAndSellComponent implements OnInit {
 
   platformTabShowOrHide: boolean = true;
   platformExchangeShowOrHide: boolean = false;
-  platformHistoryShowOrHide: boolean = false;
+  platformHistoryShowOrHide: boolean = true;
+  // userTabListArr: any[] = [];
 
 
 
@@ -61,7 +62,8 @@ export class BuyAndSellComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     })
     this.changeBtcToEthAndViceVersa();
-    this.postRequestedEthOrBtc();
+    this.getRequestedEthOrBtc();
+    // this.getUserTabListData();
   }
 
 
@@ -229,31 +231,48 @@ export class BuyAndSellComponent implements OnInit {
     this.whenPlatformIsSelected = true;
     this.whenPlatformExchangeIsSelected = false;
     this.whenPlatformHistoryIsSelected = false;
-
     this.platformTabShowOrHide = true;
     this.platformExchangeShowOrHide = false;
     this.platformHistoryShowOrHide = true;
-
-
+    this.getRequestedEthOrBtc();
   }
 
   exchangeTabSelected() {
-    this.whenPlatformIsSelected = true;
-    this.whenPlatformExchangeIsSelected = true;
-    this.whenPlatformHistoryIsSelected = false;
-    this.platformTabShowOrHide = false;
-    this.platformExchangeShowOrHide = true;
-    this.platformHistoryShowOrHide = true;
+    if (this.whenPlatformIsSelected) {
+      this.whenPlatformIsSelected = true;
+      this.whenPlatformExchangeIsSelected = true;
+      this.whenPlatformHistoryIsSelected = false;
+      this.platformTabShowOrHide = false;
+      this.platformExchangeShowOrHide = true;
+      this.platformHistoryShowOrHide = true;
+    } else {
+      this.whenPlatformIsSelected = false;
+      this.whenPlatformExchangeIsSelected = true;
+      this.whenPlatformHistoryIsSelected = false;
+      this.platformTabShowOrHide = false;
+      this.platformExchangeShowOrHide = true;
+      this.platformHistoryShowOrHide = true;
+    }
 
   }
 
   historyTabSlected() {
-    this.whenPlatformIsSelected = true;
-    this.whenPlatformExchangeIsSelected = false;
-    this.whenPlatformHistoryIsSelected = true;
-    this.platformTabShowOrHide = false;
-    this.platformExchangeShowOrHide = false;
-    this.platformHistoryShowOrHide = false;
+    if (this.whenPlatformIsSelected) {
+      this.whenPlatformIsSelected = true;
+      this.whenPlatformExchangeIsSelected = false;
+      this.whenPlatformHistoryIsSelected = true;
+      this.platformTabShowOrHide = false;
+      this.platformExchangeShowOrHide = false;
+      this.platformHistoryShowOrHide = false;
+    } else {
+      this.whenPlatformIsSelected = false;
+      this.whenPlatformExchangeIsSelected = false;
+      this.whenPlatformHistoryIsSelected = true;
+      this.platformTabShowOrHide = false;
+      this.platformExchangeShowOrHide = false;
+      this.platformHistoryShowOrHide = false;
+    }
+
     this.spinner.show();
     let jsonData = {
       "userId": sessionStorage.getItem("userId")
@@ -279,6 +298,22 @@ export class BuyAndSellComponent implements OnInit {
 
   }
 
+  userTabSelected() {
+    this.whenPlatformIsSelected = false;
+    this.whenPlatformExchangeIsSelected = false;
+    this.whenPlatformHistoryIsSelected = false;
+    this.platformTabShowOrHide = true;
+    this.platformExchangeShowOrHide = false;
+    this.platformHistoryShowOrHide = true;
+    this.getRequestedEthOrBtc();
+  }
+
+  userExchangeTabSelected() {
+
+  }
+
+
+
 
   onUnActivePrevious(index: string | number) {
     this.increOrDecreHistoryIndex++;
@@ -293,31 +328,32 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
-
-  postRequestedEthOrBtc() {
+  // USER TAB LIST API AND ADMIN
+  getRequestedEthOrBtc() {
     this.spinner.show();
-    let jsonData = {
-      "userId": sessionStorage.getItem("userId"),
-      "exchangeMode": sessionStorage.getItem("roleId")
-    }
-    // if (this.platformOrUserTab) {
-    //   jsonData = {
-    //     "userId": sessionStorage.getItem("userId"),
-    //     "exchangeMode": "admin"
-    //   }
-    // } else {
-    //   jsonData = {
-    //     "userId": sessionStorage.getItem("userId"),
-    //     "exchangeMode": "user"
-    //   }
+    let jsonData = {};
+    // let jsonData = {
+    //   "userId": sessionStorage.getItem("userId"),
+    //   "exchangeMode": sessionStorage.getItem("roleId")
     // }
+    if (this.whenPlatformIsSelected) {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "exchangeMode": "admin"
+      }
+    } else {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "exchangeMode": "user"
+      }
+    }
     this.buyAndSellService.postRequestedEthOrBtc(jsonData).subscribe(success => {
       this.spinner.hide();
       if (success['status'] == "success") {
         this.requestedEthOrBtcListArray = success['fetchExchageRequestDTO'].exchangeDTOList;
 
       } else if (success['status'] == "failure") {
-        Swal.fire("Error", "Session Expired", "error");
+        Swal.fire("Error", success['message'], "error");
       }
     }, error => {
       this.spinner.hide();
@@ -329,14 +365,100 @@ export class BuyAndSellComponent implements OnInit {
 
   }
 
-  platformTabSelected() {
-    this.platformOrUserTab = !this.platformOrUserTab;
-    this.postRequestedEthOrBtc();
+
+  // EXCHANGE CRYPTOCURRENCY API
+  exchangeCryptoCurrency(data: any) {
+
+    if (data.exchangeType == "BTC_ETH_USER" || data.exchangeType == "BTC_ETH_ADMIN") {
+      this.postBtcToEthExchange(data.amountToTrade, data.btcWalletAddress);
+    } else {
+      this.postEthToBtcExchange(data.amountToTrade, data.ethWalletAddress);
+    }
   }
 
-  userTabSelected() {
-    this.platformOrUserTab = !this.platformOrUserTab;
-    this.postRequestedEthOrBtc();
+  postBtcToEthExchange(btcAmount: string | number, address: string | number) {
+    this.spinner.show();
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "toBtcWalletAddress": address,
+      "btcAmount": btcAmount
+    }
+    this.buyAndSellService.postBtcTOEthEcxhange(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        console.log("***************************BTC TO ETH", success);
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
   }
+
+  postEthToBtcExchange(ethAmount: string | number, address: string | number) {
+    this.spinner.show();
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "etherAmount": ethAmount,
+      "toEthWalletAddress": address,
+      "exchangeReqId": "0",
+      "exchangeStatus": 1
+    }
+    this.buyAndSellService.postEthToBtcEcxhange(jsonData).subscribe(success => {
+      this.spinner.hide();
+      if (success['status'] == "success") {
+        console.log("***************************ETH TO BTC", success);
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.hide();
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+
+
+
+
+  // platformTabSelected() {
+  //   this.platformOrUserTab = !this.platformOrUserTab;
+  //   this.postRequestedEthOrBtc();
+  // }
+
+
+
+  // USER TAB LIST API
+
+  // getUserTabListData() {
+  //   this.spinner.show();
+  //   let jsonData = {
+  //     "userId": sessionStorage.getItem("userId")
+  //   }
+  //   this.buyAndSellService.postUserTabList(jsonData).subscribe(success => {
+  //     this.spinner.hide();
+  //     if (success['status'] == "success") {
+  //       console.log("***************************user tab details", success);
+  //       this.userTabListArr = success['fetchExchageRequestDTO'].exchangeDTOList;
+  //     } else if (success['status'] == "failure") {
+  //       Swal.fire("Error", success['message'], "error");
+  //     }
+  //   }, error => {
+  //     this.spinner.hide();
+  //     if (error.error.error == "invalid_token") {
+  //       Swal.fire("Info", "Session Expired", "info");
+  //       this.route.navigate(['login']);
+  //     }
+  //   })
+  // }
+
 
 }

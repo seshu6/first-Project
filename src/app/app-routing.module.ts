@@ -15,6 +15,7 @@ import { KycComponent } from './kyc/kyc.component';
 import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.component';
 import { HomeAddressComponent } from './home-address/home-address.component';
 import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
+import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
 
 const routes: Routes = [{
   path: '',
@@ -63,6 +64,9 @@ const routes: Routes = [{
 }, {
   path: 'termsandservices',
   component: ApiTermsServicesComponent
+}, {
+  path: 'admin-vault',
+  component: AdminVaultHistoryComponent
 }];
 
 @NgModule({

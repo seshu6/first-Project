@@ -25,11 +25,23 @@ export class BuyAndSellService {
     return this.http.post(this.url.apiUrl + "bluewallet/getminmaxcryptovalue", data, this.header.getHttpHeader());
   }
 
-  postHistoryTabList(data:any){
+  postHistoryTabList(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/retrieve/exchange/userid", data, this.header.getHttpHeader());
   }
 
-  postRequestedEthOrBtc(data:any){
+  postRequestedEthOrBtc(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/fetchrequestsbymode", data, this.header.getHttpHeader());
+  }
+
+  // postUserTabList(data: any) {
+  //   return this.http.post(this.url.apiUrl + "bluewallet/fetch/exchange/requests", data, this.header.getHttpHeader());
+  // }
+
+  postBtcTOEthEcxhange(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/btc_eth/user/exchange", data, this.header.getHttpHeader());
+  }
+
+  postEthToBtcEcxhange(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/exchange", data, this.header.getHttpHeader());
   }
 }
