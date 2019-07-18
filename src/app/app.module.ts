@@ -30,6 +30,10 @@ import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ChartsModule } from 'ng2-charts';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminUserDetailsComponent } from './admin-user-details/admin-user-details.component';
+import { AdminExchangeComponent } from './admin-exchange/admin-exchange.component';
+import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
 
 
 
@@ -55,7 +59,11 @@ import { ChartsModule } from 'ng2-charts';
     ParentDashboardComponent,
     KycComponent,
     HomeAddressComponent,
-    SmsVerifyComponent
+    SmsVerifyComponent,
+    AdminDashboardComponent,
+    AdminUserDetailsComponent,
+    AdminExchangeComponent,
+    AdminVaultHistoryComponent
   ],
   imports: [
     BrowserModule,
