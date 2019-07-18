@@ -113,7 +113,7 @@ export class CardComponent implements OnInit {
       ],
       backgroundColor: [
         'rgba(88, 170, 243, 0.7)',
-        'rgba(88, 170, 243, 0.5)',
+        'rgba(88, 170, 243, 0.6)',
         'rgba(88, 170, 243, 0.4)',
         'rgba(88, 170, 243, 0.3)',
         'rgba(88, 170, 243, 0.2)',
