@@ -1,5 +1,10 @@
 <app-sidebar *ngIf="showOrHideSidebar"></app-sidebar>
-<ngx-spinner type="ball-atom" size = "large">
-    <!-- <p style="color: white"> Loading... </p> -->
-  </ngx-spinner>
+<ngx-spinner type="ball-atom" size="large">
+  <!-- <p style="color: white"> Loading... </p> -->
+</ngx-spinner>
+<div class="loader" style="display:none;">
+  <div class="loader-center">
+    <img src="assets/images/loader.gif">
+  </div>
+</div>
 <router-outlet></router-outlet>
