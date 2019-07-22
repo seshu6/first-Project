@@ -4,7 +4,8 @@ import { HttpParams } from "@angular/common/http";
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner'; 
+import { LoaderService } from '../loader.service';
 
 
 
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginOrForgot: string = "Login";
   loginOrForgotShowOrHide: boolean = true;
   forgotPasswordEmail: string;
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: NgxSpinnerService) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -39,13 +40,13 @@ export class LoginComponent implements OnInit {
         .set('username', this.loginForm.controls.email.value)
         .set('password', this.loginForm.controls.password.value)
         .set('grant_type', "password");
-      this.spinner.show();
+      this.spinner.showOrHide(true);
       this.loginService.postAuthToken(tokenObj.toString()).subscribe(success => {
         sessionStorage.setItem("tokenObj", JSON.stringify(success));
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
         this.login();
       }, error => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
         Swal.fire("Error", error.error.error_description, "error");
       })
     }
@@ -54,11 +55,11 @@ export class LoginComponent implements OnInit {
 
   // LOGIN
   login(): void {
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     this.loginService.postLogin(this.loginForm.value).subscribe(success => {
       // const datajson = JSON.stringify(success);
       // const dataParsed = JSON.parse(datajson);
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         // Swal.fire("Success", success['message'], "success");
         Swal.fire({
@@ -81,7 +82,7 @@ export class LoginComponent implements OnInit {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
       console.log("error from login", error);
     })
   }

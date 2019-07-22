@@ -274,18 +274,20 @@
                                             <ul>
                                                 <li>
                                                     <div class="price-btc">
-                                                        <h4>BTC Price</h4>
+                                                        <h4 *ngIf="exchangeCryptoType == 'btc'">BTC Price</h4>
+                                                        <h4 *ngIf="exchangeCryptoType == 'eth'">ETH Price</h4>
                                                     </div>
                                                     <div class="ethval">
-                                                        <span>121 ETH</span>
+                                                        <span>{{btcOrEthPrice}}</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="price-btc">
-                                                        <h4>BTC Price Dollar</h4>
+                                                        <h4 *ngIf="exchangeCryptoType == 'btc'">BTC Price Dollar</h4>
+                                                        <h4 *ngIf="exchangeCryptoType == 'eth'">ETH Price Dollar</h4>
                                                     </div>
                                                     <div class="ethval">
-                                                        <span>455 $</span>
+                                                        <span>{{btcOrEthPriceDollar}} $</span>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -301,7 +303,7 @@
                                                         <h4>Commercial Limits</h4>
                                                     </div>
                                                     <div class="ethval">
-                                                        <span>100,00 - 1,000,000 $</span>
+                                                        <span>{{minCommercialLimits}} - {{maxCommercialLimits}} $</span>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -311,7 +313,8 @@
                                                         <h4>Send</h4>
                                                     </div>
                                                     <div class="ethval">
-                                                        <span>0.26 BTC</span>
+                                                        <span *ngIf="exchangeCryptoType == 'btc'">{{send}} BTC</span>
+                                                        <span *ngIf="exchangeCryptoType == 'eth'">{{send}} ETH</span>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -319,7 +322,8 @@
                                                         <h4>Receive </h4>
                                                     </div>
                                                     <div class="ethval">
-                                                        <span>189 ETH</span>
+                                                        <span *ngIf="exchangeCryptoType == 'btc'">{{receive}} BTC</span>
+                                                        <span *ngIf="exchangeCryptoType == 'eth'">{{receive}} ETH</span>
                                                     </div>
                                                 </li>
                                             </ul>

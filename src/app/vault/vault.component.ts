@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as M from 'src/assets/materialize/js/materialize';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { LoaderService } from '../loader.service';
 
 
 @Component({
@@ -44,7 +46,7 @@ export class VaultComponent implements OnInit {
   currentlySelectedCryptoType: string;
   newVaultShadowEffect: boolean = false;
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private vaultService: VaultService, private spinner: NgxSpinnerService) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
   ngOnInit() {
     // let elems = document.querySelector('.carousel');
@@ -99,7 +101,10 @@ export class VaultComponent implements OnInit {
           Swal.fire("Error", success['message'], "error");
         }
       }, error => {
-
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
     }
 
@@ -110,7 +115,7 @@ export class VaultComponent implements OnInit {
 
   // SLIDER SELECTED CRYPTOCURRENCY
   onSliderCryptoCurrency(data: string, index?: number | string) {
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     this.clearInvestmentData();
     if (index != undefined) {
       let elem = document.querySelector('.carousel');
@@ -123,7 +128,7 @@ export class VaultComponent implements OnInit {
       "cryptoType": this.ethOrBtc
     }
     this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         if (this.ethOrBtc == "ETH") {
           this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
@@ -140,8 +145,11 @@ export class VaultComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
-
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
     })
   }
 
@@ -159,14 +167,14 @@ export class VaultComponent implements OnInit {
       this.btcIsSelected = true;
       this.ethIsSelected = true;
     }
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     let jsonData = {
       "email": sessionStorage.getItem("userEmail"),
       "typeOfInvestment": cryptoType
     }
     this.vaultService.postCommonActiveVaultList(jsonData).subscribe(success => {
       // let stringss = JSON.stringify(success);
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.activeCryptoCurrencyDetails = [];
         this.completedCryptoCurrencyDetails = [];
@@ -193,7 +201,11 @@ export class VaultComponent implements OnInit {
 
 
     }, error => {
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
     })
   }
 
@@ -205,7 +217,7 @@ export class VaultComponent implements OnInit {
     } else if (!this.termsAndCondition) {
       Swal.fire("Info", "Please accept terms and conditon to proceed", "info");
     } else {
-      this.spinner.show();
+      this.spinner.showOrHide(true);
       let jsonData = {};
       if (this.ethOrBtc == "BTC") {
         jsonData = {
@@ -225,7 +237,7 @@ export class VaultComponent implements OnInit {
       }
 
       this.vaultService.postAddVault(jsonData).subscribe(success => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           this.clearInvestmentData();
           if (this.newVaultShadowEffect) {
@@ -237,7 +249,11 @@ export class VaultComponent implements OnInit {
           Swal.fire("Error", success['message'], "error");
         }
       }, error => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
     }
   }

@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { CommonDashboardService } from '../common-dashboard.service';
+import { CommonDashboardService } from '../common-dashboard.service'; 
 import Swal from 'sweetalert2';
 
 

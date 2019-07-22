@@ -6,6 +6,8 @@ import { Color, Label } from 'ng2-charts';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { CardService } from '../card.service';
+import { LoaderService } from '../loader.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -143,7 +145,7 @@ export class CardComponent implements OnInit {
   lineChartPlugins = [];
   // ENDS HERE
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private spinner: NgxSpinnerService, private cardService: CardService) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private spinner: LoaderService, private cardService: CardService,private route:Router) { }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
@@ -155,7 +157,7 @@ export class CardComponent implements OnInit {
   }
 
   getChartDetails() {
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     let jsonData = {};
     if (this.selectedCurrencyType == "BTC") {
       jsonData = {
@@ -173,7 +175,7 @@ export class CardComponent implements OnInit {
       }
     }
     this.cardService.postChartDetails(jsonData).subscribe(success => {
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.receivedXAxisChartData = [];
         this.receivedYAxisChartData = [];
@@ -202,7 +204,11 @@ export class CardComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
     })
   }
 

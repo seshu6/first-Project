@@ -34,6 +34,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminUserDetailsComponent } from './admin-user-details/admin-user-details.component';
 import { AdminExchangeComponent } from './admin-exchange/admin-exchange.component';
 import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -63,7 +64,8 @@ import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-hi
     AdminDashboardComponent,
     AdminUserDetailsComponent,
     AdminExchangeComponent,
-    AdminVaultHistoryComponent
+    AdminVaultHistoryComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
