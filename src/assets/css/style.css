@@ -1156,6 +1156,9 @@ footer {
 	background: -ms-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
 	background: linear-gradient(90deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
 }
+.verfiy-sidebar{
+	margin-left: 0px;
+}
 .profile-setting-sidebar {
 	position: relative;
 	width: 100%;
@@ -1424,6 +1427,10 @@ footer {
 	margin-left: 390px;
 	background: #fcfcfd;
 	min-height: 100vh;
+}
+.bodywrap-verfiy{
+	margin-left:281px;
+	width: calc(100% - 281px);
 }
 .blue-body-div {
 	padding: 20px;
@@ -4212,6 +4219,7 @@ footer {
 	background: #ffffff;
 	float: left;
 	width: 100%;
+	margin-bottom: 20px;
 }
 .verification-icon-cont .verification-cion {
 	padding: 0 30px;
