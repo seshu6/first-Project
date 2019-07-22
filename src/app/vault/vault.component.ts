@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
+import { DynamicScriptLoaderService } from '../dynamic-script-loader.service'; 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VaultService } from '../vault.service';
