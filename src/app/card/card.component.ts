@@ -26,15 +26,17 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit {
   monthArray: any[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  selectedMonth: string = "January";
+  selectedMonth: string = this.monthArray[new Date().getMonth()];
   selectedAmountMode: string = "All";
   selectedCurrencyType: string = "BTC"
   chartDataArr: any[] = [];
-  receivedXAxisChartData: any[] = [];
-  receivedYAxisChartData: any[] = [];
-  paidXAxisChartData: any[] = [];
-  paidYAxisChartData: any[] = [];
+  // receivedXAxisChartData: any[] = [];
+  // receivedYAxisChartData: any[] = [];
+  // paidXAxisChartData: any[] = [];
+  // paidYAxisChartData: any[] = [];
   xAxisChartData: any[] = [];
+  yAxisPaidData: any[] = [];
+  yAxisReceivedData: any[] = [];
   showOrHideMonthList: boolean = false;
   showOrHideAmountMode: boolean = false;
   showOrHideCryptoType: boolean = false;
@@ -80,6 +82,9 @@ export class CardComponent implements OnInit {
       xAxes: [{
         gridLines: {
           display: false
+        },
+        afterFit: (scale) => {
+          scale.height = 50;
         }
       }],
       yAxes: [{
@@ -100,7 +105,7 @@ export class CardComponent implements OnInit {
   ];
 
   // CHART X_AXIS DETAILS
-  lineChartLabels: Label[] = ["January", "February", "March", "April", "May", "June", "July"];
+  lineChartLabels: Label[] = [];
 
   // OTHER CHART DETAILS
   lineChartColors: Color[] = [
@@ -145,7 +150,7 @@ export class CardComponent implements OnInit {
   lineChartPlugins = [];
   // ENDS HERE
 
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private spinner: LoaderService, private cardService: CardService,private route:Router) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private spinner: LoaderService, private cardService: CardService, private route: Router) { }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
@@ -156,20 +161,31 @@ export class CardComponent implements OnInit {
     this.getChartDetails();
   }
 
+
+
   getChartDetails() {
     this.spinner.showOrHide(true);
     let jsonData = {};
+    let amountMode: string;
+
+    if (this.selectedAmountMode == "Paid") {
+      amountMode = "send";
+    } else if (this.selectedAmountMode == "Received") {
+      amountMode = "received";
+    } else {
+      amountMode = "all";
+    }
     if (this.selectedCurrencyType == "BTC") {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": this.selectedAmountMode,
+        "fetchAmountFlag": amountMode,
         "cryptoType": "BTCTEST",
         "month": this.selectedMonth
       }
     } else {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": this.selectedAmountMode,
+        "fetchAmountFlag": amountMode,
         "cryptoType": "ETH",
         "month": this.selectedMonth
       }
@@ -177,29 +193,129 @@ export class CardComponent implements OnInit {
     this.cardService.postChartDetails(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        this.receivedXAxisChartData = [];
-        this.receivedYAxisChartData = [];
-        this.paidXAxisChartData = [];
-        this.paidYAxisChartData = [];
-        // this.lineChartLabels = [];
-        for (let i = 0; i < success['listCalculatingAmountDTO'].length; i++) {
-          if (success['listCalculatingAmountDTO'][i].hasOwnProperty("receivedAmount")) {
-            // this.receivedXAxisChartData.push(success['listCalculatingAmountDTO'][i]['Date']);
-            this.receivedYAxisChartData.push(success['listCalculatingAmountDTO'][i]['receivedAmount']);
-          }
-          if (success['listCalculatingAmountDTO'][i].hasOwnProperty("paidAmount")) {
-            // this.paidXAxisChartData.push(success['listCalculatingAmountDTO'][i]['Date']);
-            this.paidYAxisChartData.push(success['listCalculatingAmountDTO'][i]['paidAmount']);
-          }
-          // this.lineChartLabels.push(success['listCalculatingAmountDTO'][i]['Date']);
+        this.lineChartColors = [];
+        this.lineChartData = [];
+        this.lineChartLabels = success['sendReceiveGraphDetails'].datelist;
+        this.yAxisPaidData = success['sendReceiveGraphDetails'].paidAmountList;
+        this.yAxisReceivedData = success['sendReceiveGraphDetails'].receivedAmountList;
+        if (this.selectedAmountMode == "All") {
+          this.lineChartData = [
+            { data: this.yAxisPaidData, label: 'Send' },
+            { data: this.yAxisReceivedData, label: 'Received' },
+          ];
+
+          this.lineChartColors = [
+            {
+              borderColor: [
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)'
+              ],
+              backgroundColor: [
+                'rgba(88, 170, 243, 0.7)',
+                'rgba(88, 170, 243, 0.6)',
+                'rgba(88, 170, 243, 0.4)',
+                'rgba(88, 170, 243, 0.3)',
+                'rgba(88, 170, 243, 0.2)',
+                'rgba(88, 170, 243, 0.1)'
+              ]
+            }, {
+              borderColor: [
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)'
+              ],
+              backgroundColor: [
+                'rgba(255,124,110,0.6)',
+                'rgba(255,124,110,0.5)',
+                'rgba(255,124,110,0.4)',
+                'rgba(255,124,110,0.3)',
+                'rgba(255,124,110,0.2)',
+                'rgba(255,124,110,0.1)'
+              ]
+            },
+          ];
+
+        } else if (this.selectedAmountMode == "Paid") {
+          this.lineChartData = [
+            { data: this.yAxisPaidData, label: 'Send' },
+          ];
+          this.lineChartColors = [
+            {
+              borderColor: [
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)',
+                'rgba(88, 170, 243, 1)'
+              ],
+              backgroundColor: [
+                'rgba(88, 170, 243, 0.7)',
+                'rgba(88, 170, 243, 0.6)',
+                'rgba(88, 170, 243, 0.4)',
+                'rgba(88, 170, 243, 0.3)',
+                'rgba(88, 170, 243, 0.2)',
+                'rgba(88, 170, 243, 0.1)'
+              ]
+            }
+          ];
+        } else if (this.selectedAmountMode == "Received") {
+          this.lineChartData = [
+            { data: this.yAxisReceivedData, label: 'Received' },
+          ];
+          this.lineChartColors = [
+            {
+              borderColor: [
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)',
+                'rgba(249, 84, 119, 1)'
+              ],
+              backgroundColor: [
+                'rgba(255,124,110,0.6)',
+                'rgba(255,124,110,0.5)',
+                'rgba(255,124,110,0.4)',
+                'rgba(255,124,110,0.3)',
+                'rgba(255,124,110,0.2)',
+                'rgba(255,124,110,0.1)'
+              ]
+            }
+          ];
         }
 
+        this.lineChartOptions = {
+          responsive: true,
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display: false
+              },
+              afterFit: (scale) => {
+                scale.height = 50;
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }, gridLines: {
+                display: false
+              }
+            }]
+          }
+        };
 
 
-        console.log("received date", this.receivedXAxisChartData);
-        console.log("received data", this.receivedYAxisChartData);
-        console.log("paid date", this.paidXAxisChartData);
-        console.log("paid data", this.paidYAxisChartData);
+
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }

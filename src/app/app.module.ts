@@ -35,6 +35,7 @@ import { AdminUserDetailsComponent } from './admin-user-details/admin-user-detai
 import { AdminExchangeComponent } from './admin-exchange/admin-exchange.component';
 import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
 
 
 
@@ -65,7 +66,8 @@ import { LoaderComponent } from './loader/loader.component';
     AdminUserDetailsComponent,
     AdminExchangeComponent,
     AdminVaultHistoryComponent,
-    LoaderComponent
+    LoaderComponent,
+    AdminBuyAndSellComponent
   ],
   imports: [
     BrowserModule,

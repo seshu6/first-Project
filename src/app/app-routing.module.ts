@@ -16,6 +16,9 @@ import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.co
 import { HomeAddressComponent } from './home-address/home-address.component';
 import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
 import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
+import { AdminUserDetailsComponent } from './admin-user-details/admin-user-details.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
 
 const routes: Routes = [{
   path: '',
@@ -67,6 +70,15 @@ const routes: Routes = [{
 }, {
   path: 'admin-vault',
   component: AdminVaultHistoryComponent
+}, {
+  path: 'admin-user-list',
+  component: AdminUserDetailsComponent
+}, {
+  path: 'admin-dashboard',
+  component: AdminDashboardComponent
+}, {
+  path: 'adminbuyandsell',
+  component: AdminBuyAndSellComponent
 }];
 
 @NgModule({

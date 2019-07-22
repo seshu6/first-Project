@@ -4,7 +4,7 @@ import { HttpParams } from "@angular/common/http";
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-import { NgxSpinnerService } from 'ngx-spinner'; 
+import { NgxSpinnerService } from 'ngx-spinner';
 import { LoaderService } from '../loader.service';
 
 
@@ -72,9 +72,13 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("userId", success['loginInfo'].userId);
         sessionStorage.setItem("roleId", success['loginInfo'].roleId);
         if (success['loginInfo'].roleId == 1) {
-          this.route.navigate(['admin-vault']);
+          sessionStorage.setItem("roleName", "admin");
+          // this.loginService.setUserRole("admin");
+          this.route.navigate(['admin-dashboard']);
         } else if (success['loginInfo'].roleId == 0) {
-          this.route.navigate(['verification']);
+          sessionStorage.setItem("roleName", "user");
+          // this.loginService.setUserRole("user");
+          this.route.navigate(['dashboard']);
         }
         // this.route.navigate(['dashboard']);
         // this.route.navigate(['verification']);

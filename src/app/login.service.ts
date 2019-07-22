@@ -7,8 +7,8 @@ import { CommonAuthenticationService } from './common-authentication.service';
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { } 
+  userRole: string;
+  constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
   postAuthToken(data: any) {
     return this.http.post(this.url.tokenUrl, data, this.header.getAuthHeader());
@@ -16,6 +16,13 @@ export class LoginService {
 
   postLogin(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/login", data, this.header.getHttpHeader());
+  }
+
+  setUserRole(data: string) {
+    this.userRole = data;
+  }
+  getUserRole() {
+    return this.userRole;
   }
 
 }
