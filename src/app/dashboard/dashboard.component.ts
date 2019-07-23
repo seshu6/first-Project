@@ -16,6 +16,15 @@ import { LoaderService } from '../loader.service';
 export class DashboardComponent implements OnInit {
   qrCodeModalShowOrHide: boolean = false;
   qrCodeClassShowOrHide: boolean = false;
+  showOrHideMonthList: boolean = false;
+  showOrHideAmountMode: boolean = false;
+  monthArray: any[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  selectedMonth: string = this.monthArray[new Date().getMonth()];
+  selectedAmountMode: string = "All";
+  showOrHideCryptoType: boolean = false;
+  selectedCurrencyType: string = "BTC";
+  activityListArr: any[] = [];
+  dayWeekMonth: string = "toady";
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private dashboardService: CommonDashboardService) { }
 
   ngOnInit() {
@@ -52,16 +61,36 @@ export class DashboardComponent implements OnInit {
 
   getActivityList() {
     this.spinner.showOrHide(true);
-    let jsonData = {
-      "userId": 34,
-      "fetchAmountFlag": "All",
-      "cryptoType": "BTCTEST",
-      "flagfordates": "month"
+    let amountMode: string;
+    let jsonData = {};
+    if (this.selectedAmountMode == "All") {
+      amountMode = "All";
+    } else if (this.selectedAmountMode == "Received") {
+      amountMode = "Received";
+    } else if (this.selectedAmountMode == "Paid") {
+      amountMode = "send";
     }
+    if (this.selectedCurrencyType == "BTC") {
+      jsonData = {
+        "userId": 34,
+        "fetchAmountFlag": amountMode,
+        "cryptoType": "BTCTEST",
+        "flagfordates": this.dayWeekMonth
+      }
+    } else {
+      jsonData = {
+        "userId": 34,
+        "fetchAmountFlag": amountMode,
+        "cryptoType": "ETH",
+        "flagfordates": this.dayWeekMonth
+      }
+    }
+
     this.dashboardService.postActivityList(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        console.log("activity list", success);
+        this.activityListArr = success['listCalculatingAmountDTO'];
+        console.log("activity list", this.activityListArr);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }

@@ -166,7 +166,7 @@ export class CardComponent implements OnInit {
   getChartDetails() {
     this.spinner.showOrHide(true);
     let jsonData = {};
-    let amountMode: string;
+    let amountMode: string; 
 
     if (this.selectedAmountMode == "Paid") {
       amountMode = "send";
