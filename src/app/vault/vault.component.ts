@@ -212,7 +212,7 @@ export class VaultComponent implements OnInit {
   onAddVault() {
     if (!Boolean(this.estimatedEth)) {
       Swal.fire("Info", "Please provide " + this.ethOrBtc + " details", "info");
-    } else if (!Boolean(this.estimatedWallet)) {
+    } else if ((!Boolean(this.estimatedWallet)) && this.ethOrBtc == "ETH"  ) {
       Swal.fire("Info", "Please provide wallet password", "info");
     } else if (!this.termsAndCondition) {
       Swal.fire("Info", "Please accept terms and conditon to proceed", "info");

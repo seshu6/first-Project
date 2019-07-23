@@ -25,6 +25,7 @@
     "jquery": "^3.4.1",
     "ng-pick-datetime": "^7.0.0",
     "ng2-charts": "^2.2.3",
+    "ng2-search-filter": "^0.5.1",
     "ngx-spinner": "^7.1.4",
     "rxjs": "~6.3.3",
     "sweetalert2": "^8.12.1",

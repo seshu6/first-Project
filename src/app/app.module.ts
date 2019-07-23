@@ -36,6 +36,7 @@ import { AdminExchangeComponent } from './admin-exchange/admin-exchange.componen
 import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-history.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -79,7 +80,8 @@ import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sel
     BrowserAnimationsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    ChartsModule
+    ChartsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

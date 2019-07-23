@@ -24,7 +24,21 @@ export class CommonAuthenticationService {
 
   // UPLOAD HEADERS
 
-  getUploadHttpHeader():{}{
+
+  getHttpHeaderWithoutAccess() {
+
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json;charset=UTF-8',
+    });
+
+    let header = {
+      headers: httpHeaders
+    }
+    return header;
+  }
+
+
+  getUploadHttpHeader(): {} {
     const tokenObj = JSON.parse(sessionStorage.getItem('tokenObj'));
     let httpHeaders = new HttpHeaders({
       'Authorization': 'bearer ' + tokenObj.access_token,

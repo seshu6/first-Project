@@ -44,4 +44,8 @@ export class CommonDashboardService {
   postActivityList(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/getactivitydata", data, this.header.getHttpHeader());
   }
+
+  postDashboardChartDetails(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/getgraphdata", data, this.header.getHttpHeader());
+  }
 }

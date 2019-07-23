@@ -65,7 +65,7 @@
             </div>
             <div class="bluewallet-search-daily">
                 <div class="search-dailymonth">
-                    <input type="text" placeholder="Search">
+                    <input type="text" placeholder="Search" [(ngModel)]="searchFilter">
                     <ul class="search-mandory-list">
                         <li class="monthlist" (click)="showOrHideMonthList = !showOrHideMonthList">
                             <a class="dropdown-toggle1">{{selectedMonth}}
@@ -121,7 +121,23 @@
                             <div class="graph-history-title">
                                 <h1>Graph History</h1>
                                 <div class="graph-history">
-                                    <div id="chart_div" style="width: 100%; height: 100%;"></div>
+                                    <div style="width: 100%; height: 100%;"
+                                        *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
+                                        <!-- <canvas id="chart"></canvas> -->
+                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+                                            [options]="lineChartOptions" [colors]="lineChartColors"
+                                            [legend]="lineChartLegend" [chartType]="lineChartType"
+                                            [plugins]="lineChartPlugins">
+                                        </canvas>
+                                    </div>
+
+                                    <div class="data-found"
+                                        *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
+                                        <div class="data-search">
+                                            <img src="assets/images/datasearch.png">
+                                            <h1>No Data Found</h1>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +155,7 @@
                             <div class="graph-activiy">
                                 <div class="graph-activy-list-box" id="activyscroll">
                                     <ul>
-                                        <li *ngFor="let activity of activityListArr;let i=index;">
+                                        <li *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;">
                                             <a>
                                                 <div class="activity-list">
                                                     <div class="activy-paid">
@@ -170,6 +186,12 @@
                                             </a>
                                         </li>
                                     </ul>
+                                    <div class="data-found" *ngIf="activityListArr.length == 0">
+                                        <div class="data-search">
+                                            <img src="assets/images/datasearch.png">
+                                            <h1>No Data Found</h1>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
