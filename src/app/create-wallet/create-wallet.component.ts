@@ -28,7 +28,7 @@ export class CreateWalletComponent implements OnInit {
     })
 
     this.createWalletForm = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
       password: ['', Validators.required],
       conformPassword: ['', Validators.required]
     });

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { UrlSegment, UrlSegmentGroup, Route } from '@angular/router';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,7 @@ import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-hi
 import { AdminUserDetailsComponent } from './admin-user-details/admin-user-details.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [{
   path: '',
@@ -79,7 +81,50 @@ const routes: Routes = [{
 }, {
   path: 'adminbuyandsell',
   component: AdminBuyAndSellComponent
+}, {
+  path: 'forgot-password',
+  component: ForgotPasswordComponent
+},{
+  matcher: ComplexUrlMatcher("id", /[0-9]+/),
+        component: ForgotPasswordComponent
 }];
+
+export function ComplexUrlMatcher(paramName: string, regex: RegExp) {
+  return (
+      segments: UrlSegment[],
+      segmentGroup: UrlSegmentGroup,
+      route: Route) => {
+
+      const parts = [regex];
+      const posParams: { [key: string]: UrlSegment } = {};
+      const consumed: UrlSegment[] = [];
+
+      let currentIndex = 0;
+
+      for (let i = 0; i < parts.length; ++i) {
+          if (currentIndex >= segments.length) {
+              return null;
+          }
+          const current = segments[currentIndex];
+
+          const part = parts[i];
+          if (!part.test(current.path)) {
+              return null;
+          }
+
+          posParams[paramName] = current;
+          consumed.push(current);
+          currentIndex++;
+      }
+
+      if (route.pathMatch === 'full' &&
+          (segmentGroup.hasChildren() || currentIndex < segments.length)) {
+          return null;
+      }
+
+      return { consumed, posParams };
+  }
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

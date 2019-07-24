@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   dayWeekMonth: string = "month";
   yAxisPaidData: any[] = [];
   yAxisReceivedData: any[] = [];
-  searchFilter:any;
+  searchFilter: any;
 
   // CHART CONFIGURATIONS STARTS HERE
   lineChartOptions: any = {
@@ -151,14 +151,14 @@ export class DashboardComponent implements OnInit {
     }
     if (this.selectedCurrencyType == "BTC") {
       jsonData = {
-        "userId": 34,
+        "userId": sessionStorage.getItem("userId"),
         "fetchAmountFlag": amountMode,
         "cryptoType": "BTCTEST",
         "flagfordates": this.dayWeekMonth
       }
     } else {
       jsonData = {
-        "userId": 34,
+        "userId": sessionStorage.getItem("userId"),
         "fetchAmountFlag": amountMode,
         "cryptoType": "ETH",
         "flagfordates": this.dayWeekMonth
@@ -198,14 +198,14 @@ export class DashboardComponent implements OnInit {
     }
     if (this.selectedCurrencyType == "BTC") {
       jsonData = {
-        "userId": 34,
+        "userId": sessionStorage.getItem("userId"),
         "fetchAmountFlag": amountMode,
         "cryptoType": "BTCTEST",
         "month": this.selectedMonth
       }
     } else {
       jsonData = {
-        "userId": 34,
+        "userId": sessionStorage.getItem("userId"),
         "fetchAmountFlag": amountMode,
         "cryptoType": "ETH",
         "month": this.selectedMonth
@@ -329,10 +329,6 @@ export class DashboardComponent implements OnInit {
             }]
           }
         };
-
-
-
-
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }

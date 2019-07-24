@@ -48,4 +48,8 @@ export class CommonDashboardService {
   postDashboardChartDetails(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/getgraphdata", data, this.header.getHttpHeader());
   }
+
+  postEnableOrDisable(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/twofactor/authentication", data, this.header.getHttpHeader());
+  }
 }

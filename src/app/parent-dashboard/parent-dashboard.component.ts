@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonDashboardService } from '../common-dashboard.service';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import Swal from 'sweetalert2';
+import * as M from 'src/assets/materialize/js/materialize';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
 
 @Component({

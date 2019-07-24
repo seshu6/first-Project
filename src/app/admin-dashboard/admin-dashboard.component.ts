@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -16,10 +16,18 @@ import { trigger, state, style, transition, animate, keyframes, group } from '@a
   ]
 })
 export class AdminDashboardComponent implements OnInit {
+  qrCodeClassShowOrHide: boolean = false;
+  qrCodeModalShowOrHide: boolean = false;
+
 
   constructor() { }
 
   ngOnInit() {
   }
+  requestCryptoCurrency() {
 
+  }
+  qrCodeModalOpenOrClose() {
+
+  }
 }

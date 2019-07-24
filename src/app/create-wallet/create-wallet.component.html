@@ -24,7 +24,8 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-btn loginlink" [routerLinkActive]="['active']" [routerLink]="['/createwallet']">Register</a>
+              <a class="nav-link nav-link-btn loginlink" [routerLinkActive]="['active']"
+                [routerLink]="['/createwallet']">Register</a>
             </li>
           </ul>
         </div>
@@ -44,8 +45,10 @@
               <label>Email</label>
               <div class="form-input-group">
                 <input type="text" formControlName="email">
-                <span class="validationError" *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
                   <span *ngIf="createWalletForm.get('email').errors.required">Email is required.</span>
+                  <span *ngIf="createWalletForm.get('email').errors.pattern">Email is not valid.</span>
                 </span>
               </div>
             </div>
@@ -53,12 +56,15 @@
               <label>Password</label>
               <div class="form-input-group">
                 <input type="password" formControlName="password" (ngModelChange)="checkPasswordStrength()">
-                <span class="validationError" *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('password').errors && createWalletForm.get('password').touched">
                   <span *ngIf="createWalletForm.get('password').errors.required">Password is required.</span>
                 </span>
               </div>
               <!-- <div class="strongpwd weakclr mediumclr strongclr"> -->
-                  <div class="strongpwd" [ngClass]="{'weakclr':weakPassword,'mediumclr':mediumPassword,'strongclr':strongPassword}" *ngIf="passwordMeterShowOrHide">
+              <div class="strongpwd"
+                [ngClass]="{'weakclr':weakPassword,'mediumclr':mediumPassword,'strongclr':strongPassword}"
+                *ngIf="passwordMeterShowOrHide">
                 <ul>
                   <li>Weak</li>
                   <li>Medium</li>
@@ -71,8 +77,10 @@
               <label>Confirm Password</label>
               <div class="form-input-group">
                 <input type="password" formControlName="conformPassword" (ngModelChange)="confirmPasswordChecker()">
-                <span class="validationError" *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
-                  <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is required.</span>
+                <span class="validationError"
+                  *ngIf="createWalletForm.get('conformPassword').errors && createWalletForm.get('conformPassword').touched">
+                  <span *ngIf="createWalletForm.get('conformPassword').errors.required">Confirm password is
+                    required.</span>
                 </span>
                 <span class="validationError" *ngIf="confirmPasswordShowOrHide">
                   password must be same.
@@ -306,7 +314,8 @@
         <img src="assets/images/emailinboxicon.png" />
         <h2>Check Your Inbox...</h2>
         <a href="javascript:void(0);">JohnDoe@gmail.com</a>
-        <p>search an email of BlueWallet And click the link of verification to complete the configuration of your Wallet.</p>
+        <p>search an email of BlueWallet And click the link of verification to complete the configuration of your
+          Wallet.</p>
       </div>
       <div class="goto-email">
         <button type="button" class="gotemailbtn" (click)="goToMailPage()">Go to Email</button>
@@ -315,4 +324,3 @@
     </div>
   </div>
 </div>
-

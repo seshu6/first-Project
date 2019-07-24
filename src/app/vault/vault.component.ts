@@ -6,7 +6,7 @@ import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as M from 'src/assets/materialize/js/materialize';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
 import { LoaderService } from '../loader.service';
 
 

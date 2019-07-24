@@ -37,6 +37,7 @@ import { AdminVaultHistoryComponent } from './admin-vault-history/admin-vault-hi
 import { LoaderComponent } from './loader/loader.component';
 import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -68,7 +69,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AdminExchangeComponent,
     AdminVaultHistoryComponent,
     LoaderComponent,
-    AdminBuyAndSellComponent
+    AdminBuyAndSellComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
