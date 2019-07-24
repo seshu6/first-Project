@@ -7652,3 +7652,27 @@ font-size: 14px !important;
 	padding:3px 18px;
 	border-radius:8px;
 }
+.blockelemtn{
+	width: 100%;
+	float: left;
+}
+.dashboardwal-carousel h1{
+	font-size: 12px;
+	color:#ffffff;
+	font-family: 'Exo 2';
+	margin:0px 0 18px 0;
+	text-align:center;
+}
+.dashboardwal-carousel .carousel{
+	height: 180px !important;
+}
+.dashboardwal-carousel .carousel .carousel-item1{
+	cursor: pointer;
+}
+.dashboardwal-carousel .carousel .carousel-item1 h1{
+	text-align: center;
+    margin: 10px 0 6px 0;
+    font-size: 21px;
+	font-weight: 600;
+	color:#ffffff;
+}

@@ -1,60 +1,31 @@
 <div class="bluewallet-profile-sidebar">
     <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-        <div class="select-wallet">
-            <h1>Select your Wallet</h1>
-            <ul class="walletlist-slider">
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 1</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 2</h2>
-                        <img src="assets/images/wallet1.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 3</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 4</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-
-            </ul>
+        <div class="profile-setting">
+            <div class="setting-image">
+                <img src="assets/images/profile.jpg" alt="image" />
+            </div>
         </div>
-        <div class="select-your-cryptocurrency">
-            <h1>Select your cryptocurrency</h1>
-            <ul>
-                <li>
-                    <a class="" href="javascript:void(0);">
-                        <h1>Monero</h1>
-                        <!-- <img src="images/monero.png" /> -->
-                        <span class="smallcrpt small-img-big"></span>
+        <div class="wallet-eth-list">
+            <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
+                <h1>Select Your cryptocurrency</h1>
+                <div class="carousel">
+                    <a class="carousel-item1">
+                        <h1>BitCoin</h1>
+                        <img src="assets/images/bitcoinswipe.png" />
                     </a>
-                </li>
-                <li>
-                    <a class="active" href="javascript:void(0);">
+                    <a class="carousel-item1">
                         <h1>Ethereum</h1>
-                        <!-- <img src="images/etherium.png" /> -->
-                        <span class="smallcrpt small-img-big1"></span>
+                        <img src="assets/images/etheriumswipe.png" />
                     </a>
-                </li>
-                <li>
-                    <a class="" href="javascript:void(0);">
-                        <h1>Bitcoin</h1>
-                        <!-- <img src="images/bitcoin.png" /> -->
-                        <span class="smallcrpt small-img-big2"></span>
+                    <a class="carousel-item1">
+                        <h1>Monero</h1>
+                        <img src="assets/images/moneroswipe.png" />
                     </a>
-                </li>
-            </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="select-your-cryptocurrency blockelemtn">
             <div class="crypto-currency-wallet">
                 <h1>Balance</h1>
                 <div class="etherum-blance">
@@ -88,25 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="wallet-eth-list">
-            <div class="select-crytocurrency-list">
-                <div class="carousel">
-                    <a class="carousel-item1">
-                        <h1>BitCoin</h1>
-                        <img src="assets/images/bitcoinswipe.png" />
-                    </a>
-                    <a class="carousel-item1">
-                        <h1>Ethereum</h1>
-                        <img src="assets/images/etheriumswipe.png" />
-                    </a>
-                    <a class="carousel-item1">
-                        <h1>Monero</h1>
-                        <img src="assets/images/moneroswipe.png" />
-                    </a>
 
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <router-outlet></router-outlet>
