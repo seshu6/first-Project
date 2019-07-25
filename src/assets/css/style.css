@@ -7676,3 +7676,121 @@ font-size: 14px !important;
 	font-weight: 600;
 	color:#ffffff;
 }
+.profile-page-div{
+	width: 100%;
+	position: relative;
+	padding: 20px;
+}
+.profile-view{
+	border:1px solid #dddddd;
+	width:900px;
+	margin:auto;
+}
+.avatar-upload {
+    position: relative;
+    display: inline-block;
+	margin: 50px auto -50px;
+	z-index: 1;
+}
+.avatar-upload .avatar-edit {
+    position: absolute;
+    right: -12px;
+    z-index: 1;
+    bottom: 0px;
+}
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+.avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 0;
+    border-radius: 100%;
+	background: -moz-linear-gradient(45deg, rgba(77,170,255,1) 0%, rgba(85,132,255,1) 27%, rgba(115,0,255,1) 100%);
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(77,170,255,1)), color-stop(27%, rgba(85,132,255,1)), color-stop(100%, rgba(115,0,255,1))); 
+	background: -webkit-linear-gradient(45deg, rgba(77,170,255,1) 0%, rgba(85,132,255,1) 27%, rgba(115,0,255,1) 100%); 
+	background: -o-linear-gradient(45deg, rgba(77,170,255,1) 0%, rgba(85,132,255,1) 27%, rgba(115,0,255,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(77,170,255,1) 0%, rgba(85,132,255,1) 27%, rgba(115,0,255,1) 100%);
+	background: linear-gradient(45deg, rgba(77,170,255,1) 0%, rgba(85,132,255,1) 27%, rgba(115,0,255,1) 100%);
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+	transition: all 0.2s ease-in-out;
+	text-align: center;
+	color:#ffffff;
+}
+.avatar-preview {
+    position: relative;
+}
+.avatar-preview img {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    border: 4px solid #ffffff;
+    object-fit: cover;
+}
+.profile-upload-div{
+	text-align: center;
+	background: -moz-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(0,255,255,1)), color-stop(27%, rgba(0,207,255,1)), color-stop(48%, rgba(0,151,255,1)), color-stop(58%, rgba(12,123,240,1)), color-stop(81%, rgba(45,53,202,1)), color-stop(94%, rgba(62,18,183,1)), color-stop(100%, rgba(62,18,183,1))); /* safari4+,chrome */
+	background: -webkit-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* ie10+ */
+	background: linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%);
+}
+.profile-form{
+	width: 100%;
+	position: relative;
+	padding:62px 35px 17px;
+	background: #ffffff;
+}
+
+.inputeffect{
+	width: 100%;
+	position:relative;
+}
+.inputeffect label{
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.inputeffect input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d4d4d4;
+    background: transparent;
+	padding: 2px 0px;
+	height:36px;
+	font-size:15px;
+	transition:0.3s all ease;
+	-webkit-transition:0.3s all ease;
+	-moz-transition:0.3s all ease;
+}
+
+.inputeffect input:focus{
+	outline:none;
+	border-bottom: 1px solid #253058;
+}
+.selecgroup select{
+	width: 100%;
+	height:36px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #d4d4d4;
+    background: transparent;
+	padding: 2px 0px;
+	font-size:15px;
+}
+.inputeffect .create-walbtn{
+    margin-top: 20px;
+    margin-right: 6px;
+    margin-left: 6px;
+    width: 115px;
+    text-align: center;
+    padding: 4px 0;
+}
