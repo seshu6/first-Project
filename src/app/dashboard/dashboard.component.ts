@@ -118,6 +118,10 @@ export class DashboardComponent implements OnInit {
 
     })
 
+    this.dashboardService.sliderObservable$.subscribe((crypto) => {
+      console.log(crypto);
+    })
+
 
     this.getActivityList();
     // this.getDashboardChartDetails();
@@ -339,6 +343,11 @@ export class DashboardComponent implements OnInit {
         this.route.navigate(['login']);
       }
     })
+  }
+
+  // SLIDER FROM SIDEBAR
+  callFromSideBarSlider() {
+
   }
 }
 

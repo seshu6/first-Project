@@ -96,8 +96,33 @@ export class LoginComponent implements OnInit {
     if (!Boolean(this.forgotPasswordEmail)) {
       Swal.fire("Info", "Please provide e-mail to proceed", "info");
     } else {
+      this.spinner.showOrHide(true);
+      let jsonData = {
+        "email": this.forgotPasswordEmail
+      }
+      this.loginService.postForgotPassword(jsonData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          Swal.fire("Success", success['message'], "success");
+          this.forgotPasswordEmail = "";
+          this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+          this.loginOrForgot = "Login";
+          // this.route.navigate(['link/notactivation'])
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
 
+      }, error => {
+        this.spinner.showOrHide(false);
+      })
     }
   }
+
+  showForgotPassword() {
+    this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+    this.loginOrForgot = 'Login';
+    this.forgotPasswordEmail = "";
+  }
+
 
 }

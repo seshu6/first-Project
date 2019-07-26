@@ -10,6 +10,8 @@ import { Subject } from 'rxjs';
 export class CommonDashboardService {
   _communicationSubject = new Subject<any>();
   communicationObservable$ = this._communicationSubject.asObservable();
+  _sliderSubject = new Subject<any>();
+  sliderObservable$ = this._sliderSubject.asObservable();
 
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
@@ -28,6 +30,10 @@ export class CommonDashboardService {
   fromParentDashboardToDashboard() {
     this._communicationSubject.next();
   }
+  sliderFromParentDashboardToDashboard(crypto:string) {
+    this._sliderSubject.next(crypto);
+  }
+
 
   getCountryList() {
     return this.http.get(this.url.apiUrl + "bluewallet/countryData", this.header.getHttpHeader());

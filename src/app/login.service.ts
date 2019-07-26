@@ -25,4 +25,8 @@ export class LoginService {
     return this.userRole;
   }
 
+  postForgotPassword(data: any) {
+    return this.http.post(this.url.apiUrl + "useractivities/forgot/password", data, this.header.getHttpHeaderWithoutAccess());
+  }
+
 }

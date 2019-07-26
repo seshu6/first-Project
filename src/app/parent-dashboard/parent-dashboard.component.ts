@@ -5,7 +5,7 @@ import { CommonDashboardService } from '../common-dashboard.service';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import Swal from 'sweetalert2';
 import * as M from 'src/assets/materialize/js/materialize';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 @Component({
   selector: 'app-parent-dashboard',
@@ -31,6 +31,8 @@ export class ParentDashboardComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
+
+    this.onSelectSliderCryptoCurrency('BTC');
   }
 
   qrCodeModalOpenOrClose() {
@@ -52,6 +54,10 @@ export class ParentDashboardComponent implements OnInit {
     }, error => {
       this.spinner.hide();
     })
+  }
+
+  onSelectSliderCryptoCurrency(crypto: string) {
+    this.dashboardService.sliderFromParentDashboardToDashboard(crypto);
   }
 
 }

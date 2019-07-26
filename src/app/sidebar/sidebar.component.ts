@@ -47,4 +47,9 @@ export class SidebarComponent implements OnInit {
       this.route.navigate(['buyandsell']);
     }
   }
+
+  logOut() {
+    sessionStorage.clear();
+    this.route.navigate(['']);
+  }
 }

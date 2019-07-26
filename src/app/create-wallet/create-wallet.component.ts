@@ -4,7 +4,7 @@ import { CreateWalletService } from '../create-wallet.service';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-create-wallet',
@@ -18,7 +18,8 @@ export class CreateWalletComponent implements OnInit {
   strongPassword: boolean = false;
   passwordMeterShowOrHide: boolean = false;
   confirmPasswordShowOrHide: boolean = false;
-  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService, private createWalletService: CreateWalletService, private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router) { }
+  successMailShowOrHide: boolean = false;
+  constructor(private fb: FormBuilder, private createWalletService: CreateWalletService, private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService) { }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
@@ -42,19 +43,20 @@ export class CreateWalletComponent implements OnInit {
     if (this.createWalletForm.invalid) {
       Swal.fire("Error", "Please check details", "error");
     } else {
-      this.spinner.show();
+      this.spinner.showOrHide(true);
       this.createWalletService.postCreateWallet(this.createWalletForm.value).subscribe(success => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
         if (success['status'] == "success") {
-          Swal.fire("Success", success['message'], "success");
+          // Swal.fire("Success", success['message'], "success");
           this.createWalletForm.reset();
-          this.route.navigate(['dashboard']);
+          // this.route.navigate(['dashboard']);
+          this.successMailShowOrHide = true;
         } else if (success['status'] == "failure") {
           Swal.fire("Failure", success['message'], "error");
         }
 
       }, error => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
       })
     }
   }
@@ -99,8 +101,13 @@ export class CreateWalletComponent implements OnInit {
   }
 
 
-  goToMailPage(){
+  goToMailPage() {
+    this.route.navigate(['login']);
     window.open("https://gmail.com");
+
+  }
+  goToLoginPage() {
+    this.route.navigate(['login']);
   }
 
 }
