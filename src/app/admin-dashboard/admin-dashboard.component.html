@@ -1,158 +1,102 @@
 <div class="bluewallet-dashboard-fullwrap">
-  <!-- Dashboard Header -->
+    <!-- Dashboard Header -->
 
-  <!-- Bluewallet-second-sidebar -->
-  <div class="bluewallet-profile-sidebar">
-    <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-        <div class="select-wallet">
-            <h1>Select your Wallet</h1>
-            <ul class="walletlist-slider">
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 1</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 2</h2>
-                        <img src="assets/images/wallet1.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 3</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <h2>Wallet 4</h2>
-                        <img src="assets/images/wallet.jpg" />
-                    </a>
-                </li>
-  
-            </ul>
-        </div>
-        <div class="select-your-cryptocurrency">
-            <h1>Select your cryptocurrency</h1>
-            <ul>
-                <li>
-                    <a class="" href="javascript:void(0);">
-                        <h1>Monero</h1>
-                        <!-- <img src="images/monero.png" /> -->
-                        <span class="smallcrpt small-img-big"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="javascript:void(0);">
-                        <h1>Ethereum</h1>
-                        <!-- <img src="images/etherium.png" /> -->
-                        <span class="smallcrpt small-img-big1"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="javascript:void(0);">
-                        <h1>Bitcoin</h1>
-                        <!-- <img src="images/bitcoin.png" /> -->
-                        <span class="smallcrpt small-img-big2"></span>
-                    </a>
-                </li>
-            </ul>
-            <div class="crypto-currency-wallet">
-                <h1>Balance</h1>
-                <div class="etherum-blance">
-                    <h2>2.806600</h2>
-                    <div class="etherum-usdolar">
-                        <p>880.660</p>
-                        <div class="bal-exchange-dollar">
-                            <select>
-                                <option value="usdollar">USDollar</option>
-                                <option value="usdollar1">USDollar</option>
-                                <option value="usdollar2">USDollar</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="refresh-btn">
-                    <a href="javascript:void(0);">
-                        <img src="assets/images/refresh.png" />
-                    </a>
-                </div>
-                <div class="send-receive-bttngrup">
-                    <button type="button" class="sendbtn">Send
-                        <img src="assets/images/sendicon.png" />
-                    </button>
-                    <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
-                        <img src="assets/images/receiveicon.png" />
-                    </button>
-                </div>
-                <div class="info">
-                    <a href="javascript:void(0);" class="infobtn">Information</a>
+    <!-- Bluewallet-second-sidebar -->
+    <div class="bluewallet-profile-sidebar">
+        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+            <div class="profile-setting">
+                <div class="setting-image">
+                    <img src="assets/images/profile.jpg" alt="image" />
                 </div>
             </div>
-        </div>
-        <div class="wallet-eth-list">
-            <ul>
-                <li>
-                    <a href="javascript:void(0);">
-                        <span class="wal-eth">ETH
-                            <img src="assets/images/downarrowred.png" />
-                        </span>
-                        <span class="wal-amt">435 $</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <span class="wal-eth">BTC
-                            <img src="assets/images/uparrowgreen.png" />
-                        </span>
-                        <span class="wal-amt">20.000 $</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <span class="wal-eth">XRP
-                            <img src="assets/images/uparrowgreen.png" />
-                        </span>
-                        <span class="wal-amt">200 $</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="wallet-eth-list">
+                <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
+                    <h1>Select Your cryptocurrency</h1>
+                    <div class="carousel">
+                        <a class="carousel-item1" (click)="onSelectSliderCryptoCurrency('BTC')">
+                            <h1>BitCoin</h1>
+                            <img src="assets/images/bitcoinswipe.png" />
+                        </a>
+                        <a class="carousel-item1" (click)="onSelectSliderCryptoCurrency('ETH')">
+                            <h1>Ethereum</h1>
+                            <img src="assets/images/etheriumswipe.png" />
+                        </a>
+                        <a class="carousel-item1">
+                            <h1>Monero</h1>
+                            <img src="assets/images/moneroswipe.png" />
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="select-your-cryptocurrency blockelemtn">
+                <div class="crypto-currency-wallet">
+                    <h1>Balance</h1>
+                    <div class="etherum-blance">
+                        <h2>2.806600</h2>
+                        <div class="etherum-usdolar">
+                            <p>880.660</p>
+                            <div class="bal-exchange-dollar">
+                                <select>
+                                    <option value="usdollar">USDollar</option>
+                                    <option value="usdollar1">USDollar</option>
+                                    <option value="usdollar2">USDollar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="refresh-btn">
+                        <a href="javascript:void(0);">
+                            <img src="assets/images/refresh.png" />
+                        </a>
+                    </div>
+                    <div class="send-receive-bttngrup">
+                        <button type="button" class="sendbtn">Send
+                            <img src="assets/images/sendicon.png" />
+                        </button>
+                        <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
+                            <img src="assets/images/receiveicon.png" />
+                        </button>
+                    </div>
+                    <div class="info">
+                        <a href="javascript:void(0);" class="infobtn">Information</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-  </div>
-  <!-- Bluewallet Body -->
-  <div class="bluewallet-body-wrap">
-      <div class="blue-body-div">
-          <div class="wallet-dailyupdate">
-              <ul>
-                  <li>
-                      <h4>Balance</h4>
-                      <div class="blue-value">
-                          <p>2.806600</p>
-                          <button type="button" class="bluedaily-btn">
-                              <i class="fa fa-angle-up" aria-hidden="true"></i>15%</button>
-                      </div>
-                      <div class="blue-value-dollar">
-                          <h4>880.660</h4>
-                          <p>USDollar</p>
-                      </div>
-                  </li>
+    <!-- Bluewallet Body -->
+    <div class="bluewallet-body-wrap">
+        <div class="blue-body-div">
+            <div class="wallet-dailyupdate">
+                <ul>
+                    <li>
+                        <h4>Balance</h4>
+                        <div class="blue-value">
+                            <p>2.806600</p>
+                            <button type="button" class="bluedaily-btn">
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>15%</button>
+                        </div>
+                        <div class="blue-value-dollar">
+                            <h4>880.660</h4>
+                            <p>USDollar</p>
+                        </div>
+                    </li>
 
-                  <li>
-                      <h4 class="todaytit">Today</h4>
-                      <p class="todayvalue">+ 0.02</p>
-                  </li>
-                  <li>
-                      <h4 class="todaytit">Week</h4>
-                      <p class="todayvalue">+ 0.999</p>
-                  </li>
-                  <li>
-                      <h4 class="todaytit">Month</h4>
-                      <p class="todayvalue">+ 1.908</p>
-                  </li>
-                  <!-- <li>
+                    <li>
+                        <h4 class="todaytit">Today</h4>
+                        <p class="todayvalue">+ 0.02</p>
+                    </li>
+                    <li>
+                        <h4 class="todaytit">Week</h4>
+                        <p class="todayvalue">+ 0.999</p>
+                    </li>
+                    <li>
+                        <h4 class="todaytit">Month</h4>
+                        <p class="todayvalue">+ 1.908</p>
+                    </li>
+                    <!-- <li>
                       <div class="complete-profile">
                           <div class="profile-comp">
                               <div class="profile-content">
@@ -166,10 +110,10 @@
                           </div>
                       </div>
                   </li> -->
-              </ul>
-          </div>
-          <!-- KYC -->
-          <!-- <div class="more-info-full">
+                </ul>
+            </div>
+            <!-- KYC -->
+            <!-- <div class="more-info-full">
               <button type="button" class="closeicon">×</button>
               <div class="more-info-lft">
                   <h1>More Info Needed</h1>
@@ -182,299 +126,299 @@
                   <img src="assets/images/moreinfoicon.png" />
               </div>
           </div> -->
-          <div class="bluewallet-search-daily">
-              <div class="search-dailymonth">
-                  <input type="text" placeholder="Search">
-                  <ul class="search-mandory-list">
-                      <li class="monthlist">
-                          <a class="dropdown-toggle1" href="javascript:void(0);">Month
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                          </a>
-                          <ul class="dropdown-list-search" style="display: none;">
-                              <li>
-                                  <a href="javascript:void(0);">January</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">February</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">March</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">April</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">May</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">June</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">July</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">August</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">September</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">October</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">November</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">December</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript:void(0);">Received
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                          </a>
-                      </li>
-                      <li class="ethbtclist">
-                          <a class="dropdown-toggle2" href="javascript:void(0);">ETH
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                          </a>
-                          <ul class="dropdown-list-search2" style="display: none;">
-                              <li>
-                                  <a href="javascript:void(0);">ETH</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">BTC</a>
-                              </li>
-                              <li>
-                                  <a href="javascript:void(0);">XRP</a>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-          <div class="graph-activity-wrap">
-              <div class="graph-activy-list">
-                  <div class="row">
-                      <div class="col-lg-6 col-md-12 col-12">
-                          <div class="graph-history-title">
-                              <h1>Graph History</h1>
-                              <div class="graph-history">
-                                  <div id="chart_div" style="width: 100%; height: 100%;"></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-12 col-12">
-                          <div class="graph-history-title graph-head-story">
-                              <h1>Activity</h1>
-                              <div class="select-day">
-                                  <select>
-                                      <option value="today">Today</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="graph-activiy">
-                              <div class="graph-activy-list-box" id="activyscroll">
-                                  <ul>
-                                      <li>
-                                          <a href="javascript:void(0);">
-                                              <div class="activity-list">
-                                                  <div class="activy-paid">
-                                                      <div class="activy-icon">
-                                                          <img src="assets/images/paid.png" />
-                                                      </div>
-                                                      <div class="activy-paid-text">
-                                                          <h1>Paid</h1>
-                                                      </div>
-                                                  </div>
-                                                  <div class="activiy-count">
-                                                      <span>-60,5.00</span>
-                                                      <p>Feb 23, 2019</p>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li class="active">
-                                          <a href="javascript:void(0);">
-                                              <div class="activity-list">
-                                                  <div class="activy-paid">
-                                                      <div class="activy-icon">
-                                                          <img src="assets/images/income.png" />
-                                                      </div>
-                                                      <div class="activy-paid-text">
-                                                          <h1>Received</h1>
-                                                          <p>Receipt #: 5eYH5677EH2wha7</p>
-                                                      </div>
-                                                  </div>
-                                                  <div class="activiy-count">
-                                                      <span>-60,5.00</span>
-                                                      <p>Feb 22, 2019</p>
-                                                      <span class="time">11:05</span>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="javascript:void(0);">
-                                              <div class="activity-list">
-                                                  <div class="activy-paid">
-                                                      <div class="activy-icon">
-                                                          <img src="assets/images/paid.png" />
-                                                      </div>
-                                                      <div class="activy-paid-text">
-                                                          <h1>Paid</h1>
-                                                      </div>
-                                                  </div>
-                                                  <div class="activiy-count">
-                                                      <span>-60,5.00</span>
-                                                      <p>Feb 23, 2019</p>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                      </li>
-                                      <li>
-                                          <a href="javascript:void(0);">
-                                              <div class="activity-list">
-                                                  <div class="activy-paid">
-                                                      <div class="activy-icon">
-                                                          <img src="assets/images/paid.png" />
-                                                      </div>
-                                                      <div class="activy-paid-text">
-                                                          <h1>Paid</h1>
-                                                      </div>
-                                                  </div>
-                                                  <div class="activiy-count">
-                                                      <span>-60,5.00</span>
-                                                      <p>Feb 23, 2019</p>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="moneitation-wrap">
-              <div class="moneitation-qr-code">
-                  <div class="qr-code-head">
-                      <div class="qr-request" [ngClass]="{'qr-bgshow':qrCodeClassShowOrHide}">
-                          <div class="request-lft">
-                              <div class="qr-code-view">
-                                  <img src="assets/images/qr-code.png" />
-                              </div>
-                              <div class="moneit-input-group">
-                                  <div class="inputtype-moneit">
-                                      <input type="text" placeholder="COP">
-                                      <span>Min. 0.0124</span>
-                                  </div>
-                                  <div class="inputtype-moneit">
-                                      <input type="text" placeholder="ETH">
-                                      <span>Min. 0.0124</span>
-                                  </div>
-                              </div>
-                              <div class="qr-rezt-btn">
-                                  <button type="button" class="qr-request-btn" (click)="requestCryptoCurrency()">Request
-                                      <img src="assets/images/receiveicon.png">
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="qr-send">
-                          <div class="send-right">
-                              <div class="qr-rezt-btn">
-                                  <button type="button" class="qr-request-btn">Send
-                                      <img src="assets/images/sendicon.png">
-                                  </button>
-                              </div>
-                              <div class="send-cop-inputgroup">
-                                  <form>
-                                      <div class="row">
-                                          <div class="col-lg-6 col-md-6 col-12">
-                                              <div class="form-group pos-relative">
-                                                  <input type="text" placeholder="COP">
-                                                  <span>Min. 0.0124</span>
-                                              </div>
-                                          </div>
-                                          <div class="col-lg-6 col-md-6 col-12">
-                                              <div class="form-group pos-relative">
-                                                  <input type="text" placeholder="COP">
-                                                  <span>Min. 0.0124</span>
-                                              </div>
-                                          </div>
-                                          <div class="col-lg-12 col-md-12 col-12">
-                                              <div class="form-group pos-relative lastformgroup">
-                                                  <input type="text" placeholder="Write here your wallet code">
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="moenit-code-verify">
-                      <p>Remember verify the amount to transfer.</p>
-                      <p>Once the transfer its done , there’s not possibility of return.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+            <div class="bluewallet-search-daily">
+                <div class="search-dailymonth">
+                    <input type="text" placeholder="Search">
+                    <ul class="search-mandory-list">
+                        <li class="monthlist">
+                            <a class="dropdown-toggle1" href="javascript:void(0);">Month
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-list-search" style="display: none;">
+                                <li>
+                                    <a href="javascript:void(0);">January</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">February</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">March</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">April</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">May</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">June</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">July</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">August</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">September</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">October</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">November</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">December</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">Received
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="ethbtclist">
+                            <a class="dropdown-toggle2" href="javascript:void(0);">ETH
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-list-search2" style="display: none;">
+                                <li>
+                                    <a href="javascript:void(0);">ETH</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">BTC</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">XRP</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="graph-activity-wrap">
+                <div class="graph-activy-list">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="graph-history-title">
+                                <h1>Graph History</h1>
+                                <div class="graph-history">
+                                    <div id="chart_div" style="width: 100%; height: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="graph-history-title graph-head-story">
+                                <h1>Activity</h1>
+                                <div class="select-day">
+                                    <select>
+                                        <option value="today">Today</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="graph-activiy">
+                                <div class="graph-activy-list-box" id="activyscroll">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <div class="activity-list">
+                                                    <div class="activy-paid">
+                                                        <div class="activy-icon">
+                                                            <img src="assets/images/paid.png" />
+                                                        </div>
+                                                        <div class="activy-paid-text">
+                                                            <h1>Paid</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="activiy-count">
+                                                        <span>-60,5.00</span>
+                                                        <p>Feb 23, 2019</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="javascript:void(0);">
+                                                <div class="activity-list">
+                                                    <div class="activy-paid">
+                                                        <div class="activy-icon">
+                                                            <img src="assets/images/income.png" />
+                                                        </div>
+                                                        <div class="activy-paid-text">
+                                                            <h1>Received</h1>
+                                                            <p>Receipt #: 5eYH5677EH2wha7</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="activiy-count">
+                                                        <span>-60,5.00</span>
+                                                        <p>Feb 22, 2019</p>
+                                                        <span class="time">11:05</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <div class="activity-list">
+                                                    <div class="activy-paid">
+                                                        <div class="activy-icon">
+                                                            <img src="assets/images/paid.png" />
+                                                        </div>
+                                                        <div class="activy-paid-text">
+                                                            <h1>Paid</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="activiy-count">
+                                                        <span>-60,5.00</span>
+                                                        <p>Feb 23, 2019</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <div class="activity-list">
+                                                    <div class="activy-paid">
+                                                        <div class="activy-icon">
+                                                            <img src="assets/images/paid.png" />
+                                                        </div>
+                                                        <div class="activy-paid-text">
+                                                            <h1>Paid</h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="activiy-count">
+                                                        <span>-60,5.00</span>
+                                                        <p>Feb 23, 2019</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="moneitation-wrap">
+                <div class="moneitation-qr-code">
+                    <div class="qr-code-head">
+                        <div class="qr-request" [ngClass]="{'qr-bgshow':qrCodeClassShowOrHide}">
+                            <div class="request-lft">
+                                <div class="qr-code-view">
+                                    <img src="assets/images/qr-code.png" />
+                                </div>
+                                <div class="moneit-input-group">
+                                    <div class="inputtype-moneit">
+                                        <input type="text" placeholder="COP">
+                                        <span>Min. 0.0124</span>
+                                    </div>
+                                    <div class="inputtype-moneit">
+                                        <input type="text" placeholder="ETH">
+                                        <span>Min. 0.0124</span>
+                                    </div>
+                                </div>
+                                <div class="qr-rezt-btn">
+                                    <button type="button" class="qr-request-btn" (click)="requestCryptoCurrency()">Request
+                                        <img src="assets/images/receiveicon.png">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qr-send">
+                            <div class="send-right">
+                                <div class="qr-rezt-btn">
+                                    <button type="button" class="qr-request-btn">Send
+                                        <img src="assets/images/sendicon.png">
+                                    </button>
+                                </div>
+                                <div class="send-cop-inputgroup">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group pos-relative">
+                                                    <input type="text" placeholder="COP">
+                                                    <span>Min. 0.0124</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group pos-relative">
+                                                    <input type="text" placeholder="COP">
+                                                    <span>Min. 0.0124</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-12">
+                                                <div class="form-group pos-relative lastformgroup">
+                                                    <input type="text" placeholder="Write here your wallet code">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="moenit-code-verify">
+                        <p>Remember verify the amount to transfer.</p>
+                        <p>Once the transfer its done , there’s not possibility of return.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Successfull Message -->
 <div class="congratulation-popup" style="display: none;">
-  <div class="message-modal">
-      <div class="modal-centered">
-          <div class="successful-message">
-              <div class="message-view">
-                  <img src="assets/images/tick.png" />
-                  <div class="mess-content">
-                      <p>Congratulations your sent has been processed successfully</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="message-modal">
+        <div class="modal-centered">
+            <div class="successful-message">
+                <div class="message-view">
+                    <img src="assets/images/tick.png" />
+                    <div class="mess-content">
+                        <p>Congratulations your sent has been processed successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Successfull Message -->
 <div class="congratulation-popup" style="display: none;">
-  <div class="message-modal">
-      <div class="modal-centered">
-          <div class="successful-message">
-              <div class="message-view blueways-amount">
-                  <img src="assets/images/tick.png" />
-                  <div class="mess-content">
-                      <p>Blueways informs that has entered an amount of</p>
-                      <h6>0,0145 ETH</h6>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="message-modal">
+        <div class="modal-centered">
+            <div class="successful-message">
+                <div class="message-view blueways-amount">
+                    <img src="assets/images/tick.png" />
+                    <div class="mess-content">
+                        <p>Blueways informs that has entered an amount of</p>
+                        <h6>0,0145 ETH</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <!-- QR CODE MODAL -->
 <div class="qr-code-scanning" *ngIf="qrCodeModalShowOrHide">
-  <div class="qr-code-div">
-      <div class="qrcode-center">
-          <div class="code-qr-scan">
-              <div class="qr-scan-amount">
-                  <h1>Amount</h1>
-                  <p>0.00173466</p>
-              </div>
-              <div class="amout-qrcode-scan">
-                  <img src="assets/images/scancode.png" />
-              </div>
-              <div class="qrcode-foot">
-                  <button type="button" class="copyallbtn">Copy All</button>
-                  <input type="text" placeholder="3DKsjshGSKJsgkgSs54SFu5sdS76F...">
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="qr-code-div">
+        <div class="qrcode-center">
+            <div class="code-qr-scan">
+                <div class="qr-scan-amount">
+                    <h1>Amount</h1>
+                    <p>0.00173466</p>
+                </div>
+                <div class="amout-qrcode-scan">
+                    <img src="assets/images/scancode.png" />
+                </div>
+                <div class="qrcode-foot">
+                    <button type="button" class="copyallbtn">Copy All</button>
+                    <input type="text" placeholder="3DKsjshGSKJsgkgSs54SFu5sdS76F...">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
