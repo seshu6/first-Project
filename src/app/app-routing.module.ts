@@ -22,6 +22,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sell.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ActivationLinkComponent } from './activation-link/activation-link.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,6 +31,10 @@ const routes: Routes = [{
   path: 'login',
   component: LoginComponent
 }, {
+  path: 'profile',
+  component: ProfileComponent
+},
+{
   path: 'dashboard',
   component: ParentDashboardComponent,
   children: [{

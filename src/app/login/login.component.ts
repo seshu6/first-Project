@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
 import { HttpParams } from "@angular/common/http";
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -74,7 +74,8 @@ export class LoginComponent implements OnInit {
         if (success['loginInfo'].roleId == 1) {
           sessionStorage.setItem("roleName", "admin");
           // this.loginService.setUserRole("admin");
-          this.route.navigate(['admin-dashboard']);
+          // this.route.navigate(['admin-dashboard']);
+          this.route.navigate(['dashboard']);
         } else if (success['loginInfo'].roleId == 0) {
           sessionStorage.setItem("roleName", "user");
           // this.loginService.setUserRole("user");

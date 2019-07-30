@@ -33,6 +33,7 @@ $(document).ready(function () {
     //     event.stopPropagation();
     // });
     $('.carousel').carousel();
+    
 
     // $(".search-mandory-list li.ethbtclist").on("click", function (event) {
     //     $(".dropdown-toggle2").toggleClass('searchtoggleactive');

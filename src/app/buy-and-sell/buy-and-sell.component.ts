@@ -73,7 +73,7 @@ export class BuyAndSellComponent implements OnInit {
     })
     this.changeBtcToEthAndViceVersa();
     this.getRequestedEthOrBtc();
-    this.adminExchangeTabData();
+    // this.adminExchangeTabData();
     // this.getUserTabListData();
   }
 
@@ -179,25 +179,25 @@ export class BuyAndSellComponent implements OnInit {
     } else {
       this.spinner.showOrHide(true);
       let jsonData = {};
-      if (this.lhsBtcShowOrHide && this.platformOrUserTab) {
+      if (this.lhsBtcShowOrHide && this.whenPlatformIsSelected) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "BTC_ETH_ADMIN",
           "amountToTrade": this.calculatedBtcOrEth
         }
-      } else if ((!this.lhsBtcShowOrHide) && (this.platformOrUserTab)) {
+      } else if ((!this.lhsBtcShowOrHide) && (this.whenPlatformIsSelected)) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "ETH_BTC_ADMIN",
           "amountToTrade": this.calculatedBtcOrEth
         }
-      } else if ((this.lhsBtcShowOrHide) && (!this.platformOrUserTab)) {
+      } else if ((this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "BTC_ETH_USER",
           "amountToTrade": this.calculatedBtcOrEth
         }
-      } else if ((!this.lhsBtcShowOrHide) && (!this.platformOrUserTab)) {
+      } else if ((!this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
         jsonData = {
           "userId": sessionStorage.getItem("userId"),
           "exchangeMode": "ETH_BTC_USER",
@@ -252,6 +252,7 @@ export class BuyAndSellComponent implements OnInit {
   }
 
   exchangeTabSelected() {
+
     if (this.whenPlatformIsSelected) {
       this.whenPlatformIsSelected = true;
       this.whenPlatformExchangeIsSelected = true;
@@ -267,7 +268,7 @@ export class BuyAndSellComponent implements OnInit {
       this.platformExchangeShowOrHide = true;
       this.platformHistoryShowOrHide = true;
     }
-
+    this.adminExchangeTabData();
   }
 
   historyTabSlected() {
@@ -453,12 +454,12 @@ export class BuyAndSellComponent implements OnInit {
   // USER TAB LIST API
 
   // getUserTabListData() {
-    // this.spinner.showOrHide(true);
+  // this.spinner.showOrHide(true);
   //   let jsonData = {
   //     "userId": sessionStorage.getItem("userId")
   //   }
   //   this.buyAndSellService.postUserTabList(jsonData).subscribe(success => {
-    // this.spinner.showOrHide(false);
+  // this.spinner.showOrHide(false);
   //     if (success['status'] == "success") {
   //       console.log("***************************user tab details", success);
   //       this.userTabListArr = success['fetchExchageRequestDTO'].exchangeDTOList;
@@ -466,7 +467,7 @@ export class BuyAndSellComponent implements OnInit {
   //       Swal.fire("Error", success['message'], "error");
   //     }
   //   }, error => {
-    // this.spinner.showOrHide(false);
+  // this.spinner.showOrHide(false);
   //     if (error.error.error == "invalid_token") {
   //       Swal.fire("Info", "Session Expired", "info");
   //       this.route.navigate(['login']);
@@ -486,20 +487,21 @@ export class BuyAndSellComponent implements OnInit {
       }
     } else {
       jsonData = {
-        "usd": sessionStorage.getItem("userId"),
+        "userId": sessionStorage.getItem("userId"),
         "cryptoType": "eth"
       }
     }
     this.buyAndSellService.postAdminExchangeTabDetails(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        this.exchangeCryptoType = success['cryptoType'];
-        this.btcOrEthPrice = (this.exchangeCryptoType == 'btc') ? success['btcAmount'] : success['ethAmount'];
-        this.btcOrEthPriceDollar = success['usdforBtc'];
-        this.minCommercialLimits = success['mincomercialValue'];
-        this.maxCommercialLimits = success['maxcomercialValue'];
-        this.send = success['paidAmount'];
-        this.receive = success['receivedAmount'];
+        this.exchangeCryptoType = success['CalculatingAmountDTO']['cryptoType'];
+        this.btcOrEthPrice = (this.exchangeCryptoType == 'btc') ? success['CalculatingAmountDTO']['btcAmount'] : success['CalculatingAmountDTO']['etherAmount'];
+        this.btcOrEthPriceDollar = (this.exchangeCryptoType == 'btc') ? success['CalculatingAmountDTO']['usdforBtc'] : success['CalculatingAmountDTO']['usdforEther'];
+        // this.btcOrEthPriceDollar = success['CalculatingAmountDTO']['usdforBtc'];
+        this.minCommercialLimits = success['CalculatingAmountDTO']['mincomercialValue'];
+        this.maxCommercialLimits = success['CalculatingAmountDTO']['maxcomercialValue'];
+        this.send = success['CalculatingAmountDTO']['paidAmount'];
+        this.receive = success['CalculatingAmountDTO']['receivedAmount'];
 
         console.log("admin exchange tab details", success);
       } else if (success['status'] == "failure") {

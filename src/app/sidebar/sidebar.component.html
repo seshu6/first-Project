@@ -10,13 +10,13 @@
                 <ul>
                     <!-- USER PROFILE -->
                     <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/']">
+                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/profile']" (click)="profileSelected()">
                             <span class="menu-link dashboardlink"></span>
                         </a>
                     </li>
                     <!-- DASHBOARD -->
                     <li>
-                        <a class="active" [routerLinkActive]="['active']" [routerLink]="['/dashboard']"
+                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/dashboard']"
                             (click)="dashboardSelected()">
                             <span class="menu-link dashboardlink1"></span>
                         </a>

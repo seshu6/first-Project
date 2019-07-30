@@ -16,7 +16,8 @@ export class SidebarComponent implements OnInit {
 
   dashboardSelected() {
     if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['admin-dashboard']);
+      // this.route.navigate(['admin-dashboard']);
+      this.route.navigate(['dashboard']);
     } else {
       this.route.navigate(['dashboard']);
     }
@@ -34,7 +35,8 @@ export class SidebarComponent implements OnInit {
 
   vaultSelected() {
     if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['admin-vault']);
+      // this.route.navigate(['admin-vault']);
+      this.route.navigate(['vault']);
     } else {
       this.route.navigate(['vault']);
     }
@@ -42,11 +44,21 @@ export class SidebarComponent implements OnInit {
 
   buyAndSellSelected() {
     if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['adminbuyandsell']);
+      this.route.navigate(['buyandsell']);
     } else {
       this.route.navigate(['buyandsell']);
     }
   }
+
+  profileSelected() {
+    if (sessionStorage.getItem("roleName") == "admin") {
+      this.route.navigate(['profile']);
+    } else {
+      this.route.navigate(['profile']);
+    }
+  }
+
+  
 
   logOut() {
     sessionStorage.clear();

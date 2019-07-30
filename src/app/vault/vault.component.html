@@ -1,4 +1,4 @@
-<div class="bluewallet-dashboard-fullwrap"> 
+<div class="bluewallet-dashboard-fullwrap">
     <!-- Dashboard Header -->
 
     <!-- Bluewallet-second-sidebar -->
@@ -45,27 +45,29 @@
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">ETH
-                                <img src="assets/images/downarrowred.png" />
+                                <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
-                            <span class="wal-amt">435 $</span>
+                            <span class="wal-amt">{{currentEthAmount}} $</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">BTC
-                                <img src="assets/images/uparrowgreen.png" />
+                                    <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                    <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
-                            <span class="wal-amt">20.000 $</span>
+                            <span class="wal-amt">{{currentBtcAmount}} $</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">XRP
                                 <img src="assets/images/uparrowgreen.png" />
                             </span>
                             <span class="wal-amt">200 $</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

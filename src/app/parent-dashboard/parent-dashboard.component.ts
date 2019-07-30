@@ -23,6 +23,9 @@ import { trigger, state, style, transition, animate, keyframes, group } from '@a
 })
 export class ParentDashboardComponent implements OnInit {
   qrCodeModalShowOrHide: boolean = false;
+  ethOrBtc: string = "BTC";
+  ethOrBtcBalance: string | number;
+  ethOrBtcBalanceUsd: string | number;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: NgxSpinnerService, private dashboardService: CommonDashboardService) { }
 
   ngOnInit() {
@@ -32,7 +35,27 @@ export class ParentDashboardComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     })
 
-    this.onSelectSliderCryptoCurrency('BTC');
+    // this.onSelectSliderCryptoCurrency('BTC');
+
+    this.dashboardService.sliderObservableActivity$.subscribe((obj) => {
+
+      let index: number = 0;
+      let elem = document.querySelector('.carousel');
+      let carouselInstances = M.Carousel.getInstance(elem);
+      this.ethOrBtc = obj['crypto'];
+      this.ethOrBtcBalance = obj['balance'];
+      this.ethOrBtcBalanceUsd = obj['usd'];
+      if (obj['crypto'] == "BTC") {
+        index = 0;
+      } else if (obj['crypto'] == "ETH") {
+        index = 1;
+      }
+      if (carouselInstances != undefined) {
+        carouselInstances.set(index);
+      }
+
+
+    })
   }
 
   qrCodeModalOpenOrClose() {

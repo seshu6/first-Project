@@ -3380,10 +3380,11 @@ footer {
 .accept-terms-cond .accept-cont .accet-toggle label {
 	margin-bottom: 0px;
 }
-.buy-transfer-scrol {
+.buy-transfer-scrol ul{
 	width: 100%;
-	position: relative;
-	max-height: 580px;
+    position: relative;
+    height: 490px;
+    overflow-y: auto;
 }
 .buy-view-card1 ul {
 	padding: 0 15px 0 0;

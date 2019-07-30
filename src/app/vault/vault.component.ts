@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DynamicScriptLoaderService } from '../dynamic-script-loader.service'; 
+import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VaultService } from '../vault.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as M from 'src/assets/materialize/js/materialize';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { LoaderService } from '../loader.service';
 
 
@@ -45,6 +45,10 @@ export class VaultComponent implements OnInit {
   options: any;
   currentlySelectedCryptoType: string;
   newVaultShadowEffect: boolean = false;
+  currentEthAmount:string|number;
+  currentBtcAmount:string|number;
+  currentEthAmountStatus:number;
+  currentBtcAmountStatus:|number;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
@@ -127,11 +131,16 @@ export class VaultComponent implements OnInit {
       "userId": sessionStorage.getItem("userId"),
       "cryptoType": this.ethOrBtc
     }
-    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
+    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => { 
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.currentEthAmount = success['CalculatingAmountDTO'].currentUsdforEther;
+        this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
+        this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
+        this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
         if (this.ethOrBtc == "ETH") {
-          this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
+          // this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
+          this.availabeBalance = success['CalculatingAmountDTO'].etherAmount;
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforEther;
         } else {
           this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
@@ -212,7 +221,7 @@ export class VaultComponent implements OnInit {
   onAddVault() {
     if (!Boolean(this.estimatedEth)) {
       Swal.fire("Info", "Please provide " + this.ethOrBtc + " details", "info");
-    } else if ((!Boolean(this.estimatedWallet)) && this.ethOrBtc == "ETH"  ) {
+    } else if ((!Boolean(this.estimatedWallet)) && this.ethOrBtc == "ETH") {
       Swal.fire("Info", "Please provide wallet password", "info");
     } else if (!this.termsAndCondition) {
       Swal.fire("Info", "Please accept terms and conditon to proceed", "info");

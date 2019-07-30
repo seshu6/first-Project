@@ -10,8 +10,13 @@ import { Subject } from 'rxjs';
 export class CommonDashboardService {
   _communicationSubject = new Subject<any>();
   communicationObservable$ = this._communicationSubject.asObservable();
+
   _sliderSubject = new Subject<any>();
   sliderObservable$ = this._sliderSubject.asObservable();
+
+  _sliderSubjectActivity = new Subject<any>();
+  sliderObservableActivity$ = this._sliderSubjectActivity.asObservable();
+
 
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
@@ -30,8 +35,12 @@ export class CommonDashboardService {
   fromParentDashboardToDashboard() {
     this._communicationSubject.next();
   }
-  sliderFromParentDashboardToDashboard(crypto:string) {
+  sliderFromParentDashboardToDashboard(crypto: string) {
     this._sliderSubject.next(crypto);
+  }
+
+  sliderFromDashboardToParent(crypto: string, balance: string | number, usd: string | number) {
+    this._sliderSubjectActivity.next({ "crypto": crypto, "balance": balance, "usd": usd });
   }
 
 
@@ -57,5 +66,8 @@ export class CommonDashboardService {
 
   postEnableOrDisable(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/twofactor/authentication", data, this.header.getHttpHeader());
+  }
+  postBtcOrEthBalance(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
   }
 }

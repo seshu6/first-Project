@@ -234,8 +234,8 @@
                                 <div class="col-lg-6 col-md-12 col-xs-12">
                                     <div class="exchange-list-show" *ngIf="platformTabShowOrHide">
                                         <div class="buy-view-card1">
-                                            <div class="buy-transfer-scrol" id="transferscroll">
-                                                <ul>
+                                            <div class="buy-transfer-scrol" >
+                                                <ul id="transferscroll">
                                                     <li *ngFor="let exchange of requestedEthOrBtcListArray">
                                                         <a>
                                                             <div class="transfer-buy-list">
@@ -256,7 +256,10 @@
                                                                 <div class="bank-transfer">
                                                                     <button type="button"
                                                                         class="banktrnsfbtn btn-default btngrad"
-                                                                        (click)="exchangeCryptoCurrency(exchange)">Exchange</button>
+                                                                        *ngIf="exchange.status == 1">Exchange</button>
+                                                                    <button type="button"
+                                                                        class="banktrnsfbtn btn-default btngrad"
+                                                                        *ngIf="exchange.status == 0">Exchanged</button>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -451,6 +454,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="data-found" *ngIf="historyTabUserListArr.length == 0">
+                                            <div class="data-search">
+                                                <img src="assets/images/datasearch.png">
+                                                <h1>No Data Found</h1>
                                             </div>
                                         </div>
                                         <!-- Card - 2 -->

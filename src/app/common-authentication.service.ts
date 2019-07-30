@@ -1,25 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonAuthenticationService {
-  constructor() { }
+  constructor(private route: Router, private spinner: LoaderService) { }
 
 
   // COMMON HEADERS
   getHttpHeader(): {} {
     const tokenObj = JSON.parse(sessionStorage.getItem('tokenObj'));
-    let httpHeaders = new HttpHeaders({
-      'Authorization': 'bearer ' + tokenObj.access_token,
-      'Content-Type': 'application/json;charset=UTF-8',
-    });
 
-    let header = {
-      headers: httpHeaders
+    if (tokenObj != null) {
+      let httpHeaders = new HttpHeaders({
+        'Authorization': 'bearer ' + tokenObj.access_token,
+        'Content-Type': 'application/json;charset=UTF-8',
+      });
+
+      let header = {
+        headers: httpHeaders
+      }
+      return header;
+    } else {
+      this.spinner.showOrHide(false);
+      Swal.fire("Error", "Unauthorized", "error");
+      this.route.navigate(['login']);
     }
-    return header;
+
   }
 
   // UPLOAD HEADERS
@@ -27,6 +38,7 @@ export class CommonAuthenticationService {
 
   getHttpHeaderWithoutAccess() {
 
+
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json;charset=UTF-8',
     });
@@ -35,19 +47,27 @@ export class CommonAuthenticationService {
       headers: httpHeaders
     }
     return header;
+
+
   }
 
 
   getUploadHttpHeader(): {} {
     const tokenObj = JSON.parse(sessionStorage.getItem('tokenObj'));
-    let httpHeaders = new HttpHeaders({
-      'Authorization': 'bearer ' + tokenObj.access_token,
-    });
+    if (tokenObj != null) {
+      let httpHeaders = new HttpHeaders({
+        'Authorization': 'bearer ' + tokenObj.access_token,
+      });
 
-    let header = {
-      headers: httpHeaders
+      let header = {
+        headers: httpHeaders
+      }
+      return header;
+    } else {
+      this.spinner.showOrHide(false);
+      Swal.fire("Error", "Unauthorized", "error");
+      this.route.navigate(['login']);
     }
-    return header;
   }
 
   // OAUTH HEADERS
@@ -61,6 +81,7 @@ export class CommonAuthenticationService {
       headers: httpAuthHeaders
     }
     return header;
+
   }
 
 
