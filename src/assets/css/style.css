@@ -2304,6 +2304,18 @@ footer {
 	position: relative;
 	font-size: 13px;
 }
+.send-cop-inputgroup .form-group select {
+	background: #ffffff;
+	height: 40px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	width: 100%;
+	padding: 0 80px 0 9px;
+	font-weight: 500;
+	position: relative;
+	font-size: 13px;
+}
 .send-cop-inputgroup .form-group span {
 	position: absolute;
 	color: #ABB3D0;

@@ -121,18 +121,14 @@
                             <div class="graph-history-title">
                                 <h1>Graph History</h1>
                                 <div class="graph-history">
-                                    <div style="width: 100%; height: 100%;"
-                                        *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
+                                    <div style="width: 100%; height: 100%;" *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
                                         <!-- <canvas id="chart"></canvas> -->
-                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
-                                            [options]="lineChartOptions" [colors]="lineChartColors"
-                                            [legend]="lineChartLegend" [chartType]="lineChartType"
-                                            [plugins]="lineChartPlugins">
+                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                                            [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
                                         </canvas>
                                     </div>
 
-                                    <div class="data-found"
-                                        *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
+                                    <div class="data-found" *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
                                         <div class="data-search">
                                             <img src="assets/images/datasearch.png">
                                             <h1>No Data Found</h1>
@@ -160,24 +156,20 @@
                                                 <div class="activity-list">
                                                     <div class="activy-paid">
                                                         <div class="activy-icon">
-                                                            <img src="assets/images/paid.png"
-                                                                *ngIf="activity.hasOwnProperty('paidAmount')">
-                                                            <img src="assets/images/income.png"
-                                                                *ngIf="activity.hasOwnProperty('receivedAmount')">
+                                                            <img src="assets/images/paid.png" *ngIf="activity.hasOwnProperty('paidAmount')">
+                                                            <img src="assets/images/income.png" *ngIf="activity.hasOwnProperty('receivedAmount')">
                                                         </div>
                                                         <div class="activy-paid-text">
                                                             <h1 *ngIf="activity.hasOwnProperty('paidAmount')">Paid</h1>
                                                             <h1 *ngIf="activity.hasOwnProperty('receivedAmount')">
                                                                 Received</h1>
-                                                            <p *ngIf="activity.hasOwnProperty('receivedAmount')">Receipt
-                                                                #:{{activity.sendby}}</p>
+                                                            <p *ngIf="activity.hasOwnProperty('receivedAmount')">Receipt #:{{activity.sendby}}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <div class="activiy-count">
-                                                        <span
-                                                            *ngIf="activity.hasOwnProperty('paidAmount')">-{{activity.paidAmount}}</span>
-                                                        <span
-                                                            *ngIf="activity.hasOwnProperty('receivedAmount')">-{{activity.receivedAmount}}</span>
+                                                        <span *ngIf="activity.hasOwnProperty('paidAmount')">-{{activity.paidAmount}}</span>
+                                                        <span *ngIf="activity.hasOwnProperty('receivedAmount')">-{{activity.receivedAmount}}</span>
                                                         <p>{{activity.Date}}</p>
                                                         <p *ngIf="activity.hasOwnProperty('receivedAmount')">
                                                             {{activity.time}}</p>
@@ -206,19 +198,40 @@
                                 <div class="qr-code-view">
                                     <img src="assets/images/qr-code.png" />
                                 </div>
-                                <div class="moneit-input-group">
-                                    <div class="inputtype-moneit">
+                                <div class="moneit-input-group1 send-cop-inputgroup">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group pos-relative">
+                                                    <select>
+                                                        <option>ETH</option>
+                                                        <option>BTC</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group pos-relative">
+                                                    <input type="text" placeholder="COP">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-12">
+                                                <div class="form-group pos-relative lastformgroup">
+                                                    <input type="text" placeholder="Write here your wallet code">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- <div class="inputtype-moneit">
                                         <input type="text" placeholder="COP">
                                         <span>Min. 0.0124</span>
                                     </div>
                                     <div class="inputtype-moneit">
                                         <input type="text" placeholder="ETH">
                                         <span>Min. 0.0124</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="qr-rezt-btn">
-                                    <button type="button" class="qr-request-btn"
-                                        (click)="requestCryptoCurrency()">Request
+                                    <button type="button" class="qr-request-btn" (click)="requestCryptoCurrency()">Request
                                         <img src="assets/images/receiveicon.png">
                                     </button>
                                 </div>
@@ -236,14 +249,16 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
-                                                    <span>Min. 0.0124</span>
+                                                    <select>
+                                                        <option>ETH</option>
+                                                        <option>BTC</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group pos-relative">
                                                     <input type="text" placeholder="COP">
-                                                    <span>Min. 0.0124</span>
+                                                    <!-- <span>Min. 0.0124</span> -->
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12">
