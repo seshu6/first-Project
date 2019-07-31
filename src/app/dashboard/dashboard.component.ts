@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
 import * as M from 'src/assets/materialize/js/materialize';
 
 
@@ -157,7 +157,7 @@ export class DashboardComponent implements OnInit {
     this.getActivityList("slider");
   }
 
-  getBtcOrEthBalance(cryptoCurrency: string) {
+  getBtcOrEthBalance(cryptoCurrency: string) { 
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
     let jsonData = {
@@ -199,6 +199,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToSmsVerify() {
+    
     this.route.navigate(['verify']);
   }
 
@@ -210,7 +211,7 @@ export class DashboardComponent implements OnInit {
 
   getActivityList(fromSlider?: string) {
     // this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType);
-    if (fromSlider != undefined) {
+    if (fromSlider != "slider") {
       let index: number = 0;
       let elem = document.querySelector('.carousel');
       let carouselInstances = M.Carousel.getInstance(elem);

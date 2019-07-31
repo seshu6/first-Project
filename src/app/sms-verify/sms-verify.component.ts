@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonDashboardService } from '../common-dashboard.service'; 
+import { CommonDashboardService } from '../common-dashboard.service';
 import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
@@ -23,7 +23,10 @@ import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 export class SmsVerifyComponent implements OnInit {
   enableOrDisable: string;
   initialStatus: string;
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService,private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
+  btcOrEth: string | number;
+  btcOrEthBalance: string | number;
+  btcOrEthBalanceUsd: string | number;
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
@@ -33,13 +36,43 @@ export class SmsVerifyComponent implements OnInit {
     })
 
     this.getEnableOrDisable("initial");
+    this.getBtcOrEthBalance("BTC");
   }
   goToHomeAddress() {
     this.route.navigate(['homeaddress']);
   }
-  onSelectSliderCryptoCurrency(crypto:string){
+  getBtcOrEthBalance(crypto: string | number) {
+    this.btcOrEth = crypto;
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": this.btcOrEth
+    }
+    this.dashboardService.postBtcOrEthBalance(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        if (this.btcOrEth == "ETH") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        } else {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+        }
+
+      } else if (success['status'] == "failure") {
+
+      }
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
 
   }
+
 
   getEnableOrDisable(when: string) {
     this.initialStatus = when;

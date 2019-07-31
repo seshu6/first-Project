@@ -1,79 +1,79 @@
-<div class="bluewallet-dashboard-fullwrap"> 
+<div class="bluewallet-dashboard-fullwrap">
   <!-- Dashboard Header -->
 
   <!-- bluewallet sidebar starts here -->
   <div class="bluewallet-profile-sidebar">
     <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-        <div class="profile-setting">
-            <div class="setting-image">
-                <img src="assets/images/profile.jpg" alt="image" />
-            </div>
+      <div class="profile-setting">
+        <div class="setting-image">
+          <img src="assets/images/profile.jpg" alt="image" />
         </div>
-        <div class="wallet-eth-list">
-            <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
-                <h1>Select Your cryptocurrency</h1>
-                <div class="carousel">
-                    <a class="carousel-item1">
-                        <h1>BitCoin</h1>
-                        <img src="assets/images/bitcoinswipe.png" />
-                    </a>
-                    <a class="carousel-item1">
-                        <h1>Ethereum</h1>
-                        <img src="assets/images/etheriumswipe.png" />
-                    </a>
-                    <a class="carousel-item1">
-                        <h1>Monero</h1>
-                        <img src="assets/images/moneroswipe.png" />
-                    </a>
+      </div>
+      <div class="wallet-eth-list">
+        <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
+          <h1>Select Your cryptocurrency</h1>
+          <div class="carousel">
+            <a class="carousel-item1" (click)="getBtcOrEthBalance('BTC')">
+              <h1>BitCoin</h1>
+              <img src="assets/images/bitcoinswipe.png" />
+            </a>
+            <a class="carousel-item1" (click)="getBtcOrEthBalance('ETH')">
+              <h1>Ethereum</h1>
+              <img src="assets/images/etheriumswipe.png" />
+            </a>
+            <a class="carousel-item1">
+              <h1>Monero</h1>
+              <img src="assets/images/moneroswipe.png" />
+            </a>
 
-                </div>
-            </div>
-
-
+          </div>
         </div>
-        <div class="select-your-cryptocurrency blockelemtn">
-            <div class="crypto-currency-wallet">
-                <h1>{{ethOrBtc}} Balance</h1>
-                <div class="etherum-blance">
-                    <h2>{{ethOrBtcBalance}}</h2>
-                    <div class="etherum-usdolar">
-                        <p>{{ethOrBtcBalanceUsd}} USDollar</p>
-                        <!-- <div class="bal-exchange-dollar">
+
+
+      </div>
+      <div class="select-your-cryptocurrency blockelemtn">
+        <div class="crypto-currency-wallet">
+          <!-- <h1>{{btcOrEth}} Balance</h1> -->
+          <div class="etherum-blance">
+            <h2>{{btcOrEthBalance}}</h2>
+            <div class="etherum-usdolar">
+              <p>{{btcOrEthBalanceUsd}} USDollar</p>
+              <!-- <div class="bal-exchange-dollar">
                             <select>
                                 <option value="usdollar">USDollar</option>
                                 <option value="usdollar1">USDollar</option>
                                 <option value="usdollar2">USDollar</option>
                             </select>
                         </div> -->
-                    </div>
-                </div>
-                <div class="refresh-btn">
-                    <a href="javascript:void(0);">
-                        <img src="assets/images/refresh.png" />
-                    </a>
-                </div>
-                <div class="send-receive-bttngrup">
-                    <button type="button" class="sendbtn">Send
-                        <img src="assets/images/sendicon.png" />
-                    </button>
-                    <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
-                        <img src="assets/images/receiveicon.png" />
-                    </button>
-                </div>
-                <div class="info">
-                    <a href="javascript:void(0);" class="infobtn">Information</a>
-                </div>
             </div>
+          </div>
+          <div class="refresh-btn">
+            <a href="javascript:void(0);">
+              <img src="assets/images/refresh.png" />
+            </a>
+          </div>
+          <div class="send-receive-bttngrup">
+            <button type="button" class="sendbtn">Send
+              <img src="assets/images/sendicon.png" />
+            </button>
+            <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
+              <img src="assets/images/receiveicon.png" />
+            </button>
+          </div>
+          <div class="info">
+            <a href="javascript:void(0);" class="infobtn">Information</a>
+          </div>
         </div>
+      </div>
 
     </div>
-</div>
+  </div>
   <!-- ends here -->
 
   <div class="bluewallet-body-wrap">
     <div class="letsverified">
       <div class="backlink">
-        <a href="javascript:void(0);">Back</a>
+        <a href="javascript:void(0);" [routerLink]="['/dashboard']">Back</a>
       </div>
       <div class="letsverifid-center">
         <div class="choose-document">
@@ -89,7 +89,8 @@
                       <div class="card">
                         <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                              aria-expanded="false" aria-controls="collapseOne">
                               Passaport
                             </button>
                           </h5>
@@ -162,7 +163,8 @@
                       <div class="card">
                         <div class="card-header" id="headingTwo">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                              aria-expanded="false" aria-controls="collapseTwo">
                               ID-Card
                             </button>
                           </h5>
@@ -234,12 +236,14 @@
                       <div class="card">
                         <div class="card-header" id="headingThree">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                              aria-expanded="false" aria-controls="collapseThree">
                               Resident Permit
                             </button>
                           </h5>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                          data-parent="#accordion">
                           <div class="card-body">
                             <ul>
                               <li>
@@ -306,7 +310,8 @@
                       <div class="card">
                         <div class="card-header" id="headingfour">
                           <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour"
+                              aria-expanded="false" aria-controls="collapsefour">
                               Driver’s License
                             </button>
                           </h5>
@@ -385,7 +390,8 @@
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="document-important">
                   <h1>Important</h1>
-                  <p>When selecting your document to load, remember to upload to the platform the requested photos, both personal
+                  <p>When selecting your document to load, remember to upload to the platform the requested photos, both
+                    personal
                     and of the document to verify, completely visible to avoid registry errors.</p>
                   <div class="errormessage">
                     <h1>Error</h1>

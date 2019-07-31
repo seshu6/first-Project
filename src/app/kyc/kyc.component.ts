@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonDashboardService } from '../common-dashboard.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { LoaderService } from '../loader.service';
+
 
 
 @Component({
@@ -28,12 +29,23 @@ export class KycComponent implements OnInit {
   passportDocument: any;
   nationalDocument: any;
   residenceDocument: any;
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private dashBoardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
+  btcOrEth: string | number;
+  btcOrEthBalance: string | number;
+  btcOrEthBalanceUsd: string | number;
+  fileUploadedOrNot: boolean = false;
+  constructor(private spinner: LoaderService, private dynamicScriptLoader: DynamicScriptLoaderService, private dashBoardServices: CommonDashboardService, private route: Router) { }
 
   ngOnInit() {
+    this.dynamicScriptLoader.load('custom').then(data => {
+
+    }).catch(error => {
+      console.log("Error occur in loading dynamic script");
+    })
+    this.getBtcOrEthBalance("BTC");
+
 
   }
-  fileUploadedOrNot: boolean = false;
+
   onUploadedKycDocument(event: any, whichFile: string) {
 
     if (whichFile === "passport") {
@@ -48,6 +60,42 @@ export class KycComponent implements OnInit {
     }
     console.log(event.target.files[0]);
   }
+
+
+  getBtcOrEthBalance(crypto: string | number) {
+    this.btcOrEth = crypto;
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": this.btcOrEth
+    }
+    this.dashBoardServices.postBtcOrEthBalance(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        if (this.btcOrEth == "ETH") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        } else {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+        }
+
+      } else if (success['status'] == "failure") {
+
+      }
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
+  }
+
+
+
 
   submitKycDocument() {
     let formVal = new FormData();
@@ -100,7 +148,7 @@ export class KycComponent implements OnInit {
           Swal.fire("Failure", success['message'], "error");
         }
       }, error => {
-        this.spinner.hide();
+        // this.spinner.hide();
         if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
         }
