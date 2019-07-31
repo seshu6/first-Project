@@ -2299,7 +2299,7 @@ footer {
 	outline: none;
 	border-radius: 10px;
 	width: 100%;
-	padding: 0 80px 0 9px;
+	padding: 0 8px 0 8px;
 	font-weight: 500;
 	position: relative;
 	font-size: 13px;
@@ -2311,7 +2311,7 @@ footer {
 	outline: none;
 	border-radius: 10px;
 	width: 100%;
-	padding: 0 80px 0 9px;
+	padding: 0 8px 0 9px;
 	font-weight: 500;
 	position: relative;
 	font-size: 13px;
@@ -7806,4 +7806,7 @@ font-size: 14px !important;
     width: 115px;
     text-align: center;
     padding: 4px 0;
+}
+.dashpadd{
+	padding: 0 4px;
 }
