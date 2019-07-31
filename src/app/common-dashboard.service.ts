@@ -18,6 +18,8 @@ export class CommonDashboardService {
   sliderObservableActivity$ = this._sliderSubjectActivity.asObservable();
 
 
+  
+
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
   postUploadKycDocument(data: any) {
@@ -70,4 +72,7 @@ export class CommonDashboardService {
   postBtcOrEthBalance(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
   }
+
+  // GETTER AND SETTERS
+ 
 }

@@ -13,11 +13,11 @@
                 <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
                     <h1>Select Your cryptocurrency</h1>
                     <div class="carousel">
-                        <a class="carousel-item1">
+                        <a class="carousel-item1" (click)="getBtcOrEthBalance('BTC')">
                             <h1>BitCoin</h1>
                             <img src="assets/images/bitcoinswipe.png" />
                         </a>
-                        <a class="carousel-item1">
+                        <a class="carousel-item1" (click)="getBtcOrEthBalance('ETH')">
                             <h1>Ethereum</h1>
                             <img src="assets/images/etheriumswipe.png" />
                         </a>
@@ -33,11 +33,11 @@
             </div>
             <div class="select-your-cryptocurrency blockelemtn">
                 <div class="crypto-currency-wallet">
-                    <h1>{{ethOrBtc}} Balance</h1>
+                    <h1>{{btcOrEth}} Balance</h1>
                     <div class="etherum-blance">
-                        <h2>{{ethOrBtcBalance}}</h2>
+                        <h2>{{btcOrEthBalance}}</h2>
                         <div class="etherum-usdolar">
-                            <p>{{ethOrBtcBalanceUsd}} USDollar</p>
+                            <p>{{btcOrEthBalanceUsd}} USDollar</p>
                             <!-- <div class="bal-exchange-dollar">
                                 <select>
                                     <option value="usdollar">USDollar</option>

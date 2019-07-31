@@ -45,10 +45,10 @@ export class VaultComponent implements OnInit {
   options: any;
   currentlySelectedCryptoType: string;
   newVaultShadowEffect: boolean = false;
-  currentEthAmount:string|number;
-  currentBtcAmount:string|number;
-  currentEthAmountStatus:number;
-  currentBtcAmountStatus:|number;
+  currentEthAmount: string | number;
+  currentBtcAmount: string | number;
+  currentEthAmountStatus: number;
+  currentBtcAmountStatus: |number;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
@@ -131,7 +131,7 @@ export class VaultComponent implements OnInit {
       "userId": sessionStorage.getItem("userId"),
       "cryptoType": this.ethOrBtc
     }
-    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => { 
+    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.currentEthAmount = success['CalculatingAmountDTO'].currentUsdforEther;
@@ -147,7 +147,7 @@ export class VaultComponent implements OnInit {
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
         }
         if (index == undefined) {
-          this.getActiveVaultInformation(this.ethOrBtc, "initial");
+          this.getActiveVaultInformation(this.ethOrBtc, "notinitial");
         }
 
       } else if (success['status'] == "failure") {
@@ -176,14 +176,20 @@ export class VaultComponent implements OnInit {
       this.btcIsSelected = true;
       this.ethIsSelected = true;
     }
-    this.spinner.showOrHide(true);
+    if (when != "initial") {
+      this.spinner.showOrHide(true);
+    }
+
     let jsonData = {
       "email": sessionStorage.getItem("userEmail"),
       "typeOfInvestment": cryptoType
     }
     this.vaultService.postCommonActiveVaultList(jsonData).subscribe(success => {
       // let stringss = JSON.stringify(success);
-      this.spinner.showOrHide(false);
+      if (when != "initial") {
+        this.spinner.showOrHide(false);
+      }
+
       if (success['status'] == "success") {
         this.activeCryptoCurrencyDetails = [];
         this.completedCryptoCurrencyDetails = [];

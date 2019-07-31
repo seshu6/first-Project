@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonDashboardService } from '../common-dashboard.service';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
+import { LoaderService } from '../loader.service';
 
 
 @Component({
@@ -34,7 +34,10 @@ export class HomeAddressComponent implements OnInit {
   countryListArr: any[] = [];
   stateListArr: any[] = [];
   cityListArr: any[] = [];
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService,private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
+  btcOrEth: string | number;
+  btcOrEthBalance: string | number;
+  btcOrEthBalanceUsd: string | number;
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: LoaderService, private route: Router) { }
 
   ngOnInit() {
     this.homeAddressForm = this.formBuilder.group({
@@ -57,6 +60,7 @@ export class HomeAddressComponent implements OnInit {
     })
 
     this.getCountryList();
+    this.getBtcOrEthBalance("BTC");
   }
 
 
@@ -71,6 +75,37 @@ export class HomeAddressComponent implements OnInit {
   //   }
   // }
 
+  getBtcOrEthBalance(crypto: string | number) {
+    this.btcOrEth = crypto;
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": this.btcOrEth
+    }
+    this.dashboardServices.postBtcOrEthBalance(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        if (this.btcOrEth == "ETH") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        } else {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+        }
+
+      } else if (success['status'] == "failure") {
+
+      }
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
+  }
 
   validateCountrySearch() {
     if (this.homeAddressForm.controls.countrySearch.invalid) {
@@ -95,7 +130,7 @@ export class HomeAddressComponent implements OnInit {
     if (this.homeAddressForm.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
-      this.spinner.show();
+      this.spinner.showOrHide(true);
       let jsonData = {
         "address": this.homeAddressForm.controls.addressLine1.value,
         "address1": this.homeAddressForm.controls.addressLine1.value,
@@ -110,7 +145,7 @@ export class HomeAddressComponent implements OnInit {
         "dateOfBirth": this.homeAddressForm.controls.addressLine1.value
       }
       this.dashboardServices.postAddHomeAddressDetails(jsonData).subscribe(success => {
-        this.spinner.hide();
+         this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           this.homeAddressForm.reset();
           Swal.fire("Success", success['message'], "success");
@@ -121,7 +156,11 @@ export class HomeAddressComponent implements OnInit {
         }
 
       }, error => {
-        this.spinner.hide();
+        this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
       })
     }
   }
@@ -129,17 +168,17 @@ export class HomeAddressComponent implements OnInit {
 
   // GET COUNTRY DETAILS API
   getCountryList() {
-    this.spinner.show();
+     this.spinner.showOrHide(true);
 
     this.dashboardServices.getCountryList().subscribe(success => {
-      this.spinner.hide();
+       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.countryListArr = success['countryData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -150,19 +189,19 @@ export class HomeAddressComponent implements OnInit {
 
   // GET STATE DETAILS API
   getStateList() {
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     let jsonData = {
       "countryid": this.selectedCountryAddress
     };
     this.dashboardServices.postStateList(jsonData).subscribe(success => {
-      this.spinner.hide();
+       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.stateListArr = success['StateData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -173,19 +212,19 @@ export class HomeAddressComponent implements OnInit {
 
   // GET CITY DETAILS API
   getCityList() {
-    this.spinner.show();
+    this.spinner.showOrHide(true);
     let jsonData = {
       "stateid": this.selectedstate
     };
     this.dashboardServices.postCityList(jsonData).subscribe(success => {
-      this.spinner.hide();
+        this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.cityListArr = success['CityData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.hide();
+        this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
