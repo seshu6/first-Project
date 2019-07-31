@@ -259,7 +259,7 @@
             <div class="moneitation-wrap">
                 <div class="moneitation-qr-code">
                     <div class="qr-code-head">
-                        <div class="qr-request" [ngClass]="{'qr-bgshow':qrCodeClassShowOrHide}">
+                        <div class="qr-request">
                             <div class="request-lft">
                                 <div class="qr-code-view">
                                     <img src="assets/images/qr-code.png" />
@@ -341,6 +341,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="bgoverlay"></div>
                     </div>
                     <div class="moenit-code-verify">
                         <p>Remember verify the amount to transfer.</p>
@@ -390,6 +391,9 @@
     <div class="qr-code-div">
         <div class="qrcode-center">
             <div class="code-qr-scan">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
                 <div class="qr-scan-amount">
                     <h1>Amount</h1>
                     <p>0.00173466</p>
