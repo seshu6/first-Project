@@ -1137,7 +1137,7 @@ footer {
 	z-index: 1;
 }
 .signout a {
-	color: #ffffff;
+	color: #ffffff !important;
 	text-align: center;
 	display: block;
 	padding: 16px 0;

@@ -3,12 +3,23 @@ import { CommonDashboardService } from '../common-dashboard.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 
 
 @Component({
   selector: 'app-kyc',
   templateUrl: './kyc.component.html',
-  styleUrls: ['./kyc.component.css']
+  styleUrls: ['./kyc.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(-800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class KycComponent implements OnInit {
   passportFileModel: any;
@@ -17,7 +28,7 @@ export class KycComponent implements OnInit {
   passportDocument: any;
   nationalDocument: any;
   residenceDocument: any;
-  constructor(private dashBoardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private dashBoardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
 
   ngOnInit() {
 

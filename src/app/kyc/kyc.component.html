@@ -1,5 +1,74 @@
-<div class="bluewallet-dashboard-fullwrap">
+<div class="bluewallet-dashboard-fullwrap"> 
   <!-- Dashboard Header -->
+
+  <!-- bluewallet sidebar starts here -->
+  <div class="bluewallet-profile-sidebar">
+    <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <div class="profile-setting">
+            <div class="setting-image">
+                <img src="assets/images/profile.jpg" alt="image" />
+            </div>
+        </div>
+        <div class="wallet-eth-list">
+            <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
+                <h1>Select Your cryptocurrency</h1>
+                <div class="carousel">
+                    <a class="carousel-item1">
+                        <h1>BitCoin</h1>
+                        <img src="assets/images/bitcoinswipe.png" />
+                    </a>
+                    <a class="carousel-item1">
+                        <h1>Ethereum</h1>
+                        <img src="assets/images/etheriumswipe.png" />
+                    </a>
+                    <a class="carousel-item1">
+                        <h1>Monero</h1>
+                        <img src="assets/images/moneroswipe.png" />
+                    </a>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="select-your-cryptocurrency blockelemtn">
+            <div class="crypto-currency-wallet">
+                <h1>{{ethOrBtc}} Balance</h1>
+                <div class="etherum-blance">
+                    <h2>{{ethOrBtcBalance}}</h2>
+                    <div class="etherum-usdolar">
+                        <p>{{ethOrBtcBalanceUsd}} USDollar</p>
+                        <!-- <div class="bal-exchange-dollar">
+                            <select>
+                                <option value="usdollar">USDollar</option>
+                                <option value="usdollar1">USDollar</option>
+                                <option value="usdollar2">USDollar</option>
+                            </select>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="refresh-btn">
+                    <a href="javascript:void(0);">
+                        <img src="assets/images/refresh.png" />
+                    </a>
+                </div>
+                <div class="send-receive-bttngrup">
+                    <button type="button" class="sendbtn">Send
+                        <img src="assets/images/sendicon.png" />
+                    </button>
+                    <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
+                        <img src="assets/images/receiveicon.png" />
+                    </button>
+                </div>
+                <div class="info">
+                    <a href="javascript:void(0);" class="infobtn">Information</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+  <!-- ends here -->
 
   <div class="bluewallet-body-wrap">
     <div class="letsverified">

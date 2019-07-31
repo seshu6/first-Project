@@ -1,24 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonDashboardService } from '../common-dashboard.service';
+import { CommonDashboardService } from '../common-dashboard.service'; 
 import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 
 @Component({
   selector: 'app-sms-verify',
   templateUrl: './sms-verify.component.html',
-  styleUrls: ['./sms-verify.component.css']
+  styleUrls: ['./sms-verify.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(-800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class SmsVerifyComponent implements OnInit {
   enableOrDisable: string;
   initialStatus: string;
-  constructor(private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService,private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
   ngOnInit() {
+    this.dynamicScriptLoader.load('custom').then(data => {
+
+    }).catch(error => {
+      console.log("Error occur in loading dynamic script");
+    })
+
     this.getEnableOrDisable("initial");
   }
   goToHomeAddress() {
-    this.route.navigate(['dashboard/homeaddress']);
+    this.route.navigate(['homeaddress']);
+  }
+  onSelectSliderCryptoCurrency(crypto:string){
+
   }
 
   getEnableOrDisable(when: string) {

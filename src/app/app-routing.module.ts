@@ -33,24 +33,18 @@ const routes: Routes = [{
 }, {
   path: 'profile',
   component: ProfileComponent
-},
-{
+}, {
   path: 'dashboard',
-  component: ParentDashboardComponent,
-  children: [{
-    path: '', redirectTo: 'default-dashboard', pathMatch: 'full'
-  }, {
-    path: 'default-dashboard', component: DashboardComponent
-  }, {
-    path: 'kyc',
-    component: KycComponent
-  }, {
-    path: 'homeaddress',
-    component: HomeAddressComponent
-  }, {
-    path: 'verify',
-    component: SmsVerifyComponent
-  }]
+  component: DashboardComponent
+}, {
+  path: 'kyc',
+  component: KycComponent
+}, {
+  path: 'homeaddress',
+  component: HomeAddressComponent
+}, {
+  path: 'verify',
+  component: SmsVerifyComponent
 }, {
   path: 'card',
   component: CardComponent
@@ -136,6 +130,26 @@ const routes: Routes = [{
 
 //     return { consumed, posParams };
 //   }
+// }
+
+
+// {
+//   path: 'dashboard',
+//   component: ParentDashboardComponent,
+//   children: [{
+//     path: '', redirectTo: 'default-dashboard', pathMatch: 'full'
+//   }, {
+//     path: 'default-dashboard', component: DashboardComponent
+//   }, {
+//     path: 'kyc',
+//     component: KycComponent
+//   }, {
+//     path: 'homeaddress',
+//     component: HomeAddressComponent
+//   }, {
+//     path: 'verify',
+//     component: SmsVerifyComponent
+//   }]
 // }
 
 @NgModule({
