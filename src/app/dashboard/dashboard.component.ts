@@ -8,12 +8,23 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import * as M from 'src/assets/materialize/js/materialize';
 
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(-800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class DashboardComponent implements OnInit {
   qrCodeModalShowOrHide: boolean = false;
@@ -117,22 +128,22 @@ export class DashboardComponent implements OnInit {
       console.log("Error occur in loading dynamic script");
     })
 
-    this.dashboardService.communicationObservable$.subscribe(() => {
-      this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
-      this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
+    // this.dashboardService.communicationObservable$.subscribe(() => {
+    //   this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
+    //   this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
 
-    })
+    // })
 
-    this.dashboardService.sliderObservable$.subscribe((crypto) => {
-      this.counter++
-      this.selectedCurrencyType = crypto;
-      if (this.counter > 1) {
-        this.getActivityList();
-      }
+    // this.dashboardService.sliderObservable$.subscribe((crypto) => {
+    //   this.counter++
+    //   this.selectedCurrencyType = crypto;
+    //   if (this.counter > 1) {
+    //     this.getActivityList();
+    //   }
 
-      // console.log("counter", this.counter);
 
-    })
+
+    // })
 
 
     this.getActivityList();
@@ -140,6 +151,11 @@ export class DashboardComponent implements OnInit {
     // this.getDashboardChartDetails();
   }
 
+
+  onSelectSliderCryptoCurrency(crypto: string) {
+    this.selectedCurrencyType = crypto;
+    this.getActivityList("slider");
+  }
 
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
@@ -179,11 +195,11 @@ export class DashboardComponent implements OnInit {
   }
 
   goToKyc() {
-    this.route.navigate(['dashboard/kyc']);
+    this.route.navigate(['kyc']);
   }
 
   goToSmsVerify() {
-    this.route.navigate(['dashboard/verify']);
+    this.route.navigate(['verify']);
   }
 
   requestCryptoCurrency() {
@@ -192,9 +208,22 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  getActivityList() {
+  getActivityList(fromSlider?: string) {
     // this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType);
+    if (fromSlider != undefined) {
+      let index: number = 0;
+      let elem = document.querySelector('.carousel');
+      let carouselInstances = M.Carousel.getInstance(elem);
+      if (this.selectedCurrencyType == "BTC") {
+        index = 0;
+      } else if (this.selectedCurrencyType == "ETH") {
+        index = 1;
+      }
+      if (carouselInstances != undefined) {
+        carouselInstances.set(index);
+      }
 
+    }
 
     this.spinner.showOrHide(true);
     let amountMode: string;

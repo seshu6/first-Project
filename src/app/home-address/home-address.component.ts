@@ -4,12 +4,23 @@ import { CommonDashboardService } from '../common-dashboard.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
+import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 
 
 @Component({
   selector: 'app-home-address',
   templateUrl: './home-address.component.html',
-  styleUrls: ['./home-address.component.css']
+  styleUrls: ['./home-address.component.css'],
+  animations: [
+    trigger('slideUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(-800px)' }),
+        animate('500ms')
+      ])
+    ])
+
+  ]
 })
 export class HomeAddressComponent implements OnInit {
   homeAddressForm: FormGroup;
@@ -23,7 +34,7 @@ export class HomeAddressComponent implements OnInit {
   countryListArr: any[] = [];
   stateListArr: any[] = [];
   cityListArr: any[] = [];
-  constructor(private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService,private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: NgxSpinnerService, private route: Router) { }
 
   ngOnInit() {
     this.homeAddressForm = this.formBuilder.group({
@@ -39,6 +50,12 @@ export class HomeAddressComponent implements OnInit {
       lastName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
     });
+    this.dynamicScriptLoader.load('custom').then(data => {
+
+    }).catch(error => {
+      console.log("Error occur in loading dynamic script");
+    })
+
     this.getCountryList();
   }
 
