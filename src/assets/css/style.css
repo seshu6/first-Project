@@ -1701,7 +1701,7 @@ footer {
 .graph-activity-wrap {
 	width: 100%;
 	position: relative;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .graph-activy-list {
 	position: relative;
@@ -1711,7 +1711,7 @@ footer {
 	color: #272759;
 	font-size: 21px;
 	font-weight: 600;
-	margin: 0 0 12px 0;
+	margin: 0 0 8px 0;
 }
 .graph-head-story h1 {
 	display: inline-block;
@@ -1742,7 +1742,7 @@ footer {
 	min-height: 300px;
 }
 .graph-activy-list-box {
-	height: 350px;
+	height: 300px;
 	overflow-y: auto;
 }
 .graph-activy-list-box ul {
@@ -1872,7 +1872,7 @@ footer {
 	flex-wrap: wrap;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	height: 100px;
+	height: 80px;
 }
 .moneitation-view-top h1 {
 	color: #ffffff;
@@ -2297,6 +2297,7 @@ footer {
 	height: 81px;
 	max-width: 100%;
 	object-fit: contain;
+	cursor: pointer;
 }
 .send-cop-inputgroup {
 	width: 340px;
