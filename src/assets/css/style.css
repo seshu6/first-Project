@@ -1162,7 +1162,7 @@ footer {
 .profile-setting-sidebar {
 	position: relative;
 	width: 100%;
-	padding: 40px 12px;
+	padding: 20px 12px;
 }
 .profile-setting-wallet {
 	position: relative;
@@ -1176,8 +1176,8 @@ footer {
 	display: inline-block;
 }
 .profile-setting img {
-	width: 115px;
-	height: 115px;
+	width: 100px;
+	height: 100px;
 	object-fit: cover;
 	object-position: center;
 	border-radius: 18px;
@@ -1225,7 +1225,7 @@ footer {
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	margin-top: 26px;
+	margin-top: 20px;
 }
 .bluewallet-balance .balance-wallet .balance-count {
 	padding-right: 11px;
@@ -1252,7 +1252,7 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: 26px;
+	margin-top: 16px;
 }
 .bluewallet-balance .balance-wallet .balance-count .bal-dollar h2 {
 	font-size: 12px;
@@ -1327,11 +1327,11 @@ footer {
 }
 .bluewallet-card ul {
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .bluewallet-card ul li {
 	display: block;
-	padding-bottom: 16px;
+	padding-bottom: 8px;
 }
 .bluewallet-card ul li a {
 	display: block;
@@ -1393,7 +1393,7 @@ footer {
 }
 .wallet-eth-list ul {
 	list-style: none;
-	margin-top: 40px;
+	margin-top: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -1534,7 +1534,7 @@ footer {
 	background: -o-linear-gradient(-149deg, rgba(151,245,249,1) 0%, rgba(82,157,243,1) 50%, rgba(45,60,173,1) 94%, rgba(45,60,173,1) 100%);
 	background: -ms-linear-gradient(-149deg, rgba(151,245,249,1) 0%, rgba(82,157,243,1) 50%, rgba(45,60,173,1) 94%, rgba(45,60,173,1) 100%);
 	background: linear-gradient(301deg, rgba(151,245,249,1) 0%, rgba(82,157,243,1) 50%, rgba(45,60,173,1) 94%, rgba(45,60,173,1) 100%);
-	padding: 12px;
+	padding: 8px;
 	border-radius: 6px;
 	width: 260px;
 }
@@ -1581,18 +1581,18 @@ footer {
 .bluewallet-search-daily {
 	width: 100%;
 	position: relative;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 .search-dailymonth {
 	position: relative;
 	border: 1px solid rgba(147,181,229,0.3);
-	height: 62px;
+	height: 52px;
 	border-radius: 10px;
 	background: #ffffff;
 }
 .search-dailymonth input {
 	width: 74%;
-	height: 60px;
+	height: 50px;
 	border: none;
 	padding: 0 16px 0 15px;
 	border-radius: 10px;
@@ -1612,7 +1612,7 @@ footer {
 .search-mandory-list {
 	position: absolute;
 	top: 0;
-	height: 60px;
+	height: 50px;
 	display: flex;
 	align-items: center;
 	right: 0;
@@ -1637,7 +1637,7 @@ footer {
 .search-mandory-list li a i {
 	margin-left: 4px;
 	color: #474C84;
-	transform: rotate(180deg);
+	transform: rotate(0deg);
 }
 .search-mandory-list li .dropdown-list-search {
 	position: absolute;
@@ -2267,7 +2267,7 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 }
 .qr-code-head .qr-request .request-lft .moneit-input-group {
 	display: flex;
@@ -2765,6 +2765,8 @@ footer {
 	border-bottom: 1px solid #dddddd;
 	padding-bottom: 16px;
 	padding-top: 16px;
+	display: flex;
+	align-items: center;
 }
 .borderremove {
 	border: none !important;
@@ -2777,10 +2779,13 @@ footer {
 	display: inline-block;
 	padding-right: 6px;
 }
+.crytocurrency-view-form .form-group label.acttogle{
+	padding-right: 0px;
+}
 .crytocurrency-view-form .form-group p {
 	color: #ABB3D0;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 12px;
 	margin: 0;
 	display: inline-block;
 }
@@ -4921,7 +4926,7 @@ footer {
 }
 .more-info-full {
 	background: #9aa6c8;
-	padding: 20px;
+	padding: 12px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -4932,20 +4937,20 @@ footer {
 }
 .more-info-lft h1 {
 	color: #354e91;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 500;
 	margin-bottom: 4px;
 }
 .more-info-lft h6 {
 	color: #354e91;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 500;
 }
 .more-info-lft p {
 	color: #354e91;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: normal;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 .infobtn1 {
 	border: none;
@@ -7778,12 +7783,12 @@ font-size: 14px !important;
 }
 .profile-upload-div{
 	text-align: center;
-	background: -moz-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* ff3.6+ */
-	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(0,255,255,1)), color-stop(27%, rgba(0,207,255,1)), color-stop(48%, rgba(0,151,255,1)), color-stop(58%, rgba(12,123,240,1)), color-stop(81%, rgba(45,53,202,1)), color-stop(94%, rgba(62,18,183,1)), color-stop(100%, rgba(62,18,183,1))); /* safari4+,chrome */
-	background: -webkit-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* safari5.1+,chrome10+ */
-	background: -o-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* opera 11.10+ */
-	background: -ms-linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%); /* ie10+ */
-	background: linear-gradient(45deg, rgba(0,255,255,1) 0%, rgba(0,207,255,1) 27%, rgba(0,151,255,1) 48%, rgba(12,123,240,1) 58%, rgba(45,53,202,1) 81%, rgba(62,18,183,1) 94%, rgba(62,18,183,1) 100%);
+	background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(100%, rgba(53,78,145,1)));
+	background: -webkit-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -o-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -ms-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: linear-gradient(90deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
 }
 .profile-form{
 	width: 100%;
