@@ -75,11 +75,13 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("roleName", "admin");
           // this.loginService.setUserRole("admin");
           // this.route.navigate(['admin-dashboard']);
-          this.route.navigate(['dashboard']);
+          // this.route.navigate(['dashboard']);
+          this.route.navigate(['verification']);
         } else if (success['loginInfo'].roleId == 0) {
           sessionStorage.setItem("roleName", "user");
           // this.loginService.setUserRole("user");
-          this.route.navigate(['dashboard']);
+          // this.route.navigate(['dashboard']);
+          this.route.navigate(['verification']);
         }
         // this.route.navigate(['dashboard']);
         // this.route.navigate(['verification']);

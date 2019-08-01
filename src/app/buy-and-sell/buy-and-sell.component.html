@@ -224,8 +224,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="exchange-bttn-group">
-                                                    <button type="button" class="exchangebttn"
-                                                        (click)="onExchangeBtcToEth()">EXCHANGE</button>
+                                                    <!-- <button type="button" class="exchangebttn"
+                                                        (click)="onExchangeBtcToEth()">EXCHANGE</button> -->
+                                                    <button type="button" class="exchangebttn">EXCHANGE</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +235,7 @@
                                 <div class="col-lg-6 col-md-12 col-xs-12">
                                     <div class="exchange-list-show" *ngIf="platformTabShowOrHide">
                                         <div class="buy-view-card1">
-                                            <div class="buy-transfer-scrol" >
+                                            <div class="buy-transfer-scrol">
                                                 <ul id="transferscroll">
                                                     <li *ngFor="let exchange of requestedEthOrBtcListArray">
                                                         <a>

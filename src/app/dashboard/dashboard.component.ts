@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations'; 
+import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import * as M from 'src/assets/materialize/js/materialize';
 
 
@@ -44,6 +44,18 @@ export class DashboardComponent implements OnInit {
   btcOrEthBalance: string | number;
   ethOrBtc: string = "BTC";
   btcOrEthUsdDollar: string | number;
+  overlayClassShowOrHide: boolean = false;
+  sendHighLight: boolean = false;
+  requestHighLight: boolean = false;
+  qrCodeAmount: number;
+  qrImgSrc: string;
+  qrWalletAddress: string;
+  sendEthOrBtcAmount: string | number;
+  requestEthOrBtcAmount: string | number;
+  sendEthOrBtcAmountUsd: string | number;
+  requestEthOrBtcAmountUsd: string | number;
+  requestWalletAddress: string;
+  sendWalletAddress: string;
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -157,7 +169,7 @@ export class DashboardComponent implements OnInit {
     this.getActivityList("slider");
   }
 
-  getBtcOrEthBalance(cryptoCurrency: string) { 
+  getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
     let jsonData = {
@@ -199,14 +211,82 @@ export class DashboardComponent implements OnInit {
   }
 
   goToSmsVerify() {
-    
+
     this.route.navigate(['verify']);
   }
 
+
+
+
   requestCryptoCurrency() {
-    this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
-    this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
+
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": this.selectedCurrencyType
+    }
+    this.dashboardService.postQrCodeGenerator(jsonData).subscribe(success => {
+
+      if (success['status'] == "success") {
+        if (this.selectedCurrencyType == "BTC") {
+          this.qrCodeAmount = success['loginInfo'].btcAmount;
+          this.qrImgSrc = success['loginInfo'].qrCode;
+          this.qrWalletAddress = success['loginInfo'].bitcoinWalletAddress;
+          console.log("BTC");
+        } else if (this.selectedCurrencyType == "ETH") {
+          this.qrCodeAmount = success['loginInfo'].etherAmount;
+          this.qrImgSrc = success['loginInfo'].qrCode;
+          this.qrWalletAddress = success['loginInfo'].EtherwalletAddress;
+          console.log("ETH");
+        }
+        this.spinner.showOrHide(false);
+        this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
+        this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
+        console.log("QR****************", success);
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
   }
+
+  // copyToClipboard(inputElement) {
+
+  //   inputElement.select();
+  //   document.execCommand('copy');
+  //   inputElement.setSelectionRange(0, this.qrWalletAddress.length);
+  // }
+
+  copyToClipboard(item): void {
+    let listener = (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (item));
+      e.preventDefault();
+    };
+
+    document.addEventListener('copy', listener);
+    document.execCommand('copy');
+    document.removeEventListener('copy', listener);
+  }
+
+  requestHighLighter() {
+    this.overlayClassShowOrHide = !this.overlayClassShowOrHide;
+    this.requestHighLight = false;
+    this.sendHighLight = true;
+  }
+
+  sendHighLighter() {
+    this.overlayClassShowOrHide = !this.overlayClassShowOrHide;
+    this.sendHighLight = false;
+    this.requestHighLight = true;
+  }
+
+
+
 
 
   getActivityList(fromSlider?: string) {
@@ -235,6 +315,8 @@ export class DashboardComponent implements OnInit {
       amountMode = "Received";
     } else if (this.selectedAmountMode == "Paid") {
       amountMode = "send";
+    } else if (this.selectedAmountMode == "Request") {
+      amountMode = "requested";
     }
     if (this.selectedCurrencyType == "BTC") {
       jsonData = {
@@ -307,116 +389,118 @@ export class DashboardComponent implements OnInit {
         this.lineChartLabels = success['sendReceiveGraphDetails'].datelist;
         this.yAxisPaidData = success['sendReceiveGraphDetails'].paidAmountList;
         this.yAxisReceivedData = success['sendReceiveGraphDetails'].receivedAmountList;
-        if (this.selectedAmountMode == "All") {
-          this.lineChartData = [
-            { data: this.yAxisPaidData, label: 'Send' },
-            { data: this.yAxisReceivedData, label: 'Received' },
-          ];
+        if (this.lineChartLabels.length != 0) {
+          if (this.selectedAmountMode == "All") {
+            this.lineChartData = [
+              { data: this.yAxisPaidData, label: 'Send' },
+              { data: this.yAxisReceivedData, label: 'Received' },
+            ];
 
-          this.lineChartColors = [
-            {
-              borderColor: [
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)'
-              ],
-              backgroundColor: [
-                'rgba(88, 170, 243, 0.7)',
-                'rgba(88, 170, 243, 0.6)',
-                'rgba(88, 170, 243, 0.4)',
-                'rgba(88, 170, 243, 0.3)',
-                'rgba(88, 170, 243, 0.2)',
-                'rgba(88, 170, 243, 0.1)'
-              ]
-            }, {
-              borderColor: [
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)'
-              ],
-              backgroundColor: [
-                'rgba(255,124,110,0.6)',
-                'rgba(255,124,110,0.5)',
-                'rgba(255,124,110,0.4)',
-                'rgba(255,124,110,0.3)',
-                'rgba(255,124,110,0.2)',
-                'rgba(255,124,110,0.1)'
-              ]
-            },
-          ];
+            this.lineChartColors = [
+              {
+                borderColor: [
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)'
+                ],
+                backgroundColor: [
+                  'rgba(88, 170, 243, 0.7)',
+                  'rgba(88, 170, 243, 0.6)',
+                  'rgba(88, 170, 243, 0.4)',
+                  'rgba(88, 170, 243, 0.3)',
+                  'rgba(88, 170, 243, 0.2)',
+                  'rgba(88, 170, 243, 0.1)'
+                ]
+              }, {
+                borderColor: [
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)'
+                ],
+                backgroundColor: [
+                  'rgba(255,124,110,0.6)',
+                  'rgba(255,124,110,0.5)',
+                  'rgba(255,124,110,0.4)',
+                  'rgba(255,124,110,0.3)',
+                  'rgba(255,124,110,0.2)',
+                  'rgba(255,124,110,0.1)'
+                ]
+              },
+            ];
 
-        } else if (this.selectedAmountMode == "Paid") {
-          this.lineChartData = [
-            { data: this.yAxisPaidData, label: 'Send' },
-          ];
-          this.lineChartColors = [
-            {
-              borderColor: [
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)',
-                'rgba(88, 170, 243, 1)'
-              ],
-              backgroundColor: [
-                'rgba(88, 170, 243, 0.7)',
-                'rgba(88, 170, 243, 0.6)',
-                'rgba(88, 170, 243, 0.4)',
-                'rgba(88, 170, 243, 0.3)',
-                'rgba(88, 170, 243, 0.2)',
-                'rgba(88, 170, 243, 0.1)'
-              ]
-            }
-          ];
-        } else if (this.selectedAmountMode == "Received") {
-          this.lineChartData = [
-            { data: this.yAxisReceivedData, label: 'Received' },
-          ];
-          this.lineChartColors = [
-            {
-              borderColor: [
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)',
-                'rgba(249, 84, 119, 1)'
-              ],
-              backgroundColor: [
-                'rgba(255,124,110,0.6)',
-                'rgba(255,124,110,0.5)',
-                'rgba(255,124,110,0.4)',
-                'rgba(255,124,110,0.3)',
-                'rgba(255,124,110,0.2)',
-                'rgba(255,124,110,0.1)'
-              ]
-            }
-          ];
-        }
-        this.lineChartOptions = {};
-
-        this.lineChartOptions = {
-          responsive: true,
-          scales: {
-            xAxes: [{
-              ticks: {
-                autoSkip: false,
-                maxRotation: 45,
-                minRotation: 45
+          } else if (this.selectedAmountMode == "Paid") {
+            this.lineChartData = [
+              { data: this.yAxisPaidData, label: 'Send' },
+            ];
+            this.lineChartColors = [
+              {
+                borderColor: [
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)',
+                  'rgba(88, 170, 243, 1)'
+                ],
+                backgroundColor: [
+                  'rgba(88, 170, 243, 0.7)',
+                  'rgba(88, 170, 243, 0.6)',
+                  'rgba(88, 170, 243, 0.4)',
+                  'rgba(88, 170, 243, 0.3)',
+                  'rgba(88, 170, 243, 0.2)',
+                  'rgba(88, 170, 243, 0.1)'
+                ]
               }
-            }],
-            yAxes: [{
-
-            }]
+            ];
+          } else if (this.selectedAmountMode == "Received") {
+            this.lineChartData = [
+              { data: this.yAxisReceivedData, label: 'Received' },
+            ];
+            this.lineChartColors = [
+              {
+                borderColor: [
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)',
+                  'rgba(249, 84, 119, 1)'
+                ],
+                backgroundColor: [
+                  'rgba(255,124,110,0.6)',
+                  'rgba(255,124,110,0.5)',
+                  'rgba(255,124,110,0.4)',
+                  'rgba(255,124,110,0.3)',
+                  'rgba(255,124,110,0.2)',
+                  'rgba(255,124,110,0.1)'
+                ]
+              }
+            ];
           }
-        };
+          this.lineChartOptions = {};
+
+          this.lineChartOptions = {
+            responsive: true,
+            scales: {
+              xAxes: [{
+                ticks: {
+                  autoSkip: false,
+                  maxRotation: 45,
+                  minRotation: 45
+                }
+              }],
+              yAxes: [{
+
+              }]
+            }
+          };
+        }
         this.getBtcOrEthBalance(this.selectedCurrencyType);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -434,5 +518,140 @@ export class DashboardComponent implements OnInit {
   callFromSideBarSlider() {
 
   }
+
+
+
+  // AUTO COMPLETE(CONVERSION OF USD TO BTC AND ETH)
+
+  onAutoCompleteUsdToBtcAndETh(amount: string | number, sendOrRequest: string) {
+    let jsonData = {
+      "usd": amount,
+      "cryptoType": this.selectedCurrencyType
+    }
+    this.dashboardService.postAutoCompleteUsdToBtcAndEth(jsonData).subscribe(success => {
+      console.log("AutoComplete", success);
+      if (success['status'] == "success") {
+        if (sendOrRequest == "send") {
+          this.sendEthOrBtcAmount = success['CalculatingAmountDTO'].cryptoAmount;
+        } else {
+          this.requestEthOrBtcAmount = success['CalculatingAmountDTO'].cryptoAmount;
+        }
+
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+
+    })
+  }
+
+
+  // REQUEST CRYPTO
+
+  requestBtcOrEth() {
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "toAddress": this.requestWalletAddress,
+      "network": this.selectedCurrencyType,
+      "requestAmount": this.requestEthOrBtcAmount
+    };
+    this.dashboardService.postRequestCryptoCurrency(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
+          this.route.navigate(["dashboard"]));
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+  sendCryptoCurreny() {
+    if (this.selectedCurrencyType == "BTC") {
+      this.sendBtcCryptoCurrency();
+    } else if (this.selectedCurrencyType == "ETH") {
+      this.sendEthCryptoCurrency();
+    }
+  }
+
+  // SEND BTC
+  sendBtcCryptoCurrency() {
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "toBtcWalletAddress": this.requestWalletAddress,
+      "btcAmount": this.requestEthOrBtcAmount,
+      "exchangeStatus": 0
+    };
+    this.dashboardService.postSendBtcCryptoCurrency(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
+        this.route.navigate(["dashboard"]));
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+  // SEND ETH
+  sendEthCryptoCurrency() {
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "toEthWalletAddress": this.qrWalletAddress,
+      "ehterAmount": this.qrCodeAmount,
+      "exchangeStatus": 0
+    };
+    this.dashboardService.postSendEthCryptoCurrency(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
+        this.route.navigate(["dashboard"]));
+        console.log("ETH sended", success);
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+
+  autoFillSendDetails(obj: any) {
+    if (obj.transactionType == "Request") {
+      this.sendEthOrBtcAmount = obj.amount;
+      this.sendEthOrBtcAmountUsd = obj.usdValue;
+    }
+  }
+
 }
 

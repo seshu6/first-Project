@@ -18,7 +18,7 @@ export class CommonDashboardService {
   sliderObservableActivity$ = this._sliderSubjectActivity.asObservable();
 
 
-  
+
 
   constructor(private http: HttpClient, private url: HostUrlService, private header: CommonAuthenticationService) { }
 
@@ -72,7 +72,27 @@ export class CommonDashboardService {
   postBtcOrEthBalance(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
   }
+  postQrCodeGenerator(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/getqrcode", data, this.header.getHttpHeader());
+  }
+
+
+  postAutoCompleteUsdToBtcAndEth(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/convertusdtocrypptovalue", data, this.header.getHttpHeader());
+  }
+
+  postRequestCryptoCurrency(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/request", data, this.header.getHttpHeader());
+  }
+
+  postSendBtcCryptoCurrency(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/btc/transfer", data, this.header.getHttpHeader());
+  }
+
+  postSendEthCryptoCurrency(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/eth/transfer", data, this.header.getHttpHeader());
+  }
 
   // GETTER AND SETTERS
- 
+
 }

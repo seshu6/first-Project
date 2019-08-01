@@ -53,10 +53,10 @@
                         </a>
                     </div>
                     <div class="send-receive-bttngrup">
-                        <button type="button" class="sendbtn">Send
+                        <button type="button" class="sendbtn" (click)="sendHighLighter()">Send
                             <img src="assets/images/sendicon.png" />
                         </button>
-                        <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
+                        <button type="button" class="requestbtn" (click)="requestHighLighter()">Request
                             <img src="assets/images/receiveicon.png" />
                         </button>
                     </div>
@@ -157,6 +157,9 @@
                                 <li (click)="selectedAmountMode = 'Paid';getActivityList()">
                                     <a>Paid</a>
                                 </li>
+                                <li (click)="selectedAmountMode = 'Request';getActivityList()">
+                                    <a>Request</a>
+                                </li>
                                 <!-- <li>
                                         <a href="javascript:void(0);">XRP</a>
                                     </li> -->
@@ -186,19 +189,25 @@
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="graph-history-title">
                                 <h1>Graph History</h1>
-                                <div class="graph-history">
-                                    <div style="width: 100%; height: 100%;" *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
+                                <div class="graph-history"
+                                    *ngIf="yAxisPaidData.length != 0 && yAxisReceivedData.length != 0 && lineChartLabels.length != 0">
+                                    <div style="width: 100%; height: 100%;"
+                                        *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
                                         <!-- <canvas id="chart"></canvas> -->
-                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
-                                            [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+                                            [options]="lineChartOptions" [colors]="lineChartColors"
+                                            [legend]="lineChartLegend" [chartType]="lineChartType"
+                                            [plugins]="lineChartPlugins">
                                         </canvas>
                                     </div>
 
-                                    <div class="data-found" *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
-                                        <div class="data-search">
-                                            <img src="assets/images/datasearch.png">
-                                            <h1>No Data Found</h1>
-                                        </div>
+
+                                </div>
+                                <div class="data-found"
+                                    *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
+                                    <div class="data-search">
+                                        <img src="assets/images/datasearch.png">
+                                        <h1>No Data Found</h1>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +217,7 @@
                                 <h1>Activity</h1>
                                 <div class="select-day">
                                     <select [(ngModel)]="dayWeekMonth" (change)="getActivityList()">
-                                        <option value="toady">Today</option>
+                                        <option value="today">Today</option>
                                         <option value="week">Week</option>
                                         <option value="month">Month</option>
                                     </select>
@@ -217,27 +226,32 @@
                             <div class="graph-activiy">
                                 <div class="graph-activy-list-box" id="activyscroll">
                                     <ul>
-                                        <li *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;">
+                                        <li *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;"
+                                            (click)="autoFillSendDetails(activity)">
                                             <a>
                                                 <div class="activity-list">
                                                     <div class="activy-paid">
                                                         <div class="activy-icon">
-                                                            <img src="assets/images/paid.png" *ngIf="activity.hasOwnProperty('paidAmount')">
-                                                            <img src="assets/images/income.png" *ngIf="activity.hasOwnProperty('receivedAmount')">
+                                                            <img src="assets/images/paid.png"
+                                                                *ngIf="activity.transactionType=='Send'">
+                                                            <img src="assets/images/income.png"
+                                                                *ngIf="activity.transactionType=='Received'">
                                                         </div>
                                                         <div class="activy-paid-text">
-                                                            <h1 *ngIf="activity.hasOwnProperty('paidAmount')">Paid</h1>
-                                                            <h1 *ngIf="activity.hasOwnProperty('receivedAmount')">
-                                                                Received</h1>
-                                                            <p *ngIf="activity.hasOwnProperty('receivedAmount')">Receipt #:{{activity.sendby}}
+                                                            <h1>{{activity.transactionType}}</h1>
+                                                            <p *ngIf="activity.transactionType=='Received'">Receipt
+                                                                #:{{activity.sendby}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="activiy-count">
-                                                        <span *ngIf="activity.hasOwnProperty('paidAmount')">-{{activity.paidAmount}}</span>
-                                                        <span *ngIf="activity.hasOwnProperty('receivedAmount')">-{{activity.receivedAmount}}</span>
+                                                        <span>-{{activity.amount}}</span>
+
                                                         <p>{{activity.Date}}</p>
-                                                        <p *ngIf="activity.hasOwnProperty('receivedAmount')">
+                                                        <!-- <p *ngIf="activity.transactionType=='Received'">
+                                                            {{activity.time}}</p> -->
+
+                                                        <p>
                                                             {{activity.time}}</p>
                                                     </div>
                                                 </div>
@@ -259,9 +273,9 @@
             <div class="moneitation-wrap">
                 <div class="moneitation-qr-code">
                     <div class="qr-code-head">
-                        <div class="qr-request">
+                        <div class="qr-request" [ngClass]="{'qr-bgshow':sendHighLight}">
                             <div class="request-lft">
-                                <div class="qr-code-view">
+                                <div class="qr-code-view" (click)="requestCryptoCurrency()">
                                     <img src="assets/images/qr-code.png" />
                                 </div>
                                 <div class="moneit-input-group1 send-cop-inputgroup">
@@ -269,22 +283,30 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="requestCryptoType"
+                                                        [(ngModel)]="selectedCurrencyType" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="requestCryptoUsd"
+                                                        placeholder="type USD here"
+                                                        [(ngModel)]="requestEthOrBtcAmountUsd"
+                                                        (ngModelChange)="onAutoCompleteUsdToBtcAndETh($event,'request')">
+
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="requestCryptoAmount"
+                                                        placeholder="{{selectedCurrencyType}} Amount"
+                                                        [(ngModel)]="requestEthOrBtcAmount">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12 dashpadd">
                                                 <div class="form-group pos-relative lastformgroup">
-                                                    <input type="text" placeholder="Write here your wallet code">
+                                                    <input type="text" placeholder="Write here your wallet code"
+                                                        name="walletAddressRequest" [(ngModel)]="requestWalletAddress">
                                                 </div>
                                             </div>
                                         </div>
@@ -299,16 +321,16 @@
                                     </div> -->
                                 </div>
                                 <div class="qr-rezt-btn">
-                                    <button type="button" class="qr-request-btn" (click)="requestCryptoCurrency()">Request
+                                    <button type="button" class="qr-request-btn" (click)="requestBtcOrEth()">Request
                                         <img src="assets/images/receiveicon.png">
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="qr-send">
+                        <div class="qr-send" [ngClass]="{'qr-bgshow':requestHighLight}">
                             <div class="send-right">
                                 <div class="qr-rezt-btn">
-                                    <button type="button" class="qr-request-btn">Send
+                                    <button type="button" class="qr-request-btn" (click)="sendCryptoCurreny()">Send
                                         <img src="assets/images/sendicon.png">
                                     </button>
                                 </div>
@@ -317,23 +339,30 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="sendCryptoType"
+                                                        [(ngModel)]="selectedCurrencyType" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="sendCryptoUsd" placeholder="type USD here"
+                                                        [(ngModel)]="sendEthOrBtcAmountUsd"
+                                                        (ngModelChange)="onAutoCompleteUsdToBtcAndETh($event,'send')">
+
                                                     <!-- <span>Min. 0.0124</span> -->
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" placeholder="COP">
+                                                    <input type="text" name="sendCryptoAmount"
+                                                        placeholder="{{selectedCurrencyType}} Amount"
+                                                        [(ngModel)]="sendEthOrBtcAmount">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12 dashpadd">
                                                 <div class="form-group pos-relative lastformgroup">
-                                                    <input type="text" placeholder="Write here your wallet code">
+                                                    <input type="text" placeholder="Write here your wallet code"
+                                                        name="walletAddressSend" [(ngModel)]="sendWalletAddress">
                                                 </div>
                                             </div>
                                         </div>
@@ -341,7 +370,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bgoverlay"></div>
+                        <div class="bgoverlay" *ngIf="overlayClassShowOrHide"
+                            (click)="overlayClassShowOrHide=!overlayClassShowOrHide"></div>
                     </div>
                     <div class="moenit-code-verify">
                         <p>Remember verify the amount to transfer.</p>
@@ -391,19 +421,21 @@
     <div class="qr-code-div">
         <div class="qrcode-center">
             <div class="code-qr-scan">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="qrCodeModalShowOrHide=!qrCodeModalShowOrHide;qrCodeClassShowOrHide=!qrCodeClassShowOrHide;">
                     &times;
                 </button>
                 <div class="qr-scan-amount">
-                    <h1>Amount</h1>
-                    <p>0.00173466</p>
+                    <h1>{{selectedCurrencyType}} Amount</h1>
+                    <p>{{qrCodeAmount}}</p>
                 </div>
                 <div class="amout-qrcode-scan">
-                    <img src="assets/images/scancode.png" />
+                    <img [src]="qrImgSrc" />
                 </div>
                 <div class="qrcode-foot">
-                    <button type="button" class="copyallbtn">Copy All</button>
-                    <input type="text" placeholder="3DKsjshGSKJsgkgSs54SFu5sdS76F...">
+                    <button type="button" class="copyallbtn" (click)="copyToClipboard(qrWalletAddress)">Copy
+                        All</button>
+                    <input type="text" [(ngModel)]="qrWalletAddress" disabled #walletAddress>
                 </div>
             </div>
         </div>
