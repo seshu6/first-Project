@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Bluewallet</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#otpverfiy">Bluewallet</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">To buy</a>
@@ -24,8 +24,7 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-btn loginlink" [routerLinkActive]="['active']"
-                [routerLink]="['/createwallet']">Register</a>
+              <a class="nav-link nav-link-btn loginlink" [routerLinkActive]="['active']" [routerLink]="['/createwallet']">Register</a>
             </li>
           </ul>
         </div>
@@ -48,11 +47,9 @@
               </span>
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" formControlName="password"
-                (keydown.enter)="onGetAccessToken()">
+              <input type="password" placeholder="Password" formControlName="password" (keydown.enter)="onGetAccessToken()">
               <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-              <span class="validationError"
-                *ngIf="loginForm.get('password').errors && loginForm.get('password').touched">
+              <span class="validationError" *ngIf="loginForm.get('password').errors && loginForm.get('password').touched">
                 <span *ngIf="loginForm.get('password').errors.required">
                   Password is required
                 </span>
@@ -62,10 +59,8 @@
               <button type="button" class="loginbtn" (click)="onGetAccessToken()">Login</button>
             </div>
             <div class="form-group">
-              <a class="forgotpassword"
-                (click)="loginOrForgotShowOrHide=!loginOrForgotShowOrHide;loginOrForgot='Forgot Password';">Did you
-                forget your
-                password?</a>
+              <a class="forgotpassword" (click)="loginOrForgotShowOrHide=!loginOrForgotShowOrHide;loginOrForgot='Forgot Password';">Did you forget your password?
+              </a>
             </div>
           </form>
           <!-- FORGOT PASSWORD FORM STARTS HERE -->
@@ -125,3 +120,55 @@
     </div>
   </div>
 </div>
+
+<!-- OTP verify -->
+<div class="otpverfiy-wrap">
+  <div class="modal fade" id="otpverfiy" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <h1>verify Email</h1>
+        </div>
+        <div class="modal-body">
+          <div class="otp-imgg">
+            <img src="assets/images/tick-email.png">
+          </div>
+          <div class="optcont"><p>Enter the 6 digit code we sent you via email to continue</p></div>
+          <div class="otp-form">
+            <div class="otp-inputgroup">
+              <input type="text">
+              <input type="text">
+              <input type="text">
+              <input type="text">
+              <input type="text">
+              <input type="text">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="otpverbtn">Verify</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="email-inbox-wrap" style="display: block;">
+  <div class="email-inbox-modal">
+    <div class="email-inbox-box">
+      <div class="inbox-box">
+        <img src="assets/images/emailinboxicon.png" />
+        <h2>Check Your Inbox...</h2>
+        <a href="javascript:void(0);">JohnDoe@gmail.com</a>
+        <p>search an email of BlueWallet And click the link of verification to complete the configuration of your
+          Wallet.</p>
+      </div>
+      <div class="goto-email">
+        <button type="button" class="gotemailbtn" (click)="goToMailPage()">Go to Email</button>
+        <button type="button" class="checkitlaterbtn disable">Check It Later</button>
+      </div>
+    </div>
+  </div>
+</div> -->

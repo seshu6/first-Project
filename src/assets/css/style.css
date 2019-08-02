@@ -4669,6 +4669,101 @@ footer {
 .heightauto {
 	height: auto !important;
 }
+/* OTP */
+.otpverfiy-wrap{
+	width: 100%;
+	position: relative;
+}
+.otpverfiy-wrap .modal{
+	background: rgba(47,66,123,0.6);
+}
+.otpverfiy-wrap .modal-dialog {
+    max-width: 420px;
+}
+.otpverfiy-wrap .modal-content{
+	border-radius: 16px;
+}
+.otpverfiy-wrap .modal-header{
+	background: #ffffff;
+	border:none;
+	border-radius: 16px;
+	padding: 30px 0 0 0;
+}
+.otpverfiy-wrap .modal-header h1{
+	font-size: 20px;
+    color: #000000;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.otpverfiy-wrap .modal-body .otp-imgg{
+	text-align: center;
+	margin-top: 16px;
+}
+.otpverfiy-wrap .modal-body .otp-imgg img{
+	max-width:100%;
+	height: 60px;
+	object-fit: contain;
+	object-position: center;
+}
+.otpverfiy-wrap .optcont {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 335px;
+    margin: auto;
+}
+.otpverfiy-wrap .optcont p{
+	font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    color: #848897;
+}
+.otp-form{
+	width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.otp-form .otp-inputgroup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.otp-form .otp-inputgroup input{
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    outline: none;
+    text-align: center;
+    font-size: 20px;
+    color: #13224f;
+    font-weight: 500;
+}
+.otp-form p{
+	font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    color: #848897;
+}
+.otpverfiy-wrap .modal-footer{
+	border: none;
+	justify-content: center;
+	border-radius: 0px;
+	padding: 20px 0 30px 0;
+}
+.otpverfiy-wrap .modal-footer .otpverbtn{
+    background: #25C38C;
+    color: #ffffff;
+    border-radius: 60px;
+    padding: 6px 20px;
+    border: none;
+    width: 200px;
+    font-size: 17px;
+}
 /* Home Address */
 .bluewallet-homeaddress {
 	width: 100%;
