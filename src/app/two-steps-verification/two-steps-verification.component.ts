@@ -15,6 +15,10 @@ export class TwoStepsVerificationComponent implements OnInit {
 
   ngOnInit() {
   }
+  logOut() {
+    
+    this.route.navigate(['']);
+  }
   onVerifyOtp(): void {
     if (!Boolean(this.otp)) {
       Swal.fire("Info", "Please provide otp to proceed", "info");

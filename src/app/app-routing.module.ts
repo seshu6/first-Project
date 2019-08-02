@@ -87,7 +87,7 @@ const routes: Routes = [{
 }, {
   path: 'forgot/:id',
   component: ForgotPasswordComponent
-}
+},
   //  {
   //   matcher: ComplexUrlMatcher("id", /^[0-9!@#\$%\^\&*\)\(/]+$/g),
   //   component: ForgotPasswordComponent

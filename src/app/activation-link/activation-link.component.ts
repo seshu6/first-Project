@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ActivationLinkComponent implements OnInit {
   activationEmailLink: string;
+  urlSplitter: string[] = [];
   constructor(private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -21,38 +22,43 @@ export class ActivationLinkComponent implements OnInit {
   }
 
   userActivationLink() {
-    this.twoStepsVerification.postUserActivation(this.activationEmailLink).subscribe(success => {
-      if (success['status'] == "success") {
-        Swal.fire({
-          title: 'Success',
-          text: success['message'],
-          type: 'success',
-          showCancelButton: false,
-          confirmButtonColor: '#3fc3ee',
-          confirmButtonText: 'Login'
-        }).then(data => {
-          // if(data.value){
+    this.urlSplitter = this.route.url.split("/");
+    if (this.urlSplitter[1] == "link") {
+      this.twoStepsVerification.postUserActivation(this.activationEmailLink).subscribe(success => {
+        if (success['status'] == "success") {
+          Swal.fire({
+            title: 'Success',
+            text: success['message'],
+            type: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3fc3ee',
+            confirmButtonText: 'Login'
+          }).then(data => {
+            // if(data.value){
 
-          // }
-          this.route.navigate(['login'])
-        })
-      } else {
-        Swal.fire({
-          title: 'Error',
-          text: success['message'],
-          type: 'error',
-          showCancelButton: false,
-          confirmButtonColor: '#3fc3ee',
-          confirmButtonText: 'Login'
-        }).then(data => {
-          this.route.navigate(['login'])
-        })
-      }
+            // }
+            this.route.navigate(['login'])
+          })
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: success['message'],
+            type: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#3fc3ee',
+            confirmButtonText: 'Login'
+          }).then(data => {
+            this.route.navigate(['login'])
+          })
+        }
 
+      }, error => {
+        console.log("success", error);
+      })
+    } else {
+      this.route.navigate([this.route.url]);
+    }
 
-    }, error => {
-      console.log("success", error);
-    })
 
   }
 

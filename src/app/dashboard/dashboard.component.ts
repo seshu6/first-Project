@@ -56,6 +56,9 @@ export class DashboardComponent implements OnInit {
   requestEthOrBtcAmountUsd: string | number;
   requestWalletAddress: string;
   sendWalletAddress: string;
+  requestIdCounter: number = 0;
+  requestId: any;
+  successShowOrHide:boolean=false;
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -591,18 +594,31 @@ export class DashboardComponent implements OnInit {
   // SEND BTC
   sendBtcCryptoCurrency() {
     this.spinner.showOrHide(true);
-    let jsonData = {
-      "userId": sessionStorage.getItem("userId"),
-      "toBtcWalletAddress": this.requestWalletAddress,
-      "btcAmount": this.requestEthOrBtcAmount,
-      "exchangeStatus": 0
-    };
+    let jsonData = {};
+    if (this.requestIdCounter == 1) {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toBtcWalletAddress": this.sendWalletAddress,
+        "btcAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0,
+        "requestId": this.requestId
+      };
+    } else {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toBtcWalletAddress": this.sendWalletAddress,
+        "btcAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0
+      };
+    }
+
     this.dashboardService.postSendBtcCryptoCurrency(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
-        this.route.navigate(["dashboard"]));
+          this.route.navigate(["dashboard"]));
         Swal.fire("Success", success['message'], "success");
+        this.requestIdCounter = 0;
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
       }
@@ -619,18 +635,31 @@ export class DashboardComponent implements OnInit {
   // SEND ETH
   sendEthCryptoCurrency() {
     this.spinner.showOrHide(true);
-    let jsonData = {
-      "userId": sessionStorage.getItem("userId"),
-      "toEthWalletAddress": this.qrWalletAddress,
-      "ehterAmount": this.qrCodeAmount,
-      "exchangeStatus": 0
-    };
+    let jsonData = {};
+    if (this.requestIdCounter == 1) {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toEthWalletAddress": this.sendWalletAddress,
+        "etherAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0,
+        "requestId": this.requestId
+      };
+    } else {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toEthWalletAddress": this.sendWalletAddress,
+        "etherAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0
+      };
+    }
     this.dashboardService.postSendEthCryptoCurrency(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
-        this.route.navigate(["dashboard"]));
+          this.route.navigate(["dashboard"]));
         console.log("ETH sended", success);
+        this.requestIdCounter = 0;
+        // this.successShowOrHide = true;
         Swal.fire("Success", success['message'], "success");
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
@@ -650,6 +679,9 @@ export class DashboardComponent implements OnInit {
     if (obj.transactionType == "Request") {
       this.sendEthOrBtcAmount = obj.amount;
       this.sendEthOrBtcAmountUsd = obj.usdValue;
+      this.sendWalletAddress = obj.toWalletAddress;
+      this.requestId = obj.requestId;
+      this.requestIdCounter++;
     }
   }
 
