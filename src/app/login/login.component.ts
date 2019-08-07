@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpParams } from "@angular/common/http";
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoaderService } from '../loader.service';
+import { TwoStepsVerificationService } from '../two-steps-verification.service';
+import { ViewChild, ElementRef } from '@angular/core';
 
 
 
@@ -19,7 +21,10 @@ export class LoginComponent implements OnInit {
   loginOrForgot: string = "Login";
   loginOrForgotShowOrHide: boolean = true;
   forgotPasswordEmail: string;
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
+  otpModalShowOrHide: boolean = false;
+  otp:any;
+  // @ViewChild('otpForm') otpForm: ElementRef;
+  constructor(private verificationService: TwoStepsVerificationService, private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -52,7 +57,8 @@ export class LoginComponent implements OnInit {
     }
     // this.login();
   }
-
+  otpCode: string = "";
+  otpCodeArr: any;
   // LOGIN
   login(): void {
     this.spinner.showOrHide(true);
@@ -76,21 +82,33 @@ export class LoginComponent implements OnInit {
           // this.loginService.setUserRole("admin");
           // this.route.navigate(['admin-dashboard']);
           // this.route.navigate(['dashboard']);
-          this.route.navigate(['verification']);
+          // this.route.navigate(['verification']);
+          // this.otpCodeArr = document.getElementsByName("otpTextName");
+
+          this.otpModalShowOrHide = true;
+          // this.otpCodeArr = document.getElementById("ototpForm")
+          // this.otpCodeArr = document.getElementsByName("otpTextName"));
+
+
         } else if (success['loginInfo'].roleId == 0) {
           sessionStorage.setItem("roleName", "user");
           // this.loginService.setUserRole("user");
+          this.otpModalShowOrHide = true;
           // this.route.navigate(['dashboard']);
-          this.route.navigate(['verification']);
+          // this.route.navigate(['verification']);
         }
         // this.route.navigate(['dashboard']);
         // this.route.navigate(['verification']);
+        // this.otpModalShowOrHide = true;
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
       this.spinner.showOrHide(false);
-      console.log("error from login", error);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
     })
   }
 
@@ -117,6 +135,10 @@ export class LoginComponent implements OnInit {
 
       }, error => {
         this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
     }
   }
@@ -125,6 +147,41 @@ export class LoginComponent implements OnInit {
     this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
     this.loginOrForgot = 'Login';
     this.forgotPasswordEmail = "";
+  }
+
+  
+  onVerifyOtp(): void {
+    if (!Boolean(this.otp)) {
+      Swal.fire("Info", "Please provide OTP to proceed", "info");
+    } else {
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "email": sessionStorage.getItem("userEmail"),
+      "securedKey": this.otp
+    }
+    this.verificationService.postVerifyOtp(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        // Swal.fire({
+        //   html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
+        //   showConfirmButton: true,
+        //   confirmButtonColor: "#00a186"
+        // });
+        this.otpModalShowOrHide = false;
+        this.route.navigate(['dashboard']);
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
   }
 
 

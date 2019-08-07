@@ -57,6 +57,10 @@ export class CreateWalletComponent implements OnInit {
 
       }, error => {
         this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
     }
   }

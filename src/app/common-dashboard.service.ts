@@ -93,6 +93,10 @@ export class CommonDashboardService {
     return this.http.post(this.url.apiUrl + "bluewallet/eth/transfer", data, this.header.getHttpHeader());
   }
 
+  postKycUpload(data:any){
+    return this.http.post(this.url.apiUrl + "bluewallet/upload/kyc", data, this.header.getUploadHttpHeader());
+  }
+
   // GETTER AND SETTERS
 
 }

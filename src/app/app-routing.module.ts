@@ -81,13 +81,19 @@ const routes: Routes = [{
 }, {
   path: 'adminbuyandsell',
   component: AdminBuyAndSellComponent
-}, {
-  path: 'link/:email',
+}, 
+{
+  path: '**',
   component: ActivationLinkComponent
-}, {
-  path: 'forgot/:id',
-  component: ForgotPasswordComponent
-},
+}
+  // {
+  //   path: 'link/:email',
+  //   component: ActivationLinkComponent
+  // },
+  //  {
+  //   path: 'forgot/:id',
+  //   component: ForgotPasswordComponent
+  // },
   //  {
   //   matcher: ComplexUrlMatcher("id", /^[0-9!@#\$%\^\&*\)\(/]+$/g),
   //   component: ForgotPasswordComponent

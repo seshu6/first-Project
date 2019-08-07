@@ -151,7 +151,7 @@
                                                     <div class="selectgroup-list">
                                                         <select formControlName="city" [(ngModel)]="selectedCity">
                                                             <option value="undefined" disabled>Select City</option>
-                                                            <option value="chennai">chennai</option>
+                                                            <!-- <option value="chennai">chennai</option> -->
                                                             <option *ngFor="let city of cityListArr;let i = index;"
                                                                 value="{{city.id}}">{{city.cityName}}</option>
                                                         </select>

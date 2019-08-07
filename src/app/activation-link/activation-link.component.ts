@@ -3,6 +3,7 @@ import { TwoStepsVerificationService } from '../two-steps-verification.service';
 import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-activation-link',
@@ -10,9 +11,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./activation-link.component.css']
 })
 export class ActivationLinkComponent implements OnInit {
-  activationEmailLink: string;
-  urlSplitter: string[] = [];
-  constructor(private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
+  activationEmailLink: string = "";
+  // urlSplitter: string[] = [];
+  forgotPasswordShowOrHide: boolean = false;
+  userId: string;
+  oldPassword: string;
+  confirmPassword: string;
+  whetherPasswordSame: boolean = false;
+  arrayUrl: any[] = this.commonService.getCustomUrl().split("/");
+  customUrl: string = "";
+  // encodeOrDecodeUrl: string;
+  urlIndex: number;
+  constructor(private commonService: CommonService, private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -22,9 +32,40 @@ export class ActivationLinkComponent implements OnInit {
   }
 
   userActivationLink() {
-    this.urlSplitter = this.route.url.split("/");
-    if (this.urlSplitter[1] == "link") {
+
+    for (let i = 0; i < this.arrayUrl.length; i++) {
+      if (this.arrayUrl[i] == "link" || this.arrayUrl[i] == "forgot") {
+        this.urlIndex = i;
+      }
+    }
+
+    for (let i = this.urlIndex + 1; i < this.arrayUrl.length; i++) {
+      if ((this.arrayUrl.length - 1) == i) {
+        this.customUrl += this.arrayUrl[i];
+      } else {
+        this.customUrl += this.arrayUrl[i] + "/";
+      }
+    }
+
+    // for (let i = 0; i < this.urlSplitter.length; i++) {
+    //   if (this.urlSplitter[i] == "link" || this.urlSplitter[i] == "forgot") {
+    //     this.urlIndex = i;
+    //   }
+    //   if ((this.urlSplitter.length - 1) == i) {
+    //     this.customUrl += this.urlSplitter[i];
+    //   } else {
+    //     this.customUrl += this.urlSplitter[i] + "/";
+    //   }
+    // }
+
+    // this.encodeOrDecodeUrl = encodeURI(this.customUrl);
+    // this.activationEmailLink = decodeURI(this.encodeOrDecodeUrl);
+    this.activationEmailLink = this.customUrl;
+
+    if (this.arrayUrl[this.urlIndex] == "link") {
+      this.spinner.showOrHide(true);
       this.twoStepsVerification.postUserActivation(this.activationEmailLink).subscribe(success => {
+        this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           Swal.fire({
             title: 'Success',
@@ -53,14 +94,86 @@ export class ActivationLinkComponent implements OnInit {
         }
 
       }, error => {
-        console.log("success", error);
+
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
+    } else if (this.arrayUrl[this.urlIndex] == "forgot") {
+      // this.route.navigate([this.route.url]);
+      this.checkForgotPasswordLink();
     } else {
-      this.route.navigate([this.route.url]);
+      this.route.navigate(['']);
+
     }
 
 
   }
+
+
+  // CHECK LINK FOR PASSWORD
+  checkForgotPasswordLink() {
+    this.spinner.showOrHide(true);
+    this.twoStepsVerification.postForgotPasswordLink(this.activationEmailLink).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.forgotPasswordShowOrHide = true;
+        console.log("verification");
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: success['message'],
+          type: 'error',
+          showCancelButton: false,
+          confirmButtonColor: '#3fc3ee',
+          confirmButtonText: 'Login'
+        }).then(data => {
+          this.route.navigate(['login'])
+        })
+      }
+
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+  // SUBMIT FORGOT PASSWORD
+  submitChangedPassword() {
+    if ((!Boolean(this.oldPassword)) || (!Boolean(this.confirmPassword)) || this.whetherPasswordSame) {
+      Swal.fire("Info", "Please check your details", "info");
+    } else {
+      this.spinner.showOrHide(true);
+      let jsonData = {
+        "email": this.activationEmailLink,
+        "password": this.oldPassword,
+        "conformPassword": this.confirmPassword
+      }
+      this.twoStepsVerification.postConfirmForgotPassword(jsonData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          Swal.fire("Success", success['message'], "success");
+          this.route.navigate(['login']);
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
+
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
+      })
+    }
+  }
+
+
 
 
 }

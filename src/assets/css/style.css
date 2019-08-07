@@ -2387,10 +2387,22 @@ footer {
 	outline: 0;
 	padding: 12px;
 	width: 100%;
+	position: relative;
 }
 .message-view {
 	text-align: center;
 }
+/* .successful-message .close, .successful-message .close:hover{
+    position: absolute;
+    right: 0;
+    background: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 1;
+    color: #000000;
+    line-height: 30px;
+} */
 .message-view img {
 	width: 65px;
 	height: 66px;
@@ -2636,7 +2648,7 @@ footer {
 .data-found {
 	width: 100%;
 	position: relative;
-	height: 350px;
+	height: 290px;
 	border: 1px solid #dddddd;
 	display: flex;
 	align-items: center;
@@ -4671,11 +4683,22 @@ footer {
 }
 /* OTP */
 .otpverfiy-wrap{
+	position: fixed;
+	background: rgba(47,66,123,0.6);
 	width: 100%;
-	position: relative;
+	height: 100%;
+	top: 0px;
+	overflow: auto;
+	left: 0;
+	z-index: 100;
+	/* width: 100%;
+	position: relative; */
 }
 .otpverfiy-wrap .modal{
 	background: rgba(47,66,123,0.6);
+}
+.otpverfiy-wrap .modal-header .close{
+
 }
 .otpverfiy-wrap .modal-dialog {
     max-width: 420px;
@@ -4733,15 +4756,17 @@ footer {
     flex-wrap: wrap;
 }
 .otp-form .otp-inputgroup input{
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-bottom: 1px solid #bdbdbd;
+    width: 150px;
+	height: 40px;
+	border:none;
+    border-bottom: 1px solid #ccc;
     outline: none;
     text-align: center;
-    font-size: 20px;
+    font-size: 14px;
     color: #13224f;
     font-weight: 500;
+    border-radius: 0px;
+	margin: auto;
 }
 .otp-form p{
 	font-size: 16px;

@@ -91,7 +91,7 @@
                           <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                               aria-expanded="false" aria-controls="collapseOne">
-                              Passaport
+                              Passport
                             </button>
                           </h5>
                         </div>
@@ -102,17 +102,19 @@
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie</span>
+                                  <span class="selfietext">{{passportSelfieName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('passport','passportSelfie',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
@@ -122,37 +124,43 @@
                                     <div class="selfie-upload">
                                       <label>
                                         Front
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('passport','passportFrontDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{passportFrontDocNames}}</span>
                                     </div>
                                     <div class="selfie-upload">
                                       <label>
                                         Back
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('passport','passportBackDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{passportBackDocsName}}</span>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/correcttick.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie with Document</span>
+                                  <span class="selfietext">{{passportSelfieWitDocsName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('passport','passportSelfieWitDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
 
@@ -175,17 +183,18 @@
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie</span>
+                                  <span class="selfietext">{{idCardSelfieName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file" (change)="setFileDetails('idcard','idCardSelfie',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
@@ -195,37 +204,41 @@
                                     <div class="selfie-upload">
                                       <label>
                                         Front
-                                        <input type="file">
+                                        <input type="file" (change)="setFileDetails('idcard','idCardFrontDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{idCardFrontDocsName}}</span>
                                     </div>
                                     <div class="selfie-upload">
                                       <label>
                                         Back
-                                        <input type="file">
+                                        <input type="file" (change)="setFileDetails('idcard','idCardBackDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{idCardBackDocsName}}</span>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/correcttick.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie with Document</span>
+                                  <span class="selfietext">{{idCardSelfieWitDocsName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('idcard','idCardSelfieWitDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
 
@@ -237,7 +250,8 @@
                         <div class="card-header" id="headingThree">
                           <h5 class="mb-0">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                              aria-expanded="false" aria-controls="collapseThree">
+                              aria-expanded="false" aria-controls="collapseThree"
+                              (click)="onUploadedKycDocument($event,'resident')">
                               Resident Permit
                             </button>
                           </h5>
@@ -249,17 +263,19 @@
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie</span>
+                                  <span class="selfietext">{{residentSelfieName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('resident','residentSelfie',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
@@ -269,37 +285,43 @@
                                     <div class="selfie-upload">
                                       <label>
                                         Front
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('resident','residentFrontDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{residentFrontDocsName}}</span>
                                     </div>
                                     <div class="selfie-upload">
                                       <label>
                                         Back
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('resident','residentBackDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{residentBackDocsName}}</span>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/correcttick.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie with Document</span>
+                                  <span class="selfietext">{{residentSelfieWitDocsName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('resident','residentSelfieWitDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
 
@@ -311,7 +333,8 @@
                         <div class="card-header" id="headingfour">
                           <h5 class="mb-0">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour"
-                              aria-expanded="false" aria-controls="collapsefour">
+                              aria-expanded="false" aria-controls="collapsefour"
+                              (click)="onUploadedKycDocument($event,'license')">
                               Driver’s License
                             </button>
                           </h5>
@@ -322,17 +345,18 @@
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie</span>
+                                  <span class="selfietext">{{licenseSelfieName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file" (change)="setFileDetails('license','licenseSelfie',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
@@ -342,37 +366,43 @@
                                     <div class="selfie-upload">
                                       <label>
                                         Front
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('license','licenseFrontDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{licenseFrontDocsName}}</span>
                                     </div>
                                     <div class="selfie-upload">
                                       <label>
                                         Back
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('license','licenseBackDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
+                                      <span class="selfietext">{{licenseBackDocsName}}</span>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/correcttick.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
                               <li>
                                 <a href="javascript:void(0);">
                                   <span class="selfietext">Selfie with Document</span>
+                                  <span class="selfietext">{{licenseSelfieWitDocsName}}</span>
                                   <div class="flexdiv">
                                     <div class="selfie-upload">
                                       <label>
-                                        <input type="file">
+                                        <input type="file"
+                                          (change)="setFileDetails('license','licenseSelfieWitDocs',$event)">
                                         <img src="assets/images/uploadarrow.png">
                                       </label>
                                     </div>
                                   </div>
-                                  <div class="closeicon">
+                                  <!-- <div class="closeicon">
                                     <img src="assets/images/closeicon.png">
-                                  </div>
+                                  </div> -->
                                 </a>
                               </li>
 
@@ -382,7 +412,7 @@
                       </div>
                     </div>
                     <div class="doucment-bttngroup">
-                      <button type="button" class="startbttn">Start</button>
+                      <button type="button" class="startbttn" (click)="submitKycDocument()">Start</button>
                     </div>
                   </div>
                 </div>
@@ -393,9 +423,9 @@
                   <p>When selecting your document to load, remember to upload to the platform the requested photos, both
                     personal
                     and of the document to verify, completely visible to avoid registry errors.</p>
-                  <div class="errormessage">
+                  <div class="errormessage" *ngIf="kycErrorMessageShowOrHide">
                     <h1>Error</h1>
-                    <p>There’s some problem with your documents, please try to upload it again.</p>
+                    <p>{{kycErrorMessage}}</p>
                   </div>
                   <div class="correctmessage" style="display:none;">
                     <p>Your documents are completely upload it.</p>

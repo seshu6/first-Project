@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar  -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]> 
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -226,7 +226,7 @@
                                                 <div class="exchange-bttn-group">
                                                     <!-- <button type="button" class="exchangebttn"
                                                         (click)="onExchangeBtcToEth()">EXCHANGE</button> -->
-                                                    <button type="button" class="exchangebttn">EXCHANGE</button>
+                                                    <button type="button" class="exchangebttn" (click)="onSubmitExchangeDetails()">EXCHANGE</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +237,7 @@
                                         <div class="buy-view-card1">
                                             <div class="buy-transfer-scrol">
                                                 <ul id="transferscroll">
-                                                    <li *ngFor="let exchange of requestedEthOrBtcListArray">
+                                                    <li *ngFor="let exchange of requestedEthOrBtcListArray" (click)="exchangeCryptoCurrency(exchange)">
                                                         <a>
                                                             <div class="transfer-buy-list">
                                                                 <div class="bank-transfer">

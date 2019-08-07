@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { CommonService } from './common.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 export class AppComponent {
   title: string = 'blue-wallet';
   showOrHideSidebar: boolean = false;
-  constructor(private route: Router) {
+  urlArray = location.href.split("/");
+  urlIndexNumber: number = 0;
+  constructor(private route: Router, private commonService: CommonService) {
     route.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] == "/" || event['url'] == "/login" || event['url'] == "/createwallet" || event['url'] == "/verification" || event['url'] == "/privacy" || event['url'] == "/api" || event['url'] == "/termsandservices") {
@@ -20,6 +23,8 @@ export class AppComponent {
         }
       }
     })
+    this.commonService.setCustomUrl(location.href);
+
   }
 
 }

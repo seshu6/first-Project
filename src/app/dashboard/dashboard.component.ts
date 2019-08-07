@@ -58,7 +58,8 @@ export class DashboardComponent implements OnInit {
   sendWalletAddress: string;
   requestIdCounter: number = 0;
   requestId: any;
-  successShowOrHide:boolean=false;
+  successShowOrHide: boolean = false;
+  copied: string = "Copy All";
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -242,6 +243,7 @@ export class DashboardComponent implements OnInit {
           this.qrWalletAddress = success['loginInfo'].EtherwalletAddress;
           console.log("ETH");
         }
+        this.copied = "Copy All";
         this.spinner.showOrHide(false);
         this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
         this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
@@ -274,6 +276,7 @@ export class DashboardComponent implements OnInit {
     document.addEventListener('copy', listener);
     document.execCommand('copy');
     document.removeEventListener('copy', listener);
+    this.copied = "copied";
   }
 
   requestHighLighter() {

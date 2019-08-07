@@ -37,9 +37,30 @@ export class BuyAndSellService {
   //   return this.http.post(this.url.apiUrl + "bluewallet/fetch/exchange/requests", data, this.header.getHttpHeader());
   // }
 
-  postBtcTOEthEcxhange(data: any) {
+
+  // BTC TO ETH USER
+  postBtcToEthEcxhangeUser(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/btc_eth/user/exchange", data, this.header.getHttpHeader());
   }
+
+  // ETH TO BTC USER
+  postEthToBtcEcxhangeUser(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/user/exchange", data, this.header.getHttpHeader());
+  }
+
+
+  // BTC TO ETH ADMIN
+  postBtcToEthEcxhangeAdmin(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/btc_eth/admin/exchange", data, this.header.getHttpHeader());
+  }
+
+  // ETH TO BTC ADMIN
+  postEthToBtcEcxhangeAdmin(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/admin/exchange", data, this.header.getHttpHeader());
+  }
+
+
+
 
   postEthToBtcEcxhange(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/exchange", data, this.header.getHttpHeader());
