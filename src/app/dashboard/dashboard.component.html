@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="refresh-btn">
-                        <a href="javascript:void(0);">
+                        <a href="javascript:void(0);" (click)="getBtcOrEthBalance(selectedCurrencyType)">
                             <img src="assets/images/refresh.png" />
                         </a>
                     </div>
@@ -100,7 +100,7 @@
                         <p class="todayvalue">+ 1.908</p>
                     </li>
                     <li>
-                        <div class="complete-profile">
+                        <div class="complete-profile" *ngIf="profileShowOrHide == 0 || kycShowOrHide==1">
                             <div class="profile-comp">
                                 <div class="profile-content">
                                     <h1>Complete Your Profile</h1>
@@ -116,7 +116,7 @@
                 </ul>
             </div>
             <!-- KYC -->
-            <div class="more-info-full">
+            <div class="more-info-full" *ngIf="profileShowOrHide ==0">
                 <!-- <button type="button" class="closeicon">×</button> -->
                 <div class="more-info-lft">
                     <h1>More Info Needed</h1>
@@ -390,7 +390,7 @@
                 <div class="message-view">
                     <img src="assets/images/tick.png" />
                     <div class="mess-content">
-                        <p>Ether transferred successfully...</p> 
+                        <p>Ether transferred successfully...</p>
                     </div>
                 </div>
             </div>
@@ -433,7 +433,8 @@
                     <img [src]="qrImgSrc" />
                 </div>
                 <div class="qrcode-foot">
-                    <button type="button" class="copyallbtn" (click)="copyToClipboard(qrWalletAddress)">{{copied}}</button>
+                    <button type="button" class="copyallbtn"
+                        (click)="copyToClipboard(qrWalletAddress)">{{copied}}</button>
                     <input type="text" [(ngModel)]="qrWalletAddress" disabled #walletAddress>
                 </div>
             </div>

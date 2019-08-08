@@ -26,6 +26,7 @@ export class SmsVerifyComponent implements OnInit {
   btcOrEth: string | number;
   btcOrEthBalance: string | number;
   btcOrEthBalanceUsd: string | number;
+  profileStatus:any;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class SmsVerifyComponent implements OnInit {
     })
 
     this.getEnableOrDisable("initial");
-    this.getBtcOrEthBalance("BTC");
+  
   }
   goToHomeAddress() {
     this.route.navigate(['homeaddress']);
@@ -51,6 +52,7 @@ export class SmsVerifyComponent implements OnInit {
     this.dashboardService.postBtcOrEthBalance(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.profileStatus = success['CalculatingAmountDTO'].profileStatus;
         if (this.btcOrEth == "ETH") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
           this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
@@ -92,10 +94,11 @@ export class SmsVerifyComponent implements OnInit {
     this.dashboardService.postEnableOrDisable(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        console.log(success);
         (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
         if (this.initialStatus != "initial") {
           Swal.fire("Success", success['message'], "success");
+        }else{
+          this.getBtcOrEthBalance("BTC");
         }
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");

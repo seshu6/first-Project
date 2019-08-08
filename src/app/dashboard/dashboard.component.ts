@@ -19,7 +19,7 @@ import * as M from 'src/assets/materialize/js/materialize';
   animations: [
     trigger('slideUp', [
       transition(':enter', [
-        style({ transform: 'translateY(-800px)' }),
+        style({ transform: 'translateY(-800px)' }), 
         animate('500ms')
       ])
     ])
@@ -172,7 +172,8 @@ export class DashboardComponent implements OnInit {
     this.selectedCurrencyType = crypto;
     this.getActivityList("slider");
   }
-
+  kycShowOrHide: any;
+  profileShowOrHide: any;
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
@@ -183,6 +184,8 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.postBtcOrEthBalance(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.kycShowOrHide = success['CalculatingAmountDTO'].kycStatus;
+        this.profileShowOrHide = success['CalculatingAmountDTO'].profileStatus;
         if (this.selectedCurrencyType == "ETH") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
           this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdforEther;

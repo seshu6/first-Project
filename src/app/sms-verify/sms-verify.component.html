@@ -72,7 +72,7 @@
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
         <div class="bluewallet-sms-code">
-            <div class="welcome-wallet-blue">
+            <div class="welcome-wallet-blue" *ngIf="profileStatus == 0">
                 <div class="wallet-sms-logo">
                     <h1>Welcome</h1>
                     <img class="heightauto" src="assets/images/logo.png" />

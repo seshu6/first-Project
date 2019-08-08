@@ -7759,19 +7759,38 @@ font-size: 14px !important;
 	max-width:760px;
 }
 .kyc-view-form .modal-body{
-	padding: 40px 26px;
+	padding: 10px 26px;
+}
+.kyc-form-upload{
+	margin-bottom: 6px;
+}
+.kyc-form-upload label{
+	font-size: 18px;
+	font-weight: 500;
+	color: #252f58;
+}
+.kyc-form-upload h4{
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 8px;
 }
 .selfie-documt{
-	width:100%;
-	background: #f1f1f1;
-	border:1px dotted #dddddd;
-	padding:12px;
-	text-align:center;
+    width: 100%;
+    background: #f1f1f1;
+    border: 1px dotted #dddddd;
+    padding: 0px;
+    text-align: center;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .selfie-documt img{
     max-width: 100%;
-    height: 50px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     display: inline-block;
 }
 .selfie-documt h4{

@@ -103,7 +103,7 @@ export class KycComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
-    // this.getBtcOrEthBalance("BTC");
+    this.getBtcOrEthBalance("BTC");
 
 
   }

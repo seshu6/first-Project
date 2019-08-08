@@ -138,222 +138,28 @@
         <div class="admin-wallet-viewbox">
           <div class="adminwalt-accordion" id="tablescroll">
             <ul>
-              <li>
+              <li *ngFor="let user of userListArr;let i = index;">
                 <div class="admin-wallet-tableview">
                   <div class="idview">
-                    <h1>ID</h1>
-                    <span>001</span>
+                    <h1>S.NO</h1>
+                    <span>{{i+1}}</span>
                   </div>
                   <div class="idview">
                     <h1>Name </h1>
-                    <span>John Doe</span>
+                    <span>{{user.userName}}</span>
                   </div>
                   <div class="idview">
-                    <h1>Wallet </h1>
-                    <span>02546897512564</span>
+                    <h1>E-mail </h1>
+                    <span>{{user.emailId}}</span>
                   </div>
+
                   <div class="idview">
-                    <h1>First Name</h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Last Name</h1>
-                    <span>Johe Doe</span>
-                  </div>
-                  <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
+                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal"
+                      (click)="openKycDocument(user)">KYC</button>
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="admin-wallet-tableview">
-                  <div class="idview">
-                    <h1>ID</h1>
-                    <span>001</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Name </h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Wallet </h1>
-                    <span>02546897512564</span>
-                  </div>
-                  <div class="idview">
-                    <h1>First Name</h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Last Name</h1>
-                    <span>Johe Doe</span>
-                  </div>
-                  <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="admin-wallet-tableview">
-                  <div class="idview">
-                    <h1>ID</h1>
-                    <span>001</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Name </h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Wallet </h1>
-                    <span>02546897512564</span>
-                  </div>
-                  <div class="idview">
-                    <h1>First Name</h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Last Name</h1>
-                    <span>Johe Doe</span>
-                  </div>
-                  <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="admin-wallet-tableview">
-                  <div class="idview">
-                    <h1>ID</h1>
-                    <span>001</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Name </h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Wallet </h1>
-                    <span>02546897512564</span>
-                  </div>
-                  <div class="idview">
-                    <h1>First Name</h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Last Name</h1>
-                    <span>Johe Doe</span>
-                  </div>
-                  <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="admin-wallet-tableview">
-                  <div class="idview">
-                    <h1>ID</h1>
-                    <span>001</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Name </h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Wallet </h1>
-                    <span>02546897512564</span>
-                  </div>
-                  <div class="idview">
-                    <h1>First Name</h1>
-                    <span>John Doe</span>
-                  </div>
-                  <div class="idview">
-                    <h1>Last Name</h1>
-                    <span>Johe Doe</span>
-                  </div>
-                  <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                  </div>
-                </div>
-              </li>
-              <li>
-                  <div class="admin-wallet-tableview">
-                    <div class="idview">
-                      <h1>ID</h1>
-                      <span>001</span>
-                    </div>
-                    <div class="idview">
-                      <h1>Name </h1>
-                      <span>John Doe</span>
-                    </div>
-                    <div class="idview">
-                      <h1>Wallet </h1>
-                      <span>02546897512564</span>
-                    </div>
-                    <div class="idview">
-                      <h1>First Name</h1>
-                      <span>John Doe</span>
-                    </div>
-                    <div class="idview">
-                      <h1>Last Name</h1>
-                      <span>Johe Doe</span>
-                    </div>
-                    <div class="idview">
-                      <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                    <div class="admin-wallet-tableview">
-                      <div class="idview">
-                        <h1>ID</h1>
-                        <span>001</span>
-                      </div>
-                      <div class="idview">
-                        <h1>Name </h1>
-                        <span>John Doe</span>
-                      </div>
-                      <div class="idview">
-                        <h1>Wallet </h1>
-                        <span>02546897512564</span>
-                      </div>
-                      <div class="idview">
-                        <h1>First Name</h1>
-                        <span>John Doe</span>
-                      </div>
-                      <div class="idview">
-                        <h1>Last Name</h1>
-                        <span>Johe Doe</span>
-                      </div>
-                      <div class="idview">
-                        <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                      <div class="admin-wallet-tableview">
-                        <div class="idview">
-                          <h1>ID</h1>
-                          <span>001</span>
-                        </div>
-                        <div class="idview">
-                          <h1>Name </h1>
-                          <span>John Doe</span>
-                        </div>
-                        <div class="idview">
-                          <h1>Wallet </h1>
-                          <span>02546897512564</span>
-                        </div>
-                        <div class="idview">
-                          <h1>First Name</h1>
-                          <span>John Doe</span>
-                        </div>
-                        <div class="idview">
-                          <h1>Last Name</h1>
-                          <span>Johe Doe</span>
-                        </div>
-                        <div class="idview">
-                          <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal">KYC</button>
-                        </div>
-                      </div>
-                    </li>
+
 
             </ul>
           </div>
@@ -363,7 +169,8 @@
   </div>
 
   <div class="kyc-view-form">
-    <div class="modal fade" id="kycmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="kycmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -374,31 +181,129 @@
           </div>
           <div class="modal-body">
             <div class="kyc-body-content">
-              <div class="kyc-form-upload">
+
+
+              <!-- PASSPORT -->
+              <div class="kyc-form-upload" *ngIf="currentModalObj.hasOwnProperty('passportList')">
+                <label>Passport</label>
                 <div class="row">
                   <div class="col-lg-3 col-md-3 col-12">
                     <div class="selfie-documt">
-                      <img src="assets/images/selfie.png">
-                      <h4>selfie</h4>
+                      <img [src]="currentModalObj.passportList[0]">
                     </div>
+                    <h4>selfie</h4>
                   </div>
                   <div class="col-lg-3 col-md-3 col-12">
                     <div class="selfie-documt">
-                      <img src="assets/images/front-camera.png">
-                      <h4>Front</h4>
+                      <img [src]="currentModalObj.passportList[1]">
                     </div>
+                    <h4>Front</h4>
                   </div>
                   <div class="col-lg-3 col-md-3 col-12">
                     <div class="selfie-documt">
-                      <img src="assets/images/back-camera.png">
-                      <h4>Back</h4>
+                      <img [src]="currentModalObj.passportList[2]">
                     </div>
+                    <h4>Back</h4>
                   </div>
                   <div class="col-lg-3 col-md-3 col-12">
                     <div class="selfie-documt">
-                      <img src="assets/images/document.png">
-                      <h4>selfie Document</h4>
+                      <img [src]="currentModalObj.passportList[3]">
                     </div>
+                    <h4>selfie Document</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- IDCARD -->
+              <div class="kyc-form-upload" *ngIf="currentModalObj.hasOwnProperty('idCardList')">
+                <label>ID-CARD</label>
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.idCardList[0]">
+                    </div>
+                    <h4>selfie</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.idCardList[1]">
+                    </div>
+                    <h4>Front</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.idCardList[2]">
+                    </div>
+                    <h4>Back</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.idCardList[3]">
+                    </div>
+                    <h4>selfie Document</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RESIDENT PERMIT -->
+              <!-- IDCARD -->
+              <div class="kyc-form-upload" *ngIf="currentModalObj.hasOwnProperty('residentPermitList')">
+                <label>RESIDENT-PERMIT</label>
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.residentPermitList[0]">
+                    </div>
+                    <h4>selfie</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.residentPermitList[1]">
+                    </div>
+                    <h4>Front</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.residentPermitList[2]">
+                    </div>
+                    <h4>Back</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.residentPermitList[3]">
+                    </div>
+                    <h4>selfie Document</h4>
+                  </div>
+                </div>
+              </div>
+
+              <!-- LICENSE -->
+              <div class="kyc-form-upload" *ngIf="currentModalObj.hasOwnProperty('drivingLicenceList')">
+                <label>RESIDENT-PERMIT</label>
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.drivingLicenceList[0]">
+                    </div>
+                    <h4>selfie</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.drivingLicenceList[1]">
+                    </div>
+                    <h4>Front</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.drivingLicenceList[2]">
+                    </div>
+                    <h4>Back</h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-12">
+                    <div class="selfie-documt">
+                      <img [src]="currentModalObj.drivingLicenceList[3]">
+                    </div>
+                    <h4>selfie Document</h4>
                   </div>
                 </div>
               </div>

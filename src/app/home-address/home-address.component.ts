@@ -25,7 +25,8 @@ import { LoaderService } from '../loader.service';
 export class HomeAddressComponent implements OnInit {
   homeAddressForm: FormGroup;
   addressShowOrHide: boolean = false;
-  profileShowOrHide: boolean = false;
+  profileShowOrHide: boolean = true;
+  countryResidenceShowOrHide: boolean = false;
   selectedDate: any = new Date();
   selectedCountry: string;
   selectedCity: string;
@@ -111,7 +112,8 @@ export class HomeAddressComponent implements OnInit {
     if (this.homeAddressForm.controls.countrySearch.invalid) {
       Swal.fire("Info", "Please enter country to proceed", "info");
     } else {
-      this.addressShowOrHide = !this.addressShowOrHide;
+      // this.addressShowOrHide = !this.addressShowOrHide;
+      this.addHomeAddressForm();
     }
   }
 
@@ -121,33 +123,42 @@ export class HomeAddressComponent implements OnInit {
       || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
-      this.profileShowOrHide = !this.profileShowOrHide;
+      this.countryResidenceShowOrHide = !this.countryResidenceShowOrHide;
+    }
+  }
+
+  validateNameDetails() {
+    if (this.homeAddressForm.controls.firstName.invalid || this.homeAddressForm.controls.lastName.invalid
+      || this.homeAddressForm.controls.middleName.invalid || this.homeAddressForm.controls.dateOfBirth.invalid) {
+      Swal.fire("Info", "Please check your data", "info");
+    } else {
+      this.addressShowOrHide = !this.addressShowOrHide;
     }
   }
 
   addHomeAddressForm() {
     console.log("selected date", this.selectedDate);
     if (this.homeAddressForm.invalid) {
-      Swal.fire("Info", "Please check your data", "info");
+      Swal.fire("Info", "Please check your datasss", "info");
     } else {
       this.spinner.showOrHide(true);
       let jsonData = {
         "address": this.homeAddressForm.controls.addressLine1.value,
-        "address1": this.homeAddressForm.controls.addressLine1.value,
-        "postalCode": this.homeAddressForm.controls.addressLine1.value,
+        "address1": this.homeAddressForm.controls.addressLine2.value,
+        "postalCode": this.homeAddressForm.controls.postalCode.value,
         "countryId": this.selectedCountryAddress,
         "stateId": this.selectedstate,
         "cityId": this.selectedCity,
         "userId": sessionStorage.getItem("userId"),
-        "firstName": this.homeAddressForm.controls.addressLine1.value,
-        "middleName": this.homeAddressForm.controls.addressLine1.value,
-        "lastName": this.homeAddressForm.controls.addressLine1.value,
-        "dateOfBirth": this.homeAddressForm.controls.addressLine1.value
+        "firstName": this.homeAddressForm.controls.firstName.value,
+        "middleName": this.homeAddressForm.controls.middleName.value,
+        "lastName": this.homeAddressForm.controls.lastName.value,
+        "dateOfBirth": this.homeAddressForm.controls.dateOfBirth.value
       }
       this.dashboardServices.postAddHomeAddressDetails(jsonData).subscribe(success => {
-         this.spinner.showOrHide(false);
+        this.spinner.showOrHide(false);
         if (success['status'] == "success") {
-          this.homeAddressForm.reset();
+          // this.homeAddressForm.reset();
           Swal.fire("Success", success['message'], "success");
           this.route.navigate(['dashboard']);
 
@@ -157,28 +168,30 @@ export class HomeAddressComponent implements OnInit {
 
       }, error => {
         this.spinner.showOrHide(false);
-      if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info");
-        this.route.navigate(['login']);
-      }
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
       })
     }
   }
 
 
+
+
   // GET COUNTRY DETAILS API
   getCountryList() {
-     this.spinner.showOrHide(true);
+    this.spinner.showOrHide(true);
 
     this.dashboardServices.getCountryList().subscribe(success => {
-       this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.countryListArr = success['countryData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-       this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -194,14 +207,14 @@ export class HomeAddressComponent implements OnInit {
       "countryid": this.selectedCountryAddress
     };
     this.dashboardServices.postStateList(jsonData).subscribe(success => {
-       this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.stateListArr = success['StateData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-       this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -217,14 +230,14 @@ export class HomeAddressComponent implements OnInit {
       "stateid": this.selectedstate
     };
     this.dashboardServices.postCityList(jsonData).subscribe(success => {
-        this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.cityListArr = success['CityData'];
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-        this.spinner.showOrHide(false);
+      this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);

@@ -162,6 +162,43 @@ export class VaultComponent implements OnInit {
     })
   }
 
+  getBtcOrEthBalance(cryptoCurrency: string) {
+    let currency = cryptoCurrency;
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": currency
+    }
+    this.vaultService.postSliderCryptocurrency(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.currentEthAmount = success['CalculatingAmountDTO'].currentUsdforEther;
+        this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
+        this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
+        this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
+        if (this.ethOrBtc == "ETH") {
+          // this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
+          this.availabeBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforEther;
+        } else {
+          this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
+        }
+      
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
   // GET ACTIVE VAULT INFORMATION
 
   getActiveVaultInformation(cryptoType: string, when?: string) {
@@ -243,7 +280,7 @@ export class VaultComponent implements OnInit {
         }
       } else {
         jsonData = {
-          "email": sessionStorage.getItem("userEmail"),
+          "email": sessionStorage.getItem("userEmail"), 
           "cryptoAmount": this.estimatedEth,
           "typeOfInvestment": this.ethOrBtc,
           "investmentPeriod": this.estimatedTime,

@@ -59,6 +59,11 @@ export class BuyAndSellComponent implements OnInit {
   send: string;
   receive: string;
   exchangeCryptoType: string;
+  currentEthAmount: string | number;
+  currentBtcAmount: string | number;
+  currentEthAmountStatus: number;
+  currentBtcAmountStatus: |number;
+
   // userTabListArr: any[] = [];
 
 
@@ -73,6 +78,7 @@ export class BuyAndSellComponent implements OnInit {
     })
     this.changeBtcToEthAndViceVersa();
     this.getRequestedEthOrBtc();
+    this.getBtcOrEthBalance();
     // this.adminExchangeTabData();
     // this.getUserTabListData();
   }
@@ -133,7 +139,7 @@ export class BuyAndSellComponent implements OnInit {
         this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
       } else {
         this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
-      this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
+        this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
       }
       $("#bitoicnlink img").addClass("bounceInDown");
       if (this.lhsBtcShowOrHide) {
@@ -677,5 +683,39 @@ export class BuyAndSellComponent implements OnInit {
       }
     })
   }
+
+
+
+
+  // CURRENT BTC AND ETH BALANCE
+  getBtcOrEthBalance() {
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": "BTC"
+    }
+    this.buyAndSellService.postBtcOrEthBalance(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.currentEthAmount = success['CalculatingAmountDTO'].currentUsdforEther;
+        this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
+        this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
+        this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
+
+
+
 
 }

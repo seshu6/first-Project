@@ -395,7 +395,7 @@ export class AdminBuyAndSellComponent implements OnInit {
       "toBtcWalletAddress": address,
       "btcAmount": btcAmount
     }
-    this.buyAndSellService.postBtcTOEthEcxhange(jsonData).subscribe(success => {
+    this.buyAndSellService.postEthToBtcEcxhangeUser(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         console.log("***************************BTC TO ETH", success);

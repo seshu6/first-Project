@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="refresh-btn">
-                        <a href="javascript:void(0);">
+                        <a href="javascript:void(0);" (click)="getBtcOrEthBalance()">
                             <img src="assets/images/refresh.png" />
                         </a>
                     </div>
@@ -32,28 +32,32 @@
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">ETH
-                                <img src="assets/images/downarrowred.png" />
+                                <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
-                            <span class="wal-amt">435 $</span>
+                            <span class="wal-amt">{{currentEthAmount}} $</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">BTC
-                                <img src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
-                            <span class="wal-amt">20.000 $</span>
+                            <span class="wal-amt">{{currentBtcAmount}} $</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">XRP
                                 <img src="assets/images/uparrowgreen.png" />
                             </span>
                             <span class="wal-amt">200 $</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
+
+
             </div>
         </div>
     </div>
@@ -70,20 +74,20 @@
                             </label>
                         </div>
                         <div class="avatar-preview">
-                            <img id="imagePreview" [src]="profileImageSrc">
+                            <img [src]="profileImageSrc">
                         </div>
                     </div>
                 </div>
                 <div class="profile-form">
-                    <form>
+                    <form [formGroup]="profileForm">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <div class="inputeffect">
                                         <label>
-                                            ID
+                                            Name
                                         </label>
-                                        <input type="text" placeholder="ID">
+                                        <input type="text" placeholder="Name" formControlName="name">
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +97,7 @@
                                         <label>
                                             Mobile
                                         </label>
-                                        <input type="text" placeholder="Mobile">
+                                        <input type="text" placeholder="Mobile" formControlName="mobile">
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +107,7 @@
                                         <label>
                                             Registry
                                         </label>
-                                        <input type="text" placeholder="Registry">
+                                        <input type="text" placeholder="Registry" formControlName="registry">
                                     </div>
                                 </div>
                             </div>
@@ -114,10 +118,10 @@
                                             Country
                                         </label>
                                         <div class="selecgroup">
-                                            <select>
-                                                <option>Country</option>
-                                                <option>Country</option>
-                                                <option>Country</option>
+                                            <select formControlName="country" [(ngModel)]="selectedCountry">
+                                                <option value="undefined">Select Country</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;"
+                                                    value="{{country.id}}">{{country.countryName}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -129,7 +133,8 @@
                                         <label>
                                             E-mail
                                         </label>
-                                        <input type="text" placeholder="Carloserojas531@gmail.com">
+                                        <input type="email" placeholder="Carloserojas531@gmail.com"
+                                            formControlName="email">
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +144,7 @@
                                         <label>
                                             Coin purse
                                         </label>
-                                        <input type="text" placeholder="Bitcoin">
+                                        <input type="text" placeholder="Bitcoin" formControlName="coinPurse">
                                     </div>
                                 </div>
                             </div>
@@ -149,14 +154,15 @@
                                         <label>
                                             Version
                                         </label>
-                                        <input type="text" placeholder="2.0.4">
+                                        <input type="text" placeholder="2.0.4" formControlName="version">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-12 text-center">
                                 <div class="form-group">
                                     <div class="inputeffect">
-                                        <button class="create-walbtn" type="button">Save</button>
+                                        <button class="create-walbtn" type="button"
+                                            (click)="updateProfileDetails()">Save</button>
                                         <button class="create-walbtn" type="button">Cancel</button>
                                     </div>
                                 </div>

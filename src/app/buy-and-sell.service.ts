@@ -69,4 +69,8 @@ export class BuyAndSellService {
   postAdminExchangeTabDetails(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/getuserdetails", data, this.header.getHttpHeader())
   }
+
+  postBtcOrEthBalance(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
+  }
 }

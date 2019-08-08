@@ -23,7 +23,7 @@
             </a>
             <a class="carousel-item1">
               <h1>Monero</h1>
-              <img src="assets/images/moneroswipe.png" />
+              <img src="assets/images/moneroswipe.png" /> 
             </a>
 
           </div>
@@ -33,33 +33,33 @@
       </div>
       <div class="select-your-cryptocurrency blockelemtn">
         <div class="crypto-currency-wallet">
-          <!-- <h1>{{btcOrEth}} Balance</h1> -->
+          <h1>{{btcOrEth}} Balance</h1>
           <div class="etherum-blance">
             <h2>{{btcOrEthBalance}}</h2>
             <div class="etherum-usdolar">
-              <p>{{btcOrEthBalanceUsd}} USDollar</p>
-              <!-- <div class="bal-exchange-dollar">
-                            <select>
-                                <option value="usdollar">USDollar</option>
-                                <option value="usdollar1">USDollar</option>
-                                <option value="usdollar2">USDollar</option>
-                            </select>
-                        </div> -->
+                <p>{{btcOrEthUsdDollar}} USDollar</p>
+                <!-- <div class="bal-exchange-dollar">
+                    <select>
+                        <option value="usdollar">USDollar</option>
+                        <option value="usdollar1">USDollar</option>
+                        <option value="usdollar2">USDollar</option>
+                    </select>
+                </div> -->
             </div>
-          </div>
+        </div>
           <div class="refresh-btn">
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" (click)="getBtcOrEthBalance(btcOrEth)">
               <img src="assets/images/refresh.png" />
             </a>
           </div>
-          <div class="send-receive-bttngrup">
+          <!-- <div class="send-receive-bttngrup">
             <button type="button" class="sendbtn">Send
               <img src="assets/images/sendicon.png" />
             </button>
             <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
               <img src="assets/images/receiveicon.png" />
             </button>
-          </div>
+          </div> -->
           <div class="info">
             <a href="javascript:void(0);" class="infobtn">Information</a>
           </div>

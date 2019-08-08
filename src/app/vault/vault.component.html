@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="refresh-btn">
-                        <a href="javascript:void(0);">
+                        <a href="javascript:void(0);" (click)="getBtcOrEthBalance(ethOrBtc)">
                             <img src="assets/images/refresh.png" />
                         </a>
                     </div>
@@ -329,7 +329,7 @@
                                                 <select [(ngModel)]="estimatedTime">
                                                     <option value="3">3 Months - 3%</option>
                                                     <option value="6">6 Months - 6%</option>
-                                                    <option value="12">12 Months - 12%</option>
+                                                    <option value="12">12 Months - 12%</option> 
                                                 </select>
                                             </div>
                                         </div>

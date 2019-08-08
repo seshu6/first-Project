@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   loginOrForgotShowOrHide: boolean = true;
   forgotPasswordEmail: string;
   otpModalShowOrHide: boolean = false;
-  otp:any;
+  otp: any;
   // @ViewChild('otpForm') otpForm: ElementRef;
   constructor(private verificationService: TwoStepsVerificationService, private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
 
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
           // this.route.navigate(['verification']);
           // this.otpCodeArr = document.getElementsByName("otpTextName");
 
-          this.otpModalShowOrHide = true;
+          // this.otpModalShowOrHide = true;
           // this.otpCodeArr = document.getElementById("ototpForm")
           // this.otpCodeArr = document.getElementsByName("otpTextName"));
 
@@ -93,9 +93,14 @@ export class LoginComponent implements OnInit {
         } else if (success['loginInfo'].roleId == 0) {
           sessionStorage.setItem("roleName", "user");
           // this.loginService.setUserRole("user");
-          this.otpModalShowOrHide = true;
+          // this.otpModalShowOrHide = true;
           // this.route.navigate(['dashboard']);
           // this.route.navigate(['verification']);
+        }
+        if (success['loginInfo'].twoFactorAuthenticationStatus == 1) {
+          this.otpModalShowOrHide = true;
+        } else {
+          this.route.navigate(['dashboard']);
         }
         // this.route.navigate(['dashboard']);
         // this.route.navigate(['verification']);
@@ -149,38 +154,38 @@ export class LoginComponent implements OnInit {
     this.forgotPasswordEmail = "";
   }
 
-  
+
   onVerifyOtp(): void {
     if (!Boolean(this.otp)) {
       Swal.fire("Info", "Please provide OTP to proceed", "info");
     } else {
-    this.spinner.showOrHide(true);
-    let jsonData = {
-      "email": sessionStorage.getItem("userEmail"),
-      "securedKey": this.otp
-    }
-    this.verificationService.postVerifyOtp(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
-      if (success['status'] == "success") {
-        // Swal.fire({
-        //   html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
-        //   showConfirmButton: true,
-        //   confirmButtonColor: "#00a186"
-        // });
-        this.otpModalShowOrHide = false;
-        this.route.navigate(['dashboard']);
-      } else if (success['status'] == "failure") {
-        Swal.fire("Failure", success['message'], "error");
+      this.spinner.showOrHide(true);
+      let jsonData = {
+        "email": sessionStorage.getItem("userEmail"),
+        "securedKey": this.otp
       }
+      this.verificationService.postVerifyOtp(jsonData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          // Swal.fire({
+          //   html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
+          //   showConfirmButton: true,
+          //   confirmButtonColor: "#00a186"
+          // });
+          this.otpModalShowOrHide = false;
+          this.route.navigate(['dashboard']);
+        } else if (success['status'] == "failure") {
+          Swal.fire("Failure", success['message'], "error");
+        }
 
-    }, error => {
-      this.spinner.showOrHide(false);
-      if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info");
-        this.route.navigate(['login']);
-      }
-    })
-  }
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
+      })
+    }
 
   }
 
