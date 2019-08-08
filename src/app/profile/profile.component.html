@@ -24,6 +24,11 @@
                     </div>
                 </div>
             </div>
+            <div class="send-receive-bttngrup">
+                <button type="button" class="secondfact">Second Factor
+                    <img src="assets/images/Group-2043.png" />
+                </button>
+            </div>
             <div class="wallet-eth-list">
                 <div class="info">
                     <a href="javascript:void(0);" class="infobtn">Information</a>
@@ -67,8 +72,7 @@
                 <div class="profile-upload-div">
                     <div class="avatar-upload">
                         <div class="avatar-edit">
-                            <input type="file" id="imageupload" (change)="onSelectProfileImage(profileImage.files)"
-                                #profileImage>
+                            <input type="file" id="imageupload" (change)="onSelectProfileImage(profileImage.files)" #profileImage>
                             <label for="imageupload">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </label>
@@ -120,8 +124,7 @@
                                         <div class="selecgroup">
                                             <select formControlName="country" [(ngModel)]="selectedCountry">
                                                 <option value="undefined">Select Country</option>
-                                                <option *ngFor="let country of countryListArr;let i = index;"
-                                                    value="{{country.id}}">{{country.countryName}}</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -133,8 +136,7 @@
                                         <label>
                                             E-mail
                                         </label>
-                                        <input type="email" placeholder="Carloserojas531@gmail.com"
-                                            formControlName="email">
+                                        <input type="email" placeholder="Carloserojas531@gmail.com" formControlName="email">
                                     </div>
                                 </div>
                             </div>
@@ -161,8 +163,7 @@
                             <div class="col-lg-12 col-md-12 col-12 text-center">
                                 <div class="form-group">
                                     <div class="inputeffect">
-                                        <button class="create-walbtn" type="button"
-                                            (click)="updateProfileDetails()">Save</button>
+                                        <button class="create-walbtn" type="button" (click)="updateProfileDetails()">Save</button>
                                         <button class="create-walbtn" type="button">Cancel</button>
                                     </div>
                                 </div>
