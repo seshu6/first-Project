@@ -152,10 +152,19 @@
                     <h1>E-mail </h1>
                     <span>{{user.emailId}}</span>
                   </div>
-
                   <div class="idview">
-                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal"
-                      (click)="openKycDocument(user)">KYC</button>
+                    <h1>Wallet</h1>
+                    <span class="idviewimg">
+                      <a href="javascript:void(0);">
+                        <img src="assets/images/blockchainicon2.png">
+                      </a>
+                      <a href="javascript:void(0);">
+                        <img src="assets/images/blockchainicon1.png">
+                      </a>
+                    </span>
+                  </div>
+                  <div class="idview">
+                    <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal" (click)="openKycDocument(user)">KYC</button>
                   </div>
                 </div>
               </li>
@@ -169,8 +178,7 @@
   </div>
 
   <div class="kyc-view-form">
-    <div class="modal fade" id="kycmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
+    <div class="modal fade" id="kycmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -315,6 +323,22 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="wallet-view" style="display:none;">
+  <div class="wallet-view-input">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="input-group">
+      <input type="text">
+      <a href="javascript:void(0);">
+        <!-- <img src="assets/images/copyicon.png"> -->
+        <span>Copy</span>
+      </a>
+    </div>
+    <div class="walsendaddress">
+      <button type="button" class="sendaddre">Send Address</button>
     </div>
   </div>
 </div>

@@ -1536,7 +1536,7 @@ footer {
 	background: linear-gradient(301deg, rgba(151,245,249,1) 0%, rgba(82,157,243,1) 50%, rgba(45,60,173,1) 94%, rgba(45,60,173,1) 100%);
 	padding: 8px;
 	border-radius: 6px;
-	width: 260px;
+	width: 100%;
 }
 .profile-comp {
 	display: flex;
@@ -1585,7 +1585,7 @@ footer {
 }
 .search-dailymonth {
 	position: relative;
-	border: 1px solid rgba(147,181,229,0.3);
+	border: 1px solid #d1c9ff;
 	height: 52px;
 	border-radius: 10px;
 	background: #ffffff;
@@ -8022,4 +8022,79 @@ font-size: 14px !important;
 }
 .enable-verify{
 	margin-top:20px;
+}
+.idviewimg img{
+	max-width:100%;
+	height:30px;
+	object-fit:contain;
+	margin-right:4px;
+}
+.wallet-view{
+	background: rgba(0,0,0,.4);
+	position: fixed;
+	width:100%;
+	height:100vh;
+	top:0px;
+	bottom:0px;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+}
+.wallet-view-input{
+	position: relative;
+    background: #ffffff;
+    width: 400px;
+    padding: 20px;
+}
+.wallet-view-input .close, .wallet-view-input .close:hover{
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    border: 1px solid #dddddd;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: 1 !important;
+}
+.wallet-view-input .input-group{
+	position: relative;
+}
+.wallet-view-input .input-group input{
+	width: 100%;
+    border-radius: 3px;
+    border: 1px solid #dddddd;
+    height: 36px;
+	outline: none;
+	padding:0 32px 0 6px;
+}
+.wallet-view-input .input-group a{
+	position: absolute;
+    right: 0;
+    display: inline-block;
+    background: #579cec;
+    padding: 6px;
+    overflow: hidden;
+}
+.wallet-view-input .input-group a span{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.walsendaddress{
+	text-align:center;
+	margin-top:10px;
+}
+.walsendaddress .sendaddre {
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(97,188,242,1)), color-stop(100%, rgba(63,109,208,1)));
+    background: -webkit-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+    background: -o-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+    background: -ms-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+    background: linear-gradient(90deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
+	color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 4px 20px;
 }
