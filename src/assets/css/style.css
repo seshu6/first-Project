@@ -1720,19 +1720,24 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 8px;
 }
 .select-day {
-	margin-bottom: 4px;
+	margin-bottom: 6px;
 	display: inline-block;
 }
-.select-day select {
+.select-day select, .select-day select:focus {
 	border: 1px solid #48acff;
 	border-radius: 60px;
-	padding: 3px 20px;
-	width: 100%;
+	padding: 3px 30px 4px 30px;
+	/* width: 100%; */
 	outline: none;
 	float: right;
 	margin-right: 4px;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	outline:none !important;
+	background: url(/assets/images/selectdown.png) no-repeat 14px 13px / 8px;
 }
 .graph-history {
 	background: #ffffff;
@@ -7435,12 +7440,12 @@ font-size: 14px !important;
 	padding: 26px 0;
 }
 .backlink{
-	padding: 0 15px;
+	padding: 0 0px;
 	width: 100%;
 }
 .backlink a{
     display: inline-block;
-    color: #ABB3D0;
+    color: #ABB3D0 !important;
     font-size: 15px;
     font-weight: bold;
     background: url(/assets/images/smallrightarrow.png) no-repeat 0 0 / contain;

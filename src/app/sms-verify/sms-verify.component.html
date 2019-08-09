@@ -72,14 +72,17 @@
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
         <div class="bluewallet-sms-code">
+            <div class="backlink">
+                <a href="javascript:void(0);">Back</a>
+            </div>
             <div class="welcome-wallet-blue">
+
                 <div class="wallet-sms-logo">
                     <h1>Welcome</h1>
                     <img class="heightauto" src="assets/images/logo.png" />
                 </div>
                 <div class="wallet-sms-content">
-                    <p>Verify your identity to request your XLM. Will Take a few minutes. Once verification, you could
-                        use our
+                    <p>Verify your identity to request your XLM. Will Take a few minutes. Once verification, you could use our
                         product of last generation exchange.</p>
                     <div class="sms-content-bg">
                         <p>When you create a Wallet, you accept
@@ -100,12 +103,10 @@
                     <img src="assets/images/verify-sms-icon.png" />
                 </div>
                 <div class="wallet-sms-content">
-                    <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to upgrade the
-                        security
+                    <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to upgrade the security
                         on your wallet</p>
                     <div class="beginnowbtn">
-                        <button type="button" class="create-walbtn"
-                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                        <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
                     </div>
                     <div class="enableotp" *ngIf="otpShowOrHide">
                         <div class="enable-otp-verify">
@@ -117,8 +118,7 @@
                             <input type="text" name="optSix" [(ngModel)]="optSix">
                         </div>
                         <div class="enable-verify">
-                            <button type="button" class="create-walbtn"
-                                (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
+                            <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
                         </div>
                     </div>
                 </div>
@@ -245,8 +245,7 @@
                 <img src="assets/images/emailinboxicon.png" />
                 <h2>Check Your Inbox...</h2>
                 <a href="javascript:void(0);">JohnDoe@gmail.com</a>
-                <p>search an email of BlueWallet And click the link of verification to complete the configuration of
-                    your Wallet.</p>
+                <p>search an email of BlueWallet And click the link of verification to complete the configuration of your Wallet.</p>
             </div>
             <div class="goto-email">
                 <button type="button" class="gotemailbtn">Go to Email</button>
