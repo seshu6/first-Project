@@ -41,6 +41,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ActivationLinkComponent } from './activation-link/activation-link.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { KycViewComponent } from './kyc-view/kyc-view.component';
+import { VaultHistoryComponent } from './vault-history/vault-history.component';
 
 
 
@@ -76,7 +77,8 @@ import { KycViewComponent } from './kyc-view/kyc-view.component';
     ForgotPasswordComponent,
     ActivationLinkComponent,
     OtpVerificationComponent,
-    KycViewComponent
+    KycViewComponent,
+    VaultHistoryComponent
   ],
   imports: [
     BrowserModule,

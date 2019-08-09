@@ -24,6 +24,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ActivationLinkComponent } from './activation-link/activation-link.component';
 import { ProfileComponent } from './profile/profile.component';
 import { KycViewComponent } from './kyc-view/kyc-view.component';
+import { VaultHistoryComponent } from './vault-history/vault-history.component';
 
 const routes: Routes = [{
   path: '',
@@ -52,6 +53,9 @@ const routes: Routes = [{
 }, {
   path: 'vault',
   component: VaultComponent
+},{
+  path: 'vault-history',
+  component: VaultHistoryComponent
 }, {
   path: 'buyandsell',
   component: BuyAndSellComponent
