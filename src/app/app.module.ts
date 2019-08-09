@@ -40,6 +40,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ActivationLinkComponent } from './activation-link/activation-link.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { KycViewComponent } from './kyc-view/kyc-view.component';
 
 
 
@@ -74,7 +75,8 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
     AdminBuyAndSellComponent,
     ForgotPasswordComponent,
     ActivationLinkComponent,
-    OtpVerificationComponent
+    OtpVerificationComponent,
+    KycViewComponent
   ],
   imports: [
     BrowserModule,

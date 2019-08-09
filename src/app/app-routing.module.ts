@@ -23,6 +23,7 @@ import { AdminBuyAndSellComponent } from './admin-buy-and-sell/admin-buy-and-sel
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ActivationLinkComponent } from './activation-link/activation-link.component';
 import { ProfileComponent } from './profile/profile.component';
+import { KycViewComponent } from './kyc-view/kyc-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -81,6 +82,9 @@ const routes: Routes = [{
 }, {
   path: 'adminbuyandsell',
   component: AdminBuyAndSellComponent
+},  {
+  path: 'kyc-view',
+  component: KycViewComponent
 }, 
 {
   path: '**',
