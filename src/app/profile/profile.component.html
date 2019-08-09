@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="send-receive-bttngrup">
-                <button type="button" class="secondfact">Second Factor
+                <button type="button" class="secondfact" (click)="showEnableOrDisable()"> Second Factor
                     <img src="assets/images/Group-2043.png" />
                 </button>
             </div>
@@ -67,18 +67,20 @@
         </div>
     </div>
     <div class="bluewallet-body-wrap">
-        <div class="profile-page-div">
+        <!-- PROFILE STARTS HERE -->
+        <div class="profile-page-div" *ngIf="profileShowOrHide">
             <div class="profile-view">
                 <div class="profile-upload-div">
                     <div class="avatar-upload">
                         <div class="avatar-edit">
-                            <input type="file" id="imageupload" (change)="onSelectProfileImage(profileImage.files)" #profileImage>
+                            <input type="file" id="imageupload" (change)="uploadProfileImgage(uploadImages,profileImage.files)"
+                                #profileImage>
                             <label for="imageupload">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </label>
                         </div>
                         <div class="avatar-preview">
-                            <img [src]="profileImageSrc">
+                            <img src='{{profileImageSrc}}?d={{clock_tick}}' id="uploadImages">
                         </div>
                     </div>
                 </div>
@@ -124,7 +126,8 @@
                                         <div class="selecgroup">
                                             <select formControlName="country" [(ngModel)]="selectedCountry">
                                                 <option value="undefined">Select Country</option>
-                                                <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;"
+                                                    value="{{country.id}}">{{country.countryName}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -136,7 +139,8 @@
                                         <label>
                                             E-mail
                                         </label>
-                                        <input type="email" placeholder="Carloserojas531@gmail.com" formControlName="email">
+                                        <input type="email" placeholder="Carloserojas531@gmail.com"
+                                            formControlName="email">
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +167,8 @@
                             <div class="col-lg-12 col-md-12 col-12 text-center">
                                 <div class="form-group">
                                     <div class="inputeffect">
-                                        <button class="create-walbtn" type="button" (click)="updateProfileDetails()">Save</button>
+                                        <button class="create-walbtn" type="button"
+                                            (click)="updateProfileDetails()">Save</button>
                                         <button class="create-walbtn" type="button">Cancel</button>
                                     </div>
                                 </div>
@@ -173,5 +178,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- ENDS HERE -->
+
+        <!-- TWO FACTOR STARTS HERE -->
+        <div class="bluewallet-sms-code" *ngIf="twoFactorShowOrHide">
+            <div class="welcome-wallet-blue">
+                <div class="wallet-sms-logo">
+                    <h1>Verify with 2 Steps</h1>
+                    <img src="assets/images/verify-sms-icon.png" />
+                </div>
+                <div class="wallet-sms-content">
+                    <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to upgrade the
+                        security
+                        on your wallet</p>
+                    <div class="beginnowbtn">
+                        <button type="button" class="create-walbtn"
+                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                    </div>
+                    <div class="enableotp" *ngIf="otpShowOrHide">
+                        <div class="enable-otp-verify">
+                            <input type="text" name="optOne" [(ngModel)]="optOne">
+                            <input type="text" name="optTwo" [(ngModel)]="optTwo">
+                            <input type="text" name="optThree" [(ngModel)]="optThree">
+                            <input type="text" name="optFour" [(ngModel)]="optFour">
+                            <input type="text" name="optFive" [(ngModel)]="optFive">
+                            <input type="text" name="optSix" [(ngModel)]="optSix">
+                        </div>
+                        <div class="enable-verify">
+                            <button type="button" class="create-walbtn"
+                                (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ENDS HERE -->
     </div>
 </div>

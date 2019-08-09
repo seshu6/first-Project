@@ -691,7 +691,7 @@ export class BuyAndSellComponent implements OnInit {
   getBtcOrEthBalance() {
     this.spinner.showOrHide(true);
     let jsonData = {
-      "userId": sessionStorage.getItem("userId"),
+      "userId": sessionStorage.getItem("userId"), 
       "cryptoType": "BTC"
     }
     this.buyAndSellService.postBtcOrEthBalance(jsonData).subscribe(success => {

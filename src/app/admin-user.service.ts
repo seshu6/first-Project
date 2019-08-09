@@ -15,6 +15,6 @@ export class AdminUserService {
   }
 
   postBtcOrEthBalance(data: any) {
-    return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
+    return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.commonHeaders.getHttpHeader());
   }
 }

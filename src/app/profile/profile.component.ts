@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -31,6 +32,24 @@ export class ProfileComponent implements OnInit {
   currentBtcAmount: string | number;
   currentEthAmountStatus: number;
   currentBtcAmountStatus: |number;
+  optOne: number;
+  optTwo: number;
+  optThree: number;
+  optFour: number;
+  optFive: number;
+  optSix: number;
+  twoFactorShowOrHide: boolean = false;
+  profileShowOrHide: boolean = true;
+  otpShowOrHide: boolean = false;
+  initialStatus: string;
+  enableOrDisable: string;
+  profileUploadCounter: number = 0;
+  uploadProfileImg: any;
+  clock_tick: any = Date.now();
+
+  @ViewChild('profileImage') profileImage: ElementRef;
+  // @ViewChild('profileImage') uploadImages: ElementRef;
+
   // selectedCountry:any;
   constructor(private dashboardService: CommonDashboardService, private formBuilder: FormBuilder, private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService) { }
 
@@ -71,6 +90,7 @@ export class ProfileComponent implements OnInit {
         this.profileForm.controls.name.setValue(success['retrieveData'].userName);
         this.profileForm.controls.email.setValue(success['retrieveData'].email);
         this.profileForm.controls.mobile.setValue(success['retrieveData'].mobileNo);
+        this.profileImageSrc = "";
         this.profileImageSrc = success['retrieveData'].proImgPath;
         if (where == "initial") {
           this.getBtcOrEthBalance();
@@ -109,27 +129,31 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  profileUploadCounter: number = 0;
-  uploadProfileImg: any;
+
   updateProfileDetails() {
     if (this.profileForm.controls.name.invalid || this.profileForm.controls.mobile.invalid) {
       Swal.fire("Info", "Please chaeck your data", "info");
     } else {
       this.spinner.showOrHide(true);
-      let formData = new FormData();
-      if (this.profileUploadCounter > 0) {
-
-        formData.set("mobileNo", this.profileForm.controls.mobile.value);
-        formData.set("userName", this.profileForm.controls.name.value);
-        formData.set("userId", sessionStorage.getItem("userId"));
-        formData.set("profileimg", this.uploadProfileImg);
-
-      } else {
-        formData.set("mobileNo", this.profileForm.controls.mobile.value);
-        formData.set("userName", this.profileForm.controls.name.value);
-        formData.set("userId", sessionStorage.getItem("userId"));
+      let jsonData = {
+        "mobileNo": this.profileForm.controls.mobile.value,
+        "userName": this.profileForm.controls.name.value,
+        "userId": sessionStorage.getItem("userId")
       }
-      this.dashboardService.postUpdateProfileDetails(formData).subscribe(success => {
+      // let formData = new FormData();
+      // if (this.profileUploadCounter > 0) {
+
+      //   formData.set("mobileNo", this.profileForm.controls.mobile.value);
+      //   formData.set("userName", this.profileForm.controls.name.value);
+      //   formData.set("userId", sessionStorage.getItem("userId"));
+      //   formData.set("profileimg", this.uploadProfileImg);
+
+      // } else {
+      //   formData.set("mobileNo", this.profileForm.controls.mobile.value);
+      //   formData.set("userName", this.profileForm.controls.name.value);
+      //   formData.set("userId", sessionStorage.getItem("userId"));
+      // }
+      this.dashboardService.postUpdateProfileDetails(jsonData).subscribe(success => {
         this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           Swal.fire("Success", success['message'], "success");
@@ -161,6 +185,99 @@ export class ProfileComponent implements OnInit {
   }
 
 
+  showEnableOrDisable() {
+    this.profileShowOrHide = false;
+    this.twoFactorShowOrHide = true;
+    this.getEnableOrDisable("initial");
+  }
+
+
+  uploadProfileImgage(images: any, files: any) {
+
+    this.spinner.showOrHide(true);
+    let formData = new FormData();
+    formData.set("profileimg", files[0]);
+    formData.set("userId", sessionStorage.getItem("userId"));
+    this.dashboardService.postUploadProImages(formData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        // this.profileImageSrc = "";
+        this.clock_tick = Date.now();
+        this.profileImageSrc = success['profilePath'];
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
+
+  }
+
+
+  getEnableOrDisable(when: string, otp?: number) {
+
+    this.initialStatus = when;
+
+    let jsonData = {};
+    if (this.initialStatus == "initial") {
+      this.otpShowOrHide = false;
+      jsonData = {
+        "userId": sessionStorage.getItem("userId")
+      }
+    }
+    else if (this.otpShowOrHide) {
+      if (otp.toString().length != 6) {
+        Swal.fire("Info", "Please check your otp", "info");
+        return false;
+      } else {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "twoFactorAuthenticationStatus": (this.enableOrDisable == "Enable") ? 1 : 0,
+          "otpSecureKey": otp
+        }
+      }
+
+    }
+    else {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "twoFactorAuthenticationStatus": (this.enableOrDisable == "Enable") ? 1 : 0
+      }
+    }
+    this.spinner.showOrHide(true);
+    this.dashboardService.postEnableOrDisable(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
+        if (this.initialStatus != "initial") {
+          (this.otpShowOrHide) ? this.otpShowOrHide = false : this.otpShowOrHide = true;
+          if (success['message'] == "2FAuthentication Status updated successfully") {
+            this.profileShowOrHide = true;
+            this.twoFactorShowOrHide = false;
+          }
+          Swal.fire("Success", success['message'], "success");
+        }
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+
+
+  }
+
 
   getBtcOrEthBalance() {
     // let currency = cryptoCurrency;
@@ -187,6 +304,11 @@ export class ProfileComponent implements OnInit {
         this.route.navigate(['login']);
       }
     })
+  }
+
+  twoFactorClicked() {
+    this.profileShowOrHide = false;
+    this.twoFactorShowOrHide = true;
   }
 
 

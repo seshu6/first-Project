@@ -26,7 +26,14 @@ export class SmsVerifyComponent implements OnInit {
   btcOrEth: string | number;
   btcOrEthBalance: string | number;
   btcOrEthBalanceUsd: string | number;
-  profileStatus:any;
+  profileStatus: any;
+  optOne: number;
+  optTwo: number;
+  optThree: number;
+  optFour: number;
+  optFive: number;
+  optSix: number;
+  otpShowOrHide: boolean = false;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
   ngOnInit() {
@@ -37,7 +44,7 @@ export class SmsVerifyComponent implements OnInit {
     })
 
     this.getEnableOrDisable("initial");
-  
+
   }
   goToHomeAddress() {
     this.route.navigate(['homeaddress']);
@@ -75,29 +82,49 @@ export class SmsVerifyComponent implements OnInit {
 
   }
 
+  // showOtp(){
+  //   this.otpShowOrHide = true;
+  // }
 
-  getEnableOrDisable(when: string) {
+  getEnableOrDisable(when: string, otp?: number) {
+
     this.initialStatus = when;
-    this.spinner.showOrHide(true);
+
     let jsonData = {};
     if (this.initialStatus == "initial") {
       jsonData = {
         "userId": sessionStorage.getItem("userId")
       }
-    } else {
+    }
+    else if (this.otpShowOrHide) {
+      if (otp.toString().length != 6) {
+        Swal.fire("Info", "Please check your otp", "info");
+        return false;
+      } else {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "twoFactorAuthenticationStatus": (this.enableOrDisable == "Enable") ? 1 : 0,
+          "otpSecureKey": otp
+        }
+      }
+
+    }
+    else {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
         "twoFactorAuthenticationStatus": (this.enableOrDisable == "Enable") ? 1 : 0
       }
     }
-
+    this.spinner.showOrHide(true);
     this.dashboardService.postEnableOrDisable(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
         if (this.initialStatus != "initial") {
+
+          (this.otpShowOrHide) ? this.otpShowOrHide = false : this.otpShowOrHide = true;
           Swal.fire("Success", success['message'], "success");
-        }else{
+        } else {
           this.getBtcOrEthBalance("BTC");
         }
       } else if (success['status'] == "failure") {
@@ -112,6 +139,10 @@ export class SmsVerifyComponent implements OnInit {
       }
     })
 
+
+  }
+
+  checkTwoFactorOtp(otp: number) {
 
   }
 }

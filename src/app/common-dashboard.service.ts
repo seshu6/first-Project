@@ -102,7 +102,11 @@ export class CommonDashboardService {
   }
 
   postUpdateProfileDetails(data: any) {
-    return this.http.post(this.url.apiUrl + "bluewallet/updateprofiledata", data, this.header.getUploadHttpHeader());
+    return this.http.post(this.url.apiUrl + "bluewallet/updateprofiledata", data, this.header.getHttpHeader());
+  }
+
+  postUploadProImages(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/updateprofileimage", data, this.header.getUploadHttpHeader());
   }
 
 
