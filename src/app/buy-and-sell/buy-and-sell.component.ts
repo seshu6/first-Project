@@ -62,7 +62,11 @@ export class BuyAndSellComponent implements OnInit {
   currentEthAmount: string | number;
   currentBtcAmount: string | number;
   currentEthAmountStatus: number;
-  currentBtcAmountStatus: |number;
+  currentBtcAmountStatus: number;
+  sendOrRequest: string = "SEND";
+  exchangeBtcOrEth: string = "btc";
+  currentObj: any;
+
 
   // userTabListArr: any[] = [];
 
@@ -226,6 +230,7 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
+
   // EXCHANGE BTC TO ETH AND ETH TO BTC
 
   onExchangeBtcToEth() {
@@ -303,6 +308,9 @@ export class BuyAndSellComponent implements OnInit {
     this.platformTabShowOrHide = true;
     this.platformExchangeShowOrHide = false;
     this.platformHistoryShowOrHide = true;
+    this.sendOrRequest = "SEND";
+    this.usdToBtcAndEth = 0;
+    this.calculatedBtcOrEth = 0;
     this.getRequestedEthOrBtc();
   }
 
@@ -323,6 +331,9 @@ export class BuyAndSellComponent implements OnInit {
       this.platformExchangeShowOrHide = true;
       this.platformHistoryShowOrHide = true;
     }
+    this.usdToBtcAndEth = 0;
+    this.calculatedBtcOrEth = 0;
+    this.sendOrRequest = "REQUEST";
     this.adminExchangeTabData();
   }
 
@@ -375,6 +386,7 @@ export class BuyAndSellComponent implements OnInit {
     this.platformTabShowOrHide = true;
     this.platformExchangeShowOrHide = false;
     this.platformHistoryShowOrHide = true;
+    this.sendOrRequest = "SEND";
     this.getRequestedEthOrBtc();
   }
 
@@ -436,50 +448,79 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
-  currentObj: any;
+
 
   // EXCHANGE CRYPTOCURRENCY API
   exchangeCryptoCurrency(data: any) {
     this.currentObj = data;
-    if (data.exchangeType == "BTC_ETH_USER") {
 
-      this.whetherBtcOrEth = "ETH";
-      this.usdToBtcAndEth = data.cryptoinusd;
-      this.changeBtcToEthAndViceVersa("exchange");
-      // this.postBtcToEthUser(data);
+    if (this.sendOrRequest == "SEND") {
+      if (data.exchangeType == "BTC_ETH_USER" || data.exchangeType == "BTC_ETH_ADMIN") {
 
-    } else if (data.exchangeType == "ETH_BTC_USER") {
+        this.whetherBtcOrEth = "ETH";
+        this.usdToBtcAndEth = data.cryptoinusd;
+        this.exchangeBtcOrEth = "eth";
+        this.onAutoCompleteUsdToBtcAndETh();
+        // this.changeBtcToEthAndViceVersa("exchange");
+        // this.postBtcToEthUser(data);
 
-      this.whetherBtcOrEth = "BTC";
-      this.usdToBtcAndEth = data.cryptoinusd;
-      this.changeBtcToEthAndViceVersa("exchange");
-      // this.postEthToBtchUser(data);
+      } else if (data.exchangeType == "ETH_BTC_USER" || data.exchangeType == "ETH_BTC_ADMIN") {
+
+        this.whetherBtcOrEth = "BTC";
+        this.usdToBtcAndEth = data.cryptoinusd;
+        this.exchangeBtcOrEth = "btc";
+        this.onAutoCompleteUsdToBtcAndETh();
+        // this.changeBtcToEthAndViceVersa("exchange");
+        // this.postEthToBtchUser(data);
+      }
+    } else {
+      Swal.fire("Info", "Not allowed", "info");
     }
+
   }
 
 
 
   onSubmitExchangeDetails() {
     if (this.currentObj.exchangeType == "BTC_ETH_USER") {
-      this.postBtcToEthUser(this.currentObj);
+      this.postBtcToEthUser();
     } else if (this.currentObj.exchangeType == "ETH_BTC_USER")
-      this.postEthToBtchUser(this.currentObj);
+      this.postEthToBtchUser();
   }
 
 
+
+  checkSendOrRequest() {
+    if (this.sendOrRequest == "SEND") {
+      if (this.currentObj.exchangeType == "ETH_BTC_ADMIN") {
+        this.postBtcToEthAdmin();
+      } else if (this.currentObj.exchangeType == "BTC_ETH_ADMIN") {
+        this.postEthToBtchAdmin();
+      }else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
+        this.postEthToBtchUser();
+      }else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
+        this.postBtcToEthUser();
+      }
+    } else if (this.sendOrRequest == "REQUEST") {
+      this.onExchangeBtcToEth();
+    }
+  }
+
   // BTC TO ETH USER
-  postBtcToEthUser(data: any) {
+  postBtcToEthUser() {
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
-      "toBtcWalletAddress": data.ethWalletAddress,//ethWalletAddress
+      "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
       "btcAmount": this.calculatedBtcOrEth,
-      "exchangeReqId": data.id,//id
+      "exchangeReqId": this.currentObj.id,//id
       "exchangeStatus": 1
     }
     this.buyAndSellService.postBtcToEthEcxhangeUser(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.getRequestedEthOrBtc();
+        Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -496,18 +537,22 @@ export class BuyAndSellComponent implements OnInit {
 
 
   // ETH TO BTC USER
-  postEthToBtchUser(data: any) {
+  // GIVING ETH AND GETTING BTC
+  postEthToBtchUser() {
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "etherAmount": this.calculatedBtcOrEth,
-      "toEthWalletAddress": data.ethWalletAddress,
-      "exchangeReqId": data.id,
+      "toEthWalletAddress": this.currentObj.ethWalletAddress,
+      "exchangeReqId": this.currentObj.id,
       "exchangeStatus": 1
     }
+
     this.buyAndSellService.postEthToBtcEcxhangeUser(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.getRequestedEthOrBtc();
+        Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -524,18 +569,22 @@ export class BuyAndSellComponent implements OnInit {
 
 
   // BTC TO ETH ADMIN
-  postBtcToEthAdmin(data: any) {
+  // "ETH_BTC_ADMIN"(refer exchangeType in currentobj)
+  // GIVING BTC AND GETTING ETH
+  postBtcToEthAdmin() {
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
-      "toBtcWalletAddress": data.ethWalletAddress,//ethWalletAddress
+      // "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
       "btcAmount": this.calculatedBtcOrEth,
-      "exchangeReqId": data.id,//id
+      "exchangeReqId": this.currentObj.id,//id
       "exchangeStatus": 1
     }
-    this.buyAndSellService.postBtcToEthEcxhangeUser(jsonData).subscribe(success => {
+    this.buyAndSellService.postBtcToEthEcxhangeAdmin(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.getRequestedEthOrBtc();
+        Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -552,18 +601,21 @@ export class BuyAndSellComponent implements OnInit {
 
 
   // ETH TO BTC ADMIN
-  postEthToBtchAdmin(data: any) {
+  // "BTC_ETH_ADMIN"(refer exchangeType in currentobj)
+  // GIVING ETH AND GETTING BTC
+  postEthToBtchAdmin() {
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "etherAmount": this.calculatedBtcOrEth,
-      "toEthWalletAddress": data.ethWalletAddress,
-      "exchangeReqId": data.id,
+      "exchangeReqId": this.currentObj.id,
       "exchangeStatus": 1
     }
-    this.buyAndSellService.postEthToBtcEcxhangeUser(jsonData).subscribe(success => {
+    this.buyAndSellService.postEthToBtcEcxhangeAdmin(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.getRequestedEthOrBtc();
+        Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -691,7 +743,7 @@ export class BuyAndSellComponent implements OnInit {
   getBtcOrEthBalance() {
     this.spinner.showOrHide(true);
     let jsonData = {
-      "userId": sessionStorage.getItem("userId"), 
+      "userId": sessionStorage.getItem("userId"),
       "cryptoType": "BTC"
     }
     this.buyAndSellService.postBtcOrEthBalance(jsonData).subscribe(success => {

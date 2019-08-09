@@ -25,6 +25,10 @@ export class AdminUserDetailsComponent implements OnInit {
   userListArr: any[] = [];
   currentKycDocsObj: any = {};
   currentModalObj: any = {};
+  vaultModal: boolean = false;
+  walletAddress: string;
+  copied: string = "copy all";
+  
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {
@@ -96,6 +100,22 @@ export class AdminUserDetailsComponent implements OnInit {
   }
 
 
+  openVaultModal(walletAddress: string) {
+    this.copied = "copy all";
+    this.walletAddress = walletAddress;
+    this.vaultModal = true;
+  }
+
+  copyToClipboard(): void {
+    let listener = (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (this.walletAddress));
+      e.preventDefault();
+    };
+    document.addEventListener('copy', listener);
+    document.execCommand('copy');
+    document.removeEventListener('copy', listener);
+    this.copied = "copied";
+  }
 
   openKycDocument(obj: any) {
     this.currentModalObj = obj;

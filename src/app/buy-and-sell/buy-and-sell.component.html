@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar  -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]> 
+        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -42,7 +42,7 @@
             </div>
             <div class="wallet-eth-list">
                 <div class="info">
-                    <a href="javascript:void(0);" class="infobtn">Information</a> 
+                    <a href="javascript:void(0);" class="infobtn">Information</a>
                 </div>
                 <ul>
                     <li>
@@ -57,8 +57,8 @@
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">BTC
-                                    <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                                    <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
+                                <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
                             <span class="wal-amt">{{currentBtcAmount}} $</span>
                         </a>
@@ -131,7 +131,12 @@
                                         </div>
                                         <div class="exchange-body">
                                             <div class="exchange-coin">
-                                                <div class="coin-transfer-exchange">
+
+
+
+
+                                                <!-- REQUEST BTC AND ETH STARTS HERE -->
+                                                <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'REQUEST'">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
@@ -146,22 +151,6 @@
                                                                         *ngIf="!lhsBtcShowOrHide">
                                                                     <span *ngIf="!lhsBtcShowOrHide">Ethereum</span>
                                                                 </a>
-                                                                <!-- <div class="coin-list-view">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="javascript:void(0);">
-                                                                                <img src="assets/images/bitcoin-icon.png" />
-                                                                                <span>Bitcoin</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="javascript:void(0);">
-                                                                                <img src="assets/images/etherium-icon.png" />
-                                                                                <span>Ethereum</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-2 col-md-2 col-12"
@@ -182,26 +171,56 @@
                                                                         *ngIf="!rhsEtherShowOrHide">
                                                                     <span *ngIf="!rhsEtherShowOrHide">Bitcoin</span>
                                                                 </a>
-                                                                <!-- <div class="coin-list-view1">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a href="javascript:void(0);">
-                                                                                <img src="assets/images/bitcoin-icon.png" />
-                                                                                <span>Bitcoin</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="javascript:void(0);">
-                                                                                <img src="assets/images/etherium-icon.png" />
-                                                                                <span>Ethereum</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- ENDS HERE -->
+
+
+                                                <!-- SEND BTC AND ETH STARTS -->
+                                                <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'SEND'">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-5 col-md-5 col-12">
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink" id="bitoicnlink"
+                                                                    href="javascript:void(0);">
+                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'"
+                                                                        src="assets/images/bitcoin-icon.png">
+                                                                    <span
+                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Bitcoin</span>
+                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'"
+                                                                        src="assets/images/etherium-icon.png">
+                                                                    <span
+                                                                        *ngIf="exchangeBtcOrEth != 'btc'">Ethereum</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 col-12">
+                                                            <div class="exchange-icn-center">
+                                                                <img src="assets/images/exchange-icon.png" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5 col-12">
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink1" id="bitoicnlink1"
+                                                                    href="javascript:void(0);">
+                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'"
+                                                                        src="assets/images/bitcoin-icon.png">
+                                                                    <span
+                                                                        *ngIf="exchangeBtcOrEth != 'btc'">Bitcoin</span>
+                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'"
+                                                                        src="assets/images/etherium-icon.png">
+                                                                    <span
+                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ENDS HERE -->
+
+
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
                                                         <input type="text" placeholder="$ 0"
@@ -230,7 +249,7 @@
                                                 </div>
                                                 <div class="exchange-bttn-group">
                                                     <button type="button" class="exchangebttn"
-                                                        (click)="onExchangeBtcToEth()">EXCHANGE</button>
+                                                        (click)="checkSendOrRequest()">{{sendOrRequest}}</button>
                                                         
                                                     <!-- <button type="button" class="exchangebttn" (click)="onSubmitExchangeDetails()">EXCHANGE</button> -->
                                                 </div>
@@ -243,7 +262,8 @@
                                         <div class="buy-view-card1">
                                             <div class="buy-transfer-scrol">
                                                 <ul id="transferscroll">
-                                                    <li *ngFor="let exchange of requestedEthOrBtcListArray" (click)="exchangeCryptoCurrency(exchange)">
+                                                    <li *ngFor="let exchange of requestedEthOrBtcListArray"
+                                                        (click)="exchangeCryptoCurrency(exchange)">
                                                         <a>
                                                             <div class="transfer-buy-list">
                                                                 <div class="bank-transfer">
