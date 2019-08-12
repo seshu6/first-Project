@@ -29,6 +29,8 @@ export class AdminUserDetailsComponent implements OnInit {
   walletAddress: string;
   copied: string = "copy all";
   kycPageShowOrHide: boolean = false;
+  userListShowOrHide: boolean = true;
+  currentKycZoomImage: string;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {
@@ -119,8 +121,15 @@ export class AdminUserDetailsComponent implements OnInit {
 
   openKycDocument(obj: any) {
     this.currentModalObj = obj;
+    this.userListShowOrHide = false;
+    this.kycPageShowOrHide = true;
 
   }
+
+  
+  // openKycDocsModal(imgSrc: string) {
+  //   this.currentKycZoomImage = imgSrc;
+  // }
 
 
 }

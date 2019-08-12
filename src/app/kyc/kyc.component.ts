@@ -290,6 +290,7 @@ export class KycComponent implements OnInit {
     }
     
     else {
+      this.spinner.showOrHide(true);
       this.kycErrorMessageShowOrHide = false;
       this.kycErrorMessage = "";
       let formDetails = new FormData();
