@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-        </div>
+        </perfect-scrollbar>
     </div>
 
     <!-- Bluewallet Body -->
@@ -110,12 +110,12 @@
                     </div>
                     <div class="enableotp" *ngIf="otpShowOrHide">
                         <div class="enable-otp-verify">
-                            <input type="text" name="optOne" [(ngModel)]="optOne">
-                            <input type="text" name="optTwo" [(ngModel)]="optTwo">
-                            <input type="text" name="optThree" [(ngModel)]="optThree">
-                            <input type="text" name="optFour" [(ngModel)]="optFour">
-                            <input type="text" name="optFive" [(ngModel)]="optFive">
-                            <input type="text" name="optSix" [(ngModel)]="optSix">
+                            <input type="number" name="optOne" [(ngModel)]="optOne" onKeyPress="if(this.value.length==1) return false;"/>
+                            <input type="number" name="optTwo" [(ngModel)]="optTwo" onKeyPress="if(this.value.length==1) return false;"/>
+                            <input type="number" name="optThree" [(ngModel)]="optThree" onKeyPress="if(this.value.length==1) return false;"/>
+                            <input type="number" name="optFour" [(ngModel)]="optFour" onKeyPress="if(this.value.length==1) return false;"/>
+                            <input type="number" name="optFive" [(ngModel)]="optFive" onKeyPress="if(this.value.length==1) return false;"/>
+                            <input type="number" name="optSix" [(ngModel)]="optSix" onKeyPress="if(this.value.length==1) return false;"/>
                         </div>
                         <div class="enable-verify">
                             <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>

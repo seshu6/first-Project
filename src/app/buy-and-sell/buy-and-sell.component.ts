@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import $ from "jquery";
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { LoaderService } from '../loader.service';
+
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
@@ -145,6 +146,7 @@ export class BuyAndSellComponent implements OnInit {
         this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
         this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
       }
+      $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
       $("#bitoicnlink img").addClass("bounceInDown");
       if (this.lhsBtcShowOrHide) {
         setTimeout(function () {
@@ -226,7 +228,6 @@ export class BuyAndSellComponent implements OnInit {
 
       })
     }
-
   }
 
 

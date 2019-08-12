@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar  -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -76,7 +76,7 @@
 
 
             </div>
-        </div>
+        </perfect-scrollbar>
     </div>
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
@@ -223,7 +223,7 @@
 
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
-                                                        <input type="text" placeholder="$ 0"
+                                                        <input type="number" placeholder="$ 0"
                                                             [(ngModel)]="usdToBtcAndEth"
                                                             (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>

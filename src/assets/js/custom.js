@@ -87,14 +87,14 @@ $(document).ready(function () {
         $('.coin-list-view1').toggle();
     });
 
-    $("#boxscroll").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
-    $("#boxscroll1").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
-    $("#tablescroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-    $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-    $("#activyscroll1").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
+    // $("#boxscroll").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
+    // $("#boxscroll1").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
+    // $("#tablescroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
+    // $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
+    // $("#activyscroll1").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
+    
+    // $("#transferscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
-    $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-    $("#transferscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.fadeOut').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme' });
 
@@ -110,5 +110,6 @@ $(document).ready(function () {
         // $(".dropdown-list-search").hide();
         // $(".dropdown-list-search2").hide();
     });
+
 });
 

@@ -43,10 +43,14 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
 import { KycViewComponent } from './kyc-view/kyc-view.component';
 import { VaultHistoryComponent } from './vault-history/vault-history.component';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
-
-
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -91,9 +95,13 @@ import { VaultHistoryComponent } from './vault-history/vault-history.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ChartsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    PerfectScrollbarModule
   ],
-  providers: [],
+  providers: [{
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

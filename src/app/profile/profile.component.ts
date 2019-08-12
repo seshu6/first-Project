@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   currentBtcAmount: string | number;
   currentEthAmountStatus: number;
   currentBtcAmountStatus: |number;
-  optOne: number;
+  optOne: number | string;
   optTwo: number;
   optThree: number;
   optFour: number;
@@ -310,6 +310,7 @@ export class ProfileComponent implements OnInit {
     this.profileShowOrHide = false;
     this.twoFactorShowOrHide = true;
   }
+
 
 
 }

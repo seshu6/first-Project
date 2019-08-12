@@ -55,9 +55,9 @@
     .qr-code-view img{
         height: 55px;
     }
-    .qr-code-head .qr-request{
+    /* .qr-code-head .qr-request{
         padding: 6px;
-    }
+    } */
     .moneit-input-group .inputtype-moneit input{
         font-size: 12px;
         padding: 0 70px 0 9px;
@@ -131,10 +131,10 @@
         font-size: 14px;
         padding: 4px 10px; 
     }
-    .qr-code-head .qr-request{
+    /* .qr-code-head .qr-request{
         padding: 6px;
         
-    }
+    } */
     .blue-body-div .slider-coins ul li{
         width: 110px;
     }

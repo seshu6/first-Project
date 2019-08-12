@@ -1,7 +1,7 @@
 <div class="bluewallet-dashboard-fullwrap">
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -64,7 +64,7 @@
 
 
             </div>
-        </div>
+        </perfect-scrollbar>
     </div>
     <div class="bluewallet-body-wrap">
         <!-- PROFILE STARTS HERE -->
@@ -73,8 +73,7 @@
                 <div class="profile-upload-div">
                     <div class="avatar-upload">
                         <div class="avatar-edit">
-                            <input type="file" id="imageupload" (change)="uploadProfileImgage(uploadImages,profileImage.files)"
-                                #profileImage>
+                            <input type="file" id="imageupload" (change)="uploadProfileImgage(uploadImages,profileImage.files)" #profileImage>
                             <label for="imageupload">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </label>
@@ -126,8 +125,7 @@
                                         <div class="selecgroup">
                                             <select formControlName="country" [(ngModel)]="selectedCountry">
                                                 <option value="undefined">Select Country</option>
-                                                <option *ngFor="let country of countryListArr;let i = index;"
-                                                    value="{{country.id}}">{{country.countryName}}</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -139,8 +137,7 @@
                                         <label>
                                             E-mail
                                         </label>
-                                        <input type="email" placeholder="Carloserojas531@gmail.com"
-                                            formControlName="email">
+                                        <input type="email" placeholder="Carloserojas531@gmail.com" formControlName="email">
                                     </div>
                                 </div>
                             </div>
@@ -167,8 +164,7 @@
                             <div class="col-lg-12 col-md-12 col-12 text-center">
                                 <div class="form-group">
                                     <div class="inputeffect">
-                                        <button class="create-walbtn" type="button"
-                                            (click)="updateProfileDetails()">Save</button>
+                                        <button class="create-walbtn" type="button" (click)="updateProfileDetails()">Save</button>
                                         <button class="create-walbtn" type="button">Cancel</button>
                                     </div>
                                 </div>
@@ -189,25 +185,22 @@
                     <img src="assets/images/verify-sms-icon.png" />
                 </div>
                 <div class="wallet-sms-content">
-                    <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to upgrade the
-                        security
+                    <p>Avoid the no authorizedt access to your wallet. Enable the verification of 2 steps to upgrade the security
                         on your wallet</p>
                     <div class="beginnowbtn">
-                        <button type="button" class="create-walbtn"
-                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                        <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
                     </div>
                     <div class="enableotp" *ngIf="otpShowOrHide">
                         <div class="enable-otp-verify">
-                            <input type="text" name="optOne" [(ngModel)]="optOne">
-                            <input type="text" name="optTwo" [(ngModel)]="optTwo">
-                            <input type="text" name="optThree" [(ngModel)]="optThree">
-                            <input type="text" name="optFour" [(ngModel)]="optFour">
-                            <input type="text" name="optFive" [(ngModel)]="optFive">
-                            <input type="text" name="optSix" [(ngModel)]="optSix">
+                            <input type="number" name="optOne" class="input" [(ngModel)]="optOne" onKeyPress="if(this.value.length==1) return false;" />
+                            <input type="number" name="optTwo" class="input"  [(ngModel)]="optTwo" onKeyPress="if(this.value.length==1) return false;" />
+                            <input type="number" name="optThree"  class="input" [(ngModel)]="optThree" onKeyPress="if(this.value.length==1) return false;" />
+                            <input type="number" name="optFour" [(ngModel)]="optFour" onKeyPress="if(this.value.length==1) return false;" />
+                            <input type="number" name="optFive" [(ngModel)]="optFive" onKeyPress="if(this.value.length==1) return false;" />
+                            <input type="number" name="optSix" [(ngModel)]="optSix" onKeyPress="if(this.value.length==1) return false;" />
                         </div>
                         <div class="enable-verify">
-                            <button type="button" class="create-walbtn"
-                                (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
+                            <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
                         </div>
                     </div>
                 </div>

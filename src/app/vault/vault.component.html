@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -35,8 +35,8 @@
                         <!-- <button type="type" class="addvaultbtn" (click)="newVaultShadowEffect = true">
                             <img src="assets/images/vault.png"> New Vault</button> -->
 
-                            <button type="type" class="addvaultbtn" (click)="goToHistory()">
-                                    <img src="assets/images/vault.png"> New Vault</button>
+                        <button type="type" class="addvaultbtn" (click)="goToHistory()">
+                            <img src="assets/images/vault.png"> New Vault</button>
                     </div>
                 </div>
             </div>
@@ -57,8 +57,8 @@
                     <li>
                         <a href="javascript:void(0);">
                             <span class="wal-eth">BTC
-                                    <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                                    <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
+                                <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
                             </span>
                             <span class="wal-amt">{{currentBtcAmount}} $</span>
                         </a>
@@ -73,7 +73,7 @@
                     </li> -->
                 </ul>
             </div>
-        </div>
+        </perfect-scrollbar>
     </div>
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
@@ -135,20 +135,16 @@
                             <div class="graph-history-title">
                                 <h1>Active</h1>
                             </div>
-                            <div class="active-list active-scroll" id="activyscroll">
+                            <perfect-scrollbar class="active-list active-scroll" id="activyscroll">
                                 <div class="active-scroll1">
                                     <ul>
-                                        <li class="active"
-                                            *ngFor="let cryptoData of activeCryptoCurrencyDetails;let i = index;">
-                                            <a href="javascript:void(0);" data-toggle="collapse" href="#eth{{i}}"
-                                                role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <li class="active" *ngFor="let cryptoData of activeCryptoCurrencyDetails;let i = index;">
+                                            <a href="javascript:void(0);" data-toggle="collapse" href="#eth{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                 <div class="wallet_view-link">
                                                     <div class="wallet-active">
                                                         <div class="wallet-etherium-icon">
-                                                            <img src="assets/images/blockchainicon2.png"
-                                                                *ngIf="cryptoData.typeOfInvestment == 'ETH'">
-                                                            <img src="assets/images/blockchainicon1.png"
-                                                                *ngIf="cryptoData.typeOfInvestment == 'BTC'">
+                                                            <img src="assets/images/blockchainicon2.png" *ngIf="cryptoData.typeOfInvestment == 'ETH'">
+                                                            <img src="assets/images/blockchainicon1.png" *ngIf="cryptoData.typeOfInvestment == 'BTC'">
                                                         </div>
                                                         <div class="wallet-etherium">
                                                             <h1>{{cryptoData.typeOfInvestment}}</h1>
@@ -164,12 +160,10 @@
                                                             <div class="produced-walet">
                                                                 <h2>Coins</h2>
                                                                 <!-- BTC -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $
-                                                                    {{cryptoData.btcValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $ {{cryptoData.btcValueInUsd}}
                                                                 </span>
                                                                 <!-- ETH -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
-                                                                    {{cryptoData.ethValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $ {{cryptoData.ethValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -199,12 +193,10 @@
                                                             <div class="produced-walet ethcolr">
                                                                 <h2>Coins</h2>
                                                                 <!-- BTC -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $
-                                                                    {{cryptoData.btcValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BTC'">+ $ {{cryptoData.btcValueInUsd}}
                                                                 </span>
                                                                 <!-- ETH -->
-                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
-                                                                    {{cryptoData.ethValueInUsd}}
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $ {{cryptoData.ethValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -245,14 +237,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </perfect-scrollbar>
                         </div>
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="graph-history-title">
                                 <h1>Completed</h1>
                             </div>
                             <div class="active-list">
-                                <div class="active-scroll" id="activyscroll1">
+                                <perfect-scrollbar class="active-scroll" id="activyscroll1">
                                     <ul>
                                         <li *ngFor="let completedDetails of completedCryptoCurrencyDetails">
                                             <a href="javascript:void(0);">
@@ -267,18 +259,15 @@
                                                     <div class="wallet-etherium text-center">
                                                         <div class="produced-walet">
                                                             <h2>Total</h2>
-                                                            <span>+ $
-                                                                {{completedDetails.btcValueInUsd + completedDetails.investmentPercentInUsd}}</span>
+                                                            <span>+ $ {{completedDetails.btcValueInUsd + completedDetails.investmentPercentInUsd}}</span>
                                                         </div>
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
                                                             <!-- BTC -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $
-                                                                {{completedDetails.btcValueInUsd}}
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $ {{completedDetails.btcValueInUsd}}
                                                             </span>
                                                             <!-- ETH -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
-                                                                {{completedDetails.ethValueInUsd}}
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $ {{completedDetails.ethValueInUsd}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -296,7 +285,7 @@
                                             <h1>No Data Found</h1>
                                         </div>
                                     </div>
-                                </div>
+                                </perfect-scrollbar>
                             </div>
                         </div>
                     </div>
@@ -332,7 +321,7 @@
                                                 <select [(ngModel)]="estimatedTime">
                                                     <option value="3">3 Months - 3%</option>
                                                     <option value="6">6 Months - 6%</option>
-                                                    <option value="12">12 Months - 12%</option> 
+                                                    <option value="12">12 Months - 12%</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -347,8 +336,7 @@
                                         <div class="form-group">
                                             <label>{{ethOrBtc}}</label>
                                             <div class="select-group">
-                                                <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
-                                                    (ngModelChange)="onAutoChangeEthOrBtcEstimation()"
+                                                <input type="text" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth" (ngModelChange)="onAutoChangeEthOrBtcEstimation()"
                                                     autocomplete="off">
                                             </div>
                                         </div>
@@ -384,8 +372,7 @@
                                                 <div class="accet-toggle">
                                                     <label class="label acttogle">
                                                         <div class="toggle">
-                                                            <input class="toggle-state" type="checkbox" name="check"
-                                                                [(ngModel)]="termsAndCondition">
+                                                            <input class="toggle-state" type="checkbox" name="check" [(ngModel)]="termsAndCondition">
                                                             <div class="toggle-inner">
                                                                 <div class="indicator"></div>
                                                             </div>

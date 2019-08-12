@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
-        <div class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-        </div>
+        </perfect-scrollbar>
     </div>
     <!-- Bluewallet Body -->
     <div class="bluewallet-body-wrap">
@@ -80,9 +80,7 @@
                         <!-- FIRST NAME DETAILS STARTS HERE -->
                         <div class="address-search-area" *ngIf="profileShowOrHide">
                             <h1>Profile</h1>
-                            <p>We need this to verify your identify, in order for you to use this improved feature.
-                                It
-                                should
+                            <p>We need this to verify your identify, in order for you to use this improved feature. It should
                                 only take a couple of minutes.</p>
                             <div class="address-profile-list">
                                 <div class="form-group">
@@ -98,8 +96,8 @@
                                     <button type="button" class="closeicon">×</button>
                                 </div>
                                 <div class="form-group">
-                                    <input class="datePickerInput" [owlDateTimeTrigger]="dt" [(ngModel)]="selectedDate"
-                                        formControlName="dateOfBirth" readonly [owlDateTime]="dt">
+                                    <input class="datePickerInput" [owlDateTimeTrigger]="dt" [(ngModel)]="selectedDate" formControlName="dateOfBirth" readonly
+                                        [owlDateTime]="dt">
                                     <owl-date-time pickerType="calendar" #dt></owl-date-time>
                                     <button type="button" class="closeicon">×</button>
                                 </div>
@@ -136,8 +134,7 @@
                             </div> -->
                             <div class="search-related-items">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Address Line 1 your indetity"
-                                        formControlName="addressLine1">
+                                    <input type="text" placeholder="Address Line 1 your indetity" formControlName="addressLine1">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" placeholder="Address Line 2" formControlName="addressLine2">
@@ -148,11 +145,9 @@
                                         <div class="col-lg-4 col-md-4 col-12">
                                             <div class="form-group">
                                                 <div class="selectgroup-list">
-                                                    <select formControlName="country"
-                                                        [(ngModel)]="selectedCountryAddress" (change)="getStateList()">
+                                                    <select formControlName="country" [(ngModel)]="selectedCountryAddress" (change)="getStateList()">
                                                         <option value="undefined" disabled>Select Country</option>
-                                                        <option *ngFor="let country of countryListArr;let i = index;"
-                                                            value="{{country.id}}">{{country.countryName}}</option>
+                                                        <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -160,11 +155,9 @@
                                         <div class="col-lg-4 col-md-4 col-12">
                                             <div class="form-group">
                                                 <div class="selectgroup-list">
-                                                    <select formControlName="state" [(ngModel)]="selectedstate"
-                                                        (change)="getCityList()">
+                                                    <select formControlName="state" [(ngModel)]="selectedstate" (change)="getCityList()">
                                                         <option value="undefined" disabled>Select State</option>
-                                                        <option *ngFor="let state of stateListArr;let i = index;"
-                                                            value="{{state.id}}">{{state.stateName}}</option>
+                                                        <option *ngFor="let state of stateListArr;let i = index;" value="{{state.id}}">{{state.stateName}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -175,8 +168,7 @@
                                                     <select formControlName="city" [(ngModel)]="selectedCity">
                                                         <option value="undefined" disabled>Select City</option>
                                                         <!-- <option value="chennai">chennai</option> -->
-                                                        <option *ngFor="let city of cityListArr;let i = index;"
-                                                            value="{{city.id}}">{{city.cityName}}</option>
+                                                        <option *ngFor="let city of cityListArr;let i = index;" value="{{city.id}}">{{city.cityName}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -216,8 +208,7 @@
                                 </ul> -->
                             </div>
                             <div class="address-send-box">
-                                <button type="button" class="addressend"
-                                    (click)="validateAddressDetails()">Send</button>
+                                <button type="button" class="addressend" (click)="validateAddressDetails()">Send</button>
                                 <div class="address-termscond">
                                     <p>When you "Sent", you accept</p>
                                     <p>
@@ -244,13 +235,11 @@
                                     <div class="selectgroup-list">
                                         <select formControlName="countrySearch" [(ngModel)]="selectedCountry">
                                             <option value="undefined" disabled>Select Country</option>
-                                            <option *ngFor="let country of countryListArr;let i = index;"
-                                                value="{{country.id}}">{{country.countryName}}</option>
+                                            <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
                                         </select>
                                     </div>
                                 </div>
-                                <button type="button" class="create-walbtn"
-                                    (click)="validateCountrySearch()">Next</button>
+                                <button type="button" class="create-walbtn" (click)="validateCountrySearch()">Next</button>
                                 <!-- </div> -->
                             </div>
 
