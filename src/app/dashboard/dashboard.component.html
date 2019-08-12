@@ -100,7 +100,7 @@
                         <p class="todayvalue">+ 1.908</p>
                     </li>
                     <li class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="complete-profile" *ngIf="profileShowOrHide == 0">
+                        <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'">
                             <div class="profile-comp">
                                 <div class="profile-content">
                                     <h1>Complete Your Profile</h1>
@@ -116,7 +116,7 @@
                 </ul>
             </div>
             <!-- KYC -->
-            <div class="more-info-full" *ngIf="kycShowOrHide ==0 && profileShowOrHide == 1">
+            <div class="more-info-full" *ngIf="kycShowOrHide ==0 && profileShowOrHide == 1 && roleName == 'user'">
                 <!-- <button type="button" class="closeicon">×</button> -->
                 <div class="more-info-lft">
                     <h1>More Info Needed</h1>

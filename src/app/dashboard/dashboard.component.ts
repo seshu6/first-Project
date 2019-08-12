@@ -60,6 +60,7 @@ export class DashboardComponent implements OnInit {
   requestId: any;
   successShowOrHide: boolean = false;
   copied: string = "Copy All";
+  roleName:string = sessionStorage.getItem('roleName');
 
 
   // CHART CONFIGURATIONS STARTS HERE

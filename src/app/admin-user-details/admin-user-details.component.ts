@@ -28,7 +28,7 @@ export class AdminUserDetailsComponent implements OnInit {
   vaultModal: boolean = false;
   walletAddress: string;
   copied: string = "copy all";
-  
+  kycPageShowOrHide: boolean = false;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {

@@ -177,6 +177,73 @@
           </div>
         </div>
       </div>
+
+
+<!-- KYC VIEW PAGE STARTS HERE -->
+<div class="kycview-form" *ngIf="kycPageShowOrHide">
+    <div class="backlink">
+      <a href="javascript:void(0);">Back</a>
+    </div>
+    <div class="kyc-viewform">
+      <div class="kyc-view-title">
+        <h1>KYC-View</h1>
+      </div>
+      <div class="kyc-form-upload">
+        <div class="kyc-form-title">
+          <h1>Passport</h1>
+        </div>
+        <div class="kyc-list-selfie">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-12">
+              <div class="kyc-selfie-box">
+                <div class="kycbg-box">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview">
+                    <img alt="image" src="assets/images/wallet.jpg" />
+                  </a>
+                </div>
+                <h4>Selfie</h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12">
+              <div class="kyc-selfie-box">
+                <div class="kycbg-box">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview">
+                    <img alt="image" src="assets/images/wallet.jpg" />
+                  </a>
+                </div>
+                <h4>Front</h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12">
+              <div class="kyc-selfie-box">
+                <div class="kycbg-box">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview">
+                    <img alt="image" src="assets/images/wallet.jpg" />
+                  </a>
+                </div>
+                <h4>Back</h4>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12">
+              <div class="kyc-selfie-box">
+                <div class="kycbg-box">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview">
+                    <img alt="image" src="assets/images/wallet.jpg" />
+                  </a>
+                </div>
+                <h4>Selfie Document</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ENDS HERE -->
+
+
+
+
     </div>
   
     <div class="kyc-view-form">
@@ -345,3 +412,28 @@
       </div> -->
     </div>
   </div>
+
+
+
+  
+<!-- KYC VIEW MODAL STARTS HERE -->
+<div class="kyc-popup">
+    <div class="modal fade" id="kycview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Selfie</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="kyc-view-image">
+              <img src="assets/images/wallet.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ENDS HERE -->
