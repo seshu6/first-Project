@@ -39,6 +39,7 @@ export class AdminUserDetailsComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
+
     this.getUserList();
 
   }
@@ -49,8 +50,7 @@ export class AdminUserDetailsComponent implements OnInit {
     this.adminService.getUserKycList().subscribe(success => {
       this.spinner.showOrHide(false);
       this.userListArr = success['kycList'];
-      console.log("user list", this.userListArr);
-
+      this.getBtcOrEthBalance("BTC");
     }, error => {
       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
@@ -126,7 +126,12 @@ export class AdminUserDetailsComponent implements OnInit {
 
   }
 
-  
+
+
+
+
+
+
   // openKycDocsModal(imgSrc: string) {
   //   this.currentKycZoomImage = imgSrc;
   // }

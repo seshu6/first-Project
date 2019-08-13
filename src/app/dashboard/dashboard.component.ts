@@ -273,7 +273,7 @@ export class DashboardComponent implements OnInit {
 
   copyToClipboard(item): void {
     let listener = (e: ClipboardEvent) => {
-      e.clipboardData.setData('text/plain', (item));
+      e.clipboardData.setData('text/plain', (item)); 
       e.preventDefault();
     };
 

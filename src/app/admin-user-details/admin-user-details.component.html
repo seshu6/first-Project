@@ -1,7 +1,7 @@
 <div class="bluewallet-dashboard-fullwrap">
   <!-- Bluewallet-second-sidebar -->
   <div class="bluewallet-profile-sidebar">
-    <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1">
+    <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1"> 
       <div class="profile-setting-wallet">
         <div class="profile-setting">
           <div class="setting-image">
@@ -77,18 +77,18 @@
           <div class="balance-wallet">
             <div class="balance-count">
               <div class="bal-totle-count text-center">
-                <h1>Balance</h1>
-                <p>2.806600</p>
+                <h1>{{btcOrEth}} Balance</h1>
+                <p>{{btcOrEthBalance}}</p>
               </div>
               <div class="bal-dollar">
-                <h2>880.660</h2>
-                <div class="bal-exchange-dollar">
+                <h2>{{btcOrEthUsdDollar}} USDollar</h2>
+                <!-- <div class="bal-exchange-dollar">
                   <select>
                     <option value="usdollar">USDollar</option>
                     <option value="usdollar1">USDollar</option>
                     <option value="usdollar2">USDollar</option>
                   </select>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -97,30 +97,25 @@
       <div class="wallet-eth-list">
         <ul>
           <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">ETH
-                <img src="assets/images/downarrowred.png" />
-              </span>
-              <span class="wal-amt">435 $</span>
-            </a>
+              <a href="javascript:void(0);">
+                  <span class="wal-eth">ETH
+                      <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                      <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
+                  </span>
+                  <span class="wal-amt">{{currentEthAmount}} $</span>
+              </a>
           </li>
           <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">BTC
-                <img src="assets/images/uparrowgreen.png" />
-              </span>
-              <span class="wal-amt">20.000 $</span>
-            </a>
+              <a href="javascript:void(0);">
+                  <span class="wal-eth">BTC
+                      <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                      <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
+                  </span>
+                  <span class="wal-amt">{{currentBtcAmount}} $</span>
+              </a>
           </li>
-          <li>
-            <a href="javascript:void(0);">
-              <span class="wal-eth">XRP
-                <img src="assets/images/uparrowgreen.png" />
-              </span>
-              <span class="wal-amt">200 $</span>
-            </a>
-          </li>
-        </ul>
+        
+      </ul>
       </div>
     </perfect-scrollbar>
   </div>

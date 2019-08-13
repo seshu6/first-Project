@@ -49,6 +49,8 @@ export class VaultComponent implements OnInit {
   currentBtcAmount: string | number;
   currentEthAmountStatus: number;
   currentBtcAmountStatus: |number;
+  vaultPageShowOrHide: boolean = true;
+  vaultHistoryPageShowOrHide: boolean = false;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
@@ -118,7 +120,7 @@ export class VaultComponent implements OnInit {
 
 
   // SLIDER SELECTED CRYPTOCURRENCY
-  onSliderCryptoCurrency(data: string, index?: number | string) { 
+  onSliderCryptoCurrency(data: string, index?: number | string) {
     this.spinner.showOrHide(true);
     this.clearInvestmentData();
     if (index != undefined) {
@@ -184,7 +186,7 @@ export class VaultComponent implements OnInit {
           this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
         }
-      
+
 
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -280,7 +282,7 @@ export class VaultComponent implements OnInit {
         }
       } else {
         jsonData = {
-          "email": sessionStorage.getItem("userEmail"), 
+          "email": sessionStorage.getItem("userEmail"),
           "cryptoAmount": this.estimatedEth,
           "typeOfInvestment": this.ethOrBtc,
           "investmentPeriod": this.estimatedTime,
@@ -296,7 +298,7 @@ export class VaultComponent implements OnInit {
           //   this.newVaultShadowEffect = false;
           // }
           this.route.navigateByUrl('dashboard', { skipLocationChange: true }).then(() =>
-          this.route.navigate(["vault"]));
+            this.route.navigate(["vault"]));
           Swal.fire("Success", success['message'], "success");
 
         } else if (success['status'] == "failure") {
@@ -307,7 +309,7 @@ export class VaultComponent implements OnInit {
         if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
           this.route.navigate(['login']);
-        }else{
+        } else {
           Swal.fire("Error", error.error.error_description, "error");
         }
       })
@@ -323,5 +325,31 @@ export class VaultComponent implements OnInit {
     this.usdEstimation = "";
     this.estimatedWallet = "";
   }
+
+
+  // VAULT HISTORY
+  goToVaultHistory() {
+    this.vaultHistoryPageShowOrHide = true;
+    this.vaultPageShowOrHide = false;
+    // this.spinner.showOrHide(true);
+    // let jsonData = {};
+    // this.vaultService.postAddVault(jsonData).subscribe(success => {
+    //   this.spinner.showOrHide(false);
+    //   if (success['status'] == "success") {
+      
+    //   } else if (success['status'] == "failure") {
+    //     Swal.fire("Error", success['message'], "error");
+    //   }
+    // }, error => {
+    //   this.spinner.showOrHide(false);
+    //   if (error.error.error == "invalid_token") {
+    //     Swal.fire("Info", "Session Expired", "info");
+    //     this.route.navigate(['login']);
+    //   } else {
+    //     Swal.fire("Error", error.error.error_description, "error");
+    //   }
+    // })
+  }
+
 
 }

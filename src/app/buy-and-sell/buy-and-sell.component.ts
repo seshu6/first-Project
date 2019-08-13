@@ -67,6 +67,7 @@ export class BuyAndSellComponent implements OnInit {
   sendOrRequest: string = "SEND";
   exchangeBtcOrEth: string = "btc";
   currentObj: any;
+  gasFee: string | number;
 
 
   // userTabListArr: any[] = [];
@@ -215,6 +216,7 @@ export class BuyAndSellComponent implements OnInit {
           //   this.calculatedBtcOrEth = success['CalculatingAmountDTO'].etherAmount;
           // }
           this.calculatedBtcOrEth = success['CalculatingAmountDTO'].cryptoAmount;
+          this.gasFee = success['CalculatingAmountDTO'].fee;
 
         } else if (success['status'] == "failure") {
           Swal.fire("Failure", success['message'], "error");
@@ -497,9 +499,9 @@ export class BuyAndSellComponent implements OnInit {
         this.postBtcToEthAdmin();
       } else if (this.currentObj.exchangeType == "BTC_ETH_ADMIN") {
         this.postEthToBtchAdmin();
-      }else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
+      } else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
         this.postEthToBtchUser();
-      }else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
+      } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
         this.postBtcToEthUser();
       }
     } else if (this.sendOrRequest == "REQUEST") {
