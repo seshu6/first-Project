@@ -1746,7 +1746,7 @@ footer {
 	border: 1px solid rgba(147,181,229,0.3);
 	padding: 20px;
 	border-radius: 10px;
-	min-height: 315px;
+	min-height: 340px;
 }
 .graph-activy-list-box {
 	height: 350px;
@@ -2270,6 +2270,9 @@ footer {
 	border-top-right-radius: 10px;
 	width: 50%;
 }
+.qrsendadmin{
+	border-top-left-radius: 10px;
+}
 .qr-code-head .qr-request .request-lft {
 	display: flex;
 	align-items: center;
@@ -2308,6 +2311,9 @@ footer {
 }
 .send-cop-inputgroup {
 	width: 340px;
+}
+.copadmininputgroup{
+	width: 50%;
 }
 .pos-relative {
 	position: relative;

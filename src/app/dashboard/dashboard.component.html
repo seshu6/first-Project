@@ -273,7 +273,7 @@
             <div class="moneitation-wrap">
                 <div class="moneitation-qr-code">
                     <div class="qr-code-head">
-                        <div class="qr-request" [ngClass]="{'qr-bgshow':sendHighLight}">
+                        <div class="qr-request" [ngClass]="{'qr-bgshow':sendHighLight}" *ngIf="roleName=='user'">
                             <div class="request-lft">
                                 <div class="qr-code-view" (click)="requestCryptoCurrency()">
                                     <img src="assets/images/qr-code.png" />
@@ -327,14 +327,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="qr-send" [ngClass]="{'qr-bgshow':requestHighLight}">
+                        <div class="qr-send" [ngClass]="{'qr-bgshow':requestHighLight, 'qrsendadmin':roleName=='admin'}">
                             <div class="send-right">
                                 <div class="qr-rezt-btn">
                                     <button type="button" class="qr-request-btn" (click)="sendCryptoCurreny()">Send
                                         <img src="assets/images/sendicon.png">
                                     </button>
                                 </div>
-                                <div class="send-cop-inputgroup">
+                                <div class="send-cop-inputgroup" [ngClass]="{'copadmininputgroup':roleName=='admin'}">
                                     <form>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
