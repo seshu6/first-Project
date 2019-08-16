@@ -3454,7 +3454,7 @@ footer {
 .accept-terms-cond .accept-cont .accet-toggle label {
 	margin-bottom: 0px;
 }
-.buy-transfer-scrol ul{
+.buy-transfer-scrol #transferscroll{
 	width: 100%;
     position: relative;
     height: 490px;
@@ -8175,9 +8175,15 @@ font-size: 14px !important;
     box-shadow: 0px 1px 7px 1px #dbdbdb;
 }
 .kyc-list-selfie .kyc-selfie-box .kycbg-box img{
-	max-width:100%;
+	/* max-width:100%;
 	height:100%;
-	object-fit: cover;
+	object-fit: cover; */
+	max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    text-align: center;
+    display: block;
+    margin: auto;
 }
 
 .kyc-popup{
@@ -8205,7 +8211,8 @@ font-size: 14px !important;
 }
 .kyc-popup .kyc-view-image{
 	width: 100%;
-	height:450px;
+	/* height:450px; */
+	text-align: center;
 }
 .kyc-popup .kyc-view-image img{
 	max-width:100%;
@@ -8332,4 +8339,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+.paddlft0{
+	padding-left:0px !important;
 }

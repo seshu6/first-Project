@@ -3,7 +3,7 @@
 
     <!-- Bluewallet-second-sidebar  -->
     <div class="bluewallet-profile-sidebar">
-        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]> 
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
             <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
@@ -13,19 +13,16 @@
                 <div class="platuser-tabs">
                     <ul>
                         <li>
-                            <a class="plataform-link" [ngClass]="{'active':whenPlatformIsSelected}"
-                                (click)="platformSelected()">Platform</a>
+                            <a class="plataform-link" [ngClass]="{'active':whenPlatformIsSelected}" (click)="platformSelected()">Platform</a>
                         </li>
                         <li>
-                            <a class="users-link" [ngClass]="{'active':!whenPlatformIsSelected}"
-                                (click)="userTabSelected()">Users</a>
+                            <a class="users-link" [ngClass]="{'active':!whenPlatformIsSelected}" (click)="userTabSelected()">Users</a>
                         </li>
                     </ul>
                     <div class="platform-content">
                         <ul>
                             <li>
-                                <a [ngClass]="{'active':whenPlatformExchangeIsSelected}"
-                                    (click)="exchangeTabSelected()">
+                                <a [ngClass]="{'active':whenPlatformExchangeIsSelected}" (click)="exchangeTabSelected()">
                                     <span class="userwalleticon user-wallet-img4"></span>
                                     Exchange
                                 </a>
@@ -140,35 +137,28 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink" id="bitoicnlink"
-                                                                    href="javascript:void(0);">
-                                                                    <img src="assets/images/bitcoin-icon.png"
-                                                                        *ngIf="lhsBtcShowOrHide">
+                                                                <a class="bitoicnlink" id="bitoicnlink" href="javascript:void(0);">
+                                                                    <img src="assets/images/bitcoin-icon.png" *ngIf="lhsBtcShowOrHide">
                                                                     <span *ngIf="lhsBtcShowOrHide">Bitcoin</span>
 
 
-                                                                    <img src="assets/images/etherium-icon.png"
-                                                                        *ngIf="!lhsBtcShowOrHide">
+                                                                    <img src="assets/images/etherium-icon.png" *ngIf="!lhsBtcShowOrHide">
                                                                     <span *ngIf="!lhsBtcShowOrHide">Ethereum</span>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-12"
-                                                            (click)="changeBtcToEthAndViceVersa()">
+                                                        <div class="col-lg-2 col-md-2 col-12" (click)="changeBtcToEthAndViceVersa()">
                                                             <div class="exchange-icn-center">
                                                                 <img src="assets/images/exchange-icon.png" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink1" id="bitoicnlink1"
-                                                                    href="javascript:void(0);">
-                                                                    <img src="assets/images/etherium-icon.png"
-                                                                        *ngIf="rhsEtherShowOrHide">
+                                                                <a class="bitoicnlink1" id="bitoicnlink1" href="javascript:void(0);">
+                                                                    <img src="assets/images/etherium-icon.png" *ngIf="rhsEtherShowOrHide">
                                                                     <span *ngIf="rhsEtherShowOrHide">Ethereum</span>
 
-                                                                    <img src="assets/images/bitcoin-icon.png"
-                                                                        *ngIf="!rhsEtherShowOrHide">
+                                                                    <img src="assets/images/bitcoin-icon.png" *ngIf="!rhsEtherShowOrHide">
                                                                     <span *ngIf="!rhsEtherShowOrHide">Bitcoin</span>
                                                                 </a>
                                                             </div>
@@ -183,16 +173,11 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink" id="bitoicnlink"
-                                                                    href="javascript:void(0);">
-                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'"
-                                                                        src="assets/images/bitcoin-icon.png">
-                                                                    <span
-                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Bitcoin</span>
-                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'"
-                                                                        src="assets/images/etherium-icon.png">
-                                                                    <span
-                                                                        *ngIf="exchangeBtcOrEth != 'btc'">Ethereum</span>
+                                                                <a class="bitoicnlink" id="bitoicnlink" href="javascript:void(0);">
+                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'" src="assets/images/bitcoin-icon.png">
+                                                                    <span *ngIf="exchangeBtcOrEth == 'btc'">Bitcoin</span>
+                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'" src="assets/images/etherium-icon.png">
+                                                                    <span *ngIf="exchangeBtcOrEth != 'btc'">Ethereum</span>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -203,16 +188,11 @@
                                                         </div>
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
-                                                                <a class="bitoicnlink1" id="bitoicnlink1"
-                                                                    href="javascript:void(0);">
-                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'"
-                                                                        src="assets/images/bitcoin-icon.png">
-                                                                    <span
-                                                                        *ngIf="exchangeBtcOrEth != 'btc'">Bitcoin</span>
-                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'"
-                                                                        src="assets/images/etherium-icon.png">
-                                                                    <span
-                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>
+                                                                <a class="bitoicnlink1" id="bitoicnlink1" href="javascript:void(0);">
+                                                                    <img *ngIf="exchangeBtcOrEth != 'btc'" src="assets/images/bitcoin-icon.png">
+                                                                    <span *ngIf="exchangeBtcOrEth != 'btc'">Bitcoin</span>
+                                                                    <img *ngIf="exchangeBtcOrEth == 'btc'" src="assets/images/etherium-icon.png">
+                                                                    <span *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -223,9 +203,7 @@
 
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
-                                                        <input type="number" placeholder="$ 0"
-                                                            [(ngModel)]="usdToBtcAndEth"
-                                                            (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
+                                                        <input type="number" placeholder="$ 0" [(ngModel)]="usdToBtcAndEth" (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
                                                     </div>
                                                 </div>
@@ -248,9 +226,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="exchange-bttn-group">
-                                                    <button type="button" class="exchangebttn"
-                                                        (click)="checkSendOrRequest()">{{sendOrRequest}}</button>
-                                                        
+                                                    <button type="button" class="exchangebttn" (click)="checkSendOrRequest()">{{sendOrRequest}}</button>
+
                                                     <!-- <button type="button" class="exchangebttn" (click)="onSubmitExchangeDetails()">EXCHANGE</button> -->
                                                 </div>
                                             </div>
@@ -261,39 +238,33 @@
                                     <div class="exchange-list-show" *ngIf="platformTabShowOrHide">
                                         <div class="buy-view-card1">
                                             <div class="buy-transfer-scrol">
-                                                <ul id="transferscroll">
-                                                    <li *ngFor="let exchange of requestedEthOrBtcListArray"
-                                                        (click)="exchangeCryptoCurrency(exchange)">
-                                                        <a>
-                                                            <div class="transfer-buy-list">
-                                                                <div class="bank-transfer">
-                                                                    <h1>{{exchange.userName}}
-                                                                        <sup>100+</sup>
-                                                                    </h1>
+                                                <perfect-scrollbar id="transferscroll">
+                                                    <ul>
+                                                        <li *ngFor="let exchange of requestedEthOrBtcListArray" (click)="exchangeCryptoCurrency(exchange)">
+                                                            <a>
+                                                                <div class="transfer-buy-list">
+                                                                    <div class="bank-transfer">
+                                                                        <h1>{{exchange.userName}}
+                                                                            <sup>100+</sup>
+                                                                        </h1>
 
+                                                                    </div>
+                                                                    <div class="bank-transfer">
+                                                                        <h1>{{exchange.amountToTrade}}
+                                                                        </h1>
+                                                                        <span *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN'">BTC</span>
+                                                                        <span *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN'">ETH</span>
+                                                                    </div>
+                                                                    <div class="bank-transfer">
+                                                                        <button type="button" class="banktrnsfbtn btn-default btngrad" *ngIf="exchange.status == 1">Exchange</button>
+                                                                        <button type="button" class="banktrnsfbtn btn-default btngrad" *ngIf="exchange.status == 0">Exchanged</button>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="bank-transfer">
-                                                                    <h1>{{exchange.amountToTrade}}
-                                                                    </h1>
-                                                                    <span
-                                                                        *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN'">BTC</span>
-                                                                    <span
-                                                                        *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN'">ETH</span>
-                                                                </div>
-                                                                <div class="bank-transfer">
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad"
-                                                                        *ngIf="exchange.status == 1">Exchange</button>
-                                                                    <button type="button"
-                                                                        class="banktrnsfbtn btn-default btngrad"
-                                                                        *ngIf="exchange.status == 0">Exchanged</button>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
+                                                            </a>
+                                                        </li>
 
-
-                                                </ul>
+                                                    </ul>
+                                                </perfect-scrollbar>
                                             </div>
                                         </div>
                                     </div>
@@ -404,20 +375,15 @@
                                 </div>
                             </div>
                             <div class="history-reusts-list">
-                                <div class="history-list-scroll">
+                                <perfect-scrollbar class="history-list-scroll">
                                     <div id="accordion">
-                                        <div class="card"
-                                            *ngFor="let historyObj of historyTabUserListArr;let i = index;"
-                                            (click)="onUnActivePrevious(i)" [ngClass]="{'active':historyObj.active}">
+                                        <div class="card" *ngFor="let historyObj of historyTabUserListArr;let i = index;" (click)="onUnActivePrevious(i)" [ngClass]="{'active':historyObj.active}">
                                             <div class="card-header">
 
-                                                <a class="history-head-panel" data-toggle="collapse" href="#h{{i}}"
-                                                    aria-expanded="false">
+                                                <a class="history-head-panel" data-toggle="collapse" href="#h{{i}}" aria-expanded="false">
                                                     <div class="history-panel-lft">
-                                                        <img src="assets/images/paid.png"
-                                                            *ngIf="historyObj.status == 0">
-                                                        <img src="assets/images/paid-green.png"
-                                                            *ngIf="historyObj.status == 1">
+                                                        <img src="assets/images/paid.png" *ngIf="historyObj.status == 0">
+                                                        <img src="assets/images/paid-green.png" *ngIf="historyObj.status == 1">
                                                         <div class="user-history">
                                                             <h1>{{historyObj.userName}}</h1>
                                                             <ul>
@@ -476,8 +442,7 @@
                                                             </li>
                                                         </ul>
                                                         <div class="history-exchange-bttn">
-                                                            <button type="button"
-                                                                class="hisexchange_btn">Exchange</button>
+                                                            <button type="button" class="hisexchange_btn">Exchange</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -565,7 +530,7 @@
                                                                     </div> -->
 
                                     </div>
-                                </div>
+                                </perfect-scrollbar>
                             </div>
                         </div>
                     </div>

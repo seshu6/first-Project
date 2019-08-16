@@ -74,7 +74,7 @@
         <div class="blue-body-div">
             <div class="wallet-dailyupdate">
                 <ul class="row">
-                    <li class="col-lg-2 col-md-2 col-xs-12">
+                    <li class="col-lg-2 col-md-2 col-xs-12 paddlft0">
                         <h4>{{selectedCurrencyType}}</h4>
                         <div class="blue-value">
                             <p>{{btcOrEthBalance}}</p>
@@ -329,7 +329,11 @@
                         </div>
                         <div class="qr-send" [ngClass]="{'qr-bgshow':requestHighLight, 'qrsendadmin':roleName=='admin'}">
                             <div class="send-right">
-                                <div class="qr-rezt-btn">
+
+                                <div class="qr-rezt-btn d-flex align-items-center">
+                                        <div class="qr-code-view">
+                                                <img src="assets/images/qr-code.png" />
+                                            </div>
                                     <button type="button" class="qr-request-btn" (click)="sendCryptoCurreny()">Send
                                         <img src="assets/images/sendicon.png">
                                     </button>
