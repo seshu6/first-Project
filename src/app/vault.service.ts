@@ -23,12 +23,14 @@ export class VaultService {
     return this.http.post(this.url.apiUrl + "useractivities/ethOrbtc/investment", data, this.header.getHttpHeader());
   }
 
-  postActiveVaultList(data: any) {
-    return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/cryptoinvestmnet", data, this.header.getHttpHeader());
-  }
+  // postActiveVaultList(data: any) {
+  //   return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/cryptoinvestmnet", data, this.header.getHttpHeader());
+  // }
 
 postCommonActiveVaultList(data:any){
-  return this.http.post(this.url.apiUrl + "bluewallet/fetch/user/investmentinfoforcrypto", data, this.header.getHttpHeader());
+  return this.http.post(this.url.apiUrl + "bluewallet/fetch/investmentinfoforcrypto", data, this.header.getHttpHeader());
 }
+
+
 
 }

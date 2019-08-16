@@ -51,6 +51,7 @@ export class VaultComponent implements OnInit {
   currentBtcAmountStatus: |number;
   vaultPageShowOrHide: boolean = true;
   vaultHistoryPageShowOrHide: boolean = false;
+  roleName: string = sessionStorage.getItem("roleName");
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
@@ -203,6 +204,7 @@ export class VaultComponent implements OnInit {
 
   // GET ACTIVE VAULT INFORMATION
 
+  vaultHistoryArr: any[] = [];
   getActiveVaultInformation(cryptoType: string, when?: string) {
     this.currentlySelectedCryptoType = cryptoType;
     if (cryptoType == "BTC") {
@@ -232,6 +234,9 @@ export class VaultComponent implements OnInit {
       if (success['status'] == "success") {
         this.activeCryptoCurrencyDetails = [];
         this.completedCryptoCurrencyDetails = [];
+        this.vaultHistoryArr = [];
+        this.vaultHistoryArr = success['listofuserCryptoinvestmentdto'];
+        console.log("vault history", this.vaultHistoryArr);
         for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
           if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
             this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
@@ -329,6 +334,7 @@ export class VaultComponent implements OnInit {
 
   // VAULT HISTORY
   goToVaultHistory() {
+
     this.vaultHistoryPageShowOrHide = true;
     this.vaultPageShowOrHide = false;
     // this.spinner.showOrHide(true);
@@ -336,7 +342,7 @@ export class VaultComponent implements OnInit {
     // this.vaultService.postAddVault(jsonData).subscribe(success => {
     //   this.spinner.showOrHide(false);
     //   if (success['status'] == "success") {
-      
+
     //   } else if (success['status'] == "failure") {
     //     Swal.fire("Error", success['message'], "error");
     //   }
@@ -349,6 +355,17 @@ export class VaultComponent implements OnInit {
     //     Swal.fire("Error", error.error.error_description, "error");
     //   }
     // })
+  }
+
+  backToVault() {
+    this.dynamicScriptLoader.load('custom').then(data => {
+
+    }).catch(error => {
+      console.log("Error occur in loading dynamic script");
+    });
+    this.vaultHistoryPageShowOrHide = false;
+    this.vaultPageShowOrHide = true;
+
   }
 
 

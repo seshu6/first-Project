@@ -32,12 +32,14 @@
                         </a>
                     </div>
                     <div class="add-vault">
-                        <!-- <button type="type" class="addvaultbtn" (click)="newVaultShadowEffect = true">
-                            <img src="assets/images/vault.png"> New Vault</button> -->
+                        <button type="type" class="addvaultbtn" *ngIf="roleName == 'user'"
+                            (click)="newVaultShadowEffect = true">
+                            <img src="assets/images/vault.png"> New Vault</button>
 
                         <!-- <button type="type" class="addvaultbtn" (click)="goToHistory()"> -->
-                                <button type="type" class="addvaultbtn" (click)="goToVaultHistory()">
-                            <img src="assets/images/vault.png"> New Vault</button>
+                        <button type="type" class="addvaultbtn" (click)="goToVaultHistory()"
+                            *ngIf="roleName == 'admin'">
+                            <img src="assets/images/vault.png">Vault History</button>
                     </div>
                 </div>
             </div>
@@ -423,8 +425,7 @@
         <!-- VAULT HISTORY STARTS HERE -->
         <div class="history-view" *ngIf="vaultHistoryPageShowOrHide">
             <div class="backlink">
-                <a href="javascript:void(0);"
-                    (click)="vaultHistoryPageShowOrHide=false;vaultPageShowOrHide=true;">Back</a>
+                <a href="javascript:void(0);" (click)="backToVault()">Back</a>
             </div>
             <div class="history-table-list">
                 <div class="hsitory-table-title">
@@ -446,20 +447,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td data-label="S.No">1</td>
-                                <td data-label="Type">ETH</td>
-                                <td data-label="Produced">+ $ 0.63</td>
-                                <td data-label="Coins">+ $ 21.12</td>
-                                <td data-label="Profit">3%</td>
-                                <td data-label="Duration">3 Months</td>
-                                <td data-label="Start Date">08-09-2019</td>
-                                <td data-label="End Date">11-09-2019</td>
+                            <tr *ngFor="let historyObj of vaultHistoryArr;let i = index;">
+                                <td data-label="S.No">{{i+1}}</td>
+                                <td data-label="Type">{{historyObj.typeOfInvestment}}</td>
+                                <td data-label="Produced">+ $ {{historyObj.investmentPercentInUsd}}</td>
+                                <td data-label="Coins" *ngIf="historyObj.typeOfInvestment == 'BTC'">+ $
+                                    {{historyObj.btcValueInUsd}}</td>
+                                <td data-label="Coins" *ngIf="historyObj.typeOfInvestment == 'ETH'">+ $
+                                    {{historyObj.ethValueInUsd}}</td>
+                                <td data-label="Profit">{{historyObj.percentage}}%</td>
+                                <td data-label="Duration">{{historyObj.investmentPeriod}} Months</td>
+                                <td data-label="Start Date">{{historyObj.investedDate1}}</td>
+                                <td data-label="End Date">{{historyObj.investmentPeriodEndDate1}}</td>
                                 <td data-label="Status">
-                                    <button type="button" class="combtn">Completed</button>
+                                    <button type="button" *ngIf="historyObj.status == 1" class="actbtn">Active</button>
+                                    <button type="button" *ngIf="historyObj.status == 0"
+                                        class="combtn">Completed</button>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td data-label="S.No">2</td>
                                 <td data-label="Type">ETH</td>
                                 <td data-label="Produced">+ $ 0.63</td>
@@ -562,7 +568,7 @@
                                 <td data-label="Status">
                                     <button type="button" class="combtn">Completed</button>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
