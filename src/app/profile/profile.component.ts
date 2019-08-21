@@ -220,9 +220,10 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  getEnableOrDisable(when: string, otp?: number) {
+  getEnableOrDisable(when: string) {
 
     this.initialStatus = when;
+    let otp = String(this.optOne) + String(this.optTwo) + String(this.optThree) + String(this.optFour) + String(this.optFive) + String(this.optSix);
 
     let jsonData = {};
     if (this.initialStatus == "initial") {
@@ -311,6 +312,11 @@ export class ProfileComponent implements OnInit {
     this.twoFactorShowOrHide = true;
   }
 
+  avoidNumber(e: any) {
+    if (["e", "+", "-"].includes(e.key)) {
+      e.preventDefault();
+    }
+  }
 
 
 }

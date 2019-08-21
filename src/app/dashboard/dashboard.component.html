@@ -56,7 +56,7 @@
                         <button type="button" class="sendbtn" (click)="sendHighLighter()">Send
                             <img src="assets/images/sendicon.png" />
                         </button>
-                        <button type="button" class="requestbtn" (click)="requestHighLighter()">Request
+                        <button type="button" class="requestbtn" *ngIf="roleName == 'user'" (click)="requestHighLighter()">Request
                             <img src="assets/images/receiveicon.png" />
                         </button>
                     </div>
@@ -91,7 +91,7 @@
                         <h4 class="todaytit">Today</h4>
                         <p class="todayvalue">+ 0.02</p>
                     </li>
-                    <li class="col-lg-2 col-md-2 col-xs-12"> 
+                    <li class="col-lg-2 col-md-2 col-xs-12">
                         <h4 class="todaytit">Week</h4>
                         <p class="todayvalue">+ 0.999</p>
                     </li>
@@ -189,12 +189,14 @@
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="graph-history-title">
                                 <h1>Graph History</h1>
-                                <div class="graph-history"
-                                    *ngIf="yAxisPaidData.length != 0 && yAxisReceivedData.length != 0 && lineChartLabels.length != 0">
-                                    <div style="width: 100%; height: 100%;"
-                                        *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)">
-                                        <!-- <canvas id="chart"></canvas> -->
-                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
+                                <!-- <div class="graph-history"
+                                    *ngIf="yAxisPaidData.length != 0 && yAxisReceivedData.length != 0 && lineChartLabels.length != 0"> -->
+                                <div class="graph-history">
+                                    <!-- <div style="width: 100%; height: 100%;"
+                                        *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)"> -->
+
+                                          <div style="width: 100%; height: 100%;">
+                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" 
                                             [options]="lineChartOptions" [colors]="lineChartColors"
                                             [legend]="lineChartLegend" [chartType]="lineChartType"
                                             [plugins]="lineChartPlugins">
@@ -203,13 +205,13 @@
 
 
                                 </div>
-                                <div class="data-found"
+                                <!-- <div class="data-found"
                                     *ngIf="yAxisPaidData.length == 0 && yAxisReceivedData.length == 0 && lineChartLabels.length == 0">
                                     <div class="data-search">
                                         <img src="assets/images/datasearch.png">
                                         <h1>No Data Found</h1>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-12">
@@ -327,13 +329,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="qr-send" [ngClass]="{'qr-bgshow':requestHighLight, 'qrsendadmin':roleName=='admin'}">
+                        <div class="qr-send"
+                            [ngClass]="{'qr-bgshow':requestHighLight, 'qrsendadmin':roleName=='admin'}">
                             <div class="send-right">
 
-                                <div class="qr-rezt-btn d-flex align-items-center">
-                                        <div class="qr-code-view">
-                                                <img src="assets/images/qr-code.png" />
-                                            </div>
+                                <div class="qr-rezt-btn" [ngClass]="{'d-flex align-items-center':roleName=='admin'}">
+                                    <div class="qr-code-view" *ngIf="roleName == 'admin'"
+                                        (click)="requestCryptoCurrency()">
+                                        <img src="assets/images/qr-code.png" />
+                                    </div>
                                     <button type="button" class="qr-request-btn" (click)="sendCryptoCurreny()">Send
                                         <img src="assets/images/sendicon.png">
                                     </button>

@@ -4808,6 +4808,7 @@ footer {
 	position: relative;
 	padding: 20px;
 }
+.addrtit{margin-top: 20px;}
 .homeaddress-title h1 {
 	font-size: 18px;
 	color: #272759;
@@ -8211,12 +8212,13 @@ font-size: 14px !important;
 }
 .kyc-popup .kyc-view-image{
 	width: 100%;
-	/* height:450px; */
+	height:450px;
 	text-align: center;
 }
 .kyc-popup .kyc-view-image img{
 	max-width:100%;
 	height:100%;
+	object-fit: contain;
 }
 .kyc-popup .modal-body{
 	 padding: 10px;

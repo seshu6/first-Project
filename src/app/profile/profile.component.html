@@ -102,7 +102,7 @@
                                         <label>
                                             Mobile
                                         </label>
-                                        <input type="text" placeholder="Mobile" formControlName="mobile">
+                                        <input type="number" placeholder="Mobile" formControlName="mobile" (keypress)="avoidNumber($event)">
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                             <input type="number" name="optSix" [(ngModel)]="optSix" onKeyPress="if(this.value.length==1) return false;" />
                         </div>
                         <div class="enable-verify">
-                            <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click',optOne+optTwo+optThree+optFour+optFive+optSix)">Verify</button>
+                            <button type="button" class="create-walbtn" (click)="getEnableOrDisable('click')">Verify</button>
                         </div>
                     </div>
                 </div>

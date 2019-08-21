@@ -8,60 +8,124 @@ import { LoginService } from '../login.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  roleName = sessionStorage.getItem("roleName");
+  profileActive: boolean;
+  dashboardActive: boolean = true;
+  cardActive: boolean;
+  userListActive: boolean;
+  vaultActive: boolean;
+  buyAndSellActive: boolean;
 
   constructor(private route: Router, private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
-  dashboardSelected() {
-    if (sessionStorage.getItem("roleName") == "admin") {
-      // this.route.navigate(['admin-dashboard']);
-      this.route.navigate(['dashboard']);
-    } else {
-      this.route.navigate(['dashboard']);
+  activateSideBar(menu: string) {
+    switch (menu) {
+      case "profile":
+        this.profileActive = true;
+        this.dashboardActive = false;
+        this.cardActive = false;
+        this.userListActive = false;
+        this.vaultActive = false;
+        this.buyAndSellActive = false;
+        break;
+      case "dashboard":
+        this.profileActive = false;
+        this.dashboardActive = true;
+        this.cardActive = false;
+        this.userListActive = false;
+        this.vaultActive = false;
+        this.buyAndSellActive = false;
+        break;
+      case "card":
+        this.profileActive = false;
+        this.dashboardActive = false;
+        this.cardActive = true;
+        this.userListActive = false;
+        this.vaultActive = false;
+        this.buyAndSellActive = false;
+        break;
+      case "userlist":
+        this.profileActive = false;
+        this.dashboardActive = false;
+        this.cardActive = false;
+        this.userListActive = true;
+        this.vaultActive = false;
+        this.buyAndSellActive = false;
+        break;
+      case "vault":
+        this.profileActive = false;
+        this.dashboardActive = false;
+        this.cardActive = false;
+        this.userListActive = false;
+        this.vaultActive = true;
+        this.buyAndSellActive = false;
+        break;
+      case "buyandsell":
+        this.profileActive = false;
+        this.dashboardActive = false;
+        this.cardActive = false;
+        this.userListActive = false;
+        this.vaultActive = false;
+        this.buyAndSellActive = true;
+        break;
+
     }
 
   }
 
+  // dashboardSelected() {
+  //   if (this.roleName == "admin") {
+  //     // this.route.navigate(['admin-dashboard']);
+  //     this.route.navigate(['dashboard']);
+  //   } else {
+  //     this.route.navigate(['dashboard']);
+  //   }
 
-  cardSelected() {
-    if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['admin-user-list']);
-    } else {
-      this.route.navigate(['card']);
-    }
-  }
+  // }
 
-  vaultSelected() {
-    if (sessionStorage.getItem("roleName") == "admin") {
-      // this.route.navigate(['admin-vault']);
-      this.route.navigate(['vault']);
-    } else {
-      this.route.navigate(['vault']);
-    }
-  }
 
-  buyAndSellSelected() {
-    if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['buyandsell']);
-    } else {
-      this.route.navigate(['buyandsell']);
-    }
-  }
+  // cardSelected() {
+  //   if (this.roleName == "admin") {
+  //     this.route.navigate(['admin-user-list']);
+  //   } else {
+  //     this.route.navigate(['card']);
+  //   }
+  // }
 
-  profileSelected() {
-    if (sessionStorage.getItem("roleName") == "admin") {
-      this.route.navigate(['profile']);
-    } else {
-      this.route.navigate(['profile']);
-    }
-  }
+  // vaultSelected() {
+  //   if (this.roleName == "admin") {
+  //     // this.route.navigate(['admin-vault']);
+  //     this.route.navigate(['vault']);
+  //   } else {
+  //     this.route.navigate(['vault']);
+  //   }
+  // }
 
-  
+  // buyAndSellSelected() {
+  //   if (this.roleName == "admin") {
+  //     this.route.navigate(['buyandsell']);
+  //   } else {
+  //     this.route.navigate(['buyandsell']);
+  //   }
+  // }
+
+  // profileSelected() {
+  //   if (this.roleName == "admin") {
+  //     this.route.navigate(['profile']);
+  //   } else {
+  //     this.route.navigate(['profile']);
+  //   }
+  // }
+
+
 
   logOut() {
     sessionStorage.clear();
     this.route.navigate(['']);
   }
+
+  
 }

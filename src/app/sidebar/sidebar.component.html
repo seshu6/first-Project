@@ -10,37 +10,47 @@
                 <ul>
                     <!-- USER PROFILE -->
                     <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/profile']" (click)="profileSelected()">
+                        <a [ngClass]="{'active':profileActive}" [routerLink]="['/profile']"
+                            (click)="activateSideBar('profile')">
                             <span class="menu-link dashboardlink"></span>
                         </a>
                     </li>
                     <!-- DASHBOARD -->
                     <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/dashboard']"
-                            (click)="dashboardSelected()">
+                        <a [ngClass]="{'active':dashboardActive}" [routerLink]="['/dashboard']" id="dashboardId"
+                            (click)="activateSideBar('dashboard')">
                             <span class="menu-link dashboardlink1"></span>
                         </a>
 
 
                     </li>
                     <!-- CARD -->
-                    <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/card']" (click)="cardSelected()">
+                    <li *ngIf="roleName == 'user'">
+                        <a [ngClass]="{'active':cardActive}" [routerLink]="['/card']" (click)="activateSideBar('card')">
+                            <span class="menu-link dashboardlink2"></span>
+                        </a>
+
+                    </li>
+
+                    <li *ngIf="roleName == 'admin'">
+                        <a [ngClass]="{'active':userListActive}" [routerLink]="['/admin-user-list']"
+                            (click)="activateSideBar('userlist')">
                             <span class="menu-link dashboardlink2"></span>
                         </a>
 
                     </li>
                     <!-- VAULT -->
                     <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/vault']" (click)="vaultSelected()">
+                        <a [ngClass]="{'active':vaultActive}" [routerLink]="['/vault']"
+                            (click)="activateSideBar('vault')">
                             <span class="menu-link dashboardlink3"></span>
                         </a>
 
                     </li>
                     <!-- BUY AND SELL -->
                     <li>
-                        <a class="" [routerLinkActive]="['active']" [routerLink]="['/buyandsell']"
-                            (click)="buyAndSellSelected()">
+                        <a [ngClass]="{'active':buyAndSellActive}" [routerLink]="['/buyandsell']"
+                            (click)="activateSideBar('buyandsell')">
                             <span class="menu-link dashboardlink4"></span>
                         </a>
                     </li>
@@ -49,7 +59,7 @@
             </perfect-scrollbar>
         </div>
         <div class="signout">
-            <a  (click)="logOut()">
+            <a (click)="logOut()">
                 <img src="assets/images/signout.png" /> Sign Off</a>
         </div>
     </div>
