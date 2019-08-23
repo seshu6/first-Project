@@ -32,12 +32,12 @@ export class ProfileComponent implements OnInit {
   currentBtcAmount: string | number;
   currentEthAmountStatus: number;
   currentBtcAmountStatus: |number;
-  optOne: number | string;
-  optTwo: number;
-  optThree: number;
-  optFour: number;
-  optFive: number;
-  optSix: number;
+  optOne: any;
+  optTwo: any;
+  optThree: any;
+  optFour: any;
+  optFive: any;
+  optSix: any;
   twoFactorShowOrHide: boolean = false;
   profileShowOrHide: boolean = true;
   otpShowOrHide: boolean = false;
@@ -132,7 +132,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfileDetails() {
     if (this.profileForm.controls.name.invalid || this.profileForm.controls.mobile.invalid) {
-      Swal.fire("Info", "Please chaeck your data", "info");
+      Swal.fire("Info", "Please check your data", "info");
     } else {
       this.spinner.showOrHide(true);
       let jsonData = {
@@ -234,7 +234,7 @@ export class ProfileComponent implements OnInit {
     }
     else if (this.otpShowOrHide) {
       if (otp.toString().length != 6) {
-        Swal.fire("Info", "Please check your otp", "info");
+        Swal.fire("Info", "Please check your OTP", "info");
         return false;
       } else {
         jsonData = {
@@ -257,6 +257,12 @@ export class ProfileComponent implements OnInit {
       if (success['status'] == "success") {
         (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
         if (this.initialStatus != "initial") {
+          this.optOne = "";
+          this.optTwo = "";
+          this.optThree = "";
+          this.optFour = "";
+          this.optFive = "";
+          this.optSix = "";
           (this.otpShowOrHide) ? this.otpShowOrHide = false : this.otpShowOrHide = true;
           if (success['message'] == "2FAuthentication Status updated successfully") {
             this.profileShowOrHide = true;
@@ -310,6 +316,10 @@ export class ProfileComponent implements OnInit {
   twoFactorClicked() {
     this.profileShowOrHide = false;
     this.twoFactorShowOrHide = true;
+  }
+
+  avoidPaste(){
+    return false;
   }
 
   avoidNumber(e: any) {

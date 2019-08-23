@@ -1,257 +1,257 @@
 <div class="bluewallet-dashboard-fullwrap">
-    <!-- Dashboard Header -->
-
-    <!-- Bluewallet-second-sidebar -->
-    <div class="bluewallet-profile-sidebar">
-        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-            <div class="profile-setting">
-                <div class="setting-image">
-                    <img src="assets/images/profile.jpg" alt="image" />
-                </div>
-            </div>
-            <div class="wallet-eth-list">
-                <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
-                    <h1>Select Your cryptocurrency</h1>
-                    <div class="carousel">
-                        <a class="carousel-item1" (click)="getBtcOrEthBalance('BTC')">
-                            <h1>BitCoin</h1>
-                            <img src="assets/images/bitcoinswipe.png" />
-                        </a>
-                        <a class="carousel-item1" (click)="getBtcOrEthBalance('ETH')">
-                            <h1>Ethereum</h1>
-                            <img src="assets/images/etheriumswipe.png" />
-                        </a>
-                        <a class="carousel-item1">
-                            <h1>Monero</h1>
-                            <img src="assets/images/moneroswipe.png" />
-                        </a>
-
+        <!-- Dashboard Header -->
+    
+        <!-- Bluewallet-second-sidebar -->
+        <div class="bluewallet-profile-sidebar">
+            <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+                <div class="profile-setting">
+                    <div class="setting-image">
+                        <img src="assets/images/profile.jpg" alt="image" />
                     </div>
                 </div>
-
-
-            </div>
-            <div class="select-your-cryptocurrency blockelemtn">
-                <div class="crypto-currency-wallet">
-                    <h1>{{btcOrEth}} Balance</h1>
-                    <div class="etherum-blance">
-                        <h2>{{btcOrEthBalance}}</h2>
-                        <div class="etherum-usdolar">
-                            <p>{{btcOrEthBalanceUsd}} USDollar</p>
-                            <!-- <div class="bal-exchange-dollar">
-                                <select>
-                                    <option value="usdollar">USDollar</option>
-                                    <option value="usdollar1">USDollar</option>
-                                    <option value="usdollar2">USDollar</option>
-                                </select>
-                            </div> -->
+                <div class="wallet-eth-list">
+                    <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
+                        <h1>Select Your cryptocurrency</h1>
+                        <div class="carousel">
+                            <a class="carousel-item1" (click)="getBtcOrEthBalance('BTC')">
+                                <h1>BitCoin</h1>
+                                <img src="assets/images/bitcoinswipe.png" />
+                            </a>
+                            <a class="carousel-item1" (click)="getBtcOrEthBalance('ETH')">
+                                <h1>Ethereum</h1>
+                                <img src="assets/images/etheriumswipe.png" />
+                            </a>
+                            <a class="carousel-item1">
+                                <h1>Monero</h1>
+                                <img src="assets/images/moneroswipe.png" />
+                            </a>
+    
                         </div>
                     </div>
-                    <div class="refresh-btn">
-                        <a href="javascript:void(0);">
-                            <img src="assets/images/refresh.png" />
-                        </a>
-                    </div>
-                    <div class="send-receive-bttngrup">
-                        <button type="button" class="sendbtn">Send
-                            <img src="assets/images/sendicon.png" />
-                        </button>
-                        <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
-                            <img src="assets/images/receiveicon.png" />
-                        </button>
-                    </div>
-                    <div class="info">
-                        <a href="javascript:void(0);" class="infobtn">Information</a>
-                    </div>
+    
+    
                 </div>
-            </div>
-
-        </perfect-scrollbar>
-    </div>
-    <!-- Bluewallet Body -->
-    <div class="bluewallet-body-wrap">
-        <div class="bluewallet-homeaddress">
-                <div class="backlink">
-                        <a href="javascript:void(0);" [routerLink]="['/verify']">Back</a>
-                    </div>
-            <div class="homeaddress-title addrtit">
-                <h1>Home Address</h1>
-            </div>
-            <div class="homeaddress-body">
-                <form [formGroup]="homeAddressForm">
-                    <div class="homeaddress-center-box">
-                        <!-- FIRST NAME DETAILS STARTS HERE -->
-                        <div class="address-search-area" *ngIf="profileShowOrHide">
-                            <h1>Profile</h1>
-                            <p>We need this to verify your identify, in order for you to use this improved feature. It should
-                                only take a couple of minutes.</p>
-                            <div class="address-profile-list">
-                                <div class="form-group">
-                                    <input type="text" placeholder="First Name" formControlName="firstName">
-                                    <button type="button" class="closeicon">×</button>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Middle Name" formControlName="middleName">
-                                    <button type="button" class="closeicon">×</button>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Last Name" formControlName="lastName">
-                                    <button type="button" class="closeicon">×</button>
-                                </div>
-                                <div class="form-group">
-                                    <input class="datePickerInput" [owlDateTimeTrigger]="dt" [(ngModel)]="selectedDate" formControlName="dateOfBirth" readonly
-                                        [owlDateTime]="dt">
-                                    <owl-date-time pickerType="calendar" #dt></owl-date-time>
-                                    <button type="button" class="closeicon">×</button>
-                                </div>
-                                <!-- <ul>
-        <li>
-            <a href="javascript:void(0);">
-                <button type="button" class="closeicon">×</button>
-                First Name</a>
-        </li>
-        <li>
-            <a href="javascript:void(0);">
-                <button type="button" class="closeicon">×</button>
-                Last Name</a>
-        </li>
-        <li>
-            <a href="javascript:void(0);">
-                <button type="button" class="closeicon">×</button>
-                Birthday</a>
-        </li>
-    </ul> -->
-                            </div>
-                            <div class="address-send-box">
-                                <!-- <button type="button" class="addressend" (click)="addHomeAddressForm()">Next</button> -->
-                                <button type="button" class="addressend" (click)="validateNameDetails()">Next</button>
+                <div class="select-your-cryptocurrency blockelemtn">
+                    <div class="crypto-currency-wallet">
+                        <h1>{{btcOrEth}} Balance</h1>
+                        <div class="etherum-blance">
+                            <h2>{{btcOrEthBalance}}</h2>
+                            <div class="etherum-usdolar">
+                                <p>{{btcOrEthBalanceUsd}} USDollar</p>
+                                <!-- <div class="bal-exchange-dollar">
+                                    <select>
+                                        <option value="usdollar">USDollar</option>
+                                        <option value="usdollar1">USDollar</option>
+                                        <option value="usdollar2">USDollar</option>
+                                    </select>
+                                </div> -->
                             </div>
                         </div>
-                        <!-- ENDS HERE -->
-
-                        <div class="address-search-area" *ngIf="addressShowOrHide">
-                            <p>This information is only used to help us verify</p>
-                            <!-- <div class="address-searchbx">
-                                <input type="text" placeholder="Home Address">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </div> -->
-                            <div class="search-related-items">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Address Line 1 your indetity" formControlName="addressLine1">
+                        <div class="refresh-btn">
+                            <a href="javascript:void(0);">
+                                <img src="assets/images/refresh.png" />
+                            </a>
+                        </div>
+                        <div class="send-receive-bttngrup">
+                            <button type="button" class="sendbtn">Send
+                                <img src="assets/images/sendicon.png" />
+                            </button>
+                            <button type="button" class="requestbtn" (click)="qrCodeModalOpenOrClose()">Request
+                                <img src="assets/images/receiveicon.png" />
+                            </button>
+                        </div>
+                        <div class="info">
+                            <a href="javascript:void(0);" class="infobtn">Information</a>
+                        </div>
+                    </div>
+                </div>
+    
+            </perfect-scrollbar>
+        </div>
+        <!-- Bluewallet Body -->
+        <div class="bluewallet-body-wrap">
+            <div class="bluewallet-homeaddress">
+                    <div class="backlink">
+                            <a href="javascript:void(0);" [routerLink]="['/verify']">Back</a>
+                        </div>
+                <div class="homeaddress-title addrtit">
+                    <h1>Home Address</h1>
+                </div>
+                <div class="homeaddress-body">
+                    <form [formGroup]="homeAddressForm">
+                        <div class="homeaddress-center-box">
+                            <!-- FIRST NAME DETAILS STARTS HERE -->
+                            <div class="address-search-area" *ngIf="profileShowOrHide">
+                                <h1>Profile</h1>
+                                <p>We need this to verify your identify, in order for you to use this improved feature. It should
+                                    only take a couple of minutes.</p>
+                                <div class="address-profile-list">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="First Name" formControlName="firstName">
+                                        <button type="button" class="closeicon">×</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Middle Name" formControlName="middleName">
+                                        <button type="button" class="closeicon">×</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Last Name" formControlName="lastName">
+                                        <button type="button" class="closeicon">×</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="datePickerInput" [max]="max" [owlDateTimeTrigger]="dt" [(ngModel)]="selectedDate" formControlName="dateOfBirth" readonly
+                                            [owlDateTime]="dt">
+                                        <owl-date-time pickerType="calendar" #dt></owl-date-time>
+                                        <button type="button" class="closeicon">×</button>
+                                    </div>
+                                    <!-- <ul>
+            <li>
+                <a href="javascript:void(0);">
+                    <button type="button" class="closeicon">×</button>
+                    First Name</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <button type="button" class="closeicon">×</button>
+                    Last Name</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <button type="button" class="closeicon">×</button>
+                    Birthday</a>
+            </li>
+        </ul> -->
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Address Line 2" formControlName="addressLine2">
+                                <div class="address-send-box">
+                                    <!-- <button type="button" class="addressend" (click)="addHomeAddressForm()">Next</button> -->
+                                    <button type="button" class="addressend" (click)="validateNameDetails()">Next</button>
                                 </div>
-                                <div class="form-group">
-                                    <!-- <input type="text" placeholder="City / Town / Village"> -->
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="country" [(ngModel)]="selectedCountryAddress" (change)="getStateList()">
-                                                        <option value="undefined" disabled>Select Country</option>
-                                                        <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
-                                                    </select>
+                            </div>
+                            <!-- ENDS HERE -->
+    
+                            <div class="address-search-area" *ngIf="addressShowOrHide">
+                                <p>This information is only used to help us verify</p>
+                                <!-- <div class="address-searchbx">
+                                    <input type="text" placeholder="Home Address">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div> -->
+                                <div class="search-related-items">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Address Line 1 your indetity" formControlName="addressLine1">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Address Line 2" formControlName="addressLine2">
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- <input type="text" placeholder="City / Town / Village"> -->
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="country" [(ngModel)]="selectedCountryAddress" (change)="getStateList()">
+                                                            <option value="undefined" disabled>Select Country</option>
+                                                            <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="state" [(ngModel)]="selectedstate" (change)="getCityList()">
-                                                        <option value="undefined" disabled>Select State</option>
-                                                        <option *ngFor="let state of stateListArr;let i = index;" value="{{state.id}}">{{state.stateName}}</option>
-                                                    </select>
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="state" [(ngModel)]="selectedstate" (change)="getCityList()">
+                                                            <option value="undefined" disabled>Select State</option>
+                                                            <option *ngFor="let state of stateListArr;let i = index;" value="{{state.id}}">{{state.stateName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
-                                            <div class="form-group">
-                                                <div class="selectgroup-list">
-                                                    <select formControlName="city" [(ngModel)]="selectedCity">
-                                                        <option value="undefined" disabled>Select City</option>
-                                                        <!-- <option value="chennai">chennai</option> -->
-                                                        <option *ngFor="let city of cityListArr;let i = index;" value="{{city.id}}">{{city.cityName}}</option>
-                                                    </select>
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="form-group">
+                                                    <div class="selectgroup-list">
+                                                        <select formControlName="city" [(ngModel)]="selectedCity">
+                                                            <option value="undefined" disabled>Select City</option>
+                                                            <!-- <option value="chennai">chennai</option> -->
+                                                            <option *ngFor="let city of cityListArr;let i = index;" value="{{city.id}}">{{city.cityName}}</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
+    
+    
                                         </div>
-
-
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Postal code" formControlName="postalCode">
+                                    </div>
+                                    <!-- <ul>
+                                        <li>
+                                            <a href="javascript:void(0);">Address Line 1 your indetity</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Address Line 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <span>City</span>
+                                                <span>Town</span>
+                                                <span>Village</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                <span>State</span>
+                                                <span>Region</span>
+                                                <span>Provice</span>
+                                                <span>Country</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Postal Code</a>
+                                        </li>
+                                    </ul> -->
+                                </div>
+                                <div class="address-send-box">
+                                    <button type="button" class="addressend" (click)="validateAddressDetails()">Send</button>
+                                    <div class="address-termscond">
+                                        <p>When you "Sent", you accept</p>
+                                        <p>
+                                            <a href="javascript:void(0);">Terms of Service</a> &amp;
+                                            <a href="javascript:void(0);">Policies and Privacy</a>
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Postal code" formControlName="postalCode">
-                                </div>
-                                <!-- <ul>
-                                    <li>
-                                        <a href="javascript:void(0);">Address Line 1 your indetity</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">Address Line 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <span>City</span>
-                                            <span>Town</span>
-                                            <span>Village</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <span>State</span>
-                                            <span>Region</span>
-                                            <span>Provice</span>
-                                            <span>Country</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">Postal Code</a>
-                                    </li>
-                                </ul> -->
                             </div>
-                            <div class="address-send-box">
-                                <button type="button" class="addressend" (click)="validateAddressDetails()">Send</button>
-                                <div class="address-termscond">
-                                    <p>When you "Sent", you accept</p>
-                                    <p>
-                                        <a href="javascript:void(0);">Terms of Service</a> &amp;
-                                        <a href="javascript:void(0);">Politic and Privacy</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <!-- STARTED -->
-                        <div>
-                            <div class="address-search-area" *ngIf="countryResidenceShowOrHide">
-                                <h1>Country of Residence</h1>
-                                <p>Digital currency are only available in select countries</p>
-                                <!-- <div class="searchbox-next"> -->
-                                <!-- <div class="search-option-box">
-                    <input type="text" placeholder="search" formControlName="countrySearch">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </div> -->
-                                <div class="form-group">
-                                    <div class="selectgroup-list">
-                                        <select formControlName="countrySearch" [(ngModel)]="selectedCountry">
-                                            <option value="undefined" disabled>Select Country</option>
-                                            <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
-                                        </select>
+    
+    
+    
+                            <!-- STARTED -->
+                            <div>
+                                <div class="address-search-area" *ngIf="countryResidenceShowOrHide">
+                                    <h1>Country of Residence</h1>
+                                    <p>Digital currency are only available in select countries</p>
+                                    <!-- <div class="searchbox-next"> -->
+                                    <!-- <div class="search-option-box">
+                        <input type="text" placeholder="search" formControlName="countrySearch">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div> -->
+                                    <div class="form-group">
+                                        <div class="selectgroup-list">
+                                            <select formControlName="countrySearch" [(ngModel)]="selectedCountry">
+                                                <option value="undefined" disabled>Select Country</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;" value="{{country.id}}">{{country.countryName}}</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <button type="button" class="create-walbtn" (click)="validateCountrySearch()">Next</button>
+                                    <!-- </div> -->
                                 </div>
-                                <button type="button" class="create-walbtn" (click)="validateCountrySearch()">Next</button>
-                                <!-- </div> -->
+    
+                                <!-- ENDED -->
+    
                             </div>
-
-                            <!-- ENDED -->
-
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>

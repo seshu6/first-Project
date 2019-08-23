@@ -27,12 +27,12 @@ export class SmsVerifyComponent implements OnInit {
   btcOrEthBalance: string | number;
   btcOrEthBalanceUsd: string | number;
   profileStatus: any;
-  optOne: number;
-  optTwo: number;
-  optThree: number;
-  optFour: number;
-  optFive: number;
-  optSix: number;
+  optOne: any;
+  optTwo: any;
+  optThree: any;
+  optFour: any;
+  optFive: any;
+  optSix: any;
   otpShowOrHide: boolean = false;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
@@ -86,10 +86,10 @@ export class SmsVerifyComponent implements OnInit {
   //   this.otpShowOrHide = true;
   // }
 
-  getEnableOrDisable(when: string, otp?: number) {
+  getEnableOrDisable(when: string) {
 
     this.initialStatus = when;
-
+    let otp = String(this.optOne) + String(this.optTwo) + String(this.optThree) + String(this.optFour) + String(this.optFive) + String(this.optSix);
     let jsonData = {};
     if (this.initialStatus == "initial") {
       jsonData = {
@@ -98,7 +98,7 @@ export class SmsVerifyComponent implements OnInit {
     }
     else if (this.otpShowOrHide) {
       if (otp.toString().length != 6) {
-        Swal.fire("Info", "Please check your otp", "info");
+        Swal.fire("Info", "Please check your OTP", "info");
         return false;
       } else {
         jsonData = {
@@ -121,7 +121,12 @@ export class SmsVerifyComponent implements OnInit {
       if (success['status'] == "success") {
         (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
         if (this.initialStatus != "initial") {
-
+          this.optOne = "";
+          this.optTwo = "";
+          this.optThree = "";
+          this.optFour = "";
+          this.optFive = "";
+          this.optSix = "";
           (this.otpShowOrHide) ? this.otpShowOrHide = false : this.otpShowOrHide = true;
           Swal.fire("Success", success['message'], "success");
         } else {
@@ -140,6 +145,10 @@ export class SmsVerifyComponent implements OnInit {
     })
 
 
+  }
+
+  avoidCopyAndPaste() {
+    return false;
   }
 
   checkTwoFactorOtp(otp: number) {

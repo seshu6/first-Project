@@ -38,6 +38,8 @@ export class HomeAddressComponent implements OnInit {
   btcOrEth: string | number;
   btcOrEthBalance: string | number;
   btcOrEthBalanceUsd: string | number;
+  // min = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1);
+  max = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private formBuilder: FormBuilder, private dashboardServices: CommonDashboardService, private spinner: LoaderService, private route: Router) { }
 
   ngOnInit() {
@@ -130,7 +132,7 @@ export class HomeAddressComponent implements OnInit {
   validateNameDetails() {
     if (this.homeAddressForm.controls.firstName.invalid || this.homeAddressForm.controls.lastName.invalid
       || this.homeAddressForm.controls.middleName.invalid || this.homeAddressForm.controls.dateOfBirth.invalid) {
-      Swal.fire("Info", "Please check your data", "info");
+      Swal.fire("Info", "Please check your data", "info"); 
     } else {
       this.addressShowOrHide = !this.addressShowOrHide;
     }
@@ -139,7 +141,7 @@ export class HomeAddressComponent implements OnInit {
   addHomeAddressForm() {
     console.log("selected date", this.selectedDate);
     if (this.homeAddressForm.invalid) {
-      Swal.fire("Info", "Please check your datasss", "info");
+      Swal.fire("Info", "Please check your data", "info");
     } else {
       this.spinner.showOrHide(true);
       let jsonData = {
@@ -221,6 +223,8 @@ export class HomeAddressComponent implements OnInit {
       }
     })
   }
+
+  
 
 
   // GET CITY DETAILS API
