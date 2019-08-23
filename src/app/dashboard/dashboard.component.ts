@@ -19,7 +19,7 @@ import * as M from 'src/assets/materialize/js/materialize';
   animations: [
     trigger('slideUp', [
       transition(':enter', [
-        style({ transform: 'translateY(-800px)' }), 
+        style({ transform: 'translateY(-800px)' }),
         animate('500ms')
       ])
     ])
@@ -58,9 +58,13 @@ export class DashboardComponent implements OnInit {
   sendWalletAddress: string;
   requestIdCounter: number = 0;
   requestId: any;
+  todayAmount: string | number;
+  weekAmount: string | number;
+  monthAmount: string | number;
   successShowOrHide: boolean = false;
   copied: string = "Copy All";
-  roleName:string = sessionStorage.getItem('roleName');
+  roleName: string = sessionStorage.getItem('roleName');
+
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -187,6 +191,9 @@ export class DashboardComponent implements OnInit {
       if (success['status'] == "success") {
         this.kycShowOrHide = success['CalculatingAmountDTO'].kycStatus;
         this.profileShowOrHide = success['CalculatingAmountDTO'].profileStatus;
+        this.todayAmount = success['CalculatingAmountDTO'].todayAmount;
+        this.weekAmount = success['CalculatingAmountDTO'].weekaAmount;
+        this.monthAmount = success['CalculatingAmountDTO'].monthAmount;
         if (this.selectedCurrencyType == "ETH") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
           this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdforEther;
@@ -273,7 +280,7 @@ export class DashboardComponent implements OnInit {
 
   copyToClipboard(item): void {
     let listener = (e: ClipboardEvent) => {
-      e.clipboardData.setData('text/plain', (item)); 
+      e.clipboardData.setData('text/plain', (item));
       e.preventDefault();
     };
 

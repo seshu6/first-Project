@@ -56,7 +56,8 @@
                         <button type="button" class="sendbtn" (click)="sendHighLighter()">Send
                             <img src="assets/images/sendicon.png" />
                         </button>
-                        <button type="button" class="requestbtn" *ngIf="roleName == 'user'" (click)="requestHighLighter()">Request
+                        <button type="button" class="requestbtn" *ngIf="roleName == 'user'"
+                            (click)="requestHighLighter()">Request
                             <img src="assets/images/receiveicon.png" />
                         </button>
                     </div>
@@ -78,8 +79,8 @@
                         <h4>{{selectedCurrencyType}}</h4>
                         <div class="blue-value">
                             <p>{{btcOrEthBalance}}</p>
-                            <button type="button" class="bluedaily-btn">
-                                <i class="fa fa-angle-up" aria-hidden="true"></i>15%</button>
+                            <!-- <button type="button" class="bluedaily-btn">
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>15%</button> -->
                         </div>
                         <div class="blue-value-dollar">
                             <h4>{{btcOrEthUsdDollar}}</h4>
@@ -89,15 +90,15 @@
 
                     <li class="col-lg-2 col-md-2 col-xs-12">
                         <h4 class="todaytit">Today</h4>
-                        <p class="todayvalue">+ 0.02</p>
+                        <p class="todayvalue">+ {{todayAmount}}</p>
                     </li>
                     <li class="col-lg-2 col-md-2 col-xs-12">
                         <h4 class="todaytit">Week</h4>
-                        <p class="todayvalue">+ 0.999</p>
+                        <p class="todayvalue">+ {{weekAmount}}</p>
                     </li>
                     <li class="col-lg-2 col-md-2 col-xs-12">
                         <h4 class="todaytit">Month</h4>
-                        <p class="todayvalue">+ 1.908</p>
+                        <p class="todayvalue">+ {{monthAmount}}</p>
                     </li>
                     <li class="col-lg-4 col-md-4 col-xs-12">
                         <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'">
@@ -195,8 +196,8 @@
                                     <!-- <div style="width: 100%; height: 100%;"
                                         *ngIf="!(yAxisPaidData.length == 0) && !(yAxisReceivedData.length == 0) && !(lineChartLabels.length == 0)"> -->
 
-                                          <div style="width: 100%; height: 100%;">
-                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" 
+                                    <div style="width: 100%; height: 100%;">
+                                        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels"
                                             [options]="lineChartOptions" [colors]="lineChartColors"
                                             [legend]="lineChartLegend" [chartType]="lineChartType"
                                             [plugins]="lineChartPlugins">

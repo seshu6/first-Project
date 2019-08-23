@@ -1141,6 +1141,7 @@ footer {
 	text-align: center;
 	display: block;
 	padding: 16px 0;
+	cursor: pointer;
 }
 /* Second Sidebar */
 .bluewallet-profile-sidebar {
@@ -1841,7 +1842,7 @@ footer {
 	width: 100%;
 	position: relative;
 }
-.moneitation-wrap.active .moneitation-bg-transparent::after {
+/* .moneitation-wrap.active .moneitation-bg-transparent::after {
 	background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(34,43,80,1) 18%, rgba(40,53,99,1) 53%, rgba(49,70,130,1) 78%, rgba(53,78,145,1) 100%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(18%, rgba(34,43,80,1)), color-stop(53%, rgba(40,53,99,1)), color-stop(78%, rgba(49,70,130,1)), color-stop(100%, rgba(53,78,145,1)));
 	background: -webkit-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(34,43,80,1) 18%, rgba(40,53,99,1) 53%, rgba(49,70,130,1) 78%, rgba(53,78,145,1) 100%);
@@ -1857,7 +1858,7 @@ footer {
 	left: 0;
 	right: 0;
 	opacity: 0.5;
-}
+} */
 .moneitation-box {
 	position: relative;
 	background: #ffffff;
@@ -2780,7 +2781,7 @@ footer {
 	border-radius: 10px;
 	padding: 14px;
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 }
 .crytocurrency-view-form {
 	float: left;
