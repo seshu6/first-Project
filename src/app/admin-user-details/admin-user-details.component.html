@@ -1,7 +1,7 @@
 <div class="bluewallet-dashboard-fullwrap">
   <!-- Bluewallet-second-sidebar -->
   <div class="bluewallet-profile-sidebar">
-    <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1"> 
+    <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1">
       <div class="profile-setting-wallet">
         <div class="profile-setting">
           <div class="setting-image">
@@ -97,25 +97,25 @@
       <div class="wallet-eth-list">
         <ul>
           <li>
-              <a href="javascript:void(0);">
-                  <span class="wal-eth">ETH
-                      <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                      <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
-                  </span>
-                  <span class="wal-amt">{{currentEthAmount}} $</span>
-              </a>
+            <a href="javascript:void(0);">
+              <span class="wal-eth">ETH
+                <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
+              </span>
+              <span class="wal-amt">{{currentEthAmount}} $</span>
+            </a>
           </li>
           <li>
-              <a href="javascript:void(0);">
-                  <span class="wal-eth">BTC
-                      <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                      <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
-                  </span>
-                  <span class="wal-amt">{{currentBtcAmount}} $</span>
-              </a>
+            <a href="javascript:void(0);">
+              <span class="wal-eth">BTC
+                <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
+              </span>
+              <span class="wal-amt">{{currentBtcAmount}} $</span>
+            </a>
           </li>
-        
-      </ul>
+
+        </ul>
       </div>
     </perfect-scrollbar>
   </div>
@@ -131,7 +131,41 @@
           <button type="button" class="waltsearchbtn">Search</button>
         </div>
         <div class="admin-wallet-viewbox">
-          <div class="adminwalt-accordion" id="tablescroll">
+          <div class="table-view-history">
+            <table>
+              <thead>
+                <tr>
+                  <th>S.NO</th>
+                  <th>Name</th>
+                  <th>E-mail</th>
+                  <th>Wallet</th>
+                  <th>KYC View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userListArr;let i = index;">
+                  <td class="idview">{{i+1}}</td>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.emailId}}</td>
+                  <td>
+                    <div class="idview">
+                      <h1>Wallet</h1>
+                      <span class="idviewimg">
+                        <a href="javascript:void(0);" (click)="openVaultModal(user.bitCoinAddress)">
+                          <img src="assets/images/blockchainicon1.png">
+                        </a>
+                        <a href="javascript:void(0);" (click)="openVaultModal(user.etherWalletAddress)">
+                          <img src="assets/images/blockchainicon2.png">
+                        </a>
+                      </span>
+                    </div>
+                  </td>
+                  <td> <button type="button" class="kycbtn" (click)="openKycDocument(user)">KYC</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- <div class="adminwalt-accordion" id="tablescroll">
             <ul>
               <li *ngFor="let user of userListArr;let i = index;">
                 <div class="admin-wallet-tableview">
@@ -160,8 +194,6 @@
                     </span>
                   </div>
                   <div class="idview">
-                    <!-- <button type="button" class="kycbtn" data-toggle="modal" data-target="#kycmodal"
-                        (click)="openKycDocument(user)">KYC</button> -->
                     <button type="button" class="kycbtn" (click)="openKycDocument(user)">KYC</button>
                   </div>
                 </div>
@@ -169,7 +201,7 @@
 
 
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -1712,7 +1712,7 @@ footer {
 .graph-history-title h1 {
 	color: #272759;
 	font-size: 21px;
-	font-weight: 600;
+	font-weight: 500;
 	margin: 0 0 12px 0;
 }
 .graph-head-story h1 {
@@ -4528,12 +4528,11 @@ footer {
 	font-weight: 500;
 }
 .create-walbtn {
-	background: -moz-linear-gradient(0deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(65,218,156,1)), color-stop(100%, rgba(21,233,233,1)));
-	background: -webkit-linear-gradient(0deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
-	background: -o-linear-gradient(0deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
-	background: -ms-linear-gradient(0deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
-	background: linear-gradient(90deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
+	background: -moz-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+	background: -webkit-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+	background: -o-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+	background: -ms-linear-gradient(360deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
+	background: linear-gradient(90deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%);
 	border: none;
 	outline: none;
 	color: #ffffff;
@@ -7700,6 +7699,9 @@ font-size: 14px !important;
 	position: relative;
 	margin-top: 20px;
 }
+.admin-wallet-viewbox .table-view-history table tbody tr{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
 .adminwalt-accordion{
 	max-height: 600px;
     overflow: auto;
@@ -7738,6 +7740,7 @@ font-size: 14px !important;
 }
 .admin-wallet-tableview .idview{
 	text-align: center;
+	width: 12%;
 }
 .admin-wallet-tableview .idview h1{
 	color:#272759;
@@ -7752,7 +7755,7 @@ font-size: 14px !important;
 	color:#272759;
 	margin-top:8px;
 }
-.admin-wallet-tableview .idview .kycbtn{
+.kycbtn{
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(97,188,242,1)), color-stop(100%, rgba(63,109,208,1)));
 	background: -webkit-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
 	background: -o-linear-gradient(0deg, rgba(97,188,242,1) 0%, rgba(63,109,208,1) 100%);
@@ -8268,6 +8271,19 @@ font-size: 14px !important;
 	padding:8px;
 	color: #656565;
 	text-align: center;
+}
+.table-view-history table tbody tr td .idview h1{
+	font-size: 14px;
+}
+.table-view-history table tbody tr td .idview .idviewimg{
+    margin-top: 6px;
+    display: block;
+}
+.table-view-history table tbody tr td .idview .idviewimg a{
+	display: inline-block;
+}
+.table-view-history table tbody tr td .idview .idviewimg a:last-child img{
+	margin-right: 0px;
 }
 .table-view-history table tbody tr:nth-child(even){
 	background: rgb(246, 245, 253);
