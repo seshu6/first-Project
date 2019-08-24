@@ -1747,7 +1747,11 @@ footer {
 	border: 1px solid rgba(147,181,229,0.3);
 	padding: 20px;
 	border-radius: 10px;
-	min-height: 340px;
+	height: 340px;
+}
+.graph-history canvas{
+	height: 100% !important;
+    object-fit: contain;
 }
 .graph-activy-list-box {
 	height: 350px;
@@ -2476,13 +2480,16 @@ footer {
     height: 30px;
     color: #000000;
     opacity: 1 !important;
-    line-height: 30px;
+    line-height: 20px;
     padding: 0;
     font-size: 22px;
     position: absolute;
     left: 95%;
     top: -13px;
     box-shadow: -1px 2px 4px 0px #dddddd;
+}
+.code-qr-scan .close i{
+	font-size: 20px;
 }
 .code-qr-scan .qr-scan-amount {
 	width: 100%;
