@@ -21,7 +21,7 @@
               <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -503,8 +503,79 @@
               </div> -->
               <div class="form-bttn-group">
                 <button type="button" class="acceptbttn applyforbtn" (click)="onSubmitRequestApi()">Apply for</button>
-                <button type="button" class="acceptbttn applyforcancelbtn"
-                  (click)="closeModal()">Cancel</button>
+                <button type="button" class="acceptbttn applyforcancelbtn" (click)="closeModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="api-key-form">
+  <div class="modal fade" id="contacus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <img src="/assets/images/bluwallet-logo.png">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeRequestApiModal>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="apikey-form-body">
+            <h1>Contact Us</h1>
+            <p class="text-left">Fill the contact form for specialized services that Bluwallet can help you with,
+              perfect for institutions
+              and complanies.
+            </p>
+            <form>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text">
+                <span>Your name or that of your organization.</span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text">
+              </div>
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text">
+                <span>URL of your website</span>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" formControlName="description">
+                <span>A brief description of your organization</span>
+              </div>
+              <div class="form-group-termscondition">
+                <h1>Terms and Conditions</h1>
+                <div class="checkbox-list">
+                  <input type="checkbox" id="checkbox2">
+                  <label for="checkbox2">
+                    I accept the terms and conditions
+                  </label>
+                </div>
+                <div class="accept-content-read">
+                  <div class="accept-cont-para">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                      ut
+                      laoreet dolore magna aliquam erat volutpat. tincidunt ut laoreet dolore magna aliquam erat
+                      volutpat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-bttn-group">
+                <button type="button" class="acceptbttn applyforbtn">Request</button>
+                <button type="button" class="acceptbttn applyforcancelbtn">Cancel</button>
               </div>
             </form>
           </div>
