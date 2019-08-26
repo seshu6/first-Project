@@ -112,25 +112,25 @@
                             (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
                     </div>
                     <div class="enableotp" *ngIf="otpShowOrHide">
-                        <div class="enable-otp-verify">
+                        <div class="enable-otp-verify" #otpElement>
                             <input type="number" name="optOne" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optOne"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optOne,$event,1)" />
                             <input type="number" name="optTwo" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optTwo"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optTwo,$event,2)" />
                             <input type="number" name="optThree" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optThree"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optThree,$event,3)" />
                             <input type="number" name="optFour" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optFour"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optFour,$event,4)" />
                             <input type="number" name="optFive" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optFive"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optFive,$event,5)" />
                             <input type="number" name="optSix" (paste)="avoidCopyAndPaste()"
                                 (copy)="avoidCopyAndPaste()" [(ngModel)]="optSix"
-                                onKeyPress="if(this.value.length==1) return false;" />
+                                (keypress)="allowOnlyNumber(optSix,$event,5)" />
                         </div>
                         <div class="enable-verify">
                             <button type="button" class="create-walbtn"

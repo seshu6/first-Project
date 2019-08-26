@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ViewChild, ElementRef } from '@angular/core';
+import { ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 
 
 @Component({
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
   clock_tick: any = Date.now();
 
   @ViewChild('profileImage') profileImage: ElementRef;
+  @ViewChildren('otpElement') otpElement: QueryList<ElementRef>;
   // @ViewChild('profileImage') uploadImages: ElementRef;
 
   // selectedCountry:any;
@@ -318,9 +319,30 @@ export class ProfileComponent implements OnInit {
     this.twoFactorShowOrHide = true;
   }
 
-  avoidPaste(){
+  avoidPaste() {
     return false;
   }
+
+  allowOnlyNumber(number: any, e: any, index: number) {
+    if (number != null) {
+      if (["e", "+", "-"].includes(e.key)) {
+        e.preventDefault();
+      } else if (number.toString().length >= 1) {
+        e.preventDefault();
+        this.otpElement['first']['nativeElement']['children'][index].focus();
+        // return false;
+      } else {
+        this.otpElement['first']['nativeElement']['children'][index].focus();
+      }
+    }else {
+      if (["e", "+", "-"].includes(e.key)) {
+        e.preventDefault();
+      }
+    }
+
+
+  }
+
 
   avoidNumber(e: any) {
     if (["e", "+", "-"].includes(e.key)) {

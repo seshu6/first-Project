@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
+import { ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 
 @Component({
   selector: 'app-sms-verify',
@@ -34,6 +35,7 @@ export class SmsVerifyComponent implements OnInit {
   optFive: any;
   optSix: any;
   otpShowOrHide: boolean = false;
+  @ViewChildren('otpElement') otpElement: QueryList<ElementRef>;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
   ngOnInit() {
@@ -150,6 +152,28 @@ export class SmsVerifyComponent implements OnInit {
   avoidCopyAndPaste() {
     return false;
   }
+
+
+  allowOnlyNumber(number: any, e: any, index: number) {
+    if (number != null) {
+      if (["e", "+", "-"].includes(e.key)) {
+        e.preventDefault();
+      } else if (number.toString().length >= 1) {
+        e.preventDefault();
+        this.otpElement['first']['nativeElement']['children'][index].focus();
+        // return false;
+      } else {
+        this.otpElement['first']['nativeElement']['children'][index].focus();
+      }
+    } else {
+      if (["e", "+", "-"].includes(e.key)) {
+        e.preventDefault();
+      }
+    }
+
+
+  }
+
 
   checkTwoFactorOtp(otp: number) {
 

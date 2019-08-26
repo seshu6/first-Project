@@ -1,15 +1,15 @@
 <div class="bluewallet-dashboard-fullwrap">
-        <!-- Bluewallet-second-sidebar -->
-        <div class="bluewallet-profile-sidebar">
-            <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-                <div class="profile-setting">
-                    <div class="setting-image">
-                        <img src="assets/images/profile.jpg" alt="image" />
-                    </div>
+    <!-- Bluewallet-second-sidebar -->
+    <div class="bluewallet-profile-sidebar">
+        <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
+            <div class="profile-setting">
+                <div class="setting-image">
+                    <img src="assets/images/profile.jpg" alt="image" />
                 </div>
-                <div class="select-your-cryptocurrency">
-    
-                    <!-- <div class="crypto-currency-wallet">
+            </div>
+            <div class="select-your-cryptocurrency">
+
+                <!-- <div class="crypto-currency-wallet">
                         <h1>{{ethOrBtc}} Balance</h1>
                         <div class="etherum-blance">
                             <h2>{{availabeBalance}}</h2>
@@ -23,36 +23,36 @@
                             </a>
                         </div>
                     </div> -->
+            </div>
+            <div class="send-receive-bttngrup">
+                <button type="button" class="secondfact" (click)="showEnableOrDisable()"> Second Factor
+                    <img src="assets/images/Group-2043.png" />
+                </button>
+            </div>
+            <div class="wallet-eth-list">
+                <div class="info">
+                    <a href="javascript:void(0);" class="infobtn">Information</a>
                 </div>
-                <div class="send-receive-bttngrup">
-                    <button type="button" class="secondfact" (click)="showEnableOrDisable()"> Second Factor
-                        <img src="assets/images/Group-2043.png" />
-                    </button>
-                </div>
-                <div class="wallet-eth-list">
-                    <div class="info">
-                        <a href="javascript:void(0);" class="infobtn">Information</a>
-                    </div>
-                    <ul>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="wal-eth">ETH
-                                    <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                                    <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
-                                </span>
-                                <span class="wal-amt">{{currentEthAmount}} $</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="wal-eth">BTC
-                                    <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
-                                    <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
-                                </span>
-                                <span class="wal-amt">{{currentBtcAmount}} $</span>
-                            </a>
-                        </li>
-                        <!-- <li>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="wal-eth">ETH
+                                <img *ngIf="currentEthAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentEthAmountStatus == 0" src="assets/images/downarrowred.png" />
+                            </span>
+                            <span class="wal-amt">{{currentEthAmount}} $</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="wal-eth">BTC
+                                <img *ngIf="currentBtcAmountStatus == 1" src="assets/images/uparrowgreen.png" />
+                                <img *ngIf="currentBtcAmountStatus == 0" src="assets/images/downarrowred.png" />
+                            </span>
+                            <span class="wal-amt">{{currentBtcAmount}} $</span>
+                        </a>
+                    </li>
+                    <!-- <li>
                             <a href="javascript:void(0);">
                                 <span class="wal-eth">XRP
                                     <img src="assets/images/uparrowgreen.png" />
@@ -60,167 +60,167 @@
                                 <span class="wal-amt">200 $</span>
                             </a>
                         </li> -->
-                    </ul>
-    
-    
-                </div>
-            </perfect-scrollbar>
-        </div>
-        <div class="bluewallet-body-wrap">
-            <!-- PROFILE STARTS HERE -->
-            <div class="profile-page-div" *ngIf="profileShowOrHide">
-                <div class="profile-view">
-                    <div class="profile-upload-div">
-                        <div class="avatar-upload">
-                            <div class="avatar-edit">
-                                <input type="file" id="imageupload"
-                                    (change)="uploadProfileImgage(uploadImages,profileImage.files)" #profileImage>
-                                <label for="imageupload">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </label>
-                            </div>
-                            <div class="avatar-preview">
-                                <img src='{{profileImageSrc}}?d={{clock_tick}}' id="uploadImages">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-form">
-                        <form [formGroup]="profileForm">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Name
-                                            </label>
-                                            <input type="text" placeholder="Name" formControlName="name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Mobile
-                                            </label>
-                                            <input type="number" placeholder="Mobile" formControlName="mobile"
-                                                (keypress)="avoidNumber($event)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Registry
-                                            </label>
-                                            <input type="text" placeholder="Registry" formControlName="registry">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Country
-                                            </label>
-                                            <div class="selecgroup">
-                                                <select formControlName="country" [(ngModel)]="selectedCountry">
-                                                    <option value="undefined">Select Country</option>
-                                                    <option *ngFor="let country of countryListArr;let i = index;"
-                                                        value="{{country.id}}">{{country.countryName}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                E-mail
-                                            </label>
-                                            <input type="email" placeholder="Carloserojas531@gmail.com"
-                                                formControlName="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Coin purse
-                                            </label>
-                                            <input type="text" placeholder="Bitcoin" formControlName="coinPurse">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <label>
-                                                Version
-                                            </label>
-                                            <input type="text" placeholder="2.0.4" formControlName="version">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-12 text-center">
-                                    <div class="form-group">
-                                        <div class="inputeffect">
-                                            <button class="create-walbtn" type="button"
-                                                (click)="updateProfileDetails()">Save</button>
-                                            <button class="create-walbtn" type="button">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                </ul>
+
+
             </div>
-    
-            <!-- ENDS HERE -->
-    
-            <!-- TWO FACTOR STARTS HERE -->
-            <div class="bluewallet-sms-code" *ngIf="twoFactorShowOrHide">
-                <div class="welcome-wallet-blue">
-                    <div class="wallet-sms-logo">
-                        <h1>Verify with 2 Steps</h1>
-                        <img src="assets/images/verify-sms-icon.png" />
-                    </div>
-                    <div class="wallet-sms-content">
-                        <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade the
-                            security
-                            on your wallet</p>
-                        <div class="beginnowbtn">
-                            <button type="button" class="create-walbtn"
-                                (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
-                        </div>
-                        <div class="enableotp" *ngIf="otpShowOrHide">
-                            <div class="enable-otp-verify">
-                                <input type="number" name="optOne" class="input" [(ngModel)]="optOne" (paste)="avoidPaste()"
-                                    (copy)="avoidPaste()" onKeyPress="if(this.value.length==1) return false;" />
-                                <input type="number" name="optTwo" class="input" [(ngModel)]="optTwo" (paste)="avoidPaste()"
-                                    (copy)="avoidPaste()" onKeyPress="if(this.value.length==1) return false;" />
-                                <input type="number" name="optThree" class="input" [(ngModel)]="optThree"
-                                    (paste)="avoidPaste()" (copy)="avoidPaste()"
-                                    onKeyPress="if(this.value.length==1) return false;" />
-                                <input type="number" name="optFour" [(ngModel)]="optFour" (paste)="avoidPaste()"
-                                    (copy)="avoidPaste()" onKeyPress="if(this.value.length==1) return false;" />
-                                <input type="number" name="optFive" [(ngModel)]="optFive" (paste)="avoidPaste()"
-                                    (copy)="avoidPaste()" onKeyPress="if(this.value.length==1) return false;" />
-                                <input type="number" name="optSix" [(ngModel)]="optSix" (paste)="avoidPaste()"
-                                    (copy)="avoidPaste()" onKeyPress="if(this.value.length==1) return false;" />
-                            </div>
-                            <div class="enable-verify">
-                                <button type="button" class="create-walbtn"
-                                    (click)="getEnableOrDisable('click')">Verify</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ENDS HERE -->
-        </div>
+        </perfect-scrollbar>
     </div>
+    <div class="bluewallet-body-wrap">
+        <!-- PROFILE STARTS HERE -->
+        <div class="profile-page-div" *ngIf="profileShowOrHide">
+            <div class="profile-view">
+                <div class="profile-upload-div">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type="file" id="imageupload"
+                                (change)="uploadProfileImgage(uploadImages,profileImage.files)" #profileImage>
+                            <label for="imageupload">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </label>
+                        </div>
+                        <div class="avatar-preview">
+                            <img src='{{profileImageSrc}}?d={{clock_tick}}' id="uploadImages">
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-form">
+                    <form [formGroup]="profileForm">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Name
+                                        </label>
+                                        <input type="text" placeholder="Name" formControlName="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Mobile
+                                        </label>
+                                        <input type="number" placeholder="Mobile" formControlName="mobile"
+                                            (keypress)="avoidNumber($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Registry
+                                        </label>
+                                        <input type="text" placeholder="Registry" formControlName="registry">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Country
+                                        </label>
+                                        <div class="selecgroup">
+                                            <select formControlName="country" [(ngModel)]="selectedCountry">
+                                                <option value="undefined">Select Country</option>
+                                                <option *ngFor="let country of countryListArr;let i = index;"
+                                                    value="{{country.id}}">{{country.countryName}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            E-mail
+                                        </label>
+                                        <input type="email" placeholder="Carloserojas531@gmail.com"
+                                            formControlName="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Coin purse
+                                        </label>
+                                        <input type="text" placeholder="Bitcoin" formControlName="coinPurse">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <label>
+                                            Version
+                                        </label>
+                                        <input type="text" placeholder="2.0.4" formControlName="version">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 text-center">
+                                <div class="form-group">
+                                    <div class="inputeffect">
+                                        <button class="create-walbtn" type="button"
+                                            (click)="updateProfileDetails()">Save</button>
+                                        <button class="create-walbtn" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENDS HERE -->
+
+        <!-- TWO FACTOR STARTS HERE -->
+        <div class="bluewallet-sms-code" *ngIf="twoFactorShowOrHide">
+            <div class="welcome-wallet-blue">
+                <div class="wallet-sms-logo">
+                    <h1>Verify with 2 Steps</h1>
+                    <img src="assets/images/verify-sms-icon.png" />
+                </div>
+                <div class="wallet-sms-content">
+                    <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade the
+                        security
+                        on your wallet</p>
+                    <div class="beginnowbtn">
+                        <button type="button" class="create-walbtn"
+                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                    </div>
+                    <div class="enableotp" *ngIf="otpShowOrHide">
+                        <div class="enable-otp-verify" #otpElement>
+                            <input type="number" name="optOne" class="input" [(ngModel)]="optOne" (paste)="avoidPaste()"
+                                (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optOne,$event,1)" />
+                            <input type="number" name="optTwo" class="input" [(ngModel)]="optTwo" (paste)="avoidPaste()"
+                                (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optTwo,$event,2)" />
+                            <input type="number" name="optThree" class="input" [(ngModel)]="optThree"
+                                (paste)="avoidPaste()" (copy)="avoidPaste()"
+                                (keypress)="allowOnlyNumber(optThree,$event,3)" />
+                            <input type="number" name="optFour" [(ngModel)]="optFour" (paste)="avoidPaste()"
+                                (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optFour,$event,4)" />
+                            <input type="number" name="optFive" [(ngModel)]="optFive" (paste)="avoidPaste()"
+                                (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optFive,$event,5)" />
+                            <input type="number" name="optSix" [(ngModel)]="optSix" (paste)="avoidPaste()"
+                                (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optSix,$event,5)" />
+                        </div>
+                        <div class="enable-verify">
+                            <button type="button" class="create-walbtn"
+                                (click)="getEnableOrDisable('click')">Verify</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ENDS HERE -->
+    </div>
+</div>

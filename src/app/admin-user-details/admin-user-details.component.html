@@ -149,7 +149,7 @@
                   <td>{{user.emailId}}</td>
                   <td>
                     <div class="idview">
-                      <h1>Wallet</h1>
+                      <!-- <h1>Wallet</h1> -->
                       <span class="idviewimg">
                         <a href="javascript:void(0);" (click)="openVaultModal(user.bitCoinAddress)">
                           <img src="assets/images/blockchainicon1.png">
@@ -603,7 +603,7 @@
   <div class="wallet-view-input">
     <button type="button" class="close" data-dismiss="modal" (click)="vaultModal = false">&times;</button>
     <div class="input-group">
-      <input type="text" name="wallet" [(ngModel)]="walletAddress">
+      <input type="text" name="wallet" [(ngModel)]="walletAddress" disabled>
       <a href="javascript:void(0);" (click)="copyToClipboard()">
         <!-- <img src="assets/images/copyicon.png"> -->
         <span>{{copied}}</span>
