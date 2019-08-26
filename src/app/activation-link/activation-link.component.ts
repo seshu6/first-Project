@@ -174,6 +174,10 @@ export class ActivationLinkComponent implements OnInit {
   }
 
 
+  goToLoginPage() {
+    this.route.navigate(['login']);
+  }
+
 
 
 }

@@ -47,6 +47,10 @@ export class ForgotPasswordComponent implements OnInit {
     })
   }
 
+  goToLoginPage() {
+    this.route.navigate(['login']);
+  }
+
   submitChangedPassword() {
     if ((!Boolean(this.oldPassword)) || (!Boolean(this.confirmPassword)) || this.whetherPasswordSame) {
       Swal.fire("Info", "Please check your details", "info");

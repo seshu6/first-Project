@@ -154,4 +154,8 @@ export class SmsVerifyComponent implements OnInit {
   checkTwoFactorOtp(otp: number) {
 
   }
+
+  goToLoginPage() {
+    this.route.navigate(['login']);
+  }
 }
