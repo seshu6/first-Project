@@ -21,7 +21,8 @@
               <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus">Contact</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus"
+                (click)="contactUsForm.reset()">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -289,7 +290,8 @@
                 an API with payment gateway capable of generating smart invoices and with a low percentage of fee.</p>
               <div class="request-api">
                 <input type="text" placeholder="Put your email" />
-                <button type="button" class="requestapi-btn" data-toggle="modal" data-target="#apikey">Request
+                <button type="button" class="requestapi-btn" data-toggle="modal" data-target="#apikey"
+                  (click)="requestApiForm.reset()">Request
                   API</button>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
               </div>
@@ -523,7 +525,7 @@
           <h5 class="modal-title" id="exampleModalLongTitle">
             <img src="/assets/images/bluwallet-logo.png">
           </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeRequestApiModal>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #contactUsModal>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -534,31 +536,52 @@
               perfect for institutions
               and complanies.
             </p>
-            <form>
+            <form [formGroup]="contactUsForm">
               <div class="form-group">
                 <label>Name</label>
-                <input type="text">
+                <input type="text" formControlName="name">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('name').errors && contactUsForm.get('name').touched">
+                  <span *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
+
+                </span>
                 <span>Your name or that of your organization.</span>
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="text">
+                <input type="text" formControlName="email">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('email').errors && contactUsForm.get('email').touched">
+                  <span *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
+                  <span *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
+
+                </span>
               </div>
               <div class="form-group">
                 <label>URL</label>
-                <input type="text">
+                <input type="text" formControlName="url">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('url').errors && contactUsForm.get('url').touched">
+                  <span *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
+
+                </span>
                 <span>URL of your website</span>
               </div>
 
               <div class="form-group">
                 <label>Description</label>
                 <input type="text" formControlName="description">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
+                  <span *ngIf="contactUsForm.get('description').errors.required">Description is required.</span>
+
+                </span>
                 <span>A brief description of your organization</span>
               </div>
               <div class="form-group-termscondition">
                 <h1>Terms and Conditions</h1>
                 <div class="checkbox-list">
-                  <input type="checkbox" id="checkbox2">
+                  <input type="checkbox" id="checkbox2" formControlName="termsAndConditions">
                   <label for="checkbox2">
                     I accept the terms and conditions
                   </label>
@@ -574,8 +597,10 @@
                 </div>
               </div>
               <div class="form-bttn-group">
-                <button type="button" class="acceptbttn applyforbtn">Request</button>
-                <button type="button" class="acceptbttn applyforcancelbtn">Cancel</button>
+                <button type="button" class="acceptbttn applyforbtn"
+                  (click)="onSubmitContactUsDetails()">Request</button>
+                <button type="button" class="acceptbttn applyforcancelbtn"
+                  (click)="closeContactUsModal()">Cancel</button>
               </div>
             </form>
           </div>

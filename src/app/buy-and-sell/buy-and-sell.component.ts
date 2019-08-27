@@ -208,7 +208,6 @@ export class BuyAndSellComponent implements OnInit {
       }
 
       this.buyAndSellService.postAutoCompleteUsdToBtcAndEth(jsonData).subscribe(success => {
-        console.log("AutoComplete", success);
         if (success['status'] == "success") {
           // if (this.whetherBtcOrEth == "BTC") {
           //   this.calculatedBtcOrEth = success['CalculatingAmountDTO'].btcAmount;

@@ -120,7 +120,6 @@ export class ActivationLinkComponent implements OnInit {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
         this.forgotPasswordShowOrHide = true;
-        console.log("verification");
       } else {
         Swal.fire({
           title: 'Error',

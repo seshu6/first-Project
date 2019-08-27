@@ -18,6 +18,10 @@ export class CommonService {
     return this.http.post(this.url.apiUrl + "bluewallet/requestform", data, this.commonHeaders.getHttpHeader());
   }
 
+  postContactUsApi(data: any) {
+    return this.http.post(this.url.apiUrl + "", data, this.commonHeaders.getHttpHeader());
+  }
+
   setUrlStatus(status: boolean) {
     this.customUrlBoolean = status;
   }

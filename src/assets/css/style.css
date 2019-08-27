@@ -5559,10 +5559,12 @@ footer {
 	height: 186px;
 	object-fit: contain;
 }
-.validationError {
-	color: #DC3543;
-	margin-left: 20px;
+.api-key-form .apikey-form-body .form-group .validationError span {
+	color: #DC3543 !important;
+	/* margin-left: 20px; */
 	font-size: 15px;
+	display: block;
+	text-align: left;
 }
 /* SWEET ALERT CSS STARTS HERE   */
 .swal-wide {
