@@ -3465,7 +3465,7 @@ footer {
 .buy-transfer-scrol #transferscroll{
 	width: 100%;
     position: relative;
-    height: 490px;
+    max-height: 490px;
     overflow-y: auto;
 }
 .buy-view-card1 ul {
@@ -8375,4 +8375,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .paddlft0{
 	padding-left:0px !important;
+}
+.buysellcont{
+	margin-top: 20px;
+}
+.buysellcont p{
+	text-align: center;
+	color:#abb3d0;
+	font-size:17px;
 }
