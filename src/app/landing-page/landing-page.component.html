@@ -438,7 +438,7 @@
                 <input type="text" formControlName="firstName">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('firstName').errors && requestApiForm.get('firstName').touched">
-                  <span *ngIf="requestApiForm.get('firstName').errors.required">First name is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('firstName').errors.required">First name is required.</span>
 
                 </span>
                 <span>Your name or that of your organization.</span>
@@ -449,8 +449,8 @@
                 <input type="text" formControlName="email">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('email').errors && requestApiForm.get('email').touched">
-                  <span *ngIf="requestApiForm.get('email').errors.required">Email is required.</span>
-                  <span *ngIf="requestApiForm.get('email').errors.pattern">Email is not valid.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('email').errors.required">Email is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('email').errors.pattern">Email is not valid.</span>
 
                 </span>
               </div>
@@ -461,7 +461,7 @@
                 <input type="text" formControlName="url">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('url').errors && requestApiForm.get('url').touched">
-                  <span *ngIf="requestApiForm.get('url').errors.required">Url is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('url').errors.required">Url is required.</span>
 
                 </span>
                 <span>URL of your website or application</span>
@@ -473,7 +473,7 @@
                 <input type="text" formControlName="description">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('description').errors && requestApiForm.get('description').touched">
-                  <span *ngIf="requestApiForm.get('description').errors.required">Description is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('description').errors.required">Description is required.</span>
 
                 </span>
                 <span>A description of your website / application</span>
@@ -542,7 +542,7 @@
                 <input type="text" formControlName="name">
                 <span class="validationError"
                   *ngIf="contactUsForm.get('name').errors && contactUsForm.get('name').touched">
-                  <span *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
 
                 </span>
                 <span>Your name or that of your organization.</span>
@@ -552,8 +552,8 @@
                 <input type="text" formControlName="email">
                 <span class="validationError"
                   *ngIf="contactUsForm.get('email').errors && contactUsForm.get('email').touched">
-                  <span *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
-                  <span *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
 
                 </span>
               </div>
@@ -562,7 +562,7 @@
                 <input type="text" formControlName="url">
                 <span class="validationError"
                   *ngIf="contactUsForm.get('url').errors && contactUsForm.get('url').touched">
-                  <span *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
 
                 </span>
                 <span>URL of your website</span>
@@ -573,7 +573,7 @@
                 <input type="text" formControlName="description">
                 <span class="validationError"
                   *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
-                  <span *ngIf="contactUsForm.get('description').errors.required">Description is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is required.</span>
 
                 </span>
                 <span>A brief description of your organization</span>
