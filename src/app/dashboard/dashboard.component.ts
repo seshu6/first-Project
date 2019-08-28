@@ -69,14 +69,22 @@ export class DashboardComponent implements OnInit {
 
   // CHART CONFIGURATIONS STARTS HERE
   lineChartOptions: any = {
+    tooltips: {
+      enabled: true,
+      mode: 'single',
+      callbacks: {
+        label: function (tooltipItems, data) {
+          let indice = tooltipItems.index;
+          return data.labels[indice] + ': ' + data.datasets[0].data[indice] + '';
+        }
+      }
+    },
+    showTooltips: true,
     responsive: true,
     scales: {
       xAxes: [{
         gridLines: {
           display: false
-        },
-        afterFit: (scale) => {
-          scale.height = 45;
         }
       }],
       yAxes: [{
@@ -99,39 +107,11 @@ export class DashboardComponent implements OnInit {
 
   lineChartColors: Color[] = [
     {
-      borderColor: [
-        'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)'
-      ],
-      backgroundColor: [
-        'rgba(88, 170, 243, 0.7)',
-        'rgba(88, 170, 243, 0.6)',
-        'rgba(88, 170, 243, 0.4)',
-        'rgba(88, 170, 243, 0.3)',
-        'rgba(88, 170, 243, 0.2)',
-        'rgba(88, 170, 243, 0.1)'
-      ]
+      borderColor:'rgba(88, 170, 243, 1)',
+      backgroundColor:'rgba(88, 170, 243, 0.7)'
     }, {
-      borderColor: [
-        'rgba(249, 84, 119, 1)',
-        'rgba(249, 84, 119, 1)',
-        'rgba(249, 84, 119, 1)',
-        'rgba(249, 84, 119, 1)',
-        'rgba(249, 84, 119, 1)',
-        'rgba(249, 84, 119, 1)'
-      ],
-      backgroundColor: [
-        'rgba(255,124,110,0.6)',
-        'rgba(255,124,110,0.5)',
-        'rgba(255,124,110,0.4)',
-        'rgba(255,124,110,0.3)',
-        'rgba(255,124,110,0.2)',
-        'rgba(255,124,110,0.1)'
-      ]
+      borderColor: 'rgba(249, 84, 119, 1)',
+      backgroundColor:'rgba(255,124,110,0.6)',
     },
   ];
   lineChartLegend = false;
@@ -258,7 +238,6 @@ export class DashboardComponent implements OnInit {
         this.spinner.showOrHide(false);
         this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
         this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
-        console.log("QR****************", success);
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -415,39 +394,11 @@ export class DashboardComponent implements OnInit {
 
             this.lineChartColors = [
               {
-                borderColor: [
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)'
-                ],
-                backgroundColor: [
-                  'rgba(88, 170, 243, 0.7)',
-                  'rgba(88, 170, 243, 0.6)',
-                  'rgba(88, 170, 243, 0.4)',
-                  'rgba(88, 170, 243, 0.3)',
-                  'rgba(88, 170, 243, 0.2)',
-                  'rgba(88, 170, 243, 0.1)'
-                ]
+                borderColor: 'rgba(88, 170, 243, 1)',
+                backgroundColor:'rgba(88, 170, 243, 0.7)',
               }, {
-                borderColor: [
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)'
-                ],
-                backgroundColor: [
-                  'rgba(255,124,110,0.6)',
-                  'rgba(255,124,110,0.5)',
-                  'rgba(255,124,110,0.4)',
-                  'rgba(255,124,110,0.3)',
-                  'rgba(255,124,110,0.2)',
-                  'rgba(255,124,110,0.1)'
-                ]
+                borderColor: 'rgba(249, 84, 119, 1)',
+                backgroundColor: 'rgba(255,124,110,0.6)',
               },
             ];
 
@@ -457,22 +408,8 @@ export class DashboardComponent implements OnInit {
             ];
             this.lineChartColors = [
               {
-                borderColor: [
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)',
-                  'rgba(88, 170, 243, 1)'
-                ],
-                backgroundColor: [
-                  'rgba(88, 170, 243, 0.7)',
-                  'rgba(88, 170, 243, 0.6)',
-                  'rgba(88, 170, 243, 0.4)',
-                  'rgba(88, 170, 243, 0.3)',
-                  'rgba(88, 170, 243, 0.2)',
-                  'rgba(88, 170, 243, 0.1)'
-                ]
+                borderColor: 'rgba(88, 170, 243, 1)',
+                backgroundColor:'rgba(88, 170, 243, 0.7)'
               }
             ];
           } else if (this.selectedAmountMode == "Received") {
@@ -481,42 +418,56 @@ export class DashboardComponent implements OnInit {
             ];
             this.lineChartColors = [
               {
-                borderColor: [
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)',
-                  'rgba(249, 84, 119, 1)'
-                ],
-                backgroundColor: [
-                  'rgba(255,124,110,0.6)',
-                  'rgba(255,124,110,0.5)',
-                  'rgba(255,124,110,0.4)',
-                  'rgba(255,124,110,0.3)',
-                  'rgba(255,124,110,0.2)',
-                  'rgba(255,124,110,0.1)'
-                ]
+                borderColor:'rgba(249, 84, 119, 1)',
+                backgroundColor:  'rgba(255,124,110,0.6)',
               }
             ];
           }
-          this.lineChartOptions = {};
+          // this.lineChartOptions = {};
 
-          this.lineChartOptions = {
-            responsive: true,
-            scales: {
-              xAxes: [{
-                ticks: {
-                  autoSkip: false,
-                  maxRotation: 45,
-                  minRotation: 45
-                }
-              }],
-              yAxes: [{
+          // this.lineChartOptions = {
+          //   responsive: true,
+          //   scales: {
+          //     xAxes: [{
+          //       ticks: {
+          //         autoSkip: false,
+          //         maxRotation: 45,
+          //         minRotation: 45
+          //       }
+          //     }],
+          //     yAxes: [{
 
-              }]
-            }
-          };
+          //     }]
+          //   }
+          // };
+          // this.lineChartOptions = {
+          //   tooltips: {
+          //     enabled: true,
+          //     mode: 'single',
+          //     callbacks: {
+          //       label: function (tooltipItems, data) {
+          //         let indice = tooltipItems.index;
+          //         return data.labels[indice] + ': ' + data.datasets[0].data[indice] + '';
+          //       }
+          //     }
+          //   },
+          //   showTooltips: true,
+          //   responsive: true,
+          //   scales: {
+          //     xAxes: [{
+          //       gridLines: {
+          //         display: false
+          //       }
+          //     }],
+          //     yAxes: [{
+          //       ticks: {
+          //         beginAtZero: true
+          //       }, gridLines: {
+          //         display: false
+          //       }
+          //     }]
+          //   }
+          // };
         }
         this.getBtcOrEthBalance(this.selectedCurrencyType);
       } else if (success['status'] == "failure") {
