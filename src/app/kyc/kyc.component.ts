@@ -86,6 +86,7 @@ export class KycComponent implements OnInit {
   licenseCount: number = 0;
   kycErrorMessage: string;
   kycErrorMessageShowOrHide: boolean = false;
+  btcOrEthUsdDollar:any;
 
   // passportFileModel: any;
   // nationalFileModel: any;
@@ -108,8 +109,8 @@ export class KycComponent implements OnInit {
 
   }
 
-  onUploadedKycDocument(event: any) {
-    console.log(event);
+  // onUploadedKycDocument(event: any) {
+    // console.log(event);
     // if (whichFile === "passport") {
     //   this.passportDocument = event.target.files[0];
     //   this.fileUploadedOrNot = true;
@@ -121,7 +122,7 @@ export class KycComponent implements OnInit {
     //   this.fileUploadedOrNot = true;
     // }
     // console.log(event.target.files[0]);
-  }
+  // }
 
 
   setFileDetails(fileName: string, docs: string, event: any) {

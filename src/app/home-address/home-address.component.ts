@@ -54,7 +54,7 @@ export class HomeAddressComponent implements OnInit {
       firstName: ['', Validators.required],
       middleName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: [{}],
     });
     this.dynamicScriptLoader.load('custom').then(data => {
 
@@ -130,19 +130,23 @@ export class HomeAddressComponent implements OnInit {
   }
 
   validateNameDetails() {
+    console.log("date", this.homeAddressForm.controls.dateOfBirth);
     if (this.homeAddressForm.controls.firstName.invalid || this.homeAddressForm.controls.lastName.invalid
-      || this.homeAddressForm.controls.middleName.invalid || this.homeAddressForm.controls.dateOfBirth.invalid) {
-      Swal.fire("Info", "Please check your data", "info"); 
+      || this.homeAddressForm.controls.middleName.invalid) {
+      Swal.fire("Info", "Please check your data", "info");
     } else {
       this.addressShowOrHide = !this.addressShowOrHide;
     }
   }
 
+
+  
+
   addHomeAddressForm() {
     console.log("selected date", this.selectedDate);
-    if (this.homeAddressForm.invalid) {
-      Swal.fire("Info", "Please check your data", "info");
-    } else {
+    // if (this.homeAddressForm.invalid) {
+    //   Swal.fire("Info", "Please check your data", "info");
+    // } else {
       this.spinner.showOrHide(true);
       let jsonData = {
         "address": this.homeAddressForm.controls.addressLine1.value,
@@ -175,7 +179,7 @@ export class HomeAddressComponent implements OnInit {
           this.route.navigate(['login']);
         }
       })
-    }
+    // }
   }
 
 
@@ -218,13 +222,13 @@ export class HomeAddressComponent implements OnInit {
     }, error => {
       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info"); 
+        Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
       }
     })
   }
 
-  
+
 
 
   // GET CITY DETAILS API

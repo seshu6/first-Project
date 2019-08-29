@@ -31,6 +31,7 @@ export class AdminUserDetailsComponent implements OnInit {
   kycPageShowOrHide: boolean = false;
   userListShowOrHide: boolean = true;
   currentKycZoomImage: string;
+  searchFilter:any;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {

@@ -8020,6 +8020,12 @@ font-size: 14px !important;
     text-align: center;
     padding: 4px 0;
 }
+.forgotbttn {
+	margin-left: 50px !important;
+}
+.forgotbttn .create-walbtn{
+	margin-right: 12px;
+}
 .dashpadd{
 	padding: 0 4px;
 }
@@ -8391,37 +8397,4 @@ input[type=number]::-webkit-outer-spin-button {
 .clrred{
 	color:#ff0000;
 	font-size: 15px;
-}
-/* Refresh page */
-.refresh-loader .modal{
-	background: rgba(47,66,123,0.6);
-}
-.refresh-loader .modal-header{
-    border: none;
-    padding: 0;
-}
-.refresh-loader .modal-body{
-	padding: 20px;
-}
-.refresh-loader .modal-body p{
-	font-size: 15px;
-    text-align: center;
-}
-.referimg{
-	text-align: center;
-	margin-top: 10px;
-}
-.referimg img{
-	width: 50px;
-	height: 50px;
-	object-fit: contain;
-}
-
-.cols-row{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.colsgroup{
-	width: 180px;
 }

@@ -125,7 +125,7 @@
       <div class="admin-wallet-view">
         <div class="admin-wallet-searchbox">
           <div class="searchinput-group">
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search" [(ngModel)]="searchFilter">
             <i class="fa fa-search" aria-hidden="true"></i>
           </div>
           <button type="button" class="waltsearchbtn">Search</button>
@@ -143,7 +143,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of userListArr;let i = index;">
+                <tr *ngFor="let user of userListArr | filter:searchFilter;let i=index;">
                   <td class="idview">{{i+1}}</td>
                   <td>{{user.userName}}</td>
                   <td>{{user.emailId}}</td>

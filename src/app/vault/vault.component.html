@@ -155,7 +155,7 @@
                                                         </div>
                                                         <div class="wallet-etherium">
                                                             <h1>{{cryptoData.typeOfInvestment}}</h1>
-                                                            <p>$ {{cryptoData.cryptoAmount}}</p>
+                                                            <p>{{cryptoData.cryptoAmount}}</p>
                                                         </div>
                                                         <div class="wallet-etherium text-center">
                                                             <div class="produced-walet">
@@ -177,7 +177,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="wallet-etherium">
-                                                            <p class="vaueamt">+ {{cryptoData.percentage}}
+                                                            <p class="vaueamt">+{{cryptoData.percentage}}
                                                                 <img src="assets/images/walletarrow.png" />
                                                             </p>
                                                         </div>
@@ -189,7 +189,7 @@
                                                     <div class="wallet-active">
                                                         <div class="wallet-etherium ethcolr">
                                                             <h1>{{cryptoData.typeOfInvestment}}</h1>
-                                                            <p>$ {{cryptoData.cryptoAmount}}</p>
+                                                            <p>{{cryptoData.cryptoAmount}}</p>
                                                         </div>
                                                         <div class="wallet-etherium text-center">
                                                             <div class="produced-walet ethcolr">
@@ -276,11 +276,11 @@
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
                                                             <!-- BTC -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+
                                                                 {{completedDetails.btcValueInUsd}}
                                                             </span>
                                                             <!-- ETH -->
-                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+
                                                                 {{completedDetails.ethValueInUsd}}
                                                             </span>
                                                         </div>
