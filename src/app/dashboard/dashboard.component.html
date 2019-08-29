@@ -62,7 +62,8 @@
                         </button>
                     </div>
                     <div class="info">
-                        <a href="javascript:void(0);" class="infobtn">Information</a>
+                        <a href="javascript:void(0);" class="infobtn" data-toggle="modal"
+                            data-target="#refreshload">Information</a>
                     </div>
                 </div>
             </div>
@@ -101,8 +102,8 @@
                         <p class="todayvalue">+ {{monthAmount}}</p>
                     </li>
                     <li class="col-lg-4 col-md-4 col-xs-12">
-                        <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'">
-                                <!-- <div class="complete-profile"> -->
+                        <!-- <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'"> -->
+                            <div class="complete-profile">
                             <div class="profile-comp">
                                 <div class="profile-content">
                                     <h1>Complete Your Profile</h1>
@@ -433,7 +434,7 @@
             <div class="code-qr-scan">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                     (click)="qrCodeModalShowOrHide=!qrCodeModalShowOrHide;qrCodeClassShowOrHide=!qrCodeClassShowOrHide;">
-                 <i class="fa fa-times"></i>
+                    <i class="fa fa-times"></i>
                 </button>
                 <div class="qr-scan-amount">
                     <h1>{{selectedCurrencyType}} Amount</h1>
@@ -450,4 +451,21 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="refresh-loader">
+    <div class="modal fade" id="refreshload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Don't refresh the page until transaction is completed</p>
+                    <div class="referimg">
+                        <img src="assets/images/loader.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
