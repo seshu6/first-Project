@@ -321,7 +321,8 @@
           <div class="help-you-contact">
             <p>Our support is a few steps away from you. You can get an immediate answer to your question.</p>
             <div class="contactbttn">
-              <button type="button" class="contactusbtn">Contact
+              <button type="button" class="contactusbtn" data-toggle="modal" data-target="#contacus"
+                (click)="contactUsForm.reset()">Contact
                 <img src="assets/images/helpicon1.png">
               </button>
             </div>
@@ -355,7 +356,8 @@
                   <a [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);">Contact</a>
+                  <a href="javascript:void(0);" data-toggle="modal" data-target="#contacus"
+                    (click)="contactUsForm.reset()">Contact</a>
                 </li>
                 <li>
                   <a class="footer-login" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -438,7 +440,8 @@
                 <input type="text" formControlName="firstName">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('firstName').errors && requestApiForm.get('firstName').touched">
-                  <span class="clrred" *ngIf="requestApiForm.get('firstName').errors.required">First name is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('firstName').errors.required">First name is
+                    required.</span>
 
                 </span>
                 <span>Your name or that of your organization.</span>
@@ -473,7 +476,8 @@
                 <input type="text" formControlName="description">
                 <span class="validationError"
                   *ngIf="requestApiForm.get('description').errors && requestApiForm.get('description').touched">
-                  <span class="clrred" *ngIf="requestApiForm.get('description').errors.required">Description is required.</span>
+                  <span class="clrred" *ngIf="requestApiForm.get('description').errors.required">Description is
+                    required.</span>
 
                 </span>
                 <span>A description of your website / application</span>
@@ -573,7 +577,8 @@
                 <input type="text" formControlName="description">
                 <span class="validationError"
                   *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
-                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is
+                    required.</span>
 
                 </span>
                 <span>A brief description of your organization</span>
