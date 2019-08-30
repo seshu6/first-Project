@@ -10,6 +10,8 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import * as M from 'src/assets/materialize/js/materialize';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 
 @Component({
@@ -64,6 +66,8 @@ export class DashboardComponent implements OnInit {
   successShowOrHide: boolean = false;
   copied: string = "Copy All";
   roleName: string = sessionStorage.getItem('roleName');
+  kycShowOrHide: any;
+  profileShowOrHide: any;
 
 
 
@@ -122,7 +126,7 @@ export class DashboardComponent implements OnInit {
     {
       borderColor: [
         'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)',
+        'rgba(88, 170, 243, 1)', 
         'rgba(88, 170, 243, 1)',
         'rgba(88, 170, 243, 1)',
         'rgba(88, 170, 243, 1)',
@@ -161,6 +165,13 @@ export class DashboardComponent implements OnInit {
   counter: number = 0;
 
   // ENDS HERE
+
+
+  // WEB SOCKET CODE STARTS HERE
+  webSocketEndPoint: string = 'http://192.168.2.78:9090/socket';
+  topic: string = "/topic/notification";
+  stompClient: any;
+  // ENDS HERE
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private dashboardService: CommonDashboardService) { }
 
   ngOnInit() {
@@ -198,8 +209,40 @@ export class DashboardComponent implements OnInit {
     this.selectedCurrencyType = crypto;
     this.getActivityList("slider");
   }
-  kycShowOrHide: any;
-  profileShowOrHide: any;
+
+   // WEB SOCKET CODE STARTS HERE
+   connect() {
+    console.log("Initialize WebSocket Connection");
+    let ws = new SockJS(this.webSocketEndPoint);
+    this.stompClient = Stomp.over(ws);
+    console.log("Connecteddddddddddd")
+    this.stompClient.connect({}, function (frame) {
+    this.stompClient.subscribe(this.topic, function (sdkEvent) {
+      let notifications = JSON.parse(sdkEvent.body).count;
+    // this.onMessageReceived(sdkEvent);
+    });
+    //_this.stompClient.reconnect_delay = 2000;
+    }, 
+    // this.errorCallBack
+    );
+    };
+    
+    disconnect() {
+    if (this.stompClient !== null) {
+    this.stompClient.disconnect();
+    }
+    console.log("Disconnected");
+    }
+    
+    // on error, schedule a reconnection attempt
+    errorCallBack(error) {
+    console.log("errorCallBack -> " + error)
+    setTimeout(() => {
+    this.connect();
+    }, 5000);
+    }
+  // ENDS HERE
+ 
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);

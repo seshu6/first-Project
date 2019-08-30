@@ -19,7 +19,7 @@ export class CommonService {
   }
 
   postContactUsApi(data: any) {
-    return this.http.post(this.url.apiUrl + "", data, this.commonHeaders.getHttpHeader());
+    return this.http.post(this.url.apiUrl + "useractivities/contactus", data, this.commonHeaders.getHttpHeaderWithoutAccess());
   }
 
   setUrlStatus(status: boolean) {
