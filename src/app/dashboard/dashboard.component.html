@@ -101,6 +101,17 @@
                         <h4 class="todaytit">Month</h4>
                         <p class="todayvalue">+ {{monthAmount}}</p>
                     </li>
+
+
+                    <li class="col-lg-2 col-md-2 col-xs-12">
+                        <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
+                    </li>
+
+
+
+
+
+
                     <li class="col-lg-4 col-md-4 col-xs-12">
                         <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'">
                             <!-- <div class="complete-profile"> -->
@@ -240,7 +251,7 @@
                                                             <img src="assets/images/paid.png"
                                                                 *ngIf="activity.transactionType=='Send'">
                                                             <img src="assets/images/income.png"
-                                                                *ngIf="activity.transactionType=='Received'">
+                                                                *ngIf="activity.transactionType=='Received' || activity.transactionType == 'Request'">
                                                         </div>
                                                         <div class="activy-paid-text">
                                                             <h1>{{activity.transactionType}}</h1>

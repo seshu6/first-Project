@@ -80,7 +80,7 @@ export class LandingPageComponent implements OnInit {
       Swal.fire("Info", "Please check your data", "info");
     } else {
       this.spinner.showOrHide(true);
-      this.commonService.postRequestApi(this.requestApiForm.value).subscribe(success => {
+      this.commonService.postContactUsApi(this.contactUsForm.value).subscribe(success => {
         this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           Swal.fire("Success", success['message'], "success");
