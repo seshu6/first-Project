@@ -2531,6 +2531,7 @@ footer {
 }
 .code-qr-scan .qrcode-foot .copyallbtn {
 	margin-bottom: 20px;
+	width: 120px;
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: normal;
@@ -5335,7 +5336,7 @@ footer {
 .verify-stepbystep ul li {
 	position: relative;
 	display: inline-block;
-	padding: 0 70px;
+	padding: 0 56px;
 }
 .verify-stepbystep ul li::after {
 	position: absolute;
@@ -8397,4 +8398,13 @@ input[type=number]::-webkit-outer-spin-button {
 .clrred{
 	color:#ff0000;
 	font-size: 15px;
+}
+
+.selectrow{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.colsgroup{
+	width: 180px;
 }

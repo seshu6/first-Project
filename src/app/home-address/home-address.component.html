@@ -144,8 +144,8 @@
                                 </div>
                                 <div class="form-group">
                                     <!-- <input type="text" placeholder="City / Town / Village"> -->
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="selectrow">
+                                        <div class="colsgroup">
                                             <div class="form-group">
                                                 <div class="selectgroup-list">
                                                     <select formControlName="country" [(ngModel)]="selectedCountryAddress" (change)="getStateList()">
@@ -155,7 +155,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="colsgroup">
                                             <div class="form-group">
                                                 <div class="selectgroup-list">
                                                     <select formControlName="state" [(ngModel)]="selectedstate" (change)="getCityList()">
@@ -165,7 +165,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="colsgroup">
                                             <div class="form-group">
                                                 <div class="selectgroup-list">
                                                     <select formControlName="city" [(ngModel)]="selectedCity">
