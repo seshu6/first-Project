@@ -1,27 +1,37 @@
 <div class="login-body-bg">
-    <!-- Header -->
-  
-  
-    <div class="bluewallet-body-wrap1">
-      <div class="bluewallet-create-wallet">
-        <div class="create-wallet-body">
-          <div class="bluewallet-creating" *ngIf="forgotPasswordShowOrHide">
-            <div class="create-wallet-title">
-              <h1>Forgot Password</h1>
-            </div>
-            <form>
-              <div class="form-group">
-                <label>New Password</label>
-                <div class="form-input-group">
-                  <input type="password" [(ngModel)]="oldPassword" name="oldpassword" (ngModelChange)="checkPasswordStrength()">
-                  <!-- <span class="validationError"
+  <!-- Header -->
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark wow fadeInDown" data-wow-duration="0.8s">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/bluewallet-logo.png" alt="logo" />
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="bluewallet-body-wrap1">
+    <div class="bluewallet-create-wallet">
+      <div class="create-wallet-body">
+        <div class="bluewallet-creating" *ngIf="forgotPasswordShowOrHide">
+          <div class="create-wallet-title">
+            <h1>Forgot Password</h1>
+          </div>
+          <form>
+            <div class="form-group">
+              <label>New Password</label>
+              <div class="form-input-group">
+                <input type="password" [(ngModel)]="oldPassword" name="oldpassword"
+                  (ngModelChange)="checkPasswordStrength()">
+                <!-- <span class="validationError"
                     *ngIf="createWalletForm.get('email').errors && createWalletForm.get('email').touched">
                     <span *ngIf="createWalletForm.get('email').errors.required">Email is required.</span>
                     <span *ngIf="createWalletForm.get('email').errors.pattern">Email is not valid.</span>
                   </span> -->
-                </div>
-                <!-- PASSWORD METER STARTS HERE -->
-                <div class="strongpwd"
+              </div>
+              <!-- PASSWORD METER STARTS HERE -->
+              <div class="strongpwd"
                 [ngClass]="{'weakclr':weakPassword,'mediumclr':mediumPassword,'strongclr':strongPassword}"
                 *ngIf="passwordMeterShowOrHide">
                 <ul>
@@ -31,50 +41,50 @@
                 </ul>
                 <span class="pwdstrongline"></span>
               </div>
-                <!-- ENDS HERE -->
+              <!-- ENDS HERE -->
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="form-input-group">
+                <input type="password" [(ngModel)]="confirmPassword" name="confirmpassword"
+                  (ngModelChange)="(oldPassword!=confirmPassword)?whetherPasswordSame=true:whetherPasswordSame=false">
+                <span class="validationError" *ngIf="whetherPasswordSame">
+                  <span class="clrred">Password must be same.</span>
+                </span>
               </div>
-              <div class="form-group">
-                <label>Confirm Password</label>
-                <div class="form-input-group">
-                  <input type="password" [(ngModel)]="confirmPassword" name="confirmpassword"
-                    (ngModelChange)="(oldPassword!=confirmPassword)?whetherPasswordSame=true:whetherPasswordSame=false">
-                  <span class="validationError" *ngIf="whetherPasswordSame">
-                    <span class="clrred">Password must be same.</span>
-                  </span>
-                </div>
-  
-  
-              </div>
-  
-  
-              <div class="form-group text-center forgotbttn">
-                <button type="button" class="create-walbtn" (click)="goToLoginPage()">Back to login</button>
-                <button type="button" class="create-walbtn" (click)="submitChangedPassword()">Send</button>
-              </div>
-            </form>
-          </div>
-  
+
+
+            </div>
+
+
+            <div class="form-group text-center forgotbttn">
+              <button type="button" class="create-walbtn" (click)="goToLoginPage()">Back to login</button>
+              <button type="button" class="create-walbtn" (click)="submitChangedPassword()">Send</button>
+            </div>
+          </form>
         </div>
-      </div>
-    </div>
-  
-  </div>
-  
-  <!-- Email Popup -->
-  <div class="email-inbox-wrap" style="display: none;">
-    <div class="email-inbox-modal">
-      <div class="email-inbox-box">
-        <div class="inbox-box">
-          <img src="assets/images/emailinboxicon.png" />
-          <h2>Check Your Inbox...</h2>
-          <a href="javascript:void(0);">JohnDoe@gmail.com</a>
-          <p>search an email of BluWallet And click the link of verification to complete the configuration of your
-            Wallet.</p>
-        </div>
-        <div class="goto-email">
-          <button type="button" class="gotemailbtn" (click)="goToLoginPage()">Go to Email</button>
-          <button type="button" class="checkitlaterbtn disable" (click)="goToLoginPage()">Check It Later</button>
-        </div>
+
       </div>
     </div>
   </div>
+
+</div>
+
+<!-- Email Popup -->
+<div class="email-inbox-wrap" style="display: none;">
+  <div class="email-inbox-modal">
+    <div class="email-inbox-box">
+      <div class="inbox-box">
+        <img src="assets/images/emailinboxicon.png" />
+        <h2>Check Your Inbox...</h2>
+        <a href="javascript:void(0);">JohnDoe@gmail.com</a>
+        <p>search an email of BluWallet And click the link of verification to complete the configuration of your
+          Wallet.</p>
+      </div>
+      <div class="goto-email">
+        <button type="button" class="gotemailbtn" (click)="goToLoginPage()">Go to Email</button>
+        <button type="button" class="checkitlaterbtn disable" (click)="goToLoginPage()">Check It Later</button>
+      </div>
+    </div>
+  </div>
+</div>
