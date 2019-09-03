@@ -2583,7 +2583,7 @@ footer {
 	display: inline-block;
 	padding: 0px 0px;
 	position: relative;
-	width: 150px;
+	width: 140px;
 }
 .blue-body-div .slider-coins ul li.alllist {
 	text-align: center;
@@ -8457,3 +8457,7 @@ input[type=number]::-webkit-outer-spin-button {
 	height: 50px;
 	object-fit: contain;
 } */
+.borderright{
+	border-right: 1px solid rgba(147,181,229,0.3);
+	padding-right: 10px;
+}
