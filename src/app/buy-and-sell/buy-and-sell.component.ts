@@ -68,6 +68,7 @@ export class BuyAndSellComponent implements OnInit {
   exchangeBtcOrEth: string = "btc";
   currentObj: any;
   gasFee: string | number;
+  refreshAlertModalShowOrHide: boolean = false;
 
 
   // userTabListArr: any[] = [];
@@ -192,7 +193,10 @@ export class BuyAndSellComponent implements OnInit {
   // AUTO COMPLETE(CONVERSION OF USD TO BTC AND ETH)
   onAutoCompleteUsdToBtcAndETh() {
     if (!Boolean(this.usdToBtcAndEth)) {
+      this.calculatedBtcOrEth = 0;
+      this.usdToBtcAndEth = 0;
       Swal.fire("Info", "Please enter amount to proceed", "info");
+
     } else {
       let jsonData = {};
       if (this.whetherBtcOrEth == "BTC") {
@@ -239,7 +243,8 @@ export class BuyAndSellComponent implements OnInit {
     if (!Boolean(this.usdToBtcAndEth)) {
       Swal.fire("Info", "Please enter amount to proceed", "info");
     } else {
-      this.spinner.showOrHide(true);
+      // this.spinner.showOrHide(true);
+      this.refreshAlertModalShowOrHide = true;
       let jsonData = {};
       if (this.lhsBtcShowOrHide && this.whenPlatformIsSelected) {
         jsonData = {
@@ -280,7 +285,8 @@ export class BuyAndSellComponent implements OnInit {
       //   }
       // }
       this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
-        this.spinner.showOrHide(false);
+        // this.spinner.showOrHide(false);
+        this.refreshAlertModalShowOrHide = false;
         if (success['status'] == "success") {
           Swal.fire({
             html: '<div class="login-success"><div class="login-success-center"><div class="login-success-content"><div class="login-mesg-cont"><img src="assets/images/tick.png"><h1>Success</h1><p>' + success['message'] + '</p></div></div></div></div>',
@@ -293,7 +299,8 @@ export class BuyAndSellComponent implements OnInit {
           Swal.fire("Error", success['message'], "error");
         }
       }, error => {
-        this.spinner.showOrHide(false);
+        // this.spinner.showOrHide(false);
+        this.refreshAlertModalShowOrHide = false;
         if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
           this.route.navigate(['login']);
@@ -510,7 +517,8 @@ export class BuyAndSellComponent implements OnInit {
 
   // BTC TO ETH USER
   postBtcToEthUser() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
@@ -519,7 +527,8 @@ export class BuyAndSellComponent implements OnInit {
       "exchangeStatus": 1
     }
     this.buyAndSellService.postBtcToEthEcxhangeUser(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
@@ -528,7 +537,8 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -541,7 +551,8 @@ export class BuyAndSellComponent implements OnInit {
   // ETH TO BTC USER
   // GIVING ETH AND GETTING BTC
   postEthToBtchUser() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "etherAmount": this.calculatedBtcOrEth,
@@ -551,7 +562,8 @@ export class BuyAndSellComponent implements OnInit {
     }
 
     this.buyAndSellService.postEthToBtcEcxhangeUser(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
@@ -560,7 +572,8 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -574,7 +587,8 @@ export class BuyAndSellComponent implements OnInit {
   // "ETH_BTC_ADMIN"(refer exchangeType in currentobj)
   // GIVING BTC AND GETTING ETH
   postBtcToEthAdmin() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       // "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
@@ -583,7 +597,8 @@ export class BuyAndSellComponent implements OnInit {
       "exchangeStatus": 1
     }
     this.buyAndSellService.postBtcToEthEcxhangeAdmin(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
@@ -592,7 +607,8 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -606,7 +622,8 @@ export class BuyAndSellComponent implements OnInit {
   // "BTC_ETH_ADMIN"(refer exchangeType in currentobj)
   // GIVING ETH AND GETTING BTC
   postEthToBtchAdmin() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "etherAmount": this.calculatedBtcOrEth,
@@ -614,7 +631,8 @@ export class BuyAndSellComponent implements OnInit {
       "exchangeStatus": 1
     }
     this.buyAndSellService.postEthToBtcEcxhangeAdmin(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
@@ -623,7 +641,8 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Error", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);

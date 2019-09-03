@@ -62,8 +62,7 @@
                         </button>
                     </div>
                     <div class="info">
-                        <a href="javascript:void(0);" class="infobtn" data-toggle="modal"
-                            data-target="#refreshload">Information</a>
+                        <a href="javascript:void(0);" class="infobtn" data-toggle="modal">Information</a>
                     </div>
                 </div>
             </div>
@@ -103,9 +102,9 @@
                     </li>
 
 
-                    <li class="col-lg-2 col-md-2 col-xs-12">
+                    <!-- <li class="col-lg-2 col-md-2 col-xs-12">
                         <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
-                    </li>
+                    </li> -->
 
 
 
@@ -131,11 +130,12 @@
             </div>
             <!-- KYC -->
             <div class="more-info-full" *ngIf="kycShowOrHide ==0 && profileShowOrHide == 1 && roleName == 'user'">
+            <!-- <div class="more-info-full"> -->
                 <!-- <button type="button" class="closeicon">×</button> -->
                 <div class="more-info-lft">
                     <h1>More Info Needed</h1>
                     <h6>We need more information to complete your profile.</h6>
-                    <p>You will need verificate your cel number, a nacional identity and a selfie.</p>
+                    <p>You will need to verify your phone number,national identity and a selfie.</p>
                     <button type="button" class="infobtn1 info-continue" (click)="goToKyc()">Continue</button>
                     <!-- <button type="button" class="infobtn1 info-continue1">Ahora No</button> -->
                 </div>
@@ -254,9 +254,16 @@
                                                                 *ngIf="activity.transactionType=='Received' || activity.transactionType == 'Request'">
                                                         </div>
                                                         <div class="activy-paid-text">
-                                                            <h1>{{activity.transactionType}}</h1>
+                                                            <h1 *ngIf="activity.transactionType=='Received'">
+                                                                {{activity.transactionType}}</h1>
                                                             <p *ngIf="activity.transactionType=='Received'">Receipt
                                                                 #:{{activity.sendby}}
+                                                            </p>
+                                                            <p *ngIf="activity.transactionType=='Send'">Send to
+                                                                {{activity.sendto}}
+                                                            </p>
+                                                            <p *ngIf="activity.transactionType=='Request'">Request by
+                                                                {{activity.sendby}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -305,7 +312,7 @@
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" name="requestCryptoUsd"
+                                                    <input type="number" name="requestCryptoUsd"
                                                         placeholder="type USD here"
                                                         [(ngModel)]="requestEthOrBtcAmountUsd"
                                                         (ngModelChange)="onAutoCompleteUsdToBtcAndETh($event,'request')">
@@ -314,9 +321,10 @@
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" name="requestCryptoAmount"
+                                                    <input type="number" name="requestCryptoAmount"
                                                         placeholder="{{selectedCurrencyType}} Amount"
-                                                        [(ngModel)]="requestEthOrBtcAmount">
+                                                        [(ngModel)]="requestEthOrBtcAmount"
+                                                        (keypress)="avoidNumber($event)">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12 dashpadd">
@@ -367,8 +375,8 @@
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" name="sendCryptoUsd" placeholder="type USD here"
-                                                        [(ngModel)]="sendEthOrBtcAmountUsd"
+                                                    <input type="number" name="sendCryptoUsd"
+                                                        placeholder="type USD here" [(ngModel)]="sendEthOrBtcAmountUsd"
                                                         (ngModelChange)="onAutoCompleteUsdToBtcAndETh($event,'send')">
 
                                                     <!-- <span>Min. 0.0124</span> -->
@@ -376,9 +384,10 @@
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-12 dashpadd">
                                                 <div class="form-group pos-relative">
-                                                    <input type="text" name="sendCryptoAmount"
+                                                    <input type="number" name="sendCryptoAmount"
                                                         placeholder="{{selectedCurrencyType}} Amount"
-                                                        [(ngModel)]="sendEthOrBtcAmount">
+                                                        [(ngModel)]="sendEthOrBtcAmount"
+                                                        (keypress)="avoidNumber($event)">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12 dashpadd">
@@ -464,7 +473,7 @@
     </div>
 </div>
 
-<div class="refresh-loader">
+<!-- <div class="refresh-loader" *ngIf="refreshAlertModalShowOrHide">
     <div class="modal fade" id="refreshload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -479,4 +488,14 @@
         </div>
     </div>
 
+</div> -->
+<div class="refresh-loader" *ngIf="refreshAlertModalShowOrHide">
+    <div class="refreshload-center">
+        <div class="modal-body">
+            <p>Don't refresh the page until transaction is completed</p>
+            <div class="referimg">
+                <img src="assets/images/loader.gif" />
+            </div>
+        </div>
+    </div>
 </div>

@@ -22,6 +22,10 @@ export class ActivationLinkComponent implements OnInit {
   customUrl: string = "";
   // encodeOrDecodeUrl: string;
   urlIndex: number;
+  weakPassword: boolean = false;
+  mediumPassword: boolean = false;
+  strongPassword: boolean = false;
+  passwordMeterShowOrHide: boolean = false;
   constructor(private commonService: CommonService, private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -112,6 +116,36 @@ export class ActivationLinkComponent implements OnInit {
 
   }
 
+
+  checkPasswordStrength() {
+    this.passwordMeterShowOrHide = true;
+    this.weakPassword = true;
+    if (!Boolean(this.oldPassword)) { 
+      this.passwordMeterShowOrHide = true;
+      this.weakPassword = true;
+      this.mediumPassword = false;
+      this.strongPassword = false;
+    } else {
+      if (/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{2,50}$/g.test(this.oldPassword)) {
+        this.passwordMeterShowOrHide = true;
+        this.weakPassword = true;
+        this.mediumPassword = false;
+        this.strongPassword = false;
+      } else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*)[a-zA-Z0-9]{3,50}$/g.test(this.oldPassword)) {
+        this.passwordMeterShowOrHide = true;
+        this.weakPassword = false;
+        this.mediumPassword = true;
+        this.strongPassword = false;
+      } else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,50}$/g.test(this.oldPassword)) {
+        this.passwordMeterShowOrHide = true;
+        this.weakPassword = false;
+        this.mediumPassword = false;
+        this.strongPassword = true;
+      }
+    }
+
+    console.log(this.weakPassword + " " + this.mediumPassword + " " + this.strongPassword);
+  }
 
   // CHECK LINK FOR PASSWORD
   checkForgotPasswordLink() {

@@ -88,7 +88,7 @@
                             <input type="text" />
                             <span>Min. 0.0124</span>
                             <div class="list-cop">
-                                <a href="javascript:void(0);">COP
+                                <a href="javascript:void(0);">USD
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="list-cop-dropdown">
@@ -104,7 +104,7 @@
                                     </li>
                                     <li>
                                         <a href="javascript:void(0);">
-                                            COP
+                                            USD
                                         </a>
                                     </li>
                                 </ul>
@@ -212,7 +212,7 @@
                                                                     <img *ngIf="exchangeBtcOrEth == 'btc'"
                                                                         src="assets/images/etherium-icon.png">
                                                                     <span
-                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>
+                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>  
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -224,8 +224,7 @@
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
                                                         <span>$</span>
-                                                        <input type="number" placeholder="0"
-                                                            [(ngModel)]="usdToBtcAndEth"
+                                                        <input type="number" [(ngModel)]="usdToBtcAndEth"
                                                             (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
                                                     </div>
@@ -382,7 +381,7 @@
                                     <input type="text" />
                                     <span>Min. 0.0124</span>
                                     <div class="list-cop">
-                                        <a href="javascript:void(0);">COP
+                                        <a href="javascript:void(0);">USD
                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                         </a>
                                         <ul class="list-cop-dropdown">
@@ -398,7 +397,7 @@
                                             </li>
                                             <li>
                                                 <a href="javascript:void(0);">
-                                                    COP
+                                                    USD
                                                 </a>
                                             </li>
                                         </ul>
@@ -642,7 +641,7 @@
                             <input type="text">
                             <span>Min. 0.0124</span>
                             <div class="list-cop1">
-                                <a href="javascript:void(0);">COP
+                                <a href="javascript:void(0);">USD
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="list-cop-dropdown">
@@ -658,7 +657,7 @@
                                     </li>
                                     <li>
                                         <a href="javascript:void(0);">
-                                            COP
+                                            USD
                                         </a>
                                     </li>
                                 </ul>
@@ -737,3 +736,14 @@
         </div>
     </div>
 </div>
+
+<div class="refresh-loader" *ngIf="refreshAlertModalShowOrHide">
+        <div class="refreshload-center">
+            <div class="modal-body">
+                <p>Don't refresh the page until transaction is completed</p>
+                <div class="referimg">
+                    <img src="assets/images/loader.gif" />
+                </div>
+            </div>
+        </div>
+    </div>

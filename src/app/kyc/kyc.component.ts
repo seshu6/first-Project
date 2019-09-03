@@ -86,7 +86,7 @@ export class KycComponent implements OnInit {
   licenseCount: number = 0;
   kycErrorMessage: string;
   kycErrorMessageShowOrHide: boolean = false;
-  btcOrEthUsdDollar:any;
+  btcOrEthUsdDollar: any;
 
   // passportFileModel: any;
   // nationalFileModel: any;
@@ -110,135 +110,98 @@ export class KycComponent implements OnInit {
   }
 
   // onUploadedKycDocument(event: any) {
-    // console.log(event);
-    // if (whichFile === "passport") {
-    //   this.passportDocument = event.target.files[0];
-    //   this.fileUploadedOrNot = true;
-    // } else if (whichFile === "nationalid") {
-    //   this.nationalDocument = event.target.files[0];
-    //   this.fileUploadedOrNot = true;
-    // } else if (whichFile === "residence") {
-    //   this.residenceDocument = event.target.files[0];
-    //   this.fileUploadedOrNot = true;
-    // }
-    // console.log(event.target.files[0]);
+  // console.log(event);
+  // if (whichFile === "passport") {
+  //   this.passportDocument = event.target.files[0];
+  //   this.fileUploadedOrNot = true;
+  // } else if (whichFile === "nationalid") {
+  //   this.nationalDocument = event.target.files[0];
+  //   this.fileUploadedOrNot = true;
+  // } else if (whichFile === "residence") {
+  //   this.residenceDocument = event.target.files[0];
+  //   this.fileUploadedOrNot = true;
+  // }
+  // console.log(event.target.files[0]);
   // }
 
 
   setFileDetails(fileName: string, docs: string, event: any) {
-    switch (fileName) {
-      case "passport":
-        switch (docs) {
-          case "passportSelfie": this.passportSelfie = event.target.files[0]; this.passportSelfieName = event.target.files[0].name;
-            break;
-          case "passportFrontDocs": this.passportFrontDocs = event.target.files[0]; this.passportFrontDocNames = event.target.files[0].name;
-            break;
-          case "passportBackDocs": this.passportBackDocs = event.target.files[0]; this.passportBackDocsName = event.target.files[0].name;
-            break;
-          case "passportSelfieWitDocs": this.passportSelfieWitDocs = event.target.files[0]; this.passportSelfieWitDocsName = event.target.files[0].name;
-            break;
-        }
-      case "idcard":
-        switch (docs) {
-          case "idCardSelfie": this.idCardSelfie = event.target.files[0]; this.idCardSelfieName = event.target.files[0].name;
-            break;
-          case "idCardFrontDocs": this.idCardFrontDocs = event.target.files[0]; this.idCardFrontDocsName = event.target.files[0].name;
-            break;
-          case "idCardBackDocs": this.idCardBackDocs = event.target.files[0]; this.idCardBackDocsName = event.target.files[0].name;
-            break;
-          case "idCardSelfieWitDocs": this.idCardSelfieWitDocs = event.target.files[0]; this.idCardSelfieWitDocsName = event.target.files[0].name;
-            break;
-        }
-      case "resident":
-        switch (docs) {
-          case "residentSelfie": this.residentSelfie = event.target.files[0]; this.residentSelfieName = event.target.files[0].name;
-            break;
-          case "residentFrontDocs": this.residentFrontDocs = event.target.files[0]; this.residentFrontDocsName = event.target.files[0].name;
-            break;
-          case "residentBackDocs": this.residentBackDocs = event.target.files[0]; this.residentBackDocsName = event.target.files[0].name;
-            break;
-          case "residentSelfieWitDocs": this.residentSelfieWitDocs = event.target.files[0]; this.residentSelfieWitDocsName = event.target.files[0].name;
-            break;
-        }
-      case "license":
-        switch (docs) {
-          case "licenseSelfie": this.licenseSelfie = event.target.files[0]; this.licenseSelfieName = event.target.files[0].name;
-            break;
-          case "licenseFrontDocs": this.licenseFrontDocs = event.target.files[0]; this.licenseFrontDocsName = event.target.files[0].name;
-            break;
-          case "licenseBackDocs": this.licenseBackDocs = event.target.files[0]; this.licenseBackDocsName = event.target.files[0].name;
-            break;
-          case "licenseSelfieWitDocs": this.licenseSelfieWitDocs = event.target.files[0]; this.licenseSelfieWitDocsName = event.target.files[0].name;
-            break;
-        }
+    let extension = event.target.files[0].name.split(".");
+    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg") {
+      switch (fileName) {
+        case "passport":
+          switch (docs) {
+            case "passportSelfie": this.passportSelfie = event.target.files[0]; this.passportSelfieName = event.target.files[0].name;
+              break;
+            case "passportFrontDocs": this.passportFrontDocs = event.target.files[0]; this.passportFrontDocNames = event.target.files[0].name;
+              break;
+            case "passportBackDocs": this.passportBackDocs = event.target.files[0]; this.passportBackDocsName = event.target.files[0].name;
+              break;
+            case "passportSelfieWitDocs": this.passportSelfieWitDocs = event.target.files[0]; this.passportSelfieWitDocsName = event.target.files[0].name;
+              break;
+          }
+        case "idcard":
+          switch (docs) {
+            case "idCardSelfie": this.idCardSelfie = event.target.files[0]; this.idCardSelfieName = event.target.files[0].name;
+              break;
+            case "idCardFrontDocs": this.idCardFrontDocs = event.target.files[0]; this.idCardFrontDocsName = event.target.files[0].name;
+              break;
+            case "idCardBackDocs": this.idCardBackDocs = event.target.files[0]; this.idCardBackDocsName = event.target.files[0].name;
+              break;
+            case "idCardSelfieWitDocs": this.idCardSelfieWitDocs = event.target.files[0]; this.idCardSelfieWitDocsName = event.target.files[0].name;
+              break;
+          }
+        case "resident":
+          switch (docs) {
+            case "residentSelfie": this.residentSelfie = event.target.files[0]; this.residentSelfieName = event.target.files[0].name;
+              break;
+            case "residentFrontDocs": this.residentFrontDocs = event.target.files[0]; this.residentFrontDocsName = event.target.files[0].name;
+              break;
+            case "residentBackDocs": this.residentBackDocs = event.target.files[0]; this.residentBackDocsName = event.target.files[0].name;
+              break;
+            case "residentSelfieWitDocs": this.residentSelfieWitDocs = event.target.files[0]; this.residentSelfieWitDocsName = event.target.files[0].name;
+              break;
+          }
+        case "license":
+          switch (docs) {
+            case "licenseSelfie": this.licenseSelfie = event.target.files[0]; this.licenseSelfieName = event.target.files[0].name;
+              break;
+            case "licenseFrontDocs": this.licenseFrontDocs = event.target.files[0]; this.licenseFrontDocsName = event.target.files[0].name;
+              break;
+            case "licenseBackDocs": this.licenseBackDocs = event.target.files[0]; this.licenseBackDocsName = event.target.files[0].name;
+              break;
+            case "licenseSelfieWitDocs": this.licenseSelfieWitDocs = event.target.files[0]; this.licenseSelfieWitDocsName = event.target.files[0].name;
+              break;
+          }
+      }
+
+      this.passportArr[0] = this.passportSelfieName;
+      this.passportArr[1] = this.passportFrontDocNames;
+      this.passportArr[2] = this.passportBackDocsName;
+      this.passportArr[3] = this.passportSelfieWitDocsName;
+
+
+      this.idCardArr[0] = this.idCardSelfieName;
+      this.idCardArr[1] = this.idCardFrontDocsName;
+      this.idCardArr[2] = this.idCardBackDocsName;
+      this.idCardArr[3] = this.idCardSelfieWitDocsName;
+
+      this.residentArr[0] = this.residentSelfieName;
+      this.residentArr[1] = this.residentFrontDocsName;
+      this.residentArr[2] = this.residentBackDocsName;
+      this.residentArr[3] = this.residentSelfieWitDocsName;
+
+      this.licenseArr[0] = this.licenseSelfieName;
+      this.licenseArr[1] = this.licenseFrontDocsName;
+      this.licenseArr[2] = this.licenseBackDocsName;
+      this.licenseArr[3] = this.licenseSelfieWitDocsName;
+    } else {
+      Swal.fire("Info", "Extension must be png,jpeg,jpg", "info");
     }
-
-    this.passportArr[0] = this.passportSelfieName;
-    this.passportArr[1] = this.passportFrontDocNames;
-    this.passportArr[2] = this.passportBackDocsName;
-    this.passportArr[3] = this.passportSelfieWitDocsName;
-
-
-    this.idCardArr[0] = this.idCardSelfieName;
-    this.idCardArr[1] = this.idCardFrontDocsName;
-    this.idCardArr[2] = this.idCardBackDocsName;
-    this.idCardArr[3] = this.idCardSelfieWitDocsName;
-
-    this.residentArr[0] = this.residentSelfieName;
-    this.residentArr[1] = this.residentFrontDocsName;
-    this.residentArr[2] = this.residentBackDocsName;
-    this.residentArr[3] = this.residentSelfieWitDocsName;
-
-    this.licenseArr[0] = this.licenseSelfieName;
-    this.licenseArr[1] = this.licenseFrontDocsName;
-    this.licenseArr[2] = this.licenseBackDocsName;
-    this.licenseArr[3] = this.licenseSelfieWitDocsName;
-
-    // if (this.passportSelfie == undefined && this.passportFrontDocs == undefined && this.passportBackDocs == undefined && this.passportSelfieWitDocs == undefined && this.idCardSelfie == undefined && this.idCardFrontDocs == undefined && this.idCardBackDocs == undefined && this.idCardSelfieWitDocs == undefined && this.residentSelfie == undefined && this.residentFrontDocs == undefined && this.residentBackDocs == undefined && this.residentSelfieWitDocs == undefined && this.licenseSelfie == undefined && this.licenseFrontDocs == undefined && this.licenseBackDocs == undefined && this.licenseSelfieWitDocs == undefined) {
-    //   this.kycDocumentValidCount = 0;
-    // } else {
-    //   this.kycDocumentValidCount = 1;
-    // }
-    // if (Boolean(this.passportSelfie) && Boolean(this.passportFrontDocs) && Boolean(this.passportBackDocs) && Boolean(this.passportSelfieWitDocs)) {
-    //   this.isPassportValid = 1;
-    // } else if (this.passportSelfie == undefined && this.passportFrontDocs == undefined && this.passportBackDocs == undefined || this.passportSelfieWitDocs == undefined) {
-    //   this.isPassportValid = 2;
-    // } else {
-    //   this.isPassportValid = 0;
-    // }
-
-
-    // if (Boolean(this.idCardSelfie) && Boolean(this.idCardFrontDocs) && Boolean(this.idCardBackDocs) && Boolean(this.idCardSelfieWitDocs)) {
-    //   this.isIdCardValid = 1;
-    // } else if (this.idCardSelfie == undefined && this.idCardFrontDocs == undefined && this.idCardBackDocs == undefined && this.idCardSelfieWitDocs == undefined) {
-    //   this.isIdCardValid = 2;
-    // } else {
-    //   this.isIdCardValid = 0;
-    // }
-    // if ((!Boolean(this.residentSelfie)) && (!Boolean(this.residentFrontDocs)) && (!Boolean(this.residentBackDocs)) && (!Boolean(this.residentSelfieWitDocs))) {
-    //   this.isResidentValid = 0;
-    // } else {
-    //   this.isResidentValid = 1;
-    // }
-    // if ((!Boolean(this.licenseSelfie)) && (!Boolean(this.licenseFrontDocs)) && (!Boolean(this.licenseBackDocs)) && (!Boolean(this.licenseSelfieWitDocs))) {
-    //   this.isLicenseValid = 0;
-    // } else {
-    //   this.isLicenseValid = 1;
-    // }
-
-
-    // else if (this.idCardSelfie == undefined && this.idCardFrontDocs == undefined || this.idCardBackDocs == undefined || this.idCardSelfieWitDocs == undefined) {
-    //   this.isIdCardValid = 1;
-    // } else if (this.residentSelfie == undefined && this.residentFrontDocs == undefined || this.residentBackDocs == undefined || this.residentSelfieWitDocs == undefined) {
-    //   this.isResidentValid = 1;
-    // } else if (this.licenseSelfie == undefined && this.licenseFrontDocs == undefined || this.licenseBackDocs == undefined || this.licenseSelfieWitDocs == undefined) {
-    //   this.isLicenseValid = 1;
-    // }
-
 
   }
 
-  
+
   submitKycDocument() {
     this.passCount = 0;
     this.idCardCount = 0;
@@ -268,28 +231,28 @@ export class KycComponent implements OnInit {
       this.kycErrorMessageShowOrHide = true;
       this.kycErrorMessage = "Atleast one is mandaoty";
       Swal.fire("Info", "Atleast one is mandaoty", "info");
-    } 
-    
+    }
+
     else if (this.passCount > 0 && this.passCount < 4) {
       this.kycErrorMessageShowOrHide = true;
       this.kycErrorMessage = "Must upload all the document in passport";
     }
-    
+
     else if (this.idCardCount > 0 && this.idCardCount < 4) {
       this.kycErrorMessageShowOrHide = true;
       this.kycErrorMessage = "Must upload all the document in idcard";
     }
-    
+
     else if (this.residentCount > 0 && this.residentCount < 4) {
       this.kycErrorMessageShowOrHide = true;
       this.kycErrorMessage = "Must upload all the document in resident";
-    } 
-    
+    }
+
     else if (this.licenseCount > 0 && this.licenseCount < 4) {
       this.kycErrorMessageShowOrHide = true;
       this.kycErrorMessage = "Must upload all the document in license";
     }
-    
+
     else {
       this.spinner.showOrHide(true);
       this.kycErrorMessageShowOrHide = false;

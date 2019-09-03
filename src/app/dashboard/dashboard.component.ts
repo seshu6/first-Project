@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { Router } from '@angular/router';
@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit {
   roleName: string = sessionStorage.getItem('roleName');
   kycShowOrHide: any;
   profileShowOrHide: any;
+  refreshAlertModalShowOrHide: boolean = false;
 
 
 
@@ -126,7 +127,7 @@ export class DashboardComponent implements OnInit {
     {
       borderColor: [
         'rgba(88, 170, 243, 1)',
-        'rgba(88, 170, 243, 1)', 
+        'rgba(88, 170, 243, 1)',
         'rgba(88, 170, 243, 1)',
         'rgba(88, 170, 243, 1)',
         'rgba(88, 170, 243, 1)',
@@ -171,6 +172,9 @@ export class DashboardComponent implements OnInit {
   webSocketEndPoint: string = 'http://192.168.2.78:9090/socket';
   topic: string = "/topic/notification";
   stompClient: any;
+  ws: any;
+  webSocketObj: any;
+
   // ENDS HERE
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private dashboardService: CommonDashboardService) { }
 
@@ -180,29 +184,14 @@ export class DashboardComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
-
-    // this.dashboardService.communicationObservable$.subscribe(() => {
-    //   this.qrCodeModalShowOrHide = !this.qrCodeModalShowOrHide;
-    //   this.qrCodeClassShowOrHide = !this.qrCodeClassShowOrHide;
-
-    // })
-
-    // this.dashboardService.sliderObservable$.subscribe((crypto) => {
-    //   this.counter++
-    //   this.selectedCurrencyType = crypto;
-    //   if (this.counter > 1) {
-    //     this.getActivityList();
-    //   }
-
-
-
-    // })
-
-
     this.getActivityList();
-    // this.getBtcOrEthBalance("BTC");
-    // this.getDashboardChartDetails();
   }
+
+
+  // @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+  //  event.preventDefault();
+  // }
+
 
 
   onSelectSliderCryptoCurrency(crypto: string) {
@@ -210,39 +199,42 @@ export class DashboardComponent implements OnInit {
     this.getActivityList("slider");
   }
 
-   // WEB SOCKET CODE STARTS HERE
-   connect() {
-    console.log("Initialize WebSocket Connection");
-    let ws = new SockJS(this.webSocketEndPoint);
-    this.stompClient = Stomp.over(ws);
-    console.log("Connecteddddddddddd")
-    this.stompClient.connect({}, function (frame) {
-    this.stompClient.subscribe(this.topic, function (sdkEvent) {
-      let notifications = JSON.parse(sdkEvent.body).count;
-    // this.onMessageReceived(sdkEvent);
-    });
-    //_this.stompClient.reconnect_delay = 2000;
-    }, 
-    // this.errorCallBack
-    );
-    };
-    
-    disconnect() {
+  connect() {
+    this.ws = new SockJS(this.webSocketEndPoint);
+    this.stompClient = Stomp.over(this.ws);
+    const _this = this;
+    _this.stompClient.connect({}, function (frame) {
+
+      _this.stompClient.subscribe('/topic/notification', function (notification) {
+        const branchData = JSON.parse(notification.body);
+        console.log(branchData['userName']);
+      })
+
+    }, this.errorCallBack);
+  };
+
+  disconnect() {
     if (this.stompClient !== null) {
-    this.stompClient.disconnect();
+      this.stompClient.disconnect();
     }
     console.log("Disconnected");
-    }
-    
-    // on error, schedule a reconnection attempt
-    errorCallBack(error) {
+  }
+
+  errorCallBack(error) {
     console.log("errorCallBack -> " + error)
     setTimeout(() => {
-    this.connect();
+      this.connect();
     }, 5000);
-    }
+  }
   // ENDS HERE
- 
+
+
+  avoidNumber(e: any) {
+    if (["e", "+", "-"].includes(e.key)) {
+      e.preventDefault();
+    }
+  }
+
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
@@ -664,6 +656,11 @@ export class DashboardComponent implements OnInit {
 
 
       } else if (success['status'] == "failure") {
+        if (sendOrRequest == "send") {
+          this.sendEthOrBtcAmount = 0;
+        } else {
+          this.requestEthOrBtcAmount = 0;
+        }
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
@@ -680,7 +677,8 @@ export class DashboardComponent implements OnInit {
   // REQUEST CRYPTO
 
   requestBtcOrEth() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "toAddress": this.requestWalletAddress,
@@ -688,7 +686,8 @@ export class DashboardComponent implements OnInit {
       "requestAmount": this.requestEthOrBtcAmount
     };
     this.dashboardService.postRequestCryptoCurrency(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
           this.route.navigate(["dashboard"]));
@@ -697,7 +696,8 @@ export class DashboardComponent implements OnInit {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -715,7 +715,8 @@ export class DashboardComponent implements OnInit {
 
   // SEND BTC
   sendBtcCryptoCurrency() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {};
     if (this.requestIdCounter == 1) {
       jsonData = {
@@ -735,7 +736,8 @@ export class DashboardComponent implements OnInit {
     }
 
     this.dashboardService.postSendBtcCryptoCurrency(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
           this.route.navigate(["dashboard"]));
@@ -745,7 +747,8 @@ export class DashboardComponent implements OnInit {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -756,7 +759,8 @@ export class DashboardComponent implements OnInit {
 
   // SEND ETH
   sendEthCryptoCurrency() {
-    this.spinner.showOrHide(true);
+    // this.spinner.showOrHide(true);
+      this.refreshAlertModalShowOrHide = true;
     let jsonData = {};
     if (this.requestIdCounter == 1) {
       jsonData = {
@@ -775,7 +779,8 @@ export class DashboardComponent implements OnInit {
       };
     }
     this.dashboardService.postSendEthCryptoCurrency(jsonData).subscribe(success => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+        this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
           this.route.navigate(["dashboard"]));
@@ -787,7 +792,8 @@ export class DashboardComponent implements OnInit {
         Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
-      this.spinner.showOrHide(false);
+      // this.spinner.showOrHide(false);
+        this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);

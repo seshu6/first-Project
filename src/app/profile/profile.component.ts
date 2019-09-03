@@ -194,28 +194,34 @@ export class ProfileComponent implements OnInit {
 
 
   uploadProfileImgage(images: any, files: any) {
+    let extension = files[0].name.split(".");
+    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg") {
+      this.spinner.showOrHide(true);
+      let formData = new FormData();
+      formData.set("profileimg", files[0]);
+      formData.set("userId", sessionStorage.getItem("userId"));
+      this.dashboardService.postUploadProImages(formData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          // this.profileImageSrc = "";
+          this.clock_tick = Date.now();
+          this.profileImageSrc = success['profilePath'];
+          Swal.fire("Success", success['message'], "success");
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
+      })
 
-    this.spinner.showOrHide(true);
-    let formData = new FormData();
-    formData.set("profileimg", files[0]);
-    formData.set("userId", sessionStorage.getItem("userId"));
-    this.dashboardService.postUploadProImages(formData).subscribe(success => {
-      this.spinner.showOrHide(false);
-      if (success['status'] == "success") {
-        // this.profileImageSrc = "";
-        this.clock_tick = Date.now();
-        this.profileImageSrc = success['profilePath'];
-        Swal.fire("Success", success['message'], "success");
-      } else if (success['status'] == "failure") {
-        Swal.fire("Error", success['message'], "error");
-      }
-    }, error => {
-      this.spinner.showOrHide(false);
-      if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info");
-        this.route.navigate(['login']);
-      }
-    })
+    } else {
+      Swal.fire("Info", "Extension must be png,jpeg,jpg", "info");
+    }
+
 
 
   }
@@ -334,7 +340,7 @@ export class ProfileComponent implements OnInit {
       } else {
         this.otpElement['first']['nativeElement']['children'][index].focus();
       }
-    }else {
+    } else {
       if (["e", "+", "-"].includes(e.key)) {
         e.preventDefault();
       }
