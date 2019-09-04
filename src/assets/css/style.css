@@ -4816,6 +4816,10 @@ footer {
     width: 200px;
     font-size: 17px;
 }
+.otpverfiy-wrap .modal-footer{
+	display: block;
+	text-align: center;
+}
 /* Home Address */
 .bluewallet-homeaddress {
 	width: 100%;
@@ -8460,4 +8464,13 @@ input[type=number]::-webkit-outer-spin-button {
 .borderright{
 	border-right: 1px solid rgba(147,181,229,0.3);
 	padding-right: 10px;
+}
+
+.resendotp{
+    display: block;
+	margin-top: 10px;
+	margin-left: 0px;
+    color: #007bff !important;
+    text-decoration: none;
+    font-size: 14px;
 }
