@@ -4644,6 +4644,11 @@ footer {
 	width: 100%;
 	float: left;
 }
+.welcomewallet-padd{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
 .welcome-wallet-blue {
 	width: 100%;
 	float: left;
@@ -7486,7 +7491,13 @@ font-size: 14px !important;
     background: url(/assets/images/smallrightarrow.png) no-repeat 0 0 / contain;
     padding: 0px 23px;
 }
-
+.bluletverified h1{
+	font-size:21px;
+	font-weight:500;
+	font-family: 'Exo 2';
+	color:#272759;
+	margin-bottom: 20px;
+}
 .bluwallet-document h1{
 	font-size:21px;
 	font-weight:500;
@@ -7579,6 +7590,7 @@ font-size: 14px !important;
 	position: relative;
 	margin-bottom: 6px;
 	padding: 0 22px 0 0;
+	cursor: inherit;
 }
 .choose-document-accordion .card .card-body ul li a span.selfietext{
 	color:#5496FF;

@@ -16,34 +16,11 @@ $(document).ready(function () {
         }
     });
 
-
-
-
     $(".scrollTop a").click(function () {
         $("html, body").animate({ scrollTop: 0 }, 800);
     });
-    /* Search List */
-    // $(".search-mandory-list li.monthlist").on("click", function (event) {
-    //     $(".dropdown-toggle1").toggleClass('searchtoggleactive');
-    //     event.stopPropagation();
-    //     $(".dropdown-list-search").toggle();
 
-    // });
-    // $(".dropdown-list-search").on("click", function (event) {
-    //     event.stopPropagation();
-    // });
     $('.carousel').carousel();
-    
-
-    // $(".search-mandory-list li.ethbtclist").on("click", function (event) {
-    //     $(".dropdown-toggle2").toggleClass('searchtoggleactive');
-    //     event.stopPropagation();
-    //     $(".dropdown-list-search2").toggle();
-
-    // });
-    // $(".dropdown-list-search2").on("click", function (event) {
-    //     event.stopPropagation();
-    // });
 
     $('.fastbuy').click(function () {
         $('.fastbuy').addClass('active');
@@ -86,14 +63,7 @@ $(document).ready(function () {
     $('.bitoicnlink1').click(function () {
         $('.coin-list-view1').toggle();
     });
-
-    // $("#boxscroll").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
-    // $("#boxscroll1").niceScroll({ cursorborder: "", cursorcolor: "#26325d" });
-    // $("#tablescroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-    // $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-    // $("#activyscroll1").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     
-    // $("#transferscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.fadeOut').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme' });

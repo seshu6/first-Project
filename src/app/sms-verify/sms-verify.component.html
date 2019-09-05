@@ -56,7 +56,7 @@
                         <button type="button" class="sendbtn">Send
                             <img src="assets/images/sendicon.png" />
                         </button>
-                        <button type="button" class="requestbtn">Request 
+                        <button type="button" class="requestbtn">Request
                             <img src="assets/images/receiveicon.png" />
                         </button>
                     </div>
@@ -75,66 +75,70 @@
             <div class="backlink">
                 <a href="javascript:void(0);" [routerLink]="['/dashboard']">Back</a>
             </div>
-            <div class="welcome-wallet-blue">
-
-                <div class="wallet-sms-logo">
-                    <h1>Welcome</h1>
-                    <img class="heightauto" src="assets/images/logo.png" />
-                </div>
-                <div class="wallet-sms-content">
-                    <p>Verify your identity to request your XLM. Will Take a few minutes. Once verification, you could
-                        use our
-                        product of last generation exchange.</p>
-                    <div class="sms-content-bg">
-                        <p>When you create a Wallet, you accept
-                        </p>
-                        <p>
-                            <a href="javascript:void(0);">Terms of Service</a> &amp;
-                            <a href="javascript:void(0);">Policies and Privacy</a>
-                        </p>
+            <div class="welcomewallet-padd">
+                <div class="welcome-wallet-blue">
+                   
+                    <div class="wallet-sms-logo">
+                        <h1>Welcome</h1>
+                        <img class="heightauto" src="assets/images/logo.png" />
                     </div>
-                    <div class="beginnowbtn">
-                        <button type="button" class="create-walbtn" (click)="goToHomeAddress()">Begin Now</button>
-                    </div>
-                </div>
-            </div>
-            <div class="welcome-wallet-blue">
-                <div class="wallet-sms-logo">
-                    <h1>Verify with 2 Steps</h1>
-                    <img src="assets/images/verify-sms-icon.png" />
-                </div>
-                <div class="wallet-sms-content">
-                    <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade the
-                        security
-                        on your wallet</p>
-                    <div class="beginnowbtn">
-                        <button type="button" class="create-walbtn"
-                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
-                    </div>
-                    <div class="enableotp" *ngIf="otpShowOrHide">
-                        <div class="enable-otp-verify" #otpElement>
-                            <input type="number" name="optOne" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optOne"
-                                (keypress)="allowOnlyNumber(optOne,$event,1)" />
-                            <input type="number" name="optTwo" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optTwo"
-                                (keypress)="allowOnlyNumber(optTwo,$event,2)" />
-                            <input type="number" name="optThree" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optThree"
-                                (keypress)="allowOnlyNumber(optThree,$event,3)" />
-                            <input type="number" name="optFour" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optFour"
-                                (keypress)="allowOnlyNumber(optFour,$event,4)" />
-                            <input type="number" name="optFive" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optFive"
-                                (keypress)="allowOnlyNumber(optFive,$event,5)" />
-                            <input type="number" name="optSix" (paste)="avoidCopyAndPaste()"
-                                (copy)="avoidCopyAndPaste()" [(ngModel)]="optSix"
-                                (keypress)="allowOnlyNumber(optSix,$event,5)" />
+                    <div class="wallet-sms-content">
+                        <p>Verify your identity to request your XLM. Will Take a few minutes. Once verification, you
+                            could
+                            use our
+                            product of last generation exchange.</p>
+                        <div class="sms-content-bg">
+                            <p>When you create a Wallet, you accept
+                            </p>
+                            <p>
+                                <a href="javascript:void(0);">Terms of Service</a> &amp;
+                                <a href="javascript:void(0);">Policies and Privacy</a>
+                            </p>
                         </div>
-                        <div class="enable-verify">
+                        <div class="beginnowbtn">
+                            <button type="button" class="create-walbtn" (click)="goToHomeAddress()">Begin Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-wallet-blue">
+                    <div class="wallet-sms-logo">
+                        <h1>Verify with 2 Steps</h1>
+                        <img src="assets/images/verify-sms-icon.png" />
+                    </div>
+                    <div class="wallet-sms-content">
+                        <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade
+                            the
+                            security
+                            on your wallet</p>
+                        <div class="beginnowbtn">
                             <button type="button" class="create-walbtn"
-                                (click)="getEnableOrDisable('click')">Verify</button>
+                                (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                        </div>
+                        <div class="enableotp" *ngIf="otpShowOrHide">
+                            <div class="enable-otp-verify" #otpElement>
+                                <input type="number" name="optOne" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optOne"
+                                    (keypress)="allowOnlyNumber(optOne,$event,1)" />
+                                <input type="number" name="optTwo" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optTwo"
+                                    (keypress)="allowOnlyNumber(optTwo,$event,2)" />
+                                <input type="number" name="optThree" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optThree"
+                                    (keypress)="allowOnlyNumber(optThree,$event,3)" />
+                                <input type="number" name="optFour" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optFour"
+                                    (keypress)="allowOnlyNumber(optFour,$event,4)" />
+                                <input type="number" name="optFive" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optFive"
+                                    (keypress)="allowOnlyNumber(optFive,$event,5)" />
+                                <input type="number" name="optSix" (paste)="avoidCopyAndPaste()"
+                                    (copy)="avoidCopyAndPaste()" [(ngModel)]="optSix"
+                                    (keypress)="allowOnlyNumber(optSix,$event,5)" />
+                            </div>
+                            <div class="enable-verify">
+                                <button type="button" class="create-walbtn"
+                                    (click)="getEnableOrDisable('click')">Verify</button>
+                            </div>
                         </div>
                     </div>
                 </div>
