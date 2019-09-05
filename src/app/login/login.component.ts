@@ -23,12 +23,14 @@ export class LoginComponent implements OnInit {
   forgotPasswordEmail: string;
   otpModalShowOrHide: boolean = false;
   otp: any;
+  otpCode: string = "";
+  otpCodeArr: any;
   // @ViewChild('otpForm') otpForm: ElementRef;
   constructor(private verificationService: TwoStepsVerificationService, private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
       password: ['', Validators.required]
     });
   }
@@ -57,8 +59,7 @@ export class LoginComponent implements OnInit {
     }
     // this.login();
   }
-  otpCode: string = "";
-  otpCodeArr: any;
+
   // LOGIN
   login(): void {
     this.spinner.showOrHide(true);
@@ -152,8 +153,15 @@ export class LoginComponent implements OnInit {
     this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
     this.loginOrForgot = 'Login';
     this.forgotPasswordEmail = "";
+    this.loginForm.reset();
   }
 
+
+  checkOtpLength() {
+    if (Boolean(this.otp) && this.otp.length >= 6) {
+      return false;
+    }
+  }
 
   onVerifyOtp(): void {
     if (!Boolean(this.otp)) {

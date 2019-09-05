@@ -109,7 +109,16 @@ export class CommonDashboardService {
     return this.http.post(this.url.apiUrl + "bluewallet/updateprofileimage", data, this.header.getUploadHttpHeader());
   }
 
+  postNotificationList(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/listnotification", data, this.header.getHttpHeader());
+  }
 
-  // GETTER AND SETTERS
 
-}
+  postChangeNotificationStatus(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/updatenotification", data, this.header.getHttpHeader());
+  }
+
+
+    // GETTER AND SETTERS
+
+  }

@@ -66,9 +66,13 @@ export class DashboardComponent implements OnInit {
   successShowOrHide: boolean = false;
   copied: string = "Copy All";
   roleName: string = sessionStorage.getItem('roleName');
+  userId: string | number = sessionStorage.getItem('userId');
   kycShowOrHide: any;
   profileShowOrHide: any;
   refreshAlertModalShowOrHide: boolean = false;
+  notificationId: string | number;
+  notificationArr: any[] = [];
+  notificationShowOrHide: boolean = false;
 
 
 
@@ -206,7 +210,7 @@ export class DashboardComponent implements OnInit {
     _this.stompClient.debug = null;
     _this.stompClient.connect({}, function (frame) {
 
-      _this.stompClient.subscribe('/topic/reply', function (notification) { 
+      _this.stompClient.subscribe('/topic/reply', function (notification) {
         const branchData = JSON.parse(notification.body);
         console.log(branchData['userName']);
         console.log(branchData['showNotificationid']);
@@ -763,7 +767,7 @@ export class DashboardComponent implements OnInit {
   // SEND ETH
   sendEthCryptoCurrency() {
     // this.spinner.showOrHide(true);
-      this.refreshAlertModalShowOrHide = true;
+    this.refreshAlertModalShowOrHide = true;
     let jsonData = {};
     if (this.requestIdCounter == 1) {
       jsonData = {
@@ -783,7 +787,7 @@ export class DashboardComponent implements OnInit {
     }
     this.dashboardService.postSendEthCryptoCurrency(jsonData).subscribe(success => {
       // this.spinner.showOrHide(false);
-        this.refreshAlertModalShowOrHide = false;
+      this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
           this.route.navigate(["dashboard"]));
@@ -796,7 +800,7 @@ export class DashboardComponent implements OnInit {
       }
     }, error => {
       // this.spinner.showOrHide(false);
-        this.refreshAlertModalShowOrHide = false;
+      this.refreshAlertModalShowOrHide = false;
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -804,6 +808,81 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+
+  // NOTIFICATION LIST
+
+  getNotificationList() {
+    if (this.notificationShowOrHide) {
+      this.notificationShowOrHide = false;
+    } else {
+      this.spinner.showOrHide(true);
+      let jsonData = {
+        "showNotificationid": this.userId
+      }
+
+      this.dashboardService.postNotificationList(jsonData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          this.notificationArr = success['listNotification'];
+          this.notificationShowOrHide = true;
+          this.connect();
+        } else if (success['status'] == "failure") {
+          Swal.fire("Failure", success['message'], "error");
+        }
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
+      })
+    }
+
+  }
+
+  notificationObj: any = {};
+
+  // NOTIFICATION STATUS
+  changeNotificationStatus(obj: any) {
+    this.notificationObj = obj;
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "id": this.notificationObj.id
+    }
+
+    this.dashboardService.postChangeNotificationStatus(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        if (this.notificationObj.hasOwnProperty("btcWalletAddress")) {
+          this.selectedCurrencyType = "BTC";
+          this.getActivityList("notification");
+          this.onAutoCompleteUsdToBtcAndETh(this.notificationObj.usdforbtc, 'send');
+          // this.ethOrBtc = "BTC";
+          this.sendEthOrBtcAmountUsd = this.notificationObj.usdforbtc;
+          this.sendWalletAddress = this.notificationObj.btcWalletAddress;
+
+        } else if (this.notificationObj.hasOwnProperty("ethWalletAddress")) {
+          this.selectedCurrencyType = "ETH";
+          this.getActivityList("notification");
+          this.onAutoCompleteUsdToBtcAndETh(this.notificationObj.usdforeth, 'send');
+          // this.ethOrBtc = "ETH";
+          this.sendEthOrBtcAmountUsd = this.notificationObj.usdforeth;
+          this.sendWalletAddress = this.notificationObj.ethWalletAddress;
+
+        }
+        this.notificationShowOrHide = false;
+        // this.getNotificationList();
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
 
 
   autoFillSendDetails(obj: any) {
