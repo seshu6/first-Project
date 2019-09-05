@@ -21,7 +21,8 @@
               <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus"
+                (click)="contactUsForm.reset()">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -89,7 +90,8 @@
               <div class="processing-payment-tabbox">
                 <ul>
                   <li>
-                    <a class="paythontab" [ngClass]="{'active':showOrHidePython}" (click)="onTabChanged('python')">Python</a>
+                    <a class="paythontab" [ngClass]="{'active':showOrHidePython}"
+                      (click)="onTabChanged('python')">Python</a>
                   </li>
                   <li>
                     <a class="Javatab" [ngClass]="{'active':showOrHideJava}" (click)="onTabChanged('java')">Java</a>
@@ -222,7 +224,8 @@
               <div class="processing-payment payment-bot">
                 <h1>Transaction data and blocks</h1>
                 <h4>Blockchain data API</h4>
-                <p>Query JSON data in blocks and transactions. Almost all the data you see on this website are available in
+                <p>Query JSON data in blocks and transactions. Almost all the data you see on this website are available
+                  in
                   JSON format.</p>
                 <a href="javascript:void(0);">See Documentation ></a>
               </div>
@@ -235,8 +238,10 @@
               </div>
               <div class="processing-payment">
                 <h1>Websockets</h1>
-                <p>Low latency transmission channel socket that provides data on new blocks and transactions. Subscribe to blocks,
-                  transactions or notification to an address and receive JSON objects that describe transactions or blocks
+                <p>Low latency transmission channel socket that provides data on new blocks and transactions. Subscribe
+                  to blocks,
+                  transactions or notification to an address and receive JSON objects that describe transactions or
+                  blocks
                   when an event occurs</p>
                 <a href="javascript:void(0);">See Documentation ></a>
               </div>
@@ -336,7 +341,8 @@
                   <a [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);">Contact</a>
+                  <a href="#" data-toggle="modal" data-target="#contacus"
+                  (click)="contactUsForm.reset()">Contact</a>
                 </li>
                 <li>
                   <a class="footer-login" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -370,15 +376,15 @@
             </div>
             <div class="footer-submenu">
               <ul>
-                  <li>
-                      <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Legal</a>
-                    </li>
-                    <li>
-                      <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Privacy</a>
-                    </li>
-                    <li>
-                      <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Policies</a>
-                    </li>
+                <li>
+                  <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Legal</a>
+                </li>
+                <li>
+                  <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Privacy</a>
+                </li>
+                <li>
+                  <a [routerLinkActive]="['active']" [routerLink]="['/privacy']">Policies</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -392,5 +398,101 @@
     <a href="javascript:void(0);">
       <i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="api-key-form">
+  <div class="modal fade" id="contacus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <img src="/assets/images/bluwallet-logo.png">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #contactUsModal>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="apikey-form-body">
+            <h1>Contact Us</h1>
+            <p class="text-left">Fill the contact form for specialized services that Bluwallet can help you with,
+              perfect for institutions
+              and complanies.
+            </p>
+            <form [formGroup]="contactUsForm">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="name">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('name').errors && contactUsForm.get('name').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
+
+                </span>
+                <span>Your name or that of your organization.</span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('email').errors && contactUsForm.get('email').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
+
+                </span>
+              </div>
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text" formControlName="url">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('url').errors && contactUsForm.get('url').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
+
+                </span>
+                <span>URL of your website</span>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" formControlName="description">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is
+                    required.</span>
+
+                </span>
+                <span>A brief description of your organization</span>
+              </div>
+              <div class="form-group-termscondition">
+                <h1>Terms and Conditions</h1>
+                <div class="checkbox-list">
+                  <input type="checkbox" id="checkbox2" formControlName="termsAndConditions">
+                  <label for="checkbox2">
+                    I accept the terms and conditions
+                  </label>
+                </div>
+                <div class="accept-content-read">
+                  <div class="accept-cont-para">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                      ut
+                      laoreet dolore magna aliquam erat volutpat. tincidunt ut laoreet dolore magna aliquam erat
+                      volutpat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-bttn-group">
+                <button type="button" class="acceptbttn applyforbtn"
+                  (click)="onSubmitContactUsDetails()">Request</button>
+                <button type="button" class="acceptbttn applyforcancelbtn"
+                  (click)="closeContactUsModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

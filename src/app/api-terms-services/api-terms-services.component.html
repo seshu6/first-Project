@@ -21,7 +21,8 @@
               <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus"
+                (click)="contactUsForm.reset()">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -40,71 +41,108 @@
         </div>
         <div class="api-terms-agreement">
           <p>
-            <span>IMPORTANT - READ CAREFULLY:</span> This API License Agreement (this "Agreement") is a contract between you, as
-            Licensee ("You" or "Licensee") and BluWallet New Zealand S.a.r.l. and applies to your use of the BluWallet API
-            service (the "Service"). IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT, PLEASE
-            DO NOT USE OR ACCESS OUR SERVICES. INSTEAD, IF YOU WISH TO MODIFY THESE TERMS PRIOR TO USING OR ACCESSING OUR
+            <span>IMPORTANT - READ CAREFULLY:</span> This API License Agreement (this "Agreement") is a contract between
+            you, as
+            Licensee ("You" or "Licensee") and BluWallet New Zealand S.a.r.l. and applies to your use of the BluWallet
+            API
+            service (the "Service"). IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT,
+            PLEASE
+            DO NOT USE OR ACCESS OUR SERVICES. INSTEAD, IF YOU WISH TO MODIFY THESE TERMS PRIOR TO USING OR ACCESSING
+            OUR
             SERVICES, PLEASE CONTACT US AT
             <a href="javascript:void(0);">SUPPORT@BLUWALLET.INFO.</a>
           </p>
           <p>
-            In this Agreement, "you" or "your" means any person or entity using the Service. Unless otherwise stated, "BluWallet," "we"
-            or "our" will refer collectively to BluWallet New Zealand S.a.r.l. and its affiliates. This Agreement is effective
-            as of the date you first access, download or use the API, or clicks the Acceptance button ("Effective Date"),
-            until the time it is terminated. This Agreement incorporates the BluWallet Terms of Use, the terms of which also
+            In this Agreement, "you" or "your" means any person or entity using the Service. Unless otherwise stated,
+            "BluWallet," "we"
+            or "our" will refer collectively to BluWallet New Zealand S.a.r.l. and its affiliates. This Agreement is
+            effective
+            as of the date you first access, download or use the API, or clicks the Acceptance button ("Effective
+            Date"),
+            until the time it is terminated. This Agreement incorporates the BluWallet Terms of Use, the terms of which
+            also
             govern your use of the BluWallet Service.
           </p>
           <div class="agreemnt-list">
             <h4>Licenses and Restrictions</h4>
-            <p>1. API License. Subject to the terms and conditions of this Agreement, BluWallet hereby grants to you a non-exclusive,
-              non-transferable, non-sublicense-able, limited license to use the Application Programming Interface ("API License")
+            <p>1. API License. Subject to the terms and conditions of this Agreement, BluWallet hereby grants to you a
+              non-exclusive,
+              non-transferable, non-sublicense-able, limited license to use the Application Programming Interface ("API
+              License")
               solely in accordance with this Agreement. You may do the following under this API License:</p>
             <ul>
-              <li>Access information provided by BluWallet via the API ("Database") only in the manner permitted by BluWallet;</li>
-              <li>Retrieve public information about the Bitcoin BluWallet, including transaction history, balances, addresses,
+              <li>Access information provided by BluWallet via the API ("Database") only in the manner permitted by
+                BluWallet;</li>
+              <li>Retrieve public information about the Bitcoin BluWallet, including transaction history, balances,
+                addresses,
                 aggregate statistics;</li>
               <li>Receive notifications about payments to particular addresses;</li>
               <li>Observe transactions on the network in real time</li>
               <li>Retrieve current Bitcoin market prices</li>
               <li>Use the API as often and as many times as necessary to conduct your business</li>
               <li>Send Bitcoin, generate addresses and private keys, generate and modify address labels;</li>
-              <li>Query the Database, execute transactions and retrieve therefrom information necessary to facilitate the Permitted
-                Use provided for in this Section; such information stored and/or retrieved in the Database (but exclusive
+              <li>Query the Database, execute transactions and retrieve therefrom information necessary to facilitate
+                the Permitted
+                Use provided for in this Section; such information stored and/or retrieved in the Database (but
+                exclusive
                 of your information not accessed by the API) is defined as "BluWallet Content" or; "Content";and</li>
-              <li>Abide by this and all other agreements you have or will enter into with BluWallet Any combination of the foregoing
-                bulleted subsections above are "Permitted Use." Permitted Use is subject to all restrictions identified herein.
+              <li>Abide by this and all other agreements you have or will enter into with BluWallet Any combination of
+                the foregoing
+                bulleted subsections above are "Permitted Use." Permitted Use is subject to all restrictions identified
+                herein.
                 We will provide to you a key that will permit you to use the API (the "Key"). The Key is the property of
-                BluWallet and may be immediately revoked or terminated by BluWallet, including your use of the Content or
-                Database in any way not expressly permitted or granted under this Agreement. A "Third Party Service Provider"
-                is any third party service provider who is reasonably needed to undertake the Permitted Use of this Agreement
-                and who is subject to all restrictions herein, including confidentiality provisions at least as restrictive
+                BluWallet and may be immediately revoked or terminated by BluWallet, including your use of the Content
+                or
+                Database in any way not expressly permitted or granted under this Agreement. A "Third Party Service
+                Provider"
+                is any third party service provider who is reasonably needed to undertake the Permitted Use of this
+                Agreement
+                and who is subject to all restrictions herein, including confidentiality provisions at least as
+                restrictive
                 as those set forth in Section 7 ("Confidential Information").</li>
             </ul>
-            <p>2. General License Conditions and Restrictions. You shall neither use the Database or the API Program in any
+            <p>2. General License Conditions and Restrictions. You shall neither use the Database or the API Program in
+              any
               way not expressly permitted or granted under this Agreement, nor use any alternative means such as robots,
-              spiders, scraping or other technology to access, query, or use www.BluWallet.io, or any other web site owned
-              or operated by BluWallet or any of its affiliates or subsidiaries (the "BluWallet Site"), Database, Content,
-              or API Program to obtain any information, other than as provided by BluWallet to you pursuant to this Agreement.
+              spiders, scraping or other technology to access, query, or use www.BluWallet.io, or any other web site
+              owned
+              or operated by BluWallet or any of its affiliates or subsidiaries (the "BluWallet Site"), Database,
+              Content,
+              or API Program to obtain any information, other than as provided by BluWallet to you pursuant to this
+              Agreement.
               You may not distribute, facilitate, enable or allow access or linking to the BluWallet Content or Database
-              from any location or source other than your Site. You shall not permit or enable third parties to copy or obtain
-              BluWallet Content from your Site in any unauthorized manner including, but not limited to, the use of using
-              robots, spiders, scraping or any other technology. Following expiration or termination of this Agreement, you
-              shall not use (or facilitate use of) any alternative means such as robots, spiders, scraping or other technology
-              to access, query, or use the BluWallet Site, Database, Content, or API Program to obtain any information. We
+              from any location or source other than your Site. You shall not permit or enable third parties to copy or
+              obtain
+              BluWallet Content from your Site in any unauthorized manner including, but not limited to, the use of
+              using
+              robots, spiders, scraping or any other technology. Following expiration or termination of this Agreement,
+              you
+              shall not use (or facilitate use of) any alternative means such as robots, spiders, scraping or other
+              technology
+              to access, query, or use the BluWallet Site, Database, Content, or API Program to obtain any information.
+              We
               may deprecate or terminate the availability or performance of the API at any time and for any reason.</p>
-            <p>3. Restrictions and Conditions on Use. You agree that you shall not use the API Program, Database, or BluWallet
-              Content, or permit same to be used in any manner, whether directly or indirectly, that would (i) permit the
+            <p>3. Restrictions and Conditions on Use. You agree that you shall not use the API Program, Database, or
+              BluWallet
+              Content, or permit same to be used in any manner, whether directly or indirectly, that would (i) permit
+              the
               disclosure of the API Program, Database, or the BluWallet Content (other than BluWallet Content authorized
-              by this Agreement to be Publicly Displayed as defined hereunder), to, or the use of the API Program, Database,
-              or the BluWallet Content by, anyone other than your employees or Third Party Service Providers, or (ii) enable
-              the API Program to be used in any location other than your Site (unless BluWallet otherwise has agreed in writing
-              in advance). Specific Prohibitions: Notwithstanding anything contrary in this Agreement, you are specifically
+              by this Agreement to be Publicly Displayed as defined hereunder), to, or the use of the API Program,
+              Database,
+              or the BluWallet Content by, anyone other than your employees or Third Party Service Providers, or (ii)
+              enable
+              the API Program to be used in any location other than your Site (unless BluWallet otherwise has agreed in
+              writing
+              in advance). Specific Prohibitions: Notwithstanding anything contrary in this Agreement, you are
+              specifically
               prohibited from doing any of the following:</p>
             <ul>
-              <li>You shall not sell, transfer, sublicense, or disclose your Key or any credentials provided by BluWallet to
+              <li>You shall not sell, transfer, sublicense, or disclose your Key or any credentials provided by
+                BluWallet to
                 any third party (other than Third Party Service Providers);</li>
               <li>You shall not sell, transfer, sublicense and/or assign any interest in the BluWallet Content;</li>
-              <li>You shall not transmit, facilitate, enable or otherwise provide the BluWallet Content or the API Program to
+              <li>You shall not transmit, facilitate, enable or otherwise provide the BluWallet Content or the API
+                Program to
                 any third parties not expressly authorized by this Agreement;</li>
               <li>You shall not modify, decompile or otherwise alter the API Program;</li>
               <li>You shall not engage in phishing attacks or any activity associated with malware;</li>
@@ -112,101 +150,153 @@
               <li>You shall not use the API to discover undocumented calls or other functionality of the API;</li>
               <li>You shall not use the API to discover private information about other users;</li>
               <li>You shall not use the API to discover private information about our System;</li>
-              <li>You shall not circumvent or attempt to circumvent any limitations on API requests we put in place; and</li>
-              <li>You shall not commercialize (i.e., sell, rent, or lease), copy, store or cache the BluWallet Content, other
-                than for the purposes allowed by this Agreement, or use or access the Database, Content or the API Program
+              <li>You shall not circumvent or attempt to circumvent any limitations on API requests we put in place; and
+              </li>
+              <li>You shall not commercialize (i.e., sell, rent, or lease), copy, store or cache the BluWallet Content,
+                other
+                than for the purposes allowed by this Agreement, or use or access the Database, Content or the API
+                Program
                 in a manner inconsistent with the terms of this Agreement.</li>
             </ul>
-            <p>4. Certification. Your use of the BluWallet Content and participation in the API Program may be dependent upon
+            <p>4. Certification. Your use of the BluWallet Content and participation in the API Program may be dependent
+              upon
               the certification by BluWallet or an independent third party designated by BluWallet of your technology in
-              accordance with the security and stability guidelines and the display and use of the API Program and BluWallet
-              Content in accordance with this Agreement ("Certification"). You shall be responsible for all costs associated
+              accordance with the security and stability guidelines and the display and use of the API Program and
+              BluWallet
+              Content in accordance with this Agreement ("Certification"). You shall be responsible for all costs
+              associated
               with Certification and any modification necessary to meet the Certification criteria. Future modifications
-              of your Site, use or display of the BluWallet Content or API Program are subject to re-Certification. Failure
+              of your Site, use or display of the BluWallet Content or API Program are subject to re-Certification.
+              Failure
               by you to obtain and maintain Certification is cause for immediate termination of this Agreement.</p>
             <p>
-              5. Display of BluWallet Content. You may only display the BluWallet Content in accordance with the following guidelines:
-              You shall not under any circumstances display or cause another to display specific BluWallet User information
-              in a Public Display; provided however, You may provide specific BluWallet User information to the BluWallet
-              User for Private Display for such BluWallet User. "Public Display" is defined as the display of the BluWallet
-              Content to anyone other than the owner, originator, creator, or developer of such content. "Private Display"
-              is defined as the display of the BluWallet Content to a particular BluWallet User relating only to such BluWallet
+              5. Display of BluWallet Content. You may only display the BluWallet Content in accordance with the
+              following guidelines:
+              You shall not under any circumstances display or cause another to display specific BluWallet User
+              information
+              in a Public Display; provided however, You may provide specific BluWallet User information to the
+              BluWallet
+              User for Private Display for such BluWallet User. "Public Display" is defined as the display of the
+              BluWallet
+              Content to anyone other than the owner, originator, creator, or developer of such content. "Private
+              Display"
+              is defined as the display of the BluWallet Content to a particular BluWallet User relating only to such
+              BluWallet
               User's BluWallet activities;
             </p>
             <p>
-              6. Prohibited Functions. Unless otherwise stated, all new BluWallet User registrations on items shall take place on the BluWallet
-              Site and cannot be done through the API. In addition, all BluWallet User preferences, registration preferences,
+              6. Prohibited Functions. Unless otherwise stated, all new BluWallet User registrations on items shall take
+              place on the BluWallet
+              Site and cannot be done through the API. In addition, all BluWallet User preferences, registration
+              preferences,
               and privacy preferences shall be set by the BluWallet User directly on the BluWallet Site.
             </p>
           </div>
         </div>
         <div class="api-terms-agreement">
           <p>
-            <span>IMPORTANT - READ CAREFULLY:</span> This API License Agreement (this "Agreement") is a contract between you, as
-            Licensee ("You" or "Licensee") and BluWallet New Zealand S.a.r.l. and applies to your use of the BluWallet API
-            service (the "Service"). IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT, PLEASE
-            DO NOT USE OR ACCESS OUR SERVICES. INSTEAD, IF YOU WISH TO MODIFY THESE TERMS PRIOR TO USING OR ACCESSING OUR
+            <span>IMPORTANT - READ CAREFULLY:</span> This API License Agreement (this "Agreement") is a contract between
+            you, as
+            Licensee ("You" or "Licensee") and BluWallet New Zealand S.a.r.l. and applies to your use of the BluWallet
+            API
+            service (the "Service"). IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT,
+            PLEASE
+            DO NOT USE OR ACCESS OUR SERVICES. INSTEAD, IF YOU WISH TO MODIFY THESE TERMS PRIOR TO USING OR ACCESSING
+            OUR
             SERVICES, PLEASE CONTACT US AT
             <a href="javascript:void(0);">SUPPORT@BLUWALLET.INFO.</a>
           </p>
           <p>
-            In this Agreement, "you" or "your" means any person or entity using the Service. Unless otherwise stated, "BluWallet," "we"
-            or "our" will refer collectively to BluWallet New Zealand S.a.r.l. and its affiliates. This Agreement is effective
-            as of the date you first access, download or use the API, or clicks the Acceptance button ("Effective Date"),
-            until the time it is terminated. This Agreement incorporates the BluWallet Terms of Use, the terms of which also
+            In this Agreement, "you" or "your" means any person or entity using the Service. Unless otherwise stated,
+            "BluWallet," "we"
+            or "our" will refer collectively to BluWallet New Zealand S.a.r.l. and its affiliates. This Agreement is
+            effective
+            as of the date you first access, download or use the API, or clicks the Acceptance button ("Effective
+            Date"),
+            until the time it is terminated. This Agreement incorporates the BluWallet Terms of Use, the terms of which
+            also
             govern your use of the BluWallet Service.
           </p>
           <div class="agreemnt-list">
             <h4>1. Licenses and Restrictions</h4>
-            <p>1. API License. Subject to the terms and conditions of this Agreement, BluWallet hereby grants to you a non-exclusive,
-              non-transferable, non-sublicense-able, limited license to use the Application Programming Interface ("API License")
+            <p>1. API License. Subject to the terms and conditions of this Agreement, BluWallet hereby grants to you a
+              non-exclusive,
+              non-transferable, non-sublicense-able, limited license to use the Application Programming Interface ("API
+              License")
               solely in accordance with this Agreement. You may do the following under this API License:</p>
             <ul>
-              <li>Access information provided by BluWallet via the API ("Database") only in the manner permitted by BluWallet;</li>
-              <li>Retrieve public information about the Bitcoin BluWallet, including transaction history, balances, addresses,
+              <li>Access information provided by BluWallet via the API ("Database") only in the manner permitted by
+                BluWallet;</li>
+              <li>Retrieve public information about the Bitcoin BluWallet, including transaction history, balances,
+                addresses,
                 aggregate statistics;</li>
               <li>Receive notifications about payments to particular addresses;</li>
               <li>Observe transactions on the network in real time</li>
               <li>Retrieve current Bitcoin market prices</li>
               <li>Use the API as often and as many times as necessary to conduct your business</li>
               <li>Send Bitcoin, generate addresses and private keys, generate and modify address labels;</li>
-              <li>Query the Database, execute transactions and retrieve therefrom information necessary to facilitate the Permitted
-                Use provided for in this Section; such information stored and/or retrieved in the Database (but exclusive
+              <li>Query the Database, execute transactions and retrieve therefrom information necessary to facilitate
+                the Permitted
+                Use provided for in this Section; such information stored and/or retrieved in the Database (but
+                exclusive
                 of your information not accessed by the API) is defined as "BluWallet Content" or; "Content";and</li>
-              <li>Abide by this and all other agreements you have or will enter into with BluWallet Any combination of the foregoing
-                bulleted subsections above are "Permitted Use." Permitted Use is subject to all restrictions identified herein.
+              <li>Abide by this and all other agreements you have or will enter into with BluWallet Any combination of
+                the foregoing
+                bulleted subsections above are "Permitted Use." Permitted Use is subject to all restrictions identified
+                herein.
                 We will provide to you a key that will permit you to use the API (the "Key"). The Key is the property of
-                BluWallet and may be immediately revoked or terminated by BluWallet, including your use of the Content or
-                Database in any way not expressly permitted or granted under this Agreement. A "Third Party Service Provider"
-                is any third party service provider who is reasonably needed to undertake the Permitted Use of this Agreement
-                and who is subject to all restrictions herein, including confidentiality provisions at least as restrictive
+                BluWallet and may be immediately revoked or terminated by BluWallet, including your use of the Content
+                or
+                Database in any way not expressly permitted or granted under this Agreement. A "Third Party Service
+                Provider"
+                is any third party service provider who is reasonably needed to undertake the Permitted Use of this
+                Agreement
+                and who is subject to all restrictions herein, including confidentiality provisions at least as
+                restrictive
                 as those set forth in Section 7 ("Confidential Information").</li>
             </ul>
-            <p>2. General License Conditions and Restrictions. You shall neither use the Database or the API Program in any
+            <p>2. General License Conditions and Restrictions. You shall neither use the Database or the API Program in
+              any
               way not expressly permitted or granted under this Agreement, nor use any alternative means such as robots,
-              spiders, scraping or other technology to access, query, or use www.BluWallet.io, or any other web site owned
-              or operated by BluWallet or any of its affiliates or subsidiaries (the "BluWallet Site"), Database, Content,
-              or API Program to obtain any information, other than as provided by BluWallet to you pursuant to this Agreement.
+              spiders, scraping or other technology to access, query, or use www.BluWallet.io, or any other web site
+              owned
+              or operated by BluWallet or any of its affiliates or subsidiaries (the "BluWallet Site"), Database,
+              Content,
+              or API Program to obtain any information, other than as provided by BluWallet to you pursuant to this
+              Agreement.
               You may not distribute, facilitate, enable or allow access or linking to the BluWallet Content or Database
-              from any location or source other than your Site. You shall not permit or enable third parties to copy or obtain
-              BluWallet Content from your Site in any unauthorized manner including, but not limited to, the use of using
-              robots, spiders, scraping or any other technology. Following expiration or termination of this Agreement, you
-              shall not use (or facilitate use of) any alternative means such as robots, spiders, scraping or other technology
-              to access, query, or use the BluWallet Site, Database, Content, or API Program to obtain any information. We
+              from any location or source other than your Site. You shall not permit or enable third parties to copy or
+              obtain
+              BluWallet Content from your Site in any unauthorized manner including, but not limited to, the use of
+              using
+              robots, spiders, scraping or any other technology. Following expiration or termination of this Agreement,
+              you
+              shall not use (or facilitate use of) any alternative means such as robots, spiders, scraping or other
+              technology
+              to access, query, or use the BluWallet Site, Database, Content, or API Program to obtain any information.
+              We
               may deprecate or terminate the availability or performance of the API at any time and for any reason.</p>
-            <p>3. Restrictions and Conditions on Use. You agree that you shall not use the API Program, Database, or BluWallet
-              Content, or permit same to be used in any manner, whether directly or indirectly, that would (i) permit the
+            <p>3. Restrictions and Conditions on Use. You agree that you shall not use the API Program, Database, or
+              BluWallet
+              Content, or permit same to be used in any manner, whether directly or indirectly, that would (i) permit
+              the
               disclosure of the API Program, Database, or the BluWallet Content (other than BluWallet Content authorized
-              by this Agreement to be Publicly Displayed as defined hereunder), to, or the use of the API Program, Database,
-              or the BluWallet Content by, anyone other than your employees or Third Party Service Providers, or (ii) enable
-              the API Program to be used in any location other than your Site (unless BluWallet otherwise has agreed in writing
-              in advance). Specific Prohibitions: Notwithstanding anything contrary in this Agreement, you are specifically
+              by this Agreement to be Publicly Displayed as defined hereunder), to, or the use of the API Program,
+              Database,
+              or the BluWallet Content by, anyone other than your employees or Third Party Service Providers, or (ii)
+              enable
+              the API Program to be used in any location other than your Site (unless BluWallet otherwise has agreed in
+              writing
+              in advance). Specific Prohibitions: Notwithstanding anything contrary in this Agreement, you are
+              specifically
               prohibited from doing any of the following:</p>
             <ul>
-              <li>You shall not sell, transfer, sublicense, or disclose your Key or any credentials provided by BluWallet to
+              <li>You shall not sell, transfer, sublicense, or disclose your Key or any credentials provided by
+                BluWallet to
                 any third party (other than Third Party Service Providers);</li>
               <li>You shall not sell, transfer, sublicense and/or assign any interest in the BluWallet Content;</li>
-              <li>You shall not transmit, facilitate, enable or otherwise provide the BluWallet Content or the API Program to
+              <li>You shall not transmit, facilitate, enable or otherwise provide the BluWallet Content or the API
+                Program to
                 any third parties not expressly authorized by this Agreement;</li>
               <li>You shall not modify, decompile or otherwise alter the API Program;</li>
               <li>You shall not engage in phishing attacks or any activity associated with malware;</li>
@@ -214,177 +304,258 @@
               <li>You shall not use the API to discover undocumented calls or other functionality of the API;</li>
               <li>You shall not use the API to discover private information about other users;</li>
               <li>You shall not use the API to discover private information about our System;</li>
-              <li>You shall not circumvent or attempt to circumvent any limitations on API requests we put in place; and</li>
-              <li>You shall not commercialize (i.e., sell, rent, or lease), copy, store or cache the BluWallet Content, other
-                than for the purposes allowed by this Agreement, or use or access the Database, Content or the API Program
+              <li>You shall not circumvent or attempt to circumvent any limitations on API requests we put in place; and
+              </li>
+              <li>You shall not commercialize (i.e., sell, rent, or lease), copy, store or cache the BluWallet Content,
+                other
+                than for the purposes allowed by this Agreement, or use or access the Database, Content or the API
+                Program
                 in a manner inconsistent with the terms of this Agreement.</li>
             </ul>
-            <p>4. Certification. Your use of the BluWallet Content and participation in the API Program may be dependent upon
+            <p>4. Certification. Your use of the BluWallet Content and participation in the API Program may be dependent
+              upon
               the certification by BluWallet or an independent third party designated by BluWallet of your technology in
-              accordance with the security and stability guidelines and the display and use of the API Program and BluWallet
-              Content in accordance with this Agreement ("Certification"). You shall be responsible for all costs associated
+              accordance with the security and stability guidelines and the display and use of the API Program and
+              BluWallet
+              Content in accordance with this Agreement ("Certification"). You shall be responsible for all costs
+              associated
               with Certification and any modification necessary to meet the Certification criteria. Future modifications
-              of your Site, use or display of the BluWallet Content or API Program are subject to re-Certification. Failure
+              of your Site, use or display of the BluWallet Content or API Program are subject to re-Certification.
+              Failure
               by you to obtain and maintain Certification is cause for immediate termination of this Agreement.</p>
             <p>
-              5. Display of BluWallet Content. You may only display the BluWallet Content in accordance with the following guidelines:
-              You shall not under any circumstances display or cause another to display specific BluWallet User information
-              in a Public Display; provided however, You may provide specific BluWallet User information to the BluWallet
-              User for Private Display for such BluWallet User. "Public Display" is defined as the display of the BluWallet
-              Content to anyone other than the owner, originator, creator, or developer of such content. "Private Display"
-              is defined as the display of the BluWallet Content to a particular BluWallet User relating only to such BluWallet
+              5. Display of BluWallet Content. You may only display the BluWallet Content in accordance with the
+              following guidelines:
+              You shall not under any circumstances display or cause another to display specific BluWallet User
+              information
+              in a Public Display; provided however, You may provide specific BluWallet User information to the
+              BluWallet
+              User for Private Display for such BluWallet User. "Public Display" is defined as the display of the
+              BluWallet
+              Content to anyone other than the owner, originator, creator, or developer of such content. "Private
+              Display"
+              is defined as the display of the BluWallet Content to a particular BluWallet User relating only to such
+              BluWallet
               User's BluWallet activities;
             </p>
             <p>
-              6. Prohibited Functions. Unless otherwise stated, all new BluWallet User registrations on items shall take place on the BluWallet
-              Site and cannot be done through the API. In addition, all BluWallet User preferences, registration preferences,
+              6. Prohibited Functions. Unless otherwise stated, all new BluWallet User registrations on items shall take
+              place on the BluWallet
+              Site and cannot be done through the API. In addition, all BluWallet User preferences, registration
+              preferences,
               and privacy preferences shall be set by the BluWallet User directly on the BluWallet Site.
             </p>
           </div>
           <div class="agreemnt-list">
             <h4>2. Content and Intellectual Property Licenses.</h4>
-            <p>1. Content and IP Ownership. Except as otherwise provided in this Agreement, as between BluWallet and You, BluWallet
-              retains all rights, title and interest in and to all intellectual property rights (including without limitation
-              all patent, trademark, copyright, trade dress, trade secrets, database rights and all other intellectual property
-              rights) embodied in or associated with the API Program, BluWallet Content, BluWallet Site and any and all BluWallet
-              services, technology and any content created or derived there from. There are no implied licenses under this
-              Agreement, and any rights not expressly granted to you hereunder are reserved by BluWallet or its suppliers.
+            <p>1. Content and IP Ownership. Except as otherwise provided in this Agreement, as between BluWallet and
+              You, BluWallet
+              retains all rights, title and interest in and to all intellectual property rights (including without
+              limitation
+              all patent, trademark, copyright, trade dress, trade secrets, database rights and all other intellectual
+              property
+              rights) embodied in or associated with the API Program, BluWallet Content, BluWallet Site and any and all
+              BluWallet
+              services, technology and any content created or derived there from. There are no implied licenses under
+              this
+              Agreement, and any rights not expressly granted to you hereunder are reserved by BluWallet or its
+              suppliers.
               You shall not take any action inconsistent with BluWallet's ownership of the API Program, and/or BluWallet
               Content. You shall not exceed the scope of the licenses granted hereunder.</p>
-            <p>2. Limits on Sublicensing. All license rights (under any applicable intellectual property right) granted herein
+            <p>2. Limits on Sublicensing. All license rights (under any applicable intellectual property right) granted
+              herein
               are not sublicenseable, transferable or assignable, except as otherwise provided herein.</p>
-            <p>3. Uptime. BluWallet does not guarantee that the BluWallet Site or the BluWallet Content shall be available twenty-four
+            <p>3. Uptime. BluWallet does not guarantee that the BluWallet Site or the BluWallet Content shall be
+              available twenty-four
               hours a day.</p>
           </div>
           <div class="agreemnt-list">
             <h4>3. Term and Termination.</h4>
-            <p>1. No Notice. BluWallet may terminate this Agreement at any time upon advance notice for any reason and without
+            <p>1. No Notice. BluWallet may terminate this Agreement at any time upon advance notice for any reason and
+              without
               notice to you.</p>
-            <p>2. Survival. The following Sections of the Agreement shall survive any termination of this Agreement: the following
+            <p>2. Survival. The following Sections of the Agreement shall survive any termination of this Agreement: the
+              following
               sections under Section 1.2 ("General License Conditions and Restrictions"), Section 1.3 ("Restrictions and
-              Conditions of Use"), Section 2 ("Content and Intellectual Property Licenses"), Section 3.2 ("Survival"), Section
-              6 ("Representations and Warranties"), Section 7 ("Confidential Information"), Section 8 ("Limitation of Liability"),
+              Conditions of Use"), Section 2 ("Content and Intellectual Property Licenses"), Section 3.2 ("Survival"),
+              Section
+              6 ("Representations and Warranties"), Section 7 ("Confidential Information"), Section 8 ("Limitation of
+              Liability"),
               Section 9 ("Indemnification"), and Section 10 ("General").</p>
-            <p>3. Effects of Termination. Upon termination of this Agreement, you shall no longer log in with your Key and all
-              licenses granted hereunder shall terminate unless such licenses are expressly stated as surviving; provided
-              further, you shall provide proof to BluWallet of the destruction of any BluWallet Content or Customer Information
+            <p>3. Effects of Termination. Upon termination of this Agreement, you shall no longer log in with your Key
+              and all
+              licenses granted hereunder shall terminate unless such licenses are expressly stated as surviving;
+              provided
+              further, you shall provide proof to BluWallet of the destruction of any BluWallet Content or Customer
+              Information
               within three (3) days of such expiration or termination.</p>
           </div>
           <div class="agreemnt-list">
             <h4>4. Security and Stability.</h4>
-            <p>You acknowledge that it is in the best interests of both parties that BluWallet maintains a secure and stable
-              environment; to that end, BluWallet reserves the right to change the method of access to the API Program, Database
-              and/or BluWallet Content at any time. You also agree that, in the event of degradation or instability of BluWallet's
-              system or an emergency, BluWallet may, in its sole discretion, temporarily suspend your access to the API Program,
-              Database and/or BluWallet Content under this Agreement in order to minimize threats to and protect the operational
+            <p>You acknowledge that it is in the best interests of both parties that BluWallet maintains a secure and
+              stable
+              environment; to that end, BluWallet reserves the right to change the method of access to the API Program,
+              Database
+              and/or BluWallet Content at any time. You also agree that, in the event of degradation or instability of
+              BluWallet's
+              system or an emergency, BluWallet may, in its sole discretion, temporarily suspend your access to the API
+              Program,
+              Database and/or BluWallet Content under this Agreement in order to minimize threats to and protect the
+              operational
               stability and security of the BluWallet system.</p>
           </div>
           <div class="agreemnt-list">
             <h4>5. Disclaimer of BluWallet Warranties.</h4>
-            <p>ACCESS TO THE DATABASE AND YOUR USE OF THE API IS PROVIDED HEREUNDER ON AN "AS IS" BASIS WITHOUT WARRANTY OF
-              ANY KIND. EXCEPT AS EXPRESSLY STATED HEREIN, BLUWALLET DISCLAIMS ALL WARRANTIES AND CONDITIONS, EXPRESS, IMPLIED
-              OR STATUTORY, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY
-              AND FITNESS FOR A PARTICULAR PURPOSE. BLUWALLET DOES NOT REPRESENT OR WARRANT THAT THE BLUWALLET SITE SHALL
+            <p>ACCESS TO THE DATABASE AND YOUR USE OF THE API IS PROVIDED HEREUNDER ON AN "AS IS" BASIS WITHOUT WARRANTY
+              OF
+              ANY KIND. EXCEPT AS EXPRESSLY STATED HEREIN, BLUWALLET DISCLAIMS ALL WARRANTIES AND CONDITIONS, EXPRESS,
+              IMPLIED
+              OR STATUTORY, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF TITLE, NON-INFRINGEMENT,
+              MERCHANTABILITY
+              AND FITNESS FOR A PARTICULAR PURPOSE. BLUWALLET DOES NOT REPRESENT OR WARRANT THAT THE BLUWALLET SITE
+              SHALL
               OPERATE SECURELY OR WITHOUT INTERRUPTION. You acknowledge that you have not entered into this Agreement in
               reliance upon any warranty or representation.</p>
           </div>
           <div class="agreemnt-list">
             <h4>6. Representations and Warranties.</h4>
-            <p>You represent and warrant that you shall at all times comply with all laws and regulations applicable to your
+            <p>You represent and warrant that you shall at all times comply with all laws and regulations applicable to
+              your
               products and/or services, related promotional activities and its performance under this Agreement.</p>
           </div>
           <div class="agreemnt-list">
             <h4>7. Confidential Information.</h4>
-            <p>1. Confidential Information. Confidential Information Defined. BluWallet's "Confidential Information" is defined
-              as any confidential or proprietary information which is disclosed to you in a writing marked "Confidential"
-              or, if disclosed orally, is identified as confidential at the time of disclosure and is subsequently reduced
+            <p>1. Confidential Information. Confidential Information Defined. BluWallet's "Confidential Information" is
+              defined
+              as any confidential or proprietary information which is disclosed to you in a writing marked
+              "Confidential"
+              or, if disclosed orally, is identified as confidential at the time of disclosure and is subsequently
+              reduced
               to a writing marked "Confidential" and delivered to the other party within ten (10) days of disclosure, or
               disclosed through the API. The terms of this Agreement, BluWallet Content, Database, Services, Technology,
-              the API Program, your User ID, and Customer Information (including user IDs, passwords, and any account information)
+              the API Program, your User ID, and Customer Information (including user IDs, passwords, and any account
+              information)
               shall be deemed Confidential Information regardless of whether marked "Confidential."</p>
-            <p>2. Licensee Obligations. You shall hold BluWallet's Confidential Information in confidence and shall not disclose
-              such Confidential Information to third parties nor use BluWallet's Confidential Information for any purpose
-              other than as required to perform under this Agreement. Where Confidential Information is required to be disclosed
-              by a court, government agency, regulatory requirement, or similar disclosure requirement, you shall immediately
-              notify BluWallet upon learning of the existence or likely existence of such requirement and shall use reasonable
-              efforts to avoid such disclosure and, if necessary, use reasonable efforts to obtain confidential treatment
-              or protection by order of any disclosed Confidential Information. Notwithstanding any contrary provision in
-              Section 15 ("Notice"), notification to BluWallet under this Section 7.2 should be provided by personal delivery
-              on a same day. Your obligations hereunder shall survive the termination of this Agreement for a period of five
+            <p>2. Licensee Obligations. You shall hold BluWallet's Confidential Information in confidence and shall not
+              disclose
+              such Confidential Information to third parties nor use BluWallet's Confidential Information for any
+              purpose
+              other than as required to perform under this Agreement. Where Confidential Information is required to be
+              disclosed
+              by a court, government agency, regulatory requirement, or similar disclosure requirement, you shall
+              immediately
+              notify BluWallet upon learning of the existence or likely existence of such requirement and shall use
+              reasonable
+              efforts to avoid such disclosure and, if necessary, use reasonable efforts to obtain confidential
+              treatment
+              or protection by order of any disclosed Confidential Information. Notwithstanding any contrary provision
+              in
+              Section 15 ("Notice"), notification to BluWallet under this Section 7.2 should be provided by personal
+              delivery
+              on a same day. Your obligations hereunder shall survive the termination of this Agreement for a period of
+              five
               (5) years.</p>
-            <p>3. Return of Confidential Information Upon Termination. Upon termination of this Agreement, you shall return
-              to BluWallet within three (3) days all Confidential Information and all documents or media containing any such
+            <p>3. Return of Confidential Information Upon Termination. Upon termination of this Agreement, you shall
+              return
+              to BluWallet within three (3) days all Confidential Information and all documents or media containing any
+              such
               Confidential Information and any and all copies or extracts thereof.</p>
-            <p>4. Competitive or Similar Materials. Notwithstanding the foregoing, in no event shall BluWallet be precluded
-              from discussing, reviewing, developing for itself, having developed, acquiring, licensing or developing for
-              third parties, as well as marketing and/or distributing, materials which are competitive with your products
-              and/or services (collectively, "your Products"), irrespective of their similarity to current Products or your
+            <p>4. Competitive or Similar Materials. Notwithstanding the foregoing, in no event shall BluWallet be
+              precluded
+              from discussing, reviewing, developing for itself, having developed, acquiring, licensing or developing
+              for
+              third parties, as well as marketing and/or distributing, materials which are competitive with your
+              products
+              and/or services (collectively, "your Products"), irrespective of their similarity to current Products or
+              your
               Products that may be developed hereafter.</p>
           </div>
           <div class="agreemnt-list">
             <h4>8. Limitation of Liability.</h4>
-            <p>BLUWALLET SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES OR LOST
-              PROFITS (HOWEVER ARISING, INCLUDING NEGLIGENCE, BREACH OF CONTRACT, BREACH OF WARRANTY, OR ANY OTHER FORM OF
-              ACTION) ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, EVEN IF BLUWALLET IS ADVISED OF THE POSSIBILITY
+            <p>BLUWALLET SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES OR
+              LOST
+              PROFITS (HOWEVER ARISING, INCLUDING NEGLIGENCE, BREACH OF CONTRACT, BREACH OF WARRANTY, OR ANY OTHER FORM
+              OF
+              ACTION) ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, EVEN IF BLUWALLET IS ADVISED OF THE
+              POSSIBILITY
               OF SUCH DAMAGES.</p>
           </div>
           <div class="agreemnt-list">
             <h4>9. Indemnification.</h4>
-            <p>You shall indemnify BluWallet against any and all claims, losses, liabilities, costs and expenses, including
-              reasonable attorneys' fees (collectively, "Claims") which BluWallet may incur as a result of any third party
-              actions arising from or relating to: (1) Your or Third Party Service Provider's use of the API Program, the
-              BluWallet Content, Database, Services or Technology in excess of the rights granted hereunder or (2) Content,
+            <p>You shall indemnify BluWallet against any and all claims, losses, liabilities, costs and expenses,
+              including
+              reasonable attorneys' fees (collectively, "Claims") which BluWallet may incur as a result of any third
+              party
+              actions arising from or relating to: (1) Your or Third Party Service Provider's use of the API Program,
+              the
+              BluWallet Content, Database, Services or Technology in excess of the rights granted hereunder or (2)
+              Content,
               Database, Technology, or Services provided by You or others on your behalf.</p>
           </div>
           <div class="agreemnt-list">
             <h4>10. General.</h4>
-            <p>1. Governing Law; Venue. This Agreement shall be construed in accordance with and governed exclusively by the
-              laws of New Zealand applicable to agreements made among New Zealand residents and to be performed wholly within
-              such jurisdiction, regardless of such parties' actual domiciles. You agree that any cause of action arising
+            <p>1. Governing Law; Venue. This Agreement shall be construed in accordance with and governed exclusively by
+              the
+              laws of New Zealand applicable to agreements made among New Zealand residents and to be performed wholly
+              within
+              such jurisdiction, regardless of such parties' actual domiciles. You agree that any cause of action
+              arising
               under this Agreement shall be brought exclusively in a court in New Zealand.</p>
           </div>
           <div class="agreemnt-list">
             <h4>11. Publicity.</h4>
-            <p>You shall not make any public statement regarding the terms of this Agreement, any aspect thereof, or the API
+            <p>You shall not make any public statement regarding the terms of this Agreement, any aspect thereof, or the
+              API
               Program without BluWallet's prior written approval which may be withheld at its sole discretion.</p>
           </div>
           <div class="agreemnt-list">
             <h4>12. Independent Contractors.</h4>
-            <p>This Agreement does not create, and nothing contained in this Agreement shall be deemed to establish, a joint
-              venture between the parties, or the relationship of employer-employee, partners, principal-agent, a fiduciary
+            <p>This Agreement does not create, and nothing contained in this Agreement shall be deemed to establish, a
+              joint
+              venture between the parties, or the relationship of employer-employee, partners, principal-agent, a
+              fiduciary
               relationship or the like.</p>
           </div>
           <div class="agreemnt-list">
             <h4>13. Assignment.</h4>
-            <p>You may not assign rights nor delegate duties hereunder without BluWallet's prior written consent, which may
+            <p>You may not assign rights nor delegate duties hereunder without BluWallet's prior written consent, which
+              may
               be withheld at its sole discretion.</p>
           </div>
           <div class="agreemnt-list">
             <h4>14. Severability.</h4>
-            <p>If any provision herein is held to be invalid or unenforceable for any reason, the remaining provisions shall
+            <p>If any provision herein is held to be invalid or unenforceable for any reason, the remaining provisions
+              shall
               continue in full force without being impaired or invalidated in any way.</p>
           </div>
           <div class="agreemnt-list">
             <h4>15. Notice.</h4>
-            <p>Any notice under this Agreement shall be in writing and delivered by confirmed e- mail and shall be deemed given
+            <p>Any notice under this Agreement shall be in writing and delivered by confirmed e- mail and shall be
+              deemed given
               upon confirmation of receipt of e mail. Notices shall be sent to a party at its address set forth above or
-              such other address as that party may specify in writing pursuant to this Section 15, or to the email address
+              such other address as that party may specify in writing pursuant to this Section 15, or to the email
+              address
               you provide ("Notice").</p>
           </div>
           <div class="agreemnt-list">
             <h4>15. Notice.</h4>
-            <p>Any notice under this Agreement shall be in writing and delivered by confirmed e- mail and shall be deemed given
+            <p>Any notice under this Agreement shall be in writing and delivered by confirmed e- mail and shall be
+              deemed given
               upon confirmation of receipt of e mail. Notices shall be sent to a party at its address set forth above or
-              such other address as that party may specify in writing pursuant to this Section 15, or to the email address
+              such other address as that party may specify in writing pursuant to this Section 15, or to the email
+              address
               you provide ("Notice").</p>
           </div>
         </div>
         <div class="agreemnt-list">
           <h4>16. Entire Agreement; Waiver.</h4>
-          <p>This Agreement sets forth the entire understanding and agreement of the parties regarding the API Program, and
-            supersedes any and all oral or written agreements or understandings between the parties, as to the API Program,
+          <p>This Agreement sets forth the entire understanding and agreement of the parties regarding the API Program,
+            and
+            supersedes any and all oral or written agreements or understandings between the parties, as to the API
+            Program,
             except to the extent that it incorporates BluWallet's User Agreement, Privacy and Acceptable Use Policies as
-            described herein. The waiver of a breach of any provision of this Agreement shall not operate or be interpreted
+            described herein. The waiver of a breach of any provision of this Agreement shall not operate or be
+            interpreted
             as a waiver of any other or subsequent breach.</p>
         </div>
       </div>
@@ -397,19 +568,24 @@
         <div class="api-terms-agreement">
           <div class="agreemnt-list">
             <p>
-              BluWallet users don’t make transaction requests to us instead, they transact themselves, directly with a virtual currency
+              BluWallet users don’t make transaction requests to us instead, they transact themselves, directly with a
+              virtual currency
               network.
             </p>
             <p>Check out our open-source code on GitHub.</p>
 
-            <p>BluWallet’s wallet is essentially a backup service, like Dropbox or Amazon Cloud, except much more limited.</p>
+            <p>BluWallet’s wallet is essentially a backup service, like Dropbox or Amazon Cloud, except much more
+              limited.</p>
             <p>We can only back up one kind of file – an encrypted wallet.</p>
 
-            <p>BluWallet is not a financial intermediary. This is different than how virtual currency exchanges operate. We
+            <p>BluWallet is not a financial intermediary. This is different than how virtual currency exchanges operate.
+              We
               never know any of our users’ private keys.</p>
             <p>
-              We don’t take control of or transmit our users’ virtual currency. BluWallet is noncustodial. BluWallet users can store and
-              spend the same virtual currencies, in as many other industry-standard software wallets as they like... at the
+              We don’t take control of or transmit our users’ virtual currency. BluWallet is noncustodial. BluWallet
+              users can store and
+              spend the same virtual currencies, in as many other industry-standard software wallets as they like... at
+              the
               same time as they are stored in a BluWallet wallet.
             </p>
             <h4>BluWallet can’t:</h4>
@@ -444,7 +620,8 @@
               <li>1. Reach out to us to determine whether we can help:
                 <a href="javascript:void(0);">legal@BluWallet.io</a>
               </li>
-              <li>2. Provide a wallet identifier (e.g. 2td3t671-c54d-ds32-456t-65ftya3b24dd). Provide a virtual currency address
+              <li>2. Provide a wallet identifier (e.g. 2td3t671-c54d-ds32-456t-65ftya3b24dd). Provide a virtual currency
+                address
                 (e.g. 19Y5NSiG5kk5wWjMD17euEaQ5PErpwxWkp).</li>
               <li>3. Provide an order issued by a New Zealand court against BluWallet New Zealand S.A.</li>
             </ul>
@@ -475,7 +652,7 @@
                   <a [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);">Contact</a>
+                  <a href="#" data-toggle="modal" data-target="#contacus" (click)="contactUsForm.reset()">Contact</a>
                 </li>
                 <li>
                   <a class="footer-login" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -531,5 +708,101 @@
     <a href="javascript:void(0);">
       <i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="api-key-form">
+  <div class="modal fade" id="contacus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <img src="/assets/images/bluwallet-logo.png">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #contactUsModal>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="apikey-form-body">
+            <h1>Contact Us</h1>
+            <p class="text-left">Fill the contact form for specialized services that Bluwallet can help you with,
+              perfect for institutions
+              and complanies.
+            </p>
+            <form [formGroup]="contactUsForm">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="name">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('name').errors && contactUsForm.get('name').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
+
+                </span>
+                <span>Your name or that of your organization.</span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('email').errors && contactUsForm.get('email').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
+
+                </span>
+              </div>
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text" formControlName="url">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('url').errors && contactUsForm.get('url').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
+
+                </span>
+                <span>URL of your website</span>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" formControlName="description">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is
+                    required.</span>
+
+                </span>
+                <span>A brief description of your organization</span>
+              </div>
+              <div class="form-group-termscondition">
+                <h1>Terms and Conditions</h1>
+                <div class="checkbox-list">
+                  <input type="checkbox" id="checkbox2" formControlName="termsAndConditions">
+                  <label for="checkbox2">
+                    I accept the terms and conditions
+                  </label>
+                </div>
+                <div class="accept-content-read">
+                  <div class="accept-cont-para">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                      ut
+                      laoreet dolore magna aliquam erat volutpat. tincidunt ut laoreet dolore magna aliquam erat
+                      volutpat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-bttn-group">
+                <button type="button" class="acceptbttn applyforbtn"
+                  (click)="onSubmitContactUsDetails()">Request</button>
+                <button type="button" class="acceptbttn applyforcancelbtn"
+                  (click)="closeContactUsModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

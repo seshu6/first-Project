@@ -936,7 +936,7 @@ footer {
 }
 .footer-menu ul li a {
 	display: block;
-	color: #ffffff;
+	color: #ffffff !important;
 	padding-right: 70px;
 	text-decoration: none;
 }

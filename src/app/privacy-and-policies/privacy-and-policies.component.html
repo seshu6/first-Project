@@ -21,7 +21,8 @@
               <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#contacus"
+                (click)="contactUsForm.reset()">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-btn" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -39,10 +40,12 @@
         <div class="container">
           <ul>
             <li>
-              <a class="legal-tab" [ngClass]="{'active':showOrHideLegalAndPolicies}" (click)="showOrHideLegalAndPolicies = true">Legal</a>
+              <a class="legal-tab" [ngClass]="{'active':showOrHideLegalAndPolicies}"
+                (click)="showOrHideLegalAndPolicies = true">Legal</a>
             </li>
             <li>
-              <a class="Privacy-tab" [ngClass]="{'active':!showOrHideLegalAndPolicies}" (click)="showOrHideLegalAndPolicies = false">Privacy & Policies</a>
+              <a class="Privacy-tab" [ngClass]="{'active':!showOrHideLegalAndPolicies}"
+                (click)="showOrHideLegalAndPolicies = false">Privacy & Policies</a>
             </li>
           </ul>
         </div>
@@ -61,113 +64,170 @@
                 <span>Last Updated: june 27, 2019</span>
               </div>
               <div class="agreement-content">
-                <p>This is an agreement between Blockchain Luxembourg S.A., its affiliates and subsidiaries (collectively referred
-                  to herein as “Blockchain”, “we”, “us”, or “our”) and you (together with Blockchain, the “Parties” and each
-                  a “Party”). By using any Blockchain service, whether through blockchain.com, any associated website, API,
+                <p>This is an agreement between Blockchain Luxembourg S.A., its affiliates and subsidiaries
+                  (collectively referred
+                  to herein as “Blockchain”, “we”, “us”, or “our”) and you (together with Blockchain, the “Parties” and
+                  each
+                  a “Party”). By using any Blockchain service, whether through blockchain.com, any associated website,
+                  API,
                   or mobile application (collectively, “Services”), you agree that you have read, understood, and accept
                   all of the terms and conditions contained herein (the “User Agreement”), as well as our Privacy Policy
                   located at
-                  <a href="https://www.blockchain.com/privacy">https://www.blockchain.com/privacy</a>, and Cookie Policy, located at
+                  <a href="https://www.blockchain.com/privacy">https://www.blockchain.com/privacy</a>, and Cookie
+                  Policy, located at
                   <a href="https://www.blockchain.com/cookies.">https://www.blockchain.com/cookies</a>.
                 </p>
                 <p>
-                  THIS AGREEMENT CONTAINS AN ARBITRATION PROVISION. YOU AGREE AND UNDERSTAND THAT IF WE CANNOT RESOLVE A DISPUTE THROUGH OUR
-                  USER OPERATIONS TEAM, ALL DISPUTES ARISING UNDER THIS USER AGREEMENT SHALL BE SETTLED IN BINDING ARBITRATION.
-                  YOU ALSO AGREE AND UNDERSTAND THAT ENTERING INTO THIS AGREEMENT CONSTITUTES A WAIVER OF YOUR RIGHT TO A
+                  THIS AGREEMENT CONTAINS AN ARBITRATION PROVISION. YOU AGREE AND UNDERSTAND THAT IF WE CANNOT RESOLVE A
+                  DISPUTE THROUGH OUR
+                  USER OPERATIONS TEAM, ALL DISPUTES ARISING UNDER THIS USER AGREEMENT SHALL BE SETTLED IN BINDING
+                  ARBITRATION.
+                  YOU ALSO AGREE AND UNDERSTAND THAT ENTERING INTO THIS AGREEMENT CONSTITUTES A WAIVER OF YOUR RIGHT TO
+                  A
                   TRIAL BY JURY AND PARTICIPATION IN A CLASS ACTION LAWSUIT.
                 </p>
                 <div class="generaluse-card">
                   <h1>1. General Use</h1>
-                  <p>1.1 Eligibility. By entering into this User Agreement, you affirm that you are an individual, at least
-                    18 years of age or older, have the capacity to enter into this User Agreement and agree to be legally
-                    bound by the terms and conditions of this User Agreement, including the Cookie Policy and the Privacy
-                    Policy as incorporated herein, as amended from time to time. In order to use Services provided by Blockchain,
-                    you may be required to provide certain identifying information pursuant to our know-your-customer and
+                  <p>1.1 Eligibility. By entering into this User Agreement, you affirm that you are an individual, at
+                    least
+                    18 years of age or older, have the capacity to enter into this User Agreement and agree to be
+                    legally
+                    bound by the terms and conditions of this User Agreement, including the Cookie Policy and the
+                    Privacy
+                    Policy as incorporated herein, as amended from time to time. In order to use Services provided by
+                    Blockchain,
+                    you may be required to provide certain identifying information pursuant to our know-your-customer
+                    and
                     anti-money laundering compliance program (“Compliance Program”).</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>1.2 Modification</h1>
-                  <p>1.2.1 We may change the terms of this User Agreement at any time. Any such changes will take effect when
-                    posted on the Blockchain website, or when you use the Services. If you have supplied us with an email
+                  <p>1.2.1 We may change the terms of this User Agreement at any time. Any such changes will take effect
+                    when
+                    posted on the Blockchain website, or when you use the Services. If you have supplied us with an
+                    email
                     address, we will also attempt to notify you by email of changes to this User Agreement.</p>
-                  <p>1.2.2 It is your responsibility to update your contact information, including but not limited to the email
+                  <p>1.2.2 It is your responsibility to update your contact information, including but not limited to
+                    the email
                     address provided to us (if any); failure to do so may result in you not receiving notice of any such
                     changes to the User Agreement.</p>
-                  <p>1.2.3 Read the User Agreement carefully on each occasion you use the Services. Your continued use of the
-                    Services shall signify your acceptance to be bound by the current User Agreement. Our failure or delay
+                  <p>1.2.3 Read the User Agreement carefully on each occasion you use the Services. Your continued use
+                    of the
+                    Services shall signify your acceptance to be bound by the current User Agreement. Our failure or
+                    delay
                     in enforcing or partially enforcing any provision of this User Agreement shall not be construed as a
                     waiver of any</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>2. DEFINITIONS</h1>
                   <p>2.1 "API" means application programming interface, and is not a Service, as defined below.</p>
-                  <p>2.2 "Fork" means a change to the underlying protocol of a Virtual Currency network that results in more
+                  <p>2.2 "Fork" means a change to the underlying protocol of a Virtual Currency network that results in
+                    more
                     than one version of a Virtual Currency, the result of which may be one or more versions that are not
                     supported by Blockchain.</p>
-                  <p>2.3 "Service" means one or more features provided or operated by Blockchain via website or local application
-                    (mobile, desktop, or otherwise), including but not limited to: (a) a wallet service consisting of software
-                    that permits you to self-custody virtual currency, organize network addresses, view transaction history
+                  <p>2.3 "Service" means one or more features provided or operated by Blockchain via website or local
+                    application
+                    (mobile, desktop, or otherwise), including but not limited to: (a) a wallet service consisting of
+                    software
+                    that permits you to self-custody virtual currency, organize network addresses, view transaction
+                    history
                     and transact in virtual currencies (the “Wallet”), (b) a noncustodial conversion service that allows
-                    you to exchange or convert one virtual currency for another (“Conversion Service”); (c) third party conversion
-                    services that allow you to convert one virtual currency for another (“Third Party Conversion Service”);
+                    you to exchange or convert one virtual currency for another (“Conversion Service”); (c) third party
+                    conversion
+                    services that allow you to convert one virtual currency for another (“Third Party Conversion
+                    Service”);
                     and (d) the Airdrop Program.</p>
-                  <p>2.4 "User Account" means an account for Services associated with both (i) a Wallet and (ii) a verified
-                    identity approved in accordance with Blockchain’s Compliance Program. A Wallet is not, by itself, a User
+                  <p>2.4 "User Account" means an account for Services associated with both (i) a Wallet and (ii) a
+                    verified
+                    identity approved in accordance with Blockchain’s Compliance Program. A Wallet is not, by itself, a
+                    User
                     Account.
                   </p>
-                  <p>2.5 "Virtual Currency" means a cryptocurrency, digital currency, digital asset, cryptoasset or other such
-                    similar term describing, for example, Bitcoin or Ether but does not include a derivative of a virtual
+                  <p>2.5 "Virtual Currency" means a cryptocurrency, digital currency, digital asset, cryptoasset or
+                    other such
+                    similar term describing, for example, Bitcoin or Ether but does not include a derivative of a
+                    virtual
                     currency or a security.</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>3. APPLICABLE LAW</h1>
-                  <p>Your relationship with BluWallet and use of any of the Services may be subject to the laws, regulations,
-                    and rules of governmental or regulatory authorities in your or our jurisdiction (“Applicable Law”). By
-                    entering into this User Agreement, you agree to act in compliance with and be legally bound to any and
+                  <p>Your relationship with BluWallet and use of any of the Services may be subject to the laws,
+                    regulations,
+                    and rules of governmental or regulatory authorities in your or our jurisdiction (“Applicable Law”).
+                    By
+                    entering into this User Agreement, you agree to act in compliance with and be legally bound to any
+                    and
                     all Applicable Law.</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>4. BLUWALLET USER ACCOUNT</h1>
                   <p>4.1 Account Creation</p>
-                  <p>4.1.1 Creating your own User Account may require you to use multiple methods of authentication or verification,
-                    and depending on the specific Service provided, may require you to complete our Compliance Program.</p>
-                  <p>4.1.2 You agree and understand that you are solely responsible for managing and maintaining the security
-                    of any information relating to your login credentials and agree that BluWallet will not be held responsible
-                    (and you will not hold us responsible) for any unauthorized access to the Services or any resulting harm
+                  <p>4.1.1 Creating your own User Account may require you to use multiple methods of authentication or
+                    verification,
+                    and depending on the specific Service provided, may require you to complete our Compliance Program.
+                  </p>
+                  <p>4.1.2 You agree and understand that you are solely responsible for managing and maintaining the
+                    security
+                    of any information relating to your login credentials and agree that BluWallet will not be held
+                    responsible
+                    (and you will not hold us responsible) for any unauthorized access to the Services or any resulting
+                    harm
                     you may suffer.</p>
 
-                  <p>4.1.3 You agree that you will not permit access to your login credentials to any other party and will not
-                    hold BluWallet responsible for any actions taken by individuals unauthorized to access your User Account.</p>
-                  <p>4.2 Compliance Program. Your access to one or more BluWallet Services may be contingent upon successful
-                    completion of onboarding processes, which includes verification of your identity and source of funds,
+                  <p>4.1.3 You agree that you will not permit access to your login credentials to any other party and
+                    will not
+                    hold BluWallet responsible for any actions taken by individuals unauthorized to access your User
+                    Account.</p>
+                  <p>4.2 Compliance Program. Your access to one or more BluWallet Services may be contingent upon
+                    successful
+                    completion of onboarding processes, which includes verification of your identity and source of
+                    funds,
                     and additional information we may request from time-to-time. The information we request may include,
-                    without limitation, personally identifiable information such as name, address, telephone number, date
-                    of birth, taxpayer identification or social security number, official government-issued photo identification,
-                    and bank account information. In providing this information to us you represent that it is accurate and
+                    without limitation, personally identifiable information such as name, address, telephone number,
+                    date
+                    of birth, taxpayer identification or social security number, official government-issued photo
+                    identification,
+                    and bank account information. In providing this information to us you represent that it is accurate
+                    and
                     agree to update your User Account information promptly, but in no event later than 30 days following
-                    any change in your User Account information. Failure to provide this information or update it promptly
+                    any change in your User Account information. Failure to provide this information or update it
+                    promptly
                     may result in certain BluWallet Services being unavailable to you.</p>
                   <p>4.3 Communications.</p>
-                  <p>4.3.1 By entering into this User Agreement, you understand and agree that any and all communications from
-                    BluWallet may be provided to you via electronic mail at the address you provided when creating your User
-                    Account. You agree and acknowledge that BluWallet shall not be responsible for any harm you may suffer
-                    as a result of your failure to receive any notice provided to you in connection with this User Agreement
-                    your use of Services so long as such notice is provided to the email address associated with your User
+                  <p>4.3.1 By entering into this User Agreement, you understand and agree that any and all
+                    communications from
+                    BluWallet may be provided to you via electronic mail at the address you provided when creating your
+                    User
+                    Account. You agree and acknowledge that BluWallet shall not be responsible for any harm you may
+                    suffer
+                    as a result of your failure to receive any notice provided to you in connection with this User
+                    Agreement
+                    your use of Services so long as such notice is provided to the email address associated with your
+                    User
                     Account.
                   </p>
-                  <p>4.3.2 You further acknowledge and agree that BluWallet shall also be permitted to communicate with you
-                    through other methods including via telephone call or instant messaging or chat applications either operated
+                  <p>4.3.2 You further acknowledge and agree that BluWallet shall also be permitted to communicate with
+                    you
+                    through other methods including via telephone call or instant messaging or chat applications either
+                    operated
                     by BluWallet or a third party.</p>
                   <p>4.4 User Account Suspension or Termination.</p>
-                  <p>4.4.1 You may close your User Account at any time, at your sole discretion. Depending on the Services available
-                    to you in your User Account, you may be required to take certain actions in order to complete a pending
-                    transaction or providing additional information prior to closing such User Account. You are solely responsible
-                    for any fees already incurred or associated with the closing of your User Account, whether incurred directly
-                    by you from BluWallet, or incurred by BluWallet on your behalf with a third party in order to complete
-                    any such action. Closing your User Account may not result in the deletion of information we hold about
+                  <p>4.4.1 You may close your User Account at any time, at your sole discretion. Depending on the
+                    Services available
+                    to you in your User Account, you may be required to take certain actions in order to complete a
+                    pending
+                    transaction or providing additional information prior to closing such User Account. You are solely
+                    responsible
+                    for any fees already incurred or associated with the closing of your User Account, whether incurred
+                    directly
+                    by you from BluWallet, or incurred by BluWallet on your behalf with a third party in order to
+                    complete
+                    any such action. Closing your User Account may not result in the deletion of information we hold
+                    about
                     you.
                   </p>
-                  <p>4.4.2 You agree and understand that BluWallet reserves the right, in our sole discretion, to immediately
+                  <p>4.4.2 You agree and understand that BluWallet reserves the right, in our sole discretion, to
+                    immediately
                     suspend, freeze, or terminate your User Account or any Wallet in the event that you are suspected of
                     having violated any provision of this User Agreement, believed to be in violation of Applicable Law,
                     or are believed to be involved in activities or conduct detrimental to BluWallet.</p>
@@ -175,165 +235,254 @@
                 <div class="generaluse-card">
                   <h1>5. THE WALLET</h1>
                   <p>5.1. Description</p>
-                  <p>5.1.1 The Wallet is provided to you exclusively by BluWallet New Zealand S.A. At no point will BluWallet
+                  <p>5.1.1 The Wallet is provided to you exclusively by BluWallet New Zealand S.A. At no point will
+                    BluWallet
                     ever take custody or control over Virtual Currency stored in your Wallet. The Wallet is only capable
                     of supporting certain Virtual Currencies. Under no circumstances should you attempt to store Virtual
-                    Currencies in your Wallet that the Wallet does not support. The Wallet does not store, send, or receive
+                    Currencies in your Wallet that the Wallet does not support. The Wallet does not store, send, or
+                    receive
                     Virtual Currency.</p>
-                  <p>5.1.2 When you create a Wallet, the Wallet software generates a cryptographic private and public key pair
-                    that you may use to send and receive any supported Virtual Currency via the relevant Virtual Currency
-                    network. You are solely responsible for storing, outside of the Services, a backup of any Wallet, private
-                    key or transaction information that you maintain in your Wallet or otherwise with the Services. If you
+                  <p>5.1.2 When you create a Wallet, the Wallet software generates a cryptographic private and public
+                    key pair
+                    that you may use to send and receive any supported Virtual Currency via the relevant Virtual
+                    Currency
+                    network. You are solely responsible for storing, outside of the Services, a backup of any Wallet,
+                    private
+                    key or transaction information that you maintain in your Wallet or otherwise with the Services. If
+                    you
                     do not maintain a backup of your Wallet data outside of the Services, you will be may not be able to
                     access Virtual Currency previously accessed using your Wallet in the event that we discontinue or no
-                    longer offer some or all of the Services or may otherwise lose access to Virtual Currency. We are not
+                    longer offer some or all of the Services or may otherwise lose access to Virtual Currency. We are
+                    not
                     responsible for maintaining this data on your behalf.</p>
 
                   <p>5.2 Risk Disclosures Relating to the Wallet.</p>
-                  <p>5.2.1 In order to be completed, any Virtual Currency transaction created with the Wallet must be confirmed
-                    and recorded in the Virtual Currency ledger associated with the relevant Virtual Currency network. Such
-                    networks are decentralized, peer-to-peer networks supported by independent third parties, which are not
+                  <p>5.2.1 In order to be completed, any Virtual Currency transaction created with the Wallet must be
+                    confirmed
+                    and recorded in the Virtual Currency ledger associated with the relevant Virtual Currency network.
+                    Such
+                    networks are decentralized, peer-to-peer networks supported by independent third parties, which are
+                    not
                     owned, controlled or operated by BluWallet.</p>
-                  <p>5.2.2 BluWallet has no control over any Virtual Currency network and therefore cannot and does not ensure
-                    that any transaction details you submit via our Services will be confirmed on the relevant Virtual Currency
-                    network. You agree and understand that the transaction details you submit via our Services may not be
-                    completed, or may be substantially delayed, by the Virtual Currency network used to process the transaction.
-                    We do not guarantee that the Wallet can transfer title or right in any Virtual Currency or make any warranties
+                  <p>5.2.2 BluWallet has no control over any Virtual Currency network and therefore cannot and does not
+                    ensure
+                    that any transaction details you submit via our Services will be confirmed on the relevant Virtual
+                    Currency
+                    network. You agree and understand that the transaction details you submit via our Services may not
+                    be
+                    completed, or may be substantially delayed, by the Virtual Currency network used to process the
+                    transaction.
+                    We do not guarantee that the Wallet can transfer title or right in any Virtual Currency or make any
+                    warranties
                     whatsoever with regard to title.</p>
-                  <p>5.2.3 Once transaction details have been submitted to a Virtual Currency network, we cannot assist you
+                  <p>5.2.3 Once transaction details have been submitted to a Virtual Currency network, we cannot assist
+                    you
                     to cancel or otherwise modify your transaction or transaction details. BluWallet has no control over
-                    any Virtual Currency network and does not have the ability to facilitate any cancellation or modification
+                    any Virtual Currency network and does not have the ability to facilitate any cancellation or
+                    modification
                     requests.
                   </p>
-                  <p>5.3 Forks. In the event of a Fork, BluWallet may not be able to support activity related to your Virtual
-                    Currency. You agree and understand that, in the event of a Fork, the transactions may not be completed,
-                    completed partially, incorrectly completed, or substantially delayed. BluWallet is not responsible for
+                  <p>5.3 Forks. In the event of a Fork, BluWallet may not be able to support activity related to your
+                    Virtual
+                    Currency. You agree and understand that, in the event of a Fork, the transactions may not be
+                    completed,
+                    completed partially, incorrectly completed, or substantially delayed. BluWallet is not responsible
+                    for
                     any loss incurred by you in caused in whole or in part, directly or indirectly, by a Fork.</p>
                   <p>5.4 No Password Retrieval.</p>
-                  <p>5.4.1 With respect to the Wallet, BluWallet does not receive or store your Wallet password, nor any keys,
-                    network addresses or transaction history. We cannot assist you with Wallet password retrieval. You are
-                    solely responsible for remembering, storing and keeping secret your Wallet password. Any Virtual Currency
-                    you have associated with such Wallet may become inaccessible if you do not know or keep secret your Wallet
-                    password. Any third party with knowledge of one or more of your credentials (including, without limitation,
+                  <p>5.4.1 With respect to the Wallet, BluWallet does not receive or store your Wallet password, nor any
+                    keys,
+                    network addresses or transaction history. We cannot assist you with Wallet password retrieval. You
+                    are
+                    solely responsible for remembering, storing and keeping secret your Wallet password. Any Virtual
+                    Currency
+                    you have associated with such Wallet may become inaccessible if you do not know or keep secret your
+                    Wallet
+                    password. Any third party with knowledge of one or more of your credentials (including, without
+                    limitation,
                     a backup phrase, wallet identifier or password) can dispose of virtual currency in your wallet.
                   </p>
-                  <p>5.4.2 When you create a Wallet, you must: (a) create a strong password that you do not use for any other
-                    website or online service; (b) provide accurate and truthful information; (c) protect and keep secret
-                    all credentials for the Wallet; (d) protect access to your device and your Wallet; (e) promptly notify
-                    us if you discover or otherwise suspect any security breaches related to your Wallet; and (f) use the
-                    backup functionality provided through the Wallet and safeguard your backup files. You agree to take responsibility
-                    for all activities that occur under your Wallet and accept all risks of any authorized or unauthorized
+                  <p>5.4.2 When you create a Wallet, you must: (a) create a strong password that you do not use for any
+                    other
+                    website or online service; (b) provide accurate and truthful information; (c) protect and keep
+                    secret
+                    all credentials for the Wallet; (d) protect access to your device and your Wallet; (e) promptly
+                    notify
+                    us if you discover or otherwise suspect any security breaches related to your Wallet; and (f) use
+                    the
+                    backup functionality provided through the Wallet and safeguard your backup files. You agree to take
+                    responsibility
+                    for all activities that occur under your Wallet and accept all risks of any authorized or
+                    unauthorized
                     access to your Wallet, to the maximum extent permitted by law.</p>
-                  <p>5.5 Fees. BluWallet does not currently charge a fee for Wallet, receiving, sending or controlling Virtual
+                  <p>5.5 Fees. BluWallet does not currently charge a fee for Wallet, receiving, sending or controlling
+                    Virtual
                     Currency. However, we reserve the right to do so in the future, and in such case any applicable fees
-                    will be displayed prior to you incurring the fee. Network fees (including, without limitation “miner’s
-                    fees”) required to use a Virtual Currency network may apply to a transaction. We may attempt to calculate
-                    such a fee for you. Our calculation may not be sufficient, or it may be excessive. You may select a greater
+                    will be displayed prior to you incurring the fee. Network fees (including, without limitation
+                    “miner’s
+                    fees”) required to use a Virtual Currency network may apply to a transaction. We may attempt to
+                    calculate
+                    such a fee for you. Our calculation may not be sufficient, or it may be excessive. You may select a
+                    greater
                     or lesser fee. You are solely responsible for paying any such fee and BluWallet will neither advance
-                    nor fund such a fee on your behalf, nor be responsible for any excess or insufficient fee calculation.</p>
+                    nor fund such a fee on your behalf, nor be responsible for any excess or insufficient fee
+                    calculation.</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>6. CONVERSION SERVICE</h1>
-                  <p>6.1 Description. The Conversion Service is provided to you exclusively by BluWallet Access UK LTD. Through
-                    its Conversion Service, BluWallet will display to you a conversation rate that may include a fee, which
-                    you agree to pay. The Conversion Service works in connection with the Wallet, by which we will deliver
-                    you the requested Virtual Currency, less any applicable fees, by executing a transaction from a Virtual
+                  <p>6.1 Description. The Conversion Service is provided to you exclusively by BluWallet Access UK LTD.
+                    Through
+                    its Conversion Service, BluWallet will display to you a conversation rate that may include a fee,
+                    which
+                    you agree to pay. The Conversion Service works in connection with the Wallet, by which we will
+                    deliver
+                    you the requested Virtual Currency, less any applicable fees, by executing a transaction from a
+                    Virtual
                     Currency address we control to one associated with your Wallet.</p>
-                  <p>6.2 Due Diligence. We may, at our sole discretion and from time-to-time, require you to satisfy our Compliance
-                    Program before participating in the Conversion Service. In order to use the Conversion Service, you agree
-                    to cooperate with any such request and pay any associated fees, which may be modified or supplemented
+                  <p>6.2 Due Diligence. We may, at our sole discretion and from time-to-time, require you to satisfy our
+                    Compliance
+                    Program before participating in the Conversion Service. In order to use the Conversion Service, you
+                    agree
+                    to cooperate with any such request and pay any associated fees, which may be modified or
+                    supplemented
                     at any time.</p>
-                  <p>6.3 No Cancellation. You may not cancel, reverse or change any Conversion Service transaction. We may suspend,
-                    delay, redirect, reverse or cancel any Conversion Service transaction at any time if we suspect any risk
-                    of fraud, crime, breach of this User Agreement, or illicit activity and will not be liable for any resulting
+                  <p>6.3 No Cancellation. You may not cancel, reverse or change any Conversion Service transaction. We
+                    may suspend,
+                    delay, redirect, reverse or cancel any Conversion Service transaction at any time if we suspect any
+                    risk
+                    of fraud, crime, breach of this User Agreement, or illicit activity and will not be liable for any
+                    resulting
                     loss.
                   </p>
                 </div>
                 <div class="generaluse-card">
                   <h1>7. LOCKBOX</h1>
-                  <p>7.1 Description. We may advertise to you a BluWallet Lockbox hardware device (“Lockbox”) to be used in
-                    connection with the Wallet or other Services. A Lockbox is manufactured, offered and supported (if applicable)
-                    by third parties, not BluWallet. You have no relationship, contractual or otherwise, with BluWallet in
+                  <p>7.1 Description. We may advertise to you a BluWallet Lockbox hardware device (“Lockbox”) to be used
+                    in
+                    connection with the Wallet or other Services. A Lockbox is manufactured, offered and supported (if
+                    applicable)
+                    by third parties, not BluWallet. You have no relationship, contractual or otherwise, with BluWallet
+                    in
                     connection with your purchase of a Lockbox from such third party. We may, from time-to-time, include
-                    features permitting you to use a Lockbox in connection with the Services. We do not guarantee support
-                    for, or access to, any Lockbox as part of the Services. We will not be responsible for any damages caused
+                    features permitting you to use a Lockbox in connection with the Services. We do not guarantee
+                    support
+                    for, or access to, any Lockbox as part of the Services. We will not be responsible for any damages
+                    caused
                     in whole or in part, directly or indirectly, by a Lockbox or any use of a Lockbox, whether or not it
                     was used in connection with the Services.</p>
                   <p>7.2 No Password Retrieval.</p>
-                  <p>7.2.1 BluWallet does not receive or store passwords, keys, network addresses, transaction history, personal
+                  <p>7.2.1 BluWallet does not receive or store passwords, keys, network addresses, transaction history,
+                    personal
                     identification numbers (“PINs”) or other credentials associated with a Lockbox. We cannot assist you
-                    with Lockbox credential retrieval. You are solely responsible for remembering, storing and keeping secret
-                    any Lockbox credentials. Any Virtual Currency you have associated with a Lockbox may become inaccessible
+                    with Lockbox credential retrieval. You are solely responsible for remembering, storing and keeping
+                    secret
+                    any Lockbox credentials. Any Virtual Currency you have associated with a Lockbox may become
+                    inaccessible
                     if you do not know or keep secret your credentials. Any third party with knowledge of one or more of
-                    your credentials (including, without limitation, a backup phrase or PIN) can dispose of Virtual Currency
+                    your credentials (including, without limitation, a backup phrase or PIN) can dispose of Virtual
+                    Currency
                     in your wallet.
                   </p>
-                  <p>7.2.2 When you set up a Lockbox, you must: (a) create strong credentials (like PINs) that you do not use
-                    for any other service; (b) protect and keep secret all credentials; (c) protect access to your Lockbox;
-                    (d) promptly notify us if you discover or otherwise suspect any security breaches related to your Lockbox;
-                    and (e) use the backup functionality provided with the Lockbox, keeping all backup information secure
-                    and confidential. You agree to take responsibility for all activities that occur in connection with your
-                    Lockbox and accept all risks of any authorized or unauthorized access to your Lockbox, to the maximum
+                  <p>7.2.2 When you set up a Lockbox, you must: (a) create strong credentials (like PINs) that you do
+                    not use
+                    for any other service; (b) protect and keep secret all credentials; (c) protect access to your
+                    Lockbox;
+                    (d) promptly notify us if you discover or otherwise suspect any security breaches related to your
+                    Lockbox;
+                    and (e) use the backup functionality provided with the Lockbox, keeping all backup information
+                    secure
+                    and confidential. You agree to take responsibility for all activities that occur in connection with
+                    your
+                    Lockbox and accept all risks of any authorized or unauthorized access to your Lockbox, to the
+                    maximum
                     extent permitted by law.</p>
                   <p>7.3 Risk Disclosures Relating to the Lockbox.</p>
-                  <p>7.3.1 At no point will BluWallet ever take custody or control over any Virtual Currency stored using a
-                    Lockbox, nor will we have access to any credentials associated with your Lockbox or the ability to recover
+                  <p>7.3.1 At no point will BluWallet ever take custody or control over any Virtual Currency stored
+                    using a
+                    Lockbox, nor will we have access to any credentials associated with your Lockbox or the ability to
+                    recover
                     any Virtual Currency used in connection with a Lockbox.
                   </p>
-                  <p>7.3.2 Information relating to Virtual Currency, like balances, availability or value, may not reflect the
-                    actual balance in real-time. Just as with use of your Wallet, you agree and understand that you should
-                    independently verify all information before relying on it, and any decisions or actions taken based upon
+                  <p>7.3.2 Information relating to Virtual Currency, like balances, availability or value, may not
+                    reflect the
+                    actual balance in real-time. Just as with use of your Wallet, you agree and understand that you
+                    should
+                    independently verify all information before relying on it, and any decisions or actions taken based
+                    upon
                     such information are your sole responsibility.</p>
                   <p>7.4 Disclaimer of Warranties.</p>
-                  <p>7.4.1 Any Services offered in connection with the Lockbox are provided on an "as is" basis without any
-                    representation or warranty, whether express, implied or statutory. To the maximum extent permitted by
-                    applicable law, we specifically disclaim any implied warranties of title, merchantability, fitness for
-                    a particular purpose and/or non-infringement. We do not make any representations or warranties that use
+                  <p>7.4.1 Any Services offered in connection with the Lockbox are provided on an "as is" basis without
+                    any
+                    representation or warranty, whether express, implied or statutory. To the maximum extent permitted
+                    by
+                    applicable law, we specifically disclaim any implied warranties of title, merchantability, fitness
+                    for
+                    a particular purpose and/or non-infringement. We do not make any representations or warranties that
+                    use
                     of the Lockbox will be continuous, uninterrupted, timely, or error-free.
                   </p>
-                  <p>7.4.2 We make no warranty that any Lockbox will be free from viruses, malware, or other related harmful
-                    material and make no representation that your ability to access any Lockbox will be uninterrupted. Any
+                  <p>7.4.2 We make no warranty that any Lockbox will be free from viruses, malware, or other related
+                    harmful
+                    material and make no representation that your ability to access any Lockbox will be uninterrupted.
+                    Any
                     defects or malfunction in the product should be directed to the third party offering the Lockbox and
-                    not BluWallet. We will not be responsible or liable to you for any loss of any kind, from action taken,
+                    not BluWallet. We will not be responsible or liable to you for any loss of any kind, from action
+                    taken,
                     or taken in reliance on material, or information, contained on or through the Lockbox.
                   </p>
                 </div>
                 <div class="generaluse-card">
                   <h1>8. AIRDROP PROGRAM</h1>
-                  <p>8.1 Description. We may offer you the opportunity to receive Virtual Currency at no cost (“Airdrop”), subject
-                    to the terms described in this section. The Virtual Currency is delivered by us to you, but is manufactured,
+                  <p>8.1 Description. We may offer you the opportunity to receive Virtual Currency at no cost
+                    (“Airdrop”), subject
+                    to the terms described in this section. The Virtual Currency is delivered by us to you, but is
+                    manufactured,
                     offered and supported by the network creator or developer, if any, and not BluWallet.</p>
                   <p>8.2 Terms of Airdrop Program.</p>
-                  <p>8.2.1 No Purchase Necessary. There is no purchase necessary to receive Virtual Currency in an Airdrop.
+                  <p>8.2.1 No Purchase Necessary. There is no purchase necessary to receive Virtual Currency in an
+                    Airdrop.
                     However, you must have a User Account. Although BluWallet does not charge a fee for participation in
-                    the Airdrop Program, we reserve the right to do so in the future and shall provide notice to you in such
+                    the Airdrop Program, we reserve the right to do so in the future and shall provide notice to you in
+                    such
                     case.
                   </p>
-                  <p>8.2.2 Timing. Each Airdrop will be subject to any terms displayed in the Services and marked with an asterisk
+                  <p>8.2.2 Timing. Each Airdrop will be subject to any terms displayed in the Services and marked with
+                    an asterisk
                     (*).
                   </p>
-                  <p>8.2.3 Limited Supply. An offer to receive Virtual Currency in an Airdrop is only available to you while
-                    supplies last. Once the amount of Virtual Currency offered by BluWallet in an Airdrop is exhausted, any
-                    party who has either been placed on a waitlist, or has completed certain additional steps, but not yet
+                  <p>8.2.3 Limited Supply. An offer to receive Virtual Currency in an Airdrop is only available to you
+                    while
+                    supplies last. Once the amount of Virtual Currency offered by BluWallet in an Airdrop is exhausted,
+                    any
+                    party who has either been placed on a waitlist, or has completed certain additional steps, but not
+                    yet
                     received notice of award of Virtual Currency in such Airdrop, shall no longer be eligible to receive
                     Virtual Currency in that Airdrop. BluWallet reserves the right, in our sole discretion, to modify or
-                    suspend any Airdrop requirements at any time without notice, including the amount previously advertised
+                    suspend any Airdrop requirements at any time without notice, including the amount previously
+                    advertised
                     as available.</p>
-                  <p>8.2.4 Eligibility. You may not be eligible to receive Virtual Currency from an Airdrop in your jurisdiction.
+                  <p>8.2.4 Eligibility. You may not be eligible to receive Virtual Currency from an Airdrop in your
+                    jurisdiction.
                     In the event that you have multiple Wallets with BluWallet, you are only eligible to receive Virtual
                     Currency from an Airdrop in one Wallet and for one User Account.
                   </p>
-                  <p>8.2.5 Notice of Award. In the event you are selected to receive Virtual Currency in an Airdrop, you will
-                    be provided written notice of the pending delivery of such Virtual Currency. Eligibility may be limited
-                    as to time. We are not liable to you for failure to receive any notice associated with the Airdrop Program
-                    due to change in your contact information that was not updated by you prior to such time as the notice
+                  <p>8.2.5 Notice of Award. In the event you are selected to receive Virtual Currency in an Airdrop, you
+                    will
+                    be provided written notice of the pending delivery of such Virtual Currency. Eligibility may be
+                    limited
+                    as to time. We are not liable to you for failure to receive any notice associated with the Airdrop
+                    Program
+                    due to change in your contact information that was not updated by you prior to such time as the
+                    notice
                     was delivered by us to you.</p>
                   <p>8.3 Risk Disclosures Relating to Airdrop Program.
                   </p>
-                  <p>8.3.1 You are solely responsible for researching and understanding the Virtual Currency network subject
+                  <p>8.3.1 You are solely responsible for researching and understanding the Virtual Currency network
+                    subject
                     to the Airdrop. You may not rely on any of our representations concerning the foregoing.
                   </p>
-                  <p>8.3.2 We are not your legal or tax advisor and that you should consult your own attorney, financial advisor,
+                  <p>8.3.2 We are not your legal or tax advisor and that you should consult your own attorney, financial
+                    advisor,
                     tax advisor or accountant as to the legal, financial, tax, accounting, or other related implications
                     prior to participating in an Airdrop. We make no guarantees whatsoever as to title, functionality or
                     value of the Virtual Currency subject to the Airdrop.
@@ -341,266 +490,402 @@
                 </div>
                 <div class="generaluse-card">
                   <h1>9. GENERAL RISK FACTORS</h1>
-                  <p>9.1 You agree and understand that there are risks associated with utilizing Services involving Virtual
-                    Currencies including, but not limited to, the risk of failure of hardware, software and internet connections,
+                  <p>9.1 You agree and understand that there are risks associated with utilizing Services involving
+                    Virtual
+                    Currencies including, but not limited to, the risk of failure of hardware, software and internet
+                    connections,
                     the risk of malicious software introduction, and the risk that third parties may obtain unauthorized
-                    access to information stored within your Wallet, including, but not limited to your public and private
-                    keys. You agree and understand that BluWallet will not be responsible for any communication failures,
-                    disruptions, errors, distortions or delays you may experience when using the Services, however caused.</p>
-                  <p>9.2 You accept and acknowledge that there are risks associated with utilizing any virtual currency network,
-                    including, but not limited to, the risk of unknown vulnerabilities in or unanticipated changes to the
-                    network protocol. You acknowledge and accept that BluWallet has no control over any cryptocurrency network
-                    and will not be responsible for any harm occurring as a result of such risks, including, but not limited
-                    to, the inability to reverse a transaction, and any losses in connection therewith due to erroneous or
+                    access to information stored within your Wallet, including, but not limited to your public and
+                    private
+                    keys. You agree and understand that BluWallet will not be responsible for any communication
+                    failures,
+                    disruptions, errors, distortions or delays you may experience when using the Services, however
+                    caused.</p>
+                  <p>9.2 You accept and acknowledge that there are risks associated with utilizing any virtual currency
+                    network,
+                    including, but not limited to, the risk of unknown vulnerabilities in or unanticipated changes to
+                    the
+                    network protocol. You acknowledge and accept that BluWallet has no control over any cryptocurrency
+                    network
+                    and will not be responsible for any harm occurring as a result of such risks, including, but not
+                    limited
+                    to, the inability to reverse a transaction, and any losses in connection therewith due to erroneous
+                    or
                     fraudulent actions.
                   </p>
-                  <p>9.3 The risk of loss in using Services involving Virtual Currencies may be substantial and losses may occur
-                    over a short period of time. In addition, price and liquidity are subject to significant fluctuations
+                  <p>9.3 The risk of loss in using Services involving Virtual Currencies may be substantial and losses
+                    may occur
+                    over a short period of time. In addition, price and liquidity are subject to significant
+                    fluctuations
                     that may be unpredictable.
                   </p>
-                  <p>9.4 Virtual Currencies are not legal tender and are not backed by any sovereign government. In addition,
-                    the legislative and regulatory landscape around Virtual Currencies is constantly changing and may affect
+                  <p>9.4 Virtual Currencies are not legal tender and are not backed by any sovereign government. In
+                    addition,
+                    the legislative and regulatory landscape around Virtual Currencies is constantly changing and may
+                    affect
                     your ability to use, transfer, or exchange Virtual Currencies.</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>10. GENERAL PROVISIONS</h1>
                   <p>10.1 Intellectual Property.</p>
-                  <p>10.1.1 Unless otherwise indicated by us, all intellectual property rights and any content provided in connection
-                    with our Services, are the property of BluWallet or our licensors or suppliers and are protected by applicable
-                    intellectual property laws. We do not give any implied license for the use of the contents of the Services.
+                  <p>10.1.1 Unless otherwise indicated by us, all intellectual property rights and any content provided
+                    in connection
+                    with our Services, are the property of BluWallet or our licensors or suppliers and are protected by
+                    applicable
+                    intellectual property laws. We do not give any implied license for the use of the contents of the
+                    Services.
                   </p>
-                  <p>10.1.2 You accept and acknowledge that the material and content contained through our Services is made
+                  <p>10.1.2 You accept and acknowledge that the material and content contained through our Services is
+                    made
                     available for your personal, lawful, non-commercial use only and that you may only use such material
                     and content for the purpose of using the Services.
                   </p>
-                  <p>10.1.3 You further acknowledge that any other use of content from the Services is strictly prohibited and
-                    you agree not to infringe or enable others to infringe our intellectual property rights. You agree to
-                    retain all copyrighted and other proprietary notices contained in the material provided via our Services
-                    on any copy you make of the material but failing to do so shall not prejudice BluWallet’s intellectual
+                  <p>10.1.3 You further acknowledge that any other use of content from the Services is strictly
+                    prohibited and
+                    you agree not to infringe or enable others to infringe our intellectual property rights. You agree
+                    to
+                    retain all copyrighted and other proprietary notices contained in the material provided via our
+                    Services
+                    on any copy you make of the material but failing to do so shall not prejudice BluWallet’s
+                    intellectual
                     property rights therein.</p>
-                  <p>10.1.4 You may not sell or modify materials derived or created from our Services or reproduce, display,
-                    publicly perform, distribute or otherwise use the materials in any way for any public or commercial purpose.
-                    Your use of the materials on any other website or on a file-sharing or similar service for any purpose
-                    is strictly prohibited. You may not copy any material or content derived or created from our Services
+                  <p>10.1.4 You may not sell or modify materials derived or created from our Services or reproduce,
+                    display,
+                    publicly perform, distribute or otherwise use the materials in any way for any public or commercial
+                    purpose.
+                    Your use of the materials on any other website or on a file-sharing or similar service for any
+                    purpose
+                    is strictly prohibited. You may not copy any material or content derived or created from our
+                    Services
                     without our express, written permission.</p>
-                  <p>10.1.5 Any rights not expressly granted herein to use the materials contained on or through our Services
+                  <p>10.1.5 Any rights not expressly granted herein to use the materials contained on or through our
+                    Services
                     are reserved by BluWallet in full.
                   </p>
                   <p>10.2 Accuracy of Information.
                   </p>
-                  <p>10.2.1 We will use reasonable efforts to verify the accuracy of any information displayed, supplied, passing
-                    through or originating from the Services, but such information may not always be accurate or current.
+                  <p>10.2.1 We will use reasonable efforts to verify the accuracy of any information displayed,
+                    supplied, passing
+                    through or originating from the Services, but such information may not always be accurate or
+                    current.
                     Accordingly, you should independently verify all information before relying on it, and any decisions
                     or actions taken based upon such information are your sole responsibility.</p>
-                  <p>10.2.2 You agree and understand that we make no representation or warranty of any kind, express or implied,
-                    statutory or otherwise, regarding the contents of the Services, information and functions made accessible
-                    through the Services, any hyperlinks to third party websites, or the security associated with the transmission
+                  <p>10.2.2 You agree and understand that we make no representation or warranty of any kind, express or
+                    implied,
+                    statutory or otherwise, regarding the contents of the Services, information and functions made
+                    accessible
+                    through the Services, any hyperlinks to third party websites, or the security associated with the
+                    transmission
                     of information through the Services, or any website linked to the Services.</p>
                   <p>10.3 Third Party Services and Content.
                   </p>
-                  <p>10.3.1 In using the Services, you may view content or services provided by third parties, including links
-                    to web pages and services of such parties (“Third Party Content”). We do not control, endorse or adopt
-                    any Third Party Content and have no responsibility for Third Party Content including, without limitation,
-                    material that may be misleading, incomplete, erroneous, offensive, indecent or otherwise objectionable
-                    in your jurisdiction. In addition, your dealings or correspondence with such third parties are solely
+                  <p>10.3.1 In using the Services, you may view content or services provided by third parties, including
+                    links
+                    to web pages and services of such parties (“Third Party Content”). We do not control, endorse or
+                    adopt
+                    any Third Party Content and have no responsibility for Third Party Content including, without
+                    limitation,
+                    material that may be misleading, incomplete, erroneous, offensive, indecent or otherwise
+                    objectionable
+                    in your jurisdiction. In addition, your dealings or correspondence with such third parties are
+                    solely
                     between you and the third party.
                   </p>
-                  <p>10.3.2 You agree and understand that we are not responsible or liable for any loss or damage of any sort
-                    incurred as a result of any such dealings and your use of Third Party Content is at your own risk.</p>
-                  <p>10.4 Cooperation with Law Enforcement. BluWallet may, from time-to-time, respond to requests from law enforcement,
-                    regulators and policymakers by producing certain information about or relating to your use of the Services.</p>
-                  <p>10.5 Recordkeeping. You agree and understand that, depending on the Services used by you, BluWallet reserves
-                    the right, in our sole discretion, to create and maintain certain records of your activity and communications
+                  <p>10.3.2 You agree and understand that we are not responsible or liable for any loss or damage of any
+                    sort
+                    incurred as a result of any such dealings and your use of Third Party Content is at your own risk.
+                  </p>
+                  <p>10.4 Cooperation with Law Enforcement. BluWallet may, from time-to-time, respond to requests from
+                    law enforcement,
+                    regulators and policymakers by producing certain information about or relating to your use of the
+                    Services.</p>
+                  <p>10.5 Recordkeeping. You agree and understand that, depending on the Services used by you, BluWallet
+                    reserves
+                    the right, in our sole discretion, to create and maintain certain records of your activity and
+                    communications
                     relating to your User Account.
                   </p>
                 </div>
                 <div class="generaluse-card">
                   <h1>11. FEEDBACK, COMPLAINTS, AND DISPUTE RESOLUTION</h1>
                   <p>11.1 Feedback.</p>
-                  <p>11.1.1 BluWallet strives to improve its Services to address feedback. If you have ideas or suggestions
-                    regarding improvements or additions to the Services, we would like to hear them; however, any submission
+                  <p>11.1.1 BluWallet strives to improve its Services to address feedback. If you have ideas or
+                    suggestions
+                    regarding improvements or additions to the Services, we would like to hear them; however, any
+                    submission
                     will be subject to this User Agreement.
                   </p>
-                  <p>11.1.2 Under no circumstances will disclosure of any idea or feedback, or any related material to BluWallet
+                  <p>11.1.2 Under no circumstances will disclosure of any idea or feedback, or any related material to
+                    BluWallet
                     be subject to any obligation of confidentiality or expectation of compensation.
                   </p>
-                  <p>11.1.3 By submitting an idea or feedback or any related material that would be subject to intellectual
-                    property rights (the “Work”) to BluWallet, you grant to BluWallet, with respect to the Work submitted,
+                  <p>11.1.3 By submitting an idea or feedback or any related material that would be subject to
+                    intellectual
+                    property rights (the “Work”) to BluWallet, you grant to BluWallet, with respect to the Work
+                    submitted,
                     a non-exclusive, perpetual, global, royalty-free license to use all of the content of such ideas and
                     feedback, for any purpose whatsoever.</p>
-                  <p>11.1.4 Furthermore, by submitting any such idea or feedback, you are waiving any moral rights to the fullest
-                    extent permitted under law that you may have in the Work and are representing and warranting to BluWallet
-                    that the Work originated with you, no one else has any rights in the Work, and that BluWallet is free
-                    of any royalty to implement the Work and to use the related material if so desired, as provided or modified
+                  <p>11.1.4 Furthermore, by submitting any such idea or feedback, you are waiving any moral rights to
+                    the fullest
+                    extent permitted under law that you may have in the Work and are representing and warranting to
+                    BluWallet
+                    that the Work originated with you, no one else has any rights in the Work, and that BluWallet is
+                    free
+                    of any royalty to implement the Work and to use the related material if so desired, as provided or
+                    modified
                     by BluWallet, without obtaining permission or license from any third party.</p>
-                  <p>11.1.5 You further accept that BluWallet may sub-license in any way all Work and material you have submitted
+                  <p>11.1.5 You further accept that BluWallet may sub-license in any way all Work and material you have
+                    submitted
                     to BluWallet.
                   </p>
                   <p>11.2 Technical Support and Dispute Resolution
                   </p>
-                  <p>11.2.1 Technical Support. We will use commercially-reasonable efforts to supply email-based technical support
+                  <p>11.2.1 Technical Support. We will use commercially-reasonable efforts to supply email-based
+                    technical support
                     services, but cannot guarantee immediate responses, especially during times of high volume.</p>
-                  <p>11.2.2 Disputes. You agree and understand that any dispute arising under this User Agreement shall be settled
+                  <p>11.2.2 Disputes. You agree and understand that any dispute arising under this User Agreement shall
+                    be settled
                     in binding arbitration, in accordance with the American Arbitration Association’s rules.</p>
-                  <p>11.2.2.1 Arbitration. The arbitration will be conducted by a single, neutral arbitrator and shall take
-                    place in the county in which you reside, or another mutually agreeable location, in the English language.
-                    The arbitrator may award any relief that a court of competent jurisdiction could award, including attorneys'
-                    fees when authorized by law, and the arbitration decision may be enforced in any court. You agree that
+                  <p>11.2.2.1 Arbitration. The arbitration will be conducted by a single, neutral arbitrator and shall
+                    take
+                    place in the county in which you reside, or another mutually agreeable location, in the English
+                    language.
+                    The arbitrator may award any relief that a court of competent jurisdiction could award, including
+                    attorneys'
+                    fees when authorized by law, and the arbitration decision may be enforced in any court. You agree
+                    that
                     the arbitrator shall have the authority to order relief, and you agree to abide by all decisions and
                     awards rendered in such a proceeding, which shall be final and conclusive. At your request, hearings
-                    may be conducted in person or by telephone and the arbitrator may provide for submitting and determining
-                    motions on briefs, without oral hearings. The prevailing party in any action or proceeding to enforce
+                    may be conducted in person or by telephone and the arbitrator may provide for submitting and
+                    determining
+                    motions on briefs, without oral hearings. The prevailing party in any action or proceeding to
+                    enforce
                     this agreement shall be entitled to reasonable costs and attorneys' fees.
                   </p>
-                  <p>11.2.2.2 If the arbitrator(s) or administrator imposes filing fees or other administrative costs on you,
-                    we will reimburse you, upon request, to the extent such fees or costs would exceed those that you would
-                    otherwise have to pay if you were proceeding instead in a court. If a court decides that any provision
-                    of this section concerning Arbitration is invalid or unenforceable, that provision shall be severed and
-                    resolved in accordance with New Zealand law exclusively and the other parts of this section concerning
+                  <p>11.2.2.2 If the arbitrator(s) or administrator imposes filing fees or other administrative costs on
+                    you,
+                    we will reimburse you, upon request, to the extent such fees or costs would exceed those that you
+                    would
+                    otherwise have to pay if you were proceeding instead in a court. If a court decides that any
+                    provision
+                    of this section concerning Arbitration is invalid or unenforceable, that provision shall be severed
+                    and
+                    resolved in accordance with New Zealand law exclusively and the other parts of this section
+                    concerning
                     Arbitration shall still apply. In no case shall the remainder of this User Agreement be affected. If
-                    the invalidity or unenforceability of a provision causes a dispute to proceed in a court instead of arbitration,
+                    the invalidity or unenforceability of a provision causes a dispute to proceed in a court instead of
+                    arbitration,
                     the Parties agree that such court must be located in New Zealand, applying New Zealand law.
                   </p>
-                  <p>11.2.3 No Trial by Jury. You agree and understand that by entering into this User Agreement, you expressly
+                  <p>11.2.3 No Trial by Jury. You agree and understand that by entering into this User Agreement, you
+                    expressly
                     waive your right to a trial by jury and right to participate in a class action lawsuit.
                   </p>
                 </div>
                 <div class="generaluse-card">
                   <h1>12. REPRESENTATIONS AND WARRANTIES, INDEMNIFICATION, AND LIMITATION OF LIABILITY</h1>
-                  <p>12.1 Acceptable Use of BluWallet Services. When accessing or using the Services, you agree that you are
-                    solely responsible for your conduct while accessing and using our Services. Without limiting the generality
+                  <p>12.1 Acceptable Use of BluWallet Services. When accessing or using the Services, you agree that you
+                    are
+                    solely responsible for your conduct while accessing and using our Services. Without limiting the
+                    generality
                     of the foregoing, you agree that you will not:</p>
                   <ul>
                     <li>
-                      (a) Use the Services in any manner that could interfere with, disrupt, negatively affect or inhibit other users from fully
-                      enjoying the Services, or that could damage, disable, overburden or impair the functioning of our Services
+                      (a) Use the Services in any manner that could interfere with, disrupt, negatively affect or
+                      inhibit other users from fully
+                      enjoying the Services, or that could damage, disable, overburden or impair the functioning of our
+                      Services
                       in any manner;
                     </li>
                     <li>
-                      (b) Use the Services to pay for, support or otherwise engage in any illegal activities, including, but not limited to illegal
+                      (b) Use the Services to pay for, support or otherwise engage in any illegal activities, including,
+                      but not limited to illegal
                       gambling, fraud, money laundering, or terrorist activities;
                     </li>
                     <li>
-                      (c) Use any robot, spider, crawler, scraper or other automated means or interface not provided by us to access our Services
+                      (c) Use any robot, spider, crawler, scraper or other automated means or interface not provided by
+                      us to access our Services
                       or to extract data;
                     </li>
                     <li>
                       (d) Use or attempt to use another user’s Wallet or credentials without authorization;
                     </li>
                     <li>
-                      (e) Attempt to circumvent any content filtering techniques we employ, or attempt to access any service or area of our Services
+                      (e) Attempt to circumvent any content filtering techniques we employ, or attempt to access any
+                      service or area of our Services
                       that you are not authorized to access;
                     </li>
                     <li>
                       (f) Introduce to the Services any virus, Trojan, worms,logic bombs or other harmful material;
                     </li>
                     <li>
-                      (g) Develop any third-party applications that interact with our Services without our prior written consent;
+                      (g) Develop any third-party applications that interact with our Services without our prior written
+                      consent;
                     </li>
                     <li>
                       (h) Provide false, inaccurate, or misleading information; or
                     </li>
                     <li>
-                      (i) Encourage or induce any other person to engage in any of the activities prohibited under this Section.
+                      (i) Encourage or induce any other person to engage in any of the activities prohibited under this
+                      Section.
                     </li>
                   </ul>
                 </div>
                 <div class="generaluse-card">
                   <h1>12.2 Disclaimer of Warranties.</h1>
-                  <p>12.2.1 THE BLUWALLET SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT ANY REPRESENTATION
-                    OR WARRANTY, WHETHER EXPRESS, IMPLIED OR STATUTORY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
-                    WE SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
-                    AND/OR NON-INFRINGEMENT. WE DO NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT ACCESS TO THE SERVICES
+                  <p>12.2.1 THE BLUWALLET SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT ANY
+                    REPRESENTATION
+                    OR WARRANTY, WHETHER EXPRESS, IMPLIED OR STATUTORY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE
+                    LAW,
+                    WE SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+                    PURPOSE
+                    AND/OR NON-INFRINGEMENT. WE DO NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT ACCESS TO THE
+                    SERVICES
                     WILL BE CONTINUOUS, UNINTERRUPTED, TIMELY, OR ERROR-FREE.</p>
-                  <p>12.2.2 We make no warranty that Services are free of viruses or errors, that its content is accurate, that
+                  <p>12.2.2 We make no warranty that Services are free of viruses or errors, that its content is
+                    accurate, that
                     it will be uninterrupted, or that defects will be corrected. We will not be responsible or liable to
-                    you for any loss of any kind, from action taken, or taken in reliance on material, or information, contained
+                    you for any loss of any kind, from action taken, or taken in reliance on material, or information,
+                    contained
                     on or through our Services.
                   </p>
                   <p>12.3 Limitation of Liability.
                   </p>
-                  <p>12.3.1 IN NO EVENT SHALL BLUWALLET, ITS AFFILIATES AND SERVICE PROVIDERS, OR ANY OF THEIR RESPECTIVE OFFICERS,
-                    DIRECTORS, AGENTS, EMPLOYEES OR REPRESENTATIVES, BE LIABLE FOR: (A) ANY AMOUNT GREATER THAN THE VALUE
-                    OF THE VIRTUAL CURRENCY ACTUALLY DELIVERED TO US BY YOU OR BY YOU TO US IN CONNECTION WITH A SUPPORTED
-                    CONVERSION SERVICE TRANSACTION COMPLETED ON ITS DISPLAYED TERMS OVER THE LAST SIX MONTHS, VALUED AT THE
-                    TIME OF THE TRANSACTION; OR (B) FOR ANY LOST PROFITS OR ANY SPECIAL, INCIDENTAL, INDIRECT, INTANGIBLE,
-                    OR CONSEQUENTIAL DAMAGES, WHETHER BASED IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE,
-                    ARISING OUT OF OR IN CONNECTION WITH AUTHORIZED OR UNAUTHORIZED USE OF THE SERVICES, OR THIS AGREEMENT,
+                  <p>12.3.1 IN NO EVENT SHALL BLUWALLET, ITS AFFILIATES AND SERVICE PROVIDERS, OR ANY OF THEIR
+                    RESPECTIVE OFFICERS,
+                    DIRECTORS, AGENTS, EMPLOYEES OR REPRESENTATIVES, BE LIABLE FOR: (A) ANY AMOUNT GREATER THAN THE
+                    VALUE
+                    OF THE VIRTUAL CURRENCY ACTUALLY DELIVERED TO US BY YOU OR BY YOU TO US IN CONNECTION WITH A
+                    SUPPORTED
+                    CONVERSION SERVICE TRANSACTION COMPLETED ON ITS DISPLAYED TERMS OVER THE LAST SIX MONTHS, VALUED AT
+                    THE
+                    TIME OF THE TRANSACTION; OR (B) FOR ANY LOST PROFITS OR ANY SPECIAL, INCIDENTAL, INDIRECT,
+                    INTANGIBLE,
+                    OR CONSEQUENTIAL DAMAGES, WHETHER BASED IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR
+                    OTHERWISE,
+                    ARISING OUT OF OR IN CONNECTION WITH AUTHORIZED OR UNAUTHORIZED USE OF THE SERVICES, OR THIS
+                    AGREEMENT,
                     EVEN IF AN AUTHORIZED REPRESENTATIVE OF BLUWALLET HAS BEEN ADVISED OF, KNEW OF, OR SHOULD HAVE KNOWN
-                    OF THE POSSIBILITY OF SUCH DAMAGES. FOR EXAMPLE (AND WITHOUT LIMITING THE SCOPE OF THE PRECEDING SENTENCE),
-                    YOU MAY NOT RECOVER FOR LOST PROFITS, LOST BUSINESS OPPORTUNITIES, OR OTHER TYPES OF SPECIAL, INCIDENTAL,
-                    INDIRECT, INTANGIBLE, OR CONSEQUENTIAL DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION
+                    OF THE POSSIBILITY OF SUCH DAMAGES. FOR EXAMPLE (AND WITHOUT LIMITING THE SCOPE OF THE PRECEDING
+                    SENTENCE),
+                    YOU MAY NOT RECOVER FOR LOST PROFITS, LOST BUSINESS OPPORTUNITIES, OR OTHER TYPES OF SPECIAL,
+                    INCIDENTAL,
+                    INDIRECT, INTANGIBLE, OR CONSEQUENTIAL DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR
+                    LIMITATION
                     OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.</p>
-                  <p>12.3.2 UNDER NO CIRCUMSTANCES WILL WE BE REQUIRED TO DELIVER TO YOU ANY VIRTUAL CURRENCY AS DAMAGES, SPECIFIC
-                    PERFORMANCE OR ANY OTHER REMEDY. IF YOU WOULD BASE YOUR CALCULATIONS OF DAMAGES IN ANY WAY ON THE VALUE
-                    OF VIRTUAL CURRENCY, YOU AND WE AGREE THAT THE CALCULATION WILL BE BASED ON THE LOWEST VALUE OF THE VIRTUAL
+                  <p>12.3.2 UNDER NO CIRCUMSTANCES WILL WE BE REQUIRED TO DELIVER TO YOU ANY VIRTUAL CURRENCY AS
+                    DAMAGES, SPECIFIC
+                    PERFORMANCE OR ANY OTHER REMEDY. IF YOU WOULD BASE YOUR CALCULATIONS OF DAMAGES IN ANY WAY ON THE
+                    VALUE
+                    OF VIRTUAL CURRENCY, YOU AND WE AGREE THAT THE CALCULATION WILL BE BASED ON THE LOWEST VALUE OF THE
+                    VIRTUAL
                     CURRENCY DURING THE PERIOD BETWEEN THE ACCRUAL OF THE CLAIM AND THE AWARD OF DAMAGES.</p>
-                  <p>12.3.3 We will not be responsible or liable to you for any loss and take no responsibility for damages
+                  <p>12.3.3 We will not be responsible or liable to you for any loss and take no responsibility for
+                    damages
                     or claims arising in whole or in part, directly or indirectly from: (a) user error such as forgotten
-                    passwords, incorrectly constructed transactions, or mistyped Virtual Currency addresses; (b) server failure
-                    or data loss; (c) corrupted or otherwise non-performing Wallets or Wallet files; (d) unauthorized access
-                    to applications; (e) any unauthorized activities, including without limitation the use of hacking, viruses,
+                    passwords, incorrectly constructed transactions, or mistyped Virtual Currency addresses; (b) server
+                    failure
+                    or data loss; (c) corrupted or otherwise non-performing Wallets or Wallet files; (d) unauthorized
+                    access
+                    to applications; (e) any unauthorized activities, including without limitation the use of hacking,
+                    viruses,
                     phishing, brute forcing or other means of attack against the Services.
                   </p>
                   <p>12.4 Indemnification.
                   </p>
-                  <p>12.4.1 You agree to indemnify and hold harmless BluWallet, its affiliates, subsidiaries, directors, managers,
-                    members, officers, and employees from any and all claims, demands, actions, damages, losses, costs or
+                  <p>12.4.1 You agree to indemnify and hold harmless BluWallet, its affiliates, subsidiaries, directors,
+                    managers,
+                    members, officers, and employees from any and all claims, demands, actions, damages, losses, costs
+                    or
                     expenses, including without limitation, reasonable legal fees, arising out of or relating to your or
-                    any other person’s use of your credentials or User Account in connection with: (a) use of the Services;
-                    (b) breach of this User Agreement or any other policy; (c) feedback or submissions you provide; or (d)
-                    violation of any rights of any other person or entity; provided however, that you shall not indemnify
-                    BluWallet for claims or losses arising out of BluWallet’s gross negligence or willful misconduct. This
-                    indemnity shall apply to your successors and assigns and will survive any termination or cancellation
+                    any other person’s use of your credentials or User Account in connection with: (a) use of the
+                    Services;
+                    (b) breach of this User Agreement or any other policy; (c) feedback or submissions you provide; or
+                    (d)
+                    violation of any rights of any other person or entity; provided however, that you shall not
+                    indemnify
+                    BluWallet for claims or losses arising out of BluWallet’s gross negligence or willful misconduct.
+                    This
+                    indemnity shall apply to your successors and assigns and will survive any termination or
+                    cancellation
                     of this User Agreement.</p>
-                  <p>12.4.2 Any and all of our indemnities, warranties, and limitations of liability (whether express or implied)
-                    are hereby excluded to the fullest extent permitted under law except as set forth herein. We will not
-                    be liable, in contract, or tort (including, without limitation, negligence), other than where we have
-                    been fraudulent or made knowing misrepresentations. Nothing in this User Agreement excludes or limits
+                  <p>12.4.2 Any and all of our indemnities, warranties, and limitations of liability (whether express or
+                    implied)
+                    are hereby excluded to the fullest extent permitted under law except as set forth herein. We will
+                    not
+                    be liable, in contract, or tort (including, without limitation, negligence), other than where we
+                    have
+                    been fraudulent or made knowing misrepresentations. Nothing in this User Agreement excludes or
+                    limits
                     liability which may not be limited or excluded under law.</p>
                 </div>
                 <div class="generaluse-card">
                   <h1>13. MISCELLANEOUS</h1>
-                  <p>13.1 Force Majeure. If by reason in whole or in part of any Force Majeure Event, either you or BluWallet
-                    is delayed or prevented from complying with this User Agreement, then such delay or non-compliance shall
+                  <p>13.1 Force Majeure. If by reason in whole or in part of any Force Majeure Event, either you or
+                    BluWallet
+                    is delayed or prevented from complying with this User Agreement, then such delay or non-compliance
+                    shall
                     not be deemed to be a breach of this User Agreement and no loss or damage shall be claimed by you or
-                    BluWallet by reason thereof. “Force Majeure Event” means any event beyond BluWallet’s reasonable control,
-                    including, but not limited to, flood, extraordinary weather conditions, earthquake, or other act of God,
-                    fire, war, insurrection, riot, labor dispute, accident, action of government, communications, power failure,
-                    or equipment or software malfunction including network splits or “forks” or unexpected changes in a computer
+                    BluWallet by reason thereof. “Force Majeure Event” means any event beyond BluWallet’s reasonable
+                    control,
+                    including, but not limited to, flood, extraordinary weather conditions, earthquake, or other act of
+                    God,
+                    fire, war, insurrection, riot, labor dispute, accident, action of government, communications, power
+                    failure,
+                    or equipment or software malfunction including network splits or “forks” or unexpected changes in a
+                    computer
                     network upon which the Services rely.</p>
-                  <p>13.2 Taxes. It is your responsibility to determine what, if any, taxes apply due to your use of BluWallet
-                    Services, and it is your responsibility to report and remit the correct tax to the appropriate tax authority.
-                    You agree that BluWallet is not responsible for determining whether taxes apply to your Virtual Currency
-                    transactions or for collecting, reporting, withholding or remitting any taxes arising from any virtual
+                  <p>13.2 Taxes. It is your responsibility to determine what, if any, taxes apply due to your use of
+                    BluWallet
+                    Services, and it is your responsibility to report and remit the correct tax to the appropriate tax
+                    authority.
+                    You agree that BluWallet is not responsible for determining whether taxes apply to your Virtual
+                    Currency
+                    transactions or for collecting, reporting, withholding or remitting any taxes arising from any
+                    virtual
                     currency transactions.
                   </p>
-                  <p>13.3 Governing Law. This User Agreement shall be governed by and construed in accordance with New Zealand
-                    Law, without regard to principles of conflict of laws. Nothing in this User Agreement shall be deemed
+                  <p>13.3 Governing Law. This User Agreement shall be governed by and construed in accordance with New
+                    Zealand
+                    Law, without regard to principles of conflict of laws. Nothing in this User Agreement shall be
+                    deemed
                     to affect your statutory rights under New Zealand law.
                   </p>
-                  <p>13.4 Severability. If any part of this User Agreement is held to be invalid or unenforceable in whole or
-                    in part, the validity or enforceability of the other sections of this User Agreement shall not be affected.
-                    Any headings contained in this User Agreement are for informational purposes only and are not enforceable
+                  <p>13.4 Severability. If any part of this User Agreement is held to be invalid or unenforceable in
+                    whole or
+                    in part, the validity or enforceability of the other sections of this User Agreement shall not be
+                    affected.
+                    Any headings contained in this User Agreement are for informational purposes only and are not
+                    enforceable
                     provisions of this User Agreement.</p>
-                  <p>13.5 Assignment. This User Agreement shall be binding on your successors, heirs, personal representatives,
-                    and assigns. You may not assign or transfer any of your rights or obligations under this User Agreement
+                  <p>13.5 Assignment. This User Agreement shall be binding on your successors, heirs, personal
+                    representatives,
+                    and assigns. You may not assign or transfer any of your rights or obligations under this User
+                    Agreement
                     without prior written consent of BluWallet, which may be withheld in BluWallet’s sole discretion. We
-                    may assign rights or delegate duties under this User Agreement to an affiliate or subsidiary in our sole
+                    may assign rights or delegate duties under this User Agreement to an affiliate or subsidiary in our
+                    sole
                     discretion.
                   </p>
-                  <p>13.6 Relationship of the Parties. Nothing in this User Agreement is intended to, nor shall create any partnership,
+                  <p>13.6 Relationship of the Parties. Nothing in this User Agreement is intended to, nor shall create
+                    any partnership,
                     joint venture, agency, consultancy or trusteeship. You and BluWallet are independent contractors for
                     purposes of this User Agreement.
                   </p>
-                  <p>13.7 Entire Agreement. This User Agreement constitutes the entire agreement among the Parties with respect
-                    to the subject matter described herein and shall supersede all prior agreements and understandings, written
-                    or oral, among the Parties. Subsequent discussions or negotiations between you and BluWallet will only
-                    become part of this User Agreement by way of a written amendment specifically referencing the date and
+                  <p>13.7 Entire Agreement. This User Agreement constitutes the entire agreement among the Parties with
+                    respect
+                    to the subject matter described herein and shall supersede all prior agreements and understandings,
+                    written
+                    or oral, among the Parties. Subsequent discussions or negotiations between you and BluWallet will
+                    only
+                    become part of this User Agreement by way of a written amendment specifically referencing the date
+                    and
                     name of this User Agreement.
                   </p>
-                  <p>13.8 Contact Information. For any purpose other than technical support requests, you may contact us by
-                    registered post or courier: BluWallet New Zealand S.A.; 4eme etage a L-2340; New Zealand 1, rue Philippe
+                  <p>13.8 Contact Information. For any purpose other than technical support requests, you may contact us
+                    by
+                    registered post or courier: BluWallet New Zealand S.A.; 4eme etage a L-2340; New Zealand 1, rue
+                    Philippe
                     II. For technical support requests only, you may submit a request via our Support tool at:
                     <a href="https://support.BluWallet.app">https://support.BluWallet.app.</a>
                     Email requests may also be sent to
@@ -621,20 +906,30 @@
                 <span>Last Updated: November 28, 2018</span>
               </div>
               <div class="agreement-content">
-                <p>Privacy is of utmost importance at the BluWallet group of companies (“BluWallet”). We recognize the significance
-                  of protecting information which is stored on our computers or is intended to be stored on our computers
-                  and which relates to an individual. The data we protect are the “Personal Data” which is any information
-                  relating to an identified or identifiable natural person, sometimes called a data subject, and have made
-                  protecting privacy and the confidentiality of Personal Data a fundamental component of the way we do business.
-                  This Privacy Policy informs you of the ways we work to ensure privacy and the confidentiality of Personal
+                <p>Privacy is of utmost importance at the BluWallet group of companies (“BluWallet”). We recognize the
+                  significance
+                  of protecting information which is stored on our computers or is intended to be stored on our
+                  computers
+                  and which relates to an individual. The data we protect are the “Personal Data” which is any
+                  information
+                  relating to an identified or identifiable natural person, sometimes called a data subject, and have
+                  made
+                  protecting privacy and the confidentiality of Personal Data a fundamental component of the way we do
+                  business.
+                  This Privacy Policy informs you of the ways we work to ensure privacy and the confidentiality of
+                  Personal
                   Data.
                 </p>
-                <p>This policy describes the information we gather, how we use those Personal Data and the circumstances under
+                <p>This policy describes the information we gather, how we use those Personal Data and the circumstances
+                  under
                   which we disclose such information to third parties.</p>
-                <p>In this Policy “Services” means the web site, any feature provided by us via that website or any local application
-                  (mobile desktop or otherwise), including without limitation wallet services or BluWallet information services,
+                <p>In this Policy “Services” means the web site, any feature provided by us via that website or any
+                  local application
+                  (mobile desktop or otherwise), including without limitation wallet services or BluWallet information
+                  services,
                   but excluding API services, which are governed by a separate agreement.</p>
-                <p>If you do not agree with this Privacy Policy in general or any part of it, you should not use the Services.</p>
+                <p>If you do not agree with this Privacy Policy in general or any part of it, you should not use the
+                  Services.</p>
               </div>
               <div class="privacy-content">
                 <h2>Contents</h2>
@@ -672,44 +967,65 @@
                   <p>When you access or use the Services, we collect the following information:</p>
                   <div class="info-collecting-data">
                     <h4>Information you may provide to us:</h4>
-                    <p>You may give us information about you by filling in forms on our website or through our app or by corresponding
-                      with us by phone, email or otherwise. This includes information you provide when you register to use
+                    <p>You may give us information about you by filling in forms on our website or through our app or by
+                      corresponding
+                      with us by phone, email or otherwise. This includes information you provide when you register to
+                      use
                       the Services and when you report a problem with the website or with our app</p>
                     <h4>Information we collect about you:</h4>
-                    <p>With regard to each of your visits to our website or our app we automatically collect the following information:</p>
+                    <p>With regard to each of your visits to our website or our app we automatically collect the
+                      following information:</p>
                     <h4>Login Information:</h4>
-                    <p>We log technical information about your use of the Services, including the type of browser and version
-                      you use, last access time of your wallet, the Internet Protocol (IP) address used to create the wallet
+                    <p>We log technical information about your use of the Services, including the type of browser and
+                      version
+                      you use, last access time of your wallet, the Internet Protocol (IP) address used to create the
+                      wallet
                       and the most recent IP address used to access the wallet.</p>
                     <h4>Device Information:</h4>
-                    <p>We collect information about the device you use to access your account, including the hardware model,
-                      operating system and version, and unique device identifiers, but this information is anonymized and
+                    <p>We collect information about the device you use to access your account, including the hardware
+                      model,
+                      operating system and version, and unique device identifiers, but this information is anonymized
+                      and
                       not tied to any particular person.</p>
                     <h4>Wallet Information:</h4>
-                    <p>If you create a BluWallet wallet through our Services, you may choose to generate a public and private
-                      key pair. When you log out of the wallet, we collect an encrypted file, that, if unencrypted, would
-                      contain these keys, along with your transaction history. When you enable notifications through your
-                      Account Settings, we will collect the unencrypted public key in order to provide such notifications.
-                      Under no circumstances do we ever collect an unencrypted private key from you, nor can we decrypt any
+                    <p>If you create a BluWallet wallet through our Services, you may choose to generate a public and
+                      private
+                      key pair. When you log out of the wallet, we collect an encrypted file, that, if unencrypted,
+                      would
+                      contain these keys, along with your transaction history. When you enable notifications through
+                      your
+                      Account Settings, we will collect the unencrypted public key in order to provide such
+                      notifications.
+                      Under no circumstances do we ever collect an unencrypted private key from you, nor can we decrypt
+                      any
                       wallet file data.</p>
                     <h4>Transaction Information:</h4>
-                    <p>In connection with our Conversion Service, as such term is defined in our User Agreement, we may collect
-                      and maintain information relating to transactions you effect in your Wallet that convert one Virtual
+                    <p>In connection with our Conversion Service, as such term is defined in our User Agreement, we may
+                      collect
+                      and maintain information relating to transactions you effect in your Wallet that convert one
+                      Virtual
                       Currency to another (e.g. Bitcoin for Ether).</p>
                     <h4>Information We Collect from Other Sources:</h4>
-                    <p>We also receive information from other sources and combine that with information we collect through our
+                    <p>We also receive information from other sources and combine that with information we collect
+                      through our
                       Services. For instance:</p>
                     <ul>
-                      <li>We use third-party services that may be co-branded as BluWallet but will do so with clear notice. Any
+                      <li>We use third-party services that may be co-branded as BluWallet but will do so with clear
+                        notice. Any
                         third-party services may collect information as determined by their own privacy policies.</li>
-                      <li>We also use "cookies" from time to time to help personalize your online experience with us. A cookie
+                      <li>We also use "cookies" from time to time to help personalize your online experience with us. A
+                        cookie
                         is a small text file that is stored on your computer to help us make your visit to our site more
                         “user-friendly.” Please see our
-                        <a class="cookie_policy" href="javascript:void(0);">Cookies Policy</a> for more details about the cookies we use. Cookies provide us with information
-                        about your use of the site that can help us improve the site and your experience with it. We will
-                        process Personal Data collected through cookies in accordance with this Privacy Policy. If you have
+                        <a class="cookie_policy" href="javascript:void(0);">Cookies Policy</a> for more details about
+                        the cookies we use. Cookies provide us with information
+                        about your use of the site that can help us improve the site and your experience with it. We
+                        will
+                        process Personal Data collected through cookies in accordance with this Privacy Policy. If you
+                        have
                         set your browser to warn you before accepting cookies, you should receive a warning message with
-                        each cookie. You may refuse cookies by turning them off in your browser, however, you should be aware
+                        each cookie. You may refuse cookies by turning them off in your browser, however, you should be
+                        aware
                         that our site, like most other popular sites, may not work well with cookies disabled.
                       </li>
                     </ul>
@@ -718,7 +1034,8 @@
 
                 <div class="collcting-data">
                   <h1>2. Use of Personal Data</h1>
-                  <p>As it is in our legitimate interest to be responsive to you and to ensure the proper functioning of our
+                  <p>As it is in our legitimate interest to be responsive to you and to ensure the proper functioning of
+                    our
                     products and organization, we will use your information to:</p>
                   <div class="info-collecting-data">
                     <ul>
@@ -730,117 +1047,164 @@
                       <li>Meet legal and regulatory requirements.</li>
                     </ul>
 
-                    <p>We also reserve the right to use aggregated Personal Data to understand how our users use our Services,
+                    <p>We also reserve the right to use aggregated Personal Data to understand how our users use our
+                      Services,
                       provided that those data cannot identify any individual.</p>
 
-                    <p>We also use third party web analytic tools that help us understand how users engage with the website.
-                      These third parties may use first-party cookies to track user interactions to collect information about
-                      how users use our website. This information is used to compile reports and to help us improve our website.
-                      The reports disclose website trends without identifying individual visitors. You can opt out of such
-                      third party analytic tools without affecting how you visit our site – for more information on opting
+                    <p>We also use third party web analytic tools that help us understand how users engage with the
+                      website.
+                      These third parties may use first-party cookies to track user interactions to collect information
+                      about
+                      how users use our website. This information is used to compile reports and to help us improve our
+                      website.
+                      The reports disclose website trends without identifying individual visitors. You can opt out of
+                      such
+                      third party analytic tools without affecting how you visit our site – for more information on
+                      opting
                       out, please contact
                       <a class="cookie_policy" href="javascript:void(0);">privacy@BluWallet.app.</a>
                     </p>
 
-                    <p>We will process your Personal Data legally and fairly and not use it outside the purposes of which we
-                      have informed you. So far as we are able we shall ensure that all of your Personal Data is accurate
+                    <p>We will process your Personal Data legally and fairly and not use it outside the purposes of
+                      which we
+                      have informed you. So far as we are able we shall ensure that all of your Personal Data is
+                      accurate
                       and up to date.</p>
                   </div>
                 </div>
 
                 <div class="collcting-data">
                   <h1>3. Disclosure of Personal Data</h1>
-                  <p>We may share your information with selected recipients to perform functions required to operate your BluWallet
-                    account on our behalf. All such third parties will be contractually bound to protect data in compliance
+                  <p>We may share your information with selected recipients to perform functions required to operate
+                    your BluWallet
+                    account on our behalf. All such third parties will be contractually bound to protect data in
+                    compliance
                     with our Policy. The categories of recipients include:</p>
                   <div class="info-collecting-data">
                     <ul>
-                      <li>Companies within the BluWallet corporate family located in the United States and the United Kingdom,
+                      <li>Companies within the BluWallet corporate family located in the United States and the United
+                        Kingdom,
                         in order to provide the Services to you.</li>
-                      <li>Cloud services providers to store certain personal data and for disaster recovery services, as well
+                      <li>Cloud services providers to store certain personal data and for disaster recovery services, as
+                        well
                         as for the performance of any contract we enter into with you.</li>
                     </ul>
 
-                    <p>We also may share personal information with a buyer or other successor in the event of a merger, divestiture,
+                    <p>We also may share personal information with a buyer or other successor in the event of a merger,
+                      divestiture,
                       restructuring, reorganization, dissolution or other sale or transfer of some or all of BluWallet’s
                       assets, whether as a going concern or as part of bankruptcy, liquidation or similar proceeding, in
                       which Personal Data held by BluWallet is among the assets transferred.</p>
 
-                    <p>Except where we are required by law to disclose Personal Data or are exempted from, released from or
-                      not subject to any legal requirement concerning the disclosure of Personal Data, we will require any
-                      person to whom we provide your Personal Data to agree to comply with our Privacy Policy in force at
+                    <p>Except where we are required by law to disclose Personal Data or are exempted from, released from
+                      or
+                      not subject to any legal requirement concerning the disclosure of Personal Data, we will require
+                      any
+                      person to whom we provide your Personal Data to agree to comply with our Privacy Policy in force
+                      at
                       that time or requirements substantially similar to such policy. We will make reasonable commercial
-                      efforts to ensure that they comply with such policy or requirements, however, where not expressly prohibited
-                      by law, we will have no liability to you if any person fails to do so. We shall require any third party,
-                      including without limitation any government or enforcement entity, seeking access to data we hold to
-                      have obtained a Court Order, or equivalent proof that they are statutorily empowered to access your
+                      efforts to ensure that they comply with such policy or requirements, however, where not expressly
+                      prohibited
+                      by law, we will have no liability to you if any person fails to do so. We shall require any third
+                      party,
+                      including without limitation any government or enforcement entity, seeking access to data we hold
+                      to
+                      have obtained a Court Order, or equivalent proof that they are statutorily empowered to access
+                      your
                       data and that their request is valid and within their power.</p>
                   </div>
                 </div>
 
                 <div class="collcting-data">
                   <h1>4. Security of Your Personal Data</h1>
-                  <p>We protect Personal Data with appropriate physical, technological and organizational safeguards and security
-                    measures. Your Personal Data comes to us via the internet which chooses its own routes and means whereby
-                    information is conveyed from location to location. As such we cannot give any warranty or assurance that
-                    the means where information is conveyed to us are safe, reliable or have integrity. We audit our procedures
-                    and security measures regularly to ensure they are being properly administered and remain effective and
-                    appropriate. Every member of BluWallet is committed to our privacy policies and procedures to safeguard
-                    Personal Data. Our site has security measures in place to protect against the loss, misuse and unauthorized
-                    alteration of the information under our control. More specifically, our server uses SSL (Secure Sockets
-                    Layer) security protection by encrypting your Personal Data to prevent individuals from reading these
+                  <p>We protect Personal Data with appropriate physical, technological and organizational safeguards and
+                    security
+                    measures. Your Personal Data comes to us via the internet which chooses its own routes and means
+                    whereby
+                    information is conveyed from location to location. As such we cannot give any warranty or assurance
+                    that
+                    the means where information is conveyed to us are safe, reliable or have integrity. We audit our
+                    procedures
+                    and security measures regularly to ensure they are being properly administered and remain effective
+                    and
+                    appropriate. Every member of BluWallet is committed to our privacy policies and procedures to
+                    safeguard
+                    Personal Data. Our site has security measures in place to protect against the loss, misuse and
+                    unauthorized
+                    alteration of the information under our control. More specifically, our server uses SSL (Secure
+                    Sockets
+                    Layer) security protection by encrypting your Personal Data to prevent individuals from reading
+                    these
                     Data as they travel over the Internet.</p>
                 </div>
 
                 <div class="collcting-data">
                   <h1>5. Retention of Your Personal Data</h1>
-                  <p>The length of time we retain Personal Data outside our back up system varies depending on the purpose for
+                  <p>The length of time we retain Personal Data outside our back up system varies depending on the
+                    purpose for
                     which it was collected and used, as follows:</p>
                   <div class="info-collecting-data">
                     <ul>
-                      <li>Data you provide to us when subscribing for our services: while user remains active, stored in the
+                      <li>Data you provide to us when subscribing for our services: while user remains active, stored in
+                        the
                         UK.
                       </li>
                       <li>Country Location data: while user remains active, stored in the UK.</li>
                       <li>Data on your preferences: while user remains active, stored in the UK.</li>
                       <li>IP address login: until subsequent login from a new IP, stored in the UK.</li>
                     </ul>
-                    <p>Except where prohibited by law, this period may extend beyond the end of the particular relationship
+                    <p>Except where prohibited by law, this period may extend beyond the end of the particular
+                      relationship
                       with us but only for so long as we are contractually bound to do so, or so far as is necessary for
-                      audit, regulatory or other accounting purposes. When Personal Data are no longer needed we have procedures
+                      audit, regulatory or other accounting purposes. When Personal Data are no longer needed we have
+                      procedures
                       either to destroy, delete, erase or convert it to an anonymous form.</p>
-                    <p>After you have terminated your use of our Services, we reserve the right to maintain your Personal Data
+                    <p>After you have terminated your use of our Services, we reserve the right to maintain your
+                      Personal Data
                       as part of our standard back-up procedures in an aggregated format.</p>
                   </div>
                 </div>
 
                 <div class="collcting-data">
                   <h1>6. Storage of Personal Data</h1>
-                  <p>BluWallet stores your Personal Data at secure locations in the EU. BluWallet has ensured that appropriate
-                    security standards are in place regarding the safeguarding, confidentiality and security of Data. The
-                    information that we collect from you will be transferred to, and stored in, destinations outside of your
+                  <p>BluWallet stores your Personal Data at secure locations in the EU. BluWallet has ensured that
+                    appropriate
+                    security standards are in place regarding the safeguarding, confidentiality and security of Data.
+                    The
+                    information that we collect from you will be transferred to, and stored in, destinations outside of
+                    your
                     country and the European Economic Area ("EEA") as described below:</p>
-                  <p>The information that we collect from you will be transferred to, and stored in, destinations outside of
+                  <p>The information that we collect from you will be transferred to, and stored in, destinations
+                    outside of
                     your country and the European Economic Area ("EEA") as described below:</p>
                   <div class="info-collecting-data">
                     <h4>Adequacy Decision:</h4>
-                    <p>The personal data that we collect from you will be transferred to, and stored at/processed in, the UK
+                    <p>The personal data that we collect from you will be transferred to, and stored at/processed in,
+                      the UK
                       via encrypted communications channels and stored on hardware owned by BluWallet for the purpose of
-                      operation of Services and disaster recovery, which were found to have an adequate level of protection
+                      operation of Services and disaster recovery, which were found to have an adequate level of
+                      protection
                       for personal data under Commission Decision 2000/518/EC of 26 July 2000.</p>
                     <h4>Model Clauses:</h4>
-                    <p>The personal data that we collect from you will be transferred to, and stored at/processed in the UK
+                    <p>The personal data that we collect from you will be transferred to, and stored at/processed in the
+                      UK
                       via encrypted communications channels and stored on hardware owned by BluWallet for the purpose of
-                      operation of Services and disaster recovery, under the Commission’s model contracts for the transfer
+                      operation of Services and disaster recovery, under the Commission’s model contracts for the
+                      transfer
                       of personal data to third countries (i.e., the standard contractual clauses), pursuant to Decision
                       2010/87/EU.
                     </p>
                     <h4>Privacy Shield: </h4>
-                    <p>The personal data that we collect from you will be transferred to, and stored at/processed by BluWallet
-                      which complies with the US Department of Commerce's EU-US Privacy Shield and Swiss–US Privacy Shield
-                      and has certified that we adhere to the EU-US Privacy Shield Principles of Notice, Choice, Accountability
-                      for Onward Transfer, Security, Data Integrity and Purpose Limitation, Access, Recourse, Enforcement
-                      and Liability. For more information about the EU-US Privacy Shield Framework and Swiss-US Privacy Shield
+                    <p>The personal data that we collect from you will be transferred to, and stored at/processed by
+                      BluWallet
+                      which complies with the US Department of Commerce's EU-US Privacy Shield and Swiss–US Privacy
+                      Shield
+                      and has certified that we adhere to the EU-US Privacy Shield Principles of Notice, Choice,
+                      Accountability
+                      for Onward Transfer, Security, Data Integrity and Purpose Limitation, Access, Recourse,
+                      Enforcement
+                      and Liability. For more information about the EU-US Privacy Shield Framework and Swiss-US Privacy
+                      Shield
                       Framework, visit the U.S. Department of Commerce's Privacy Shield
                       <a class="cookie_policy" href="javascript:void(0);">website.</a>
                     </p>
@@ -849,12 +1213,17 @@
 
                 <div class="collcting-data">
                   <h1>7. Your Rights</h1>
-                  <p>If you are resident in the EU, in certain circumstances you have the right to access and receive a copy
+                  <p>If you are resident in the EU, in certain circumstances you have the right to access and receive a
+                    copy
                     of information we hold about you, to rectify any personal data held about you that is inaccurate and
-                    to request the deletion of personal data held about you. Any access request after the first such request
-                    by you may be subject to a reasonable fee to meet our costs in providing you with details of the information
-                    we hold about you. You also have the right to data portability for information you provide to us – this
-                    means that you can obtain a copy of your data in a commonly used electronic format so that you can manage
+                    to request the deletion of personal data held about you. Any access request after the first such
+                    request
+                    by you may be subject to a reasonable fee to meet our costs in providing you with details of the
+                    information
+                    we hold about you. You also have the right to data portability for information you provide to us –
+                    this
+                    means that you can obtain a copy of your data in a commonly used electronic format so that you can
+                    manage
                     and move it. You may have the right to restrict or object to the processing of your personal data by
                     us. You can exercise your rights by contacting us at
                     <a class="cookie_policy" href="javascript:void(0);">privacy@BluWallet.app.</a>
@@ -863,26 +1232,36 @@
 
                 <div class="collcting-data">
                   <h1>8. Acceptance</h1>
-                  <p>By using the Services, you signify your agreement to this Policy. BluWallet reserves the right to change
-                    this Policy at any time. If we make any material changes to this Policy, the revised Policy will be posted
-                    here and notified to our users at least 30 days prior to the changes taking effect, so that you are always
-                    aware of what information we collect, how we use it and under what circumstances we disclose it. Please
+                  <p>By using the Services, you signify your agreement to this Policy. BluWallet reserves the right to
+                    change
+                    this Policy at any time. If we make any material changes to this Policy, the revised Policy will be
+                    posted
+                    here and notified to our users at least 30 days prior to the changes taking effect, so that you are
+                    always
+                    aware of what information we collect, how we use it and under what circumstances we disclose it.
+                    Please
                     check this page frequently to see any updates or changes to this Policy
                   </p>
                 </div>
 
                 <div class="collcting-data">
                   <h1>9. Questions and Complaints</h1>
-                  <p>Any questions about this Policy, the collection, use and disclosure of Personal Data by BluWallet or access
-                    to your Personal Data which is required by law (or would be so subject had the storage in question taken
-                    place in a relevant EU member state if the case may be but not otherwise) to be disclosed should be directed
+                  <p>Any questions about this Policy, the collection, use and disclosure of Personal Data by BluWallet
+                    or access
+                    to your Personal Data which is required by law (or would be so subject had the storage in question
+                    taken
+                    place in a relevant EU member state if the case may be but not otherwise) to be disclosed should be
+                    directed
                     to
                     <a class="cookie_policy" href="javascript:void(0);">privacy@BluWallet.app.</a>
                   </p>
-                  <p>In the event that you wish to make a complaint about how we process your personal data, please contact
+                  <p>In the event that you wish to make a complaint about how we process your personal data, please
+                    contact
                     us in the first instance
-                    <a class="cookie_policy" href="javascript:void(0);">atprivacy@BluWallet.app</a> and we will endeavor to deal with your request as soon as possible. This
-                    is without prejudice to your right to launch a claim with the data protection supervisory authority in
+                    <a class="cookie_policy" href="javascript:void(0);">atprivacy@BluWallet.app</a> and we will endeavor
+                    to deal with your request as soon as possible. This
+                    is without prejudice to your right to launch a claim with the data protection supervisory authority
+                    in
                     the country in which you live or work where you think we have infringed data protection laws.
                   </p>
                 </div>
@@ -916,7 +1295,7 @@
                   <a [routerLinkActive]="['active']" [routerLink]="['/api']">API</a>
                 </li>
                 <li>
-                  <a href="javascript:void(0);">Contact</a>
+                  <a href="#" data-toggle="modal" data-target="#contacus" (click)="contactUsForm.reset()">Contact</a>
                 </li>
                 <li>
                   <a class="footer-login" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
@@ -972,5 +1351,101 @@
     <a href="javascript:void(0);">
       <i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="api-key-form">
+  <div class="modal fade" id="contacus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            <img src="/assets/images/bluwallet-logo.png">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #contactUsModal>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="apikey-form-body">
+            <h1>Contact Us</h1>
+            <p class="text-left">Fill the contact form for specialized services that Bluwallet can help you with,
+              perfect for institutions
+              and complanies.
+            </p>
+            <form [formGroup]="contactUsForm">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="name">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('name').errors && contactUsForm.get('name').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('name').errors.required">Name is required.</span>
+
+                </span>
+                <span>Your name or that of your organization.</span>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('email').errors && contactUsForm.get('email').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.required">Email is required.</span>
+                  <span class="clrred" *ngIf="contactUsForm.get('email').errors.pattern">Email is not valid.</span>
+
+                </span>
+              </div>
+              <div class="form-group">
+                <label>URL</label>
+                <input type="text" formControlName="url">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('url').errors && contactUsForm.get('url').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('url').errors.required">Url is required.</span>
+
+                </span>
+                <span>URL of your website</span>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" formControlName="description">
+                <span class="validationError"
+                  *ngIf="contactUsForm.get('description').errors && contactUsForm.get('description').touched">
+                  <span class="clrred" *ngIf="contactUsForm.get('description').errors.required">Description is
+                    required.</span>
+
+                </span>
+                <span>A brief description of your organization</span>
+              </div>
+              <div class="form-group-termscondition">
+                <h1>Terms and Conditions</h1>
+                <div class="checkbox-list">
+                  <input type="checkbox" id="checkbox2" formControlName="termsAndConditions">
+                  <label for="checkbox2">
+                    I accept the terms and conditions
+                  </label>
+                </div>
+                <div class="accept-content-read">
+                  <div class="accept-cont-para">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                      ut
+                      laoreet dolore magna aliquam erat volutpat. tincidunt ut laoreet dolore magna aliquam erat
+                      volutpat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-bttn-group">
+                <button type="button" class="acceptbttn applyforbtn"
+                  (click)="onSubmitContactUsDetails()">Request</button>
+                <button type="button" class="acceptbttn applyforcancelbtn"
+                  (click)="closeContactUsModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
