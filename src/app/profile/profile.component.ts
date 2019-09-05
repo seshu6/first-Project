@@ -92,7 +92,13 @@ export class ProfileComponent implements OnInit {
         this.profileForm.controls.email.setValue(success['retrieveData'].email);
         this.profileForm.controls.mobile.setValue(success['retrieveData'].mobileNo);
         this.profileImageSrc = "";
-        this.profileImageSrc = success['retrieveData'].proImgPath;
+        if (!success['retrieveData'].hasOwnProperty('proImgPath')) {
+          this.profileImageSrc = "assets/images/profile.jpg";
+        } else {
+          this.profileImageSrc = success['retrieveData'].proImgPath;
+        }
+
+
         if (where == "initial") {
           this.getBtcOrEthBalance();
         }

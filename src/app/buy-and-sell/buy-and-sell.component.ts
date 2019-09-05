@@ -284,7 +284,7 @@ export class BuyAndSellComponent implements OnInit {
       //     "amountToTrade": this.calculatedBtcOrEth
       //   }
       // }
-      this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
+      this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => { 
         // this.spinner.showOrHide(false);
         this.refreshAlertModalShowOrHide = false;
         if (success['status'] == "success") {

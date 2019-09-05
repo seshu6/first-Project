@@ -203,15 +203,18 @@ export class DashboardComponent implements OnInit {
     this.ws = new SockJS(this.webSocketEndPoint);
     this.stompClient = Stomp.over(this.ws);
     const _this = this;
+    _this.stompClient.debug = null;
     _this.stompClient.connect({}, function (frame) {
 
-      _this.stompClient.subscribe('/topic/notification', function (notification) {
+      _this.stompClient.subscribe('/topic/reply', function (notification) { 
         const branchData = JSON.parse(notification.body);
         console.log(branchData['userName']);
+        console.log(branchData['showNotificationid']);
       })
 
     }, this.errorCallBack);
   };
+
 
   disconnect() {
     if (this.stompClient !== null) {

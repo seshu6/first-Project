@@ -70,7 +70,9 @@ export class VaultComponent implements OnInit {
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {
     let jsonData = {};
-    if (this.estimatedEth > 0) {
+    // if (this.estimatedEth > 0) {
+
+    if (Boolean(this.estimatedEth)) {
 
       if (this.estimatedEth != "") {
         if (this.ethOrBtc == "ETH") {
@@ -113,6 +115,11 @@ export class VaultComponent implements OnInit {
           this.route.navigate(['login']);
         }
       })
+    } else {
+      this.estimatedFee = 0;
+      this.estimatedTotal = 0;
+      this.usdBtc = 0;
+      this.usdEstimation = 0;
     }
 
 
