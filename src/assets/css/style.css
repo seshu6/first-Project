@@ -972,7 +972,7 @@ footer {
 .footer-submenu ul li a {
 	padding-right: 40px;
 	display: block;
-	color: #ffffff;
+	color: #ffffff !important;
 }
 .footer-submenu ul li:last-child a {
 	padding-right: 0px;
