@@ -2076,10 +2076,6 @@ footer {
 	position: relative;
 	margin-top: 10px;
 }
-.crypto-currency-wallet h1 {
-}
-.crypto-currency-wallet .etherum-blance {
-}
 .crypto-currency-wallet .etherum-blance h2 {
 	color: #ffffff;
 	font-size: 30px;
@@ -4731,9 +4727,6 @@ footer {
 }
 .otpverfiy-wrap .modal{
 	background: rgba(47,66,123,0.6);
-}
-.otpverfiy-wrap .modal-header .close{
-
 }
 .otpverfiy-wrap .modal-dialog {
     max-width: 420px;
