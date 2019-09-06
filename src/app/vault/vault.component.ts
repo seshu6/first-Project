@@ -276,7 +276,9 @@ export class VaultComponent implements OnInit {
   }
 
   onAddVault() {
-    if (!Boolean(this.estimatedEth)) {
+    if (this.roleName == "admin") {
+      Swal.fire("Info", "Access Denied", "info");
+    } else if (!Boolean(this.estimatedEth)) {
       Swal.fire("Info", "Please provide " + this.ethOrBtc + " details", "info");
     } else if ((!Boolean(this.estimatedWallet)) && this.ethOrBtc == "ETH") {
       Swal.fire("Info", "Please provide wallet password", "info");

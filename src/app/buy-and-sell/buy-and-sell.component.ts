@@ -69,6 +69,7 @@ export class BuyAndSellComponent implements OnInit {
   currentObj: any;
   gasFee: string | number;
   refreshAlertModalShowOrHide: boolean = false;
+  roleName: string = sessionStorage.getItem('roleName');
 
 
   // userTabListArr: any[] = [];
@@ -83,6 +84,12 @@ export class BuyAndSellComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
+    if (this.roleName == "admin") {
+      this.whenPlatformIsSelected = false;
+    } else {
+      this.whenPlatformIsSelected = true;
+    }
+
     this.changeBtcToEthAndViceVersa();
     this.getRequestedEthOrBtc();
     this.getBtcOrEthBalance();
@@ -284,7 +291,7 @@ export class BuyAndSellComponent implements OnInit {
       //     "amountToTrade": this.calculatedBtcOrEth
       //   }
       // }
-      this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => { 
+      this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
         // this.spinner.showOrHide(false);
         this.refreshAlertModalShowOrHide = false;
         if (success['status'] == "success") {

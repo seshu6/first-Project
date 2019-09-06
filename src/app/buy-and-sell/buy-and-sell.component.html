@@ -12,7 +12,7 @@
             <div class="platform-user-tabs">
                 <div class="platuser-tabs">
                     <ul>
-                        <li>
+                        <li *ngIf="roleName == 'user'">
                             <a class="plataform-link" [ngClass]="{'active':whenPlatformIsSelected}"
                                 (click)="platformSelected()">Platform</a>
                         </li>

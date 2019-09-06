@@ -3897,6 +3897,9 @@ footer {
 	right: -60px;
 	border: 1px solid #435b9b;
 	margin-top: 20px;
+	overflow-y:auto;
+	min-height: 350px; 
+	
 }
 .notification-view:after, .notification-view:before {
 	bottom: 100%;
