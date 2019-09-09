@@ -212,6 +212,9 @@ export class DashboardComponent implements OnInit {
 
       _this.stompClient.subscribe('/topic/reply', function (notification) {
         const branchData = JSON.parse(notification.body);
+        if (this.userId == branchData['showNotificationid']) {
+
+        }
         console.log(branchData['userName']);
         console.log(branchData['showNotificationid']);
       })
@@ -871,7 +874,7 @@ export class DashboardComponent implements OnInit {
 
         }
         this.notificationShowOrHide = false;
-        // this.getNotificationList();
+        this.getNotificationList();
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
       }

@@ -88,22 +88,24 @@
                             <input type="text" />
                             <span>Min. 0.0124</span>
                             <div class="list-cop">
-                                <a href="javascript:void(0);">USD
+                                <a href="javascript:void(0);">{{selectedCurrencyFilter}}
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="list-cop-dropdown">
+
                                     <li>
-                                        <a href="javascript:void(0);">
-                                            ETH
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
+                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'BTC'">
                                             BTC
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);">
+                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'ETH'">
+                                            ETH
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'USD'">
                                             USD
                                         </a>
                                     </li>
@@ -112,7 +114,7 @@
                         </div>
                         <div class="paypal-input-group">
                             <div class="payment-search">
-                                <button type="type" class="searchbtn">Search</button>
+                                <button type="type" class="searchbtn" [(ngModel)]="searchBy">Search</button>
                             </div>
                         </div>
                     </div>
@@ -212,7 +214,7 @@
                                                                     <img *ngIf="exchangeBtcOrEth == 'btc'"
                                                                         src="assets/images/etherium-icon.png">
                                                                     <span
-                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>  
+                                                                        *ngIf="exchangeBtcOrEth == 'btc'">Ethereum</span>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -263,7 +265,7 @@
                                             <div class="buy-transfer-scrol">
                                                 <perfect-scrollbar id="transferscroll">
                                                     <ul>
-                                                        <li *ngFor="let exchange of requestedEthOrBtcListArray"
+                                                        <li *ngFor="let exchange of requestedEthOrBtcListArray | filter:searchFilter"
                                                             (click)="exchangeCryptoCurrency(exchange)">
                                                             <a>
                                                                 <div class="transfer-buy-list">
@@ -738,12 +740,12 @@
 </div>
 
 <div class="refresh-loader" *ngIf="refreshAlertModalShowOrHide">
-        <div class="refreshload-center">
-            <div class="modal-body">
-                <p>Don't refresh the page until transaction is completed</p>
-                <div class="referimg">
-                    <img src="assets/images/loader.gif" />
-                </div>
+    <div class="refreshload-center">
+        <div class="modal-body">
+            <p>Don't refresh the page until transaction is completed</p>
+            <div class="referimg">
+                <img src="assets/images/loader.gif" />
             </div>
         </div>
     </div>
+</div>

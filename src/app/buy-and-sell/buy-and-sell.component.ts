@@ -70,6 +70,8 @@ export class BuyAndSellComponent implements OnInit {
   gasFee: string | number;
   refreshAlertModalShowOrHide: boolean = false;
   roleName: string = sessionStorage.getItem('roleName');
+  selectedCurrencyFilter:any = "BTC";
+  searchBy:any;
 
 
   // userTabListArr: any[] = [];
