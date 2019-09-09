@@ -1821,6 +1821,49 @@ footer {
 	font-size: 14px;
 	color: #5496FF;
 }
+.activity-receipt-view{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	padding: 0 0 0 38px;
+}
+.activity-receipt-view h1{
+	font-size: 14px;
+    font-weight: 300;
+    color: #272759;
+    margin: 0;
+}
+.activity-receipt-view p{
+    font-size: 14px;
+    color: #5496FF;
+    font-weight: 300;
+    margin: 0;
+}
+.activity-receipt-view.show h1{
+	color: #ffffff;
+}
+.accordion-head-view a{
+	cursor: pointer;
+}
+.accordion-head-view a.active{
+	background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(100%, rgba(53,78,145,1)));
+	background: -webkit-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -o-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: -ms-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	background: linear-gradient(90deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
+	color: #ffffff;
+}
+.accordion-head-view a.active .activity-list .activy-paid-text h1{
+	color:#ffffff;
+}
+.accordion-head-view a.active .activity-list .activiy-count span{
+	color:#ffffff;
+}
+.accordion-head-view a.active .activity-receipt-view h1{
+	color:#ffffff;
+}
+
 .graph-activy-list-box ul li.active a {
 	background: -moz-linear-gradient(0deg, rgba(33,40,74,1) 0%, rgba(53,78,145,1) 100%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(33,40,74,1)), color-stop(100%, rgba(53,78,145,1)));
@@ -3503,6 +3546,12 @@ footer {
 }
 .banktrnsfbtn, .banktrnsfbtn:focus {
 	padding: 4px 12px;
+}
+.exchangetime{
+	font-size: 14px;
+    color: #5496FF;
+    font-weight: 500;
+    margin: 0;
 }
 /* Buy Tabs */
 .buy-link-tab1 {

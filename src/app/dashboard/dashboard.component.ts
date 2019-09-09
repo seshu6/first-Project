@@ -419,6 +419,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.postActivityList(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
+        this.increOrDecreHistoryIndex = 0;
         this.activityListArr = success['listCalculatingAmountDTO'];
         this.getDashboardChartDetails();
 
@@ -888,7 +889,31 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  autoFillSendDetails(obj: any) {
+  increOrDecreHistoryIndex: number = 0;
+  currentClickedIndex: string | number;
+  previousClickedIndex: string | number;
+  // onUnActivePrevious(index: string | number) {
+  //   this.increOrDecreHistoryIndex++;
+  //   this.currentClickedIndex = index;
+  //   if (this.increOrDecreHistoryIndex == 1) {
+  //     this.activityListArr[this.currentClickedIndex].active = true;
+  //   } else {
+  //     this.activityListArr[this.previousClickedIndex].active = false;
+  //     this.activityListArr[this.currentClickedIndex].active = true;
+  //   }
+  //   this.previousClickedIndex = this.currentClickedIndex;
+  // }
+
+  autoFillSendDetails(obj: any, index: string | number) {
+    this.increOrDecreHistoryIndex++;
+    this.currentClickedIndex = index;
+    if (this.increOrDecreHistoryIndex == 1) {
+      this.activityListArr[this.currentClickedIndex].active = true;
+    } else {
+      this.activityListArr[this.previousClickedIndex].active = false;
+      this.activityListArr[this.currentClickedIndex].active = true;
+    }
+    this.previousClickedIndex = this.currentClickedIndex;
     if (obj.transactionType == "Request") {
       this.sendEthOrBtcAmount = obj.amount;
       this.sendEthOrBtcAmountUsd = obj.usdValue;

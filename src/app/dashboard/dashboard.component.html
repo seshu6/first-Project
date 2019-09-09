@@ -32,8 +32,7 @@
                                                 <!-- <sup>100+</sup> -->
                                             </span>
                                             {{notification.message}}</p>
-                                        <a href="javascript:void(0);"
-                                            (click)="changeNotificationStatus(notification)">
+                                        <a href="javascript:void(0);" (click)="changeNotificationStatus(notification)">
                                             {{notification.page}}
                                         </a>
                                     </div>
@@ -276,7 +275,53 @@
                             </div>
                             <div class="graph-activiy">
                                 <perfect-scrollbar class="graph-activy-list-box" id="activyscroll">
-                                    <ul>
+                                    <ul id="accordion">
+                                        <li class="accordion-head-view"
+                                            *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;"
+                                            (click)="autoFillSendDetails(activity,i)" [ngClass]="{'active':activity.active}">
+                                            <a data-toggle="collapse" href="#h{{i}}"  aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                <div class="activity-list">
+                                                    <div class="activy-paid">
+                                                        <div class="activy-icon">
+                                                            <img src="assets/images/paid.png"
+                                                                *ngIf="activity.transactionType=='Send'">
+                                                            <img src="assets/images/income.png"
+                                                                *ngIf="activity.transactionType=='Received' || activity.transactionType == 'Request'">
+                                                        </div>
+                                                        <div class="activy-paid-text">
+                                                            <h1 *ngIf="activity.transactionType=='Received'">
+                                                                {{activity.transactionType}}</h1>
+
+                                                            <p *ngIf="activity.transactionType=='Send'">Send to
+                                                                {{activity.sendto}}
+                                                            </p>
+                                                            <p *ngIf="activity.transactionType=='Request'">Request by
+                                                                {{activity.sendby}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="activiy-count">
+                                                        <span>-{{activity.amount}}</span>
+
+                                                        <p>{{activity.Date}}</p>
+                                                        <!-- <p *ngIf="activity.transactionType=='Received'">
+                                                                    {{activity.time}}</p> -->
+
+                                                    </div>
+                                                </div>
+                                                <div class="activity-receipt-view collapse" id="h{{i}}"
+                                                    aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <h1 *ngIf="activity.transactionType=='Received'">Receipt
+                                                        #:{{activity.sendby}}
+                                                    </h1>
+                                                    <p>
+                                                        {{activity.time}}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- <ul>
                                         <li *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;"
                                             (click)="autoFillSendDetails(activity)">
                                             <a>
@@ -306,16 +351,13 @@
                                                         <span>-{{activity.amount}}</span>
 
                                                         <p>{{activity.Date}}</p>
-                                                        <!-- <p *ngIf="activity.transactionType=='Received'">
-                                                            {{activity.time}}</p> -->
-
                                                         <p>
                                                             {{activity.time}}</p>
                                                     </div>
                                                 </div>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <div class="data-found" *ngIf="activityListArr.length == 0">
                                         <div class="data-search">
                                             <img src="assets/images/datasearch.png">
