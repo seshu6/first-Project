@@ -86,7 +86,7 @@
                     <div class="buy-paypal" *ngIf="platformHistoryShowOrHide">
                         <div class="paypal-input-group">
                             <input type="text" [(ngModel)]="searchBy" />
-                            <span>Min. 0.0124</span>
+                            <span>Min. {{minimumBtcOrEthValue}}</span>
                             <div class="list-cop">
                                 <a href="javascript:void(0);">{{selectedCurrencyFilter}}
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -271,8 +271,9 @@
                                                                 <div class="transfer-buy-list">
                                                                     <div class="bank-transfer">
                                                                         <h1>{{exchange.userName}}
-                                                                            <sup>100+</sup>
+                                                                            <!-- <sup>100+</sup> -->
                                                                         </h1>
+                                                                        <p class="exchangetime">{{exchange.date1}}</p>
                                                                         <p class="exchangetime">02:05:00</p>
                                                                     </div>
                                                                     <div class="bank-transfer">
@@ -381,7 +382,7 @@
                                 </div>
                                 <div class="paypal-input-group">
                                     <input type="text" [(ngModel)]="searchFilter" />
-                                    <span>Min. 0.0124</span>
+                                    <span>Min. {{minimumBtcOrEthValue}}</span>
                                     <div class="list-cop">
                                             <a href="javascript:void(0);">{{selectedCurrencyFilterHistory}}
                                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -643,7 +644,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="droplist-fastbuy">
                             <input type="text">
-                            <span>Min. 0.0124</span>
+                            <span>Min. {{minimumBtcOrEthValue}}</span>
                             <div class="list-cop1">
                                 <a href="javascript:void(0);">USD
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>

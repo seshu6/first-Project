@@ -73,7 +73,10 @@ export class DashboardComponent implements OnInit {
   notificationId: string | number;
   notificationArr: any[] = [];
   notificationShowOrHide: boolean = false;
-
+  increOrDecreHistoryIndex: number = 0;
+  currentClickedIndex: string | number;
+  previousClickedIndex: string | number;
+  notificationObj: any = {};
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -213,7 +216,7 @@ export class DashboardComponent implements OnInit {
       _this.stompClient.subscribe('/topic/reply', function (notification) {
         const branchData = JSON.parse(notification.body);
         if (this.userId == branchData['showNotificationid']) {
-
+          this.notificationArr.push(branchData);
         }
         console.log(branchData['userName']);
         console.log(branchData['showNotificationid']);
@@ -844,7 +847,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  notificationObj: any = {};
+
 
   // NOTIFICATION STATUS
   changeNotificationStatus(obj: any) {
@@ -889,9 +892,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  increOrDecreHistoryIndex: number = 0;
-  currentClickedIndex: string | number;
-  previousClickedIndex: string | number;
+
   // onUnActivePrevious(index: string | number) {
   //   this.increOrDecreHistoryIndex++;
   //   this.currentClickedIndex = index;
