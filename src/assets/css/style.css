@@ -2750,7 +2750,7 @@ footer {
 	object-position: center;
 }
 .btn-default, .btn-default:focus {
-	background: #5496FF;
+	/* background: #5496FF; */
 	color: #ffffff;
 	font-size: 12px;
 	font-weight: normal;

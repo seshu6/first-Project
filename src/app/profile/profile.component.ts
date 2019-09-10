@@ -75,6 +75,10 @@ export class ProfileComponent implements OnInit {
     // this.getBtcOrEthBalance();
   }
 
+  // ngOnDestroy(){
+  //   sessionStorage.setItem("active","profile");
+  // }
+
 
 
   getProfileDetails(where?: string) {

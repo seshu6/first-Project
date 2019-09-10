@@ -32,6 +32,13 @@ export class AdminUserDetailsComponent implements OnInit {
   userListShowOrHide: boolean = true;
   currentKycZoomImage: string;
   searchFilter:any;
+  btcOrEthBalance: any;
+  btcOrEthUsdDollar: any;
+  btcOrEth: string = "BTC";
+  currentEthAmount: string | number;
+  currentBtcAmount: string | number;
+  currentEthAmountStatus: string | number;
+  currentBtcAmountStatus: string | number;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {
@@ -45,6 +52,9 @@ export class AdminUserDetailsComponent implements OnInit {
 
   }
 
+  // ngOnDestroy(){
+  //   sessionStorage.setItem("active","admin-user-list");
+  // }
 
   getUserList() {
     this.spinner.showOrHide(true);
@@ -61,13 +71,7 @@ export class AdminUserDetailsComponent implements OnInit {
     })
   }
 
-  btcOrEthBalance: any;
-  btcOrEthUsdDollar: any;
-  btcOrEth: string = "BTC";
-  currentEthAmount: string | number;
-  currentBtcAmount: string | number;
-  currentEthAmountStatus: string | number;
-  currentBtcAmountStatus: string | number;
+  
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
@@ -127,15 +131,8 @@ export class AdminUserDetailsComponent implements OnInit {
 
   }
 
-
-
-
-
-
-
   // openKycDocsModal(imgSrc: string) {
   //   this.currentKycZoomImage = imgSrc;
   // }
-
 
 }

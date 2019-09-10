@@ -909,10 +909,14 @@ export class DashboardComponent implements OnInit {
     this.currentClickedIndex = index;
     if (this.increOrDecreHistoryIndex == 1) {
       this.activityListArr[this.currentClickedIndex].active = true;
-    } else {
+    } else if (this.activityListArr[this.currentClickedIndex].active) {
+      this.activityListArr[this.currentClickedIndex].active = false;
+    }
+    else {
       this.activityListArr[this.previousClickedIndex].active = false;
       this.activityListArr[this.currentClickedIndex].active = true;
     }
+
     this.previousClickedIndex = this.currentClickedIndex;
     if (obj.transactionType == "Request") {
       this.sendEthOrBtcAmount = obj.amount;

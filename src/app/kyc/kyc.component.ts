@@ -87,6 +87,8 @@ export class KycComponent implements OnInit {
   kycErrorMessage: string;
   kycErrorMessageShowOrHide: boolean = false;
   btcOrEthUsdDollar: any;
+  fileUploadedOrNot: boolean = false;
+
 
   // passportFileModel: any;
   // nationalFileModel: any;
@@ -95,7 +97,7 @@ export class KycComponent implements OnInit {
   // nationalDocument: any;
   // residenceDocument: any;
 
-  fileUploadedOrNot: boolean = false;
+
   constructor(private spinner: LoaderService, private dynamicScriptLoader: DynamicScriptLoaderService, private dashBoardServices: CommonDashboardService, private route: Router) { }
 
   ngOnInit() {
@@ -312,16 +314,21 @@ export class KycComponent implements OnInit {
     this.dashBoardServices.postBtcOrEthBalance(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        if (this.btcOrEth == "ETH") {
-          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
-          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        if (success['CalculatingAmountDTO'].kycStatus == 1) {
+          this.route.navigate(['login']);
         } else {
-          this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
-          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+          if (this.btcOrEth == "ETH") {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+          } else {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+          }
         }
 
-      } else if (success['status'] == "failure") {
 
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
       }
 
     }, error => {

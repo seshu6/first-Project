@@ -161,6 +161,10 @@ export class CardComponent implements OnInit {
     this.getChartDetails();
   }
 
+  // ngOnDestroy(){
+  //   sessionStorage.setItem("active","card");
+  // }
+
 
 
   getChartDetails() {

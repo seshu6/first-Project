@@ -121,7 +121,7 @@
   </div>
   <!-- Bluewallet Body -->
   <div class="bluewallet-body-wrap">
-    <div class="admin-vault-div" *ngIf="userListShowOrHide">
+    <div class="admin-vault-div" *ngIf="userListShowOrHide"> 
       <div class="admin-wallet-view">
         <div class="admin-wallet-searchbox">
           <div class="searchinput-group">
@@ -228,7 +228,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.passportList[0]">
-                      <img alt="image" [src]="currentModalObj.passportList[0]" />
+                      <img alt="image" *ngIf="currentModalObj.passportList" [src]="currentModalObj.passportList[0]" />
                     </a>
                   </div>
                   <h4>Selfie</h4>
@@ -239,7 +239,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.passportList[1]">
-                      <img alt="image" [src]="currentModalObj.passportList[1]" />
+                      <img alt="image" *ngIf="currentModalObj.passportList" [src]="currentModalObj.passportList[1]" />
                     </a>
                   </div>
                   <h4>Front</h4>
@@ -250,7 +250,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.passportList[2]">
-                      <img alt="image" [src]="currentModalObj.passportList[2]" />
+                      <img alt="image" *ngIf="currentModalObj.passportList" [src]="currentModalObj.passportList[2]" />
                     </a>
                   </div>
                   <h4>Back</h4>
@@ -261,7 +261,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.passportList[3]">
-                      <img alt="image" [src]="currentModalObj.passportList[3]" />
+                      <img alt="image" *ngIf="currentModalObj.passportList" [src]="currentModalObj.passportList[3]" />
                     </a>
                   </div>
                   <h4>Selfie Document</h4>
@@ -284,7 +284,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.idCardList[0]">
-                      <img alt="image" [src]="currentModalObj.idCardList[0]" />
+                      <img alt="image" *ngIf="currentModalObj.idCardList" [src]="currentModalObj.idCardList[0]" />
                     </a>
                   </div>
                   <h4>Selfie</h4>
@@ -295,7 +295,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.idCardList[1]">
-                      <img alt="image" [src]="currentModalObj.idCardList[1]" />
+                      <img alt="image" *ngIf="currentModalObj.idCardList" [src]="currentModalObj.idCardList[1]" />
                     </a>
                   </div>
                   <h4>Front</h4>
@@ -306,7 +306,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.idCardList[2]">
-                      <img alt="image" [src]="currentModalObj.idCardList[2]" />
+                      <img alt="image" *ngIf="currentModalObj.idCardList" [src]="currentModalObj.idCardList[2]" />
                     </a>
                   </div>
                   <h4>Back</h4>
@@ -317,7 +317,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.idCardList[3]">
-                      <img alt="image" [src]="currentModalObj.idCardList[3]" />
+                      <img alt="image" *ngIf="currentModalObj.idCardList" [src]="currentModalObj.idCardList[3]" />
                     </a>
                   </div>
                   <h4>Selfie Document</h4>
@@ -340,7 +340,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.residentPermitList[0]">
-                      <img alt="image" [src]="currentModalObj.residentPermitList[0]" />
+                      <img alt="image" *ngIf="currentModalObj.residentPermitList" [src]="currentModalObj.residentPermitList[0]" />
                     </a>
                   </div>
                   <h4>Selfie</h4>
@@ -351,7 +351,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.residentPermitList[1]">
-                      <img alt="image" [src]="currentModalObj.residentPermitList[1]" />
+                      <img alt="image" *ngIf="currentModalObj.residentPermitList" [src]="currentModalObj.residentPermitList[1]" />
                     </a>
                   </div>
                   <h4>Front</h4>
@@ -362,7 +362,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.residentPermitList[2]">
-                      <img alt="image" [src]="currentModalObj.residentPermitList[2]" />
+                      <img alt="image" *ngIf="currentModalObj.residentPermitList" [src]="currentModalObj.residentPermitList[2]" />
                     </a>
                   </div>
                   <h4>Back</h4>
@@ -373,7 +373,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.residentPermitList[3]">
-                      <img alt="image" [src]="currentModalObj.residentPermitList[3]" />
+                      <img alt="image" *ngIf="currentModalObj.residentPermitList" [src]="currentModalObj.residentPermitList[3]" />
                     </a>
                   </div>
                   <h4>Selfie Document</h4>
@@ -396,7 +396,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.drivingLicenceList[0]">
-                      <img alt="image" [src]="currentModalObj.drivingLicenceList[0]" />
+                      <img alt="image" *ngIf="currentModalObj.drivingLicenceList" [src]="currentModalObj.drivingLicenceList[0]" />
                     </a>
                   </div>
                   <h4>Selfie</h4>
@@ -407,7 +407,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.drivingLicenceList[1]">
-                      <img alt="image" [src]="currentModalObj.drivingLicenceList[1]" />
+                      <img alt="image" *ngIf="currentModalObj.drivingLicenceList" [src]="currentModalObj.drivingLicenceList[1]" />
                     </a>
                   </div>
                   <h4>Front</h4>
@@ -418,7 +418,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.drivingLicenceList[2]">
-                      <img alt="image" [src]="currentModalObj.drivingLicenceList[2]" />
+                      <img alt="image" *ngIf="currentModalObj.drivingLicenceList" [src]="currentModalObj.drivingLicenceList[2]" />
                     </a>
                   </div>
                   <h4>Back</h4>
@@ -429,7 +429,7 @@
                   <div class="kycbg-box">
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#kycview"
                       (click)="currentKycZoomImage = currentModalObj.drivingLicenceList[3]">
-                      <img alt="image" [src]="currentModalObj.drivingLicenceList[3]" />
+                      <img alt="image" *ngIf="currentModalObj.drivingLicenceList" [src]="currentModalObj.drivingLicenceList[3]" />
                     </a>
                   </div>
                   <h4>Selfie Document</h4>
@@ -632,11 +632,13 @@
         </div>
         <div class="modal-body">
           <div class="kyc-view-image">
-            <img [src]="currentKycZoomImage">
+            <img *ngIf="currentKycZoomImage" [src]="currentKycZoomImage">
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 <!-- ENDS HERE -->

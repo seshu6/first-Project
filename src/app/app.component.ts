@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+// import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { CommonService } from './common.service';
 
 @Component({
@@ -24,8 +24,10 @@ export class AppComponent {
       }
     })
     this.commonService.setCustomUrl(location.href);
-
+    
   }
+
+
 
 }
 

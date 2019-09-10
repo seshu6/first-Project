@@ -10,7 +10,7 @@ import { LoginService } from '../login.service';
 export class SidebarComponent implements OnInit {
   roleName = sessionStorage.getItem("roleName");
   profileActive: boolean;
-  dashboardActive: boolean = true;
+  dashboardActive: boolean;
   cardActive: boolean;
   userListActive: boolean;
   vaultActive: boolean;
@@ -19,6 +19,11 @@ export class SidebarComponent implements OnInit {
   constructor(private route: Router, private loginService: LoginService) { }
 
   ngOnInit() {
+    if (Boolean(sessionStorage.getItem("active"))) {
+      this.activateSideBar(sessionStorage.getItem("active"));
+    } else {
+      this.activateSideBar("dashboard");
+    }
   }
 
   activateSideBar(menu: string) {
@@ -30,6 +35,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = false;
         this.vaultActive = false;
         this.buyAndSellActive = false;
+        sessionStorage.setItem("active", "profile");
         break;
       case "dashboard":
         this.profileActive = false;
@@ -38,6 +44,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = false;
         this.vaultActive = false;
         this.buyAndSellActive = false;
+        sessionStorage.setItem("active", "dashboard");
         break;
       case "card":
         this.profileActive = false;
@@ -46,6 +53,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = false;
         this.vaultActive = false;
         this.buyAndSellActive = false;
+        sessionStorage.setItem("active", "card");
         break;
       case "userlist":
         this.profileActive = false;
@@ -54,6 +62,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = true;
         this.vaultActive = false;
         this.buyAndSellActive = false;
+        sessionStorage.setItem("active", "userlist");
         break;
       case "vault":
         this.profileActive = false;
@@ -62,6 +71,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = false;
         this.vaultActive = true;
         this.buyAndSellActive = false;
+        sessionStorage.setItem("active", "vault");
         break;
       case "buyandsell":
         this.profileActive = false;
@@ -70,6 +80,7 @@ export class SidebarComponent implements OnInit {
         this.userListActive = false;
         this.vaultActive = false;
         this.buyAndSellActive = true;
+        sessionStorage.setItem("active", "buyandsell");
         break;
 
     }
@@ -127,5 +138,5 @@ export class SidebarComponent implements OnInit {
     this.route.navigate(['']);
   }
 
-  
+
 }

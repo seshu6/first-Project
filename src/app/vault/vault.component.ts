@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -66,6 +66,17 @@ export class VaultComponent implements OnInit {
     this.onSliderCryptoCurrency("BTC");
     this.getActiveVaultInformation("BTC", "initial");
   }
+
+  // ngOnDestroy(){
+  //   sessionStorage.setItem("active","vault");
+  // }
+
+  // REFRESH PAGE
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeUnloadHander(event) {
+  //   sessionStorage.setItem("active", "vault");
+  // }
+
 
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {

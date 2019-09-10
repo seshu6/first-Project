@@ -70,8 +70,11 @@ export class BuyAndSellComponent implements OnInit {
   gasFee: string | number;
   refreshAlertModalShowOrHide: boolean = false;
   roleName: string = sessionStorage.getItem('roleName');
-  selectedCurrencyFilter:any = "BTC";
-  searchBy:any;
+  selectedCurrencyFilter: any = "BTC";
+  searchBy: any = "";
+  searchFilter:any = "";
+  cryptoFilterShowOrHide: boolean = false;
+  selectedCurrencyFilterHistory:any = "BTC";
 
 
   // userTabListArr: any[] = [];
@@ -99,6 +102,9 @@ export class BuyAndSellComponent implements OnInit {
     // this.getUserTabListData();
   }
 
+  // ngOnDestroy(){
+  //   sessionStorage.setItem("active","buyandsell");
+  // }
 
   // CHANGE FROM BTC TO ETH AND VICE VERSA
   changeBtcToEthAndViceVersa(where?: string) {
@@ -405,6 +411,9 @@ export class BuyAndSellComponent implements OnInit {
     this.platformExchangeShowOrHide = false;
     this.platformHistoryShowOrHide = true;
     this.sendOrRequest = "SEND";
+    this.usdToBtcAndEth = 0;
+    this.calculatedBtcOrEth = 0;
+
     this.getRequestedEthOrBtc();
   }
 
@@ -513,7 +522,8 @@ export class BuyAndSellComponent implements OnInit {
       if (this.currentObj.exchangeType == "ETH_BTC_ADMIN") {
         this.postBtcToEthAdmin();
       } else if (this.currentObj.exchangeType == "BTC_ETH_ADMIN") {
-        this.postEthToBtchAdmin();
+        // this.postEthToBtchAdmin();
+        this.postEthToBtchUser();
       } else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
         this.postEthToBtchUser();
       } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
@@ -796,6 +806,7 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
+ 
 
 
 

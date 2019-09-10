@@ -278,8 +278,9 @@
                                     <ul id="accordion">
                                         <li class="accordion-head-view"
                                             *ngFor="let activity of activityListArr | filter:searchFilter;let i=index;"
-                                            (click)="autoFillSendDetails(activity,i)" [ngClass]="{'active':activity.active}">
-                                            <a data-toggle="collapse" href="#h{{i}}"  aria-expanded="true"
+                                            (click)="autoFillSendDetails(activity,i)"
+                                            [ngClass]="{'active':activity.active}">
+                                            <a data-toggle="collapse" href="#h{{i}}" aria-expanded="true"
                                                 aria-controls="collapseOne">
                                                 <div class="activity-list">
                                                     <div class="activy-paid">
@@ -302,7 +303,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="activiy-count">
-                                                        <span>-{{activity.amount}}</span>
+                                                        <span
+                                                            *ngIf="activity.transactionType=='Received'">+{{activity.amount}}</span>
+                                                        <span
+                                                            *ngIf="activity.transactionType=='Send'">-{{activity.amount}}</span>
+
+                                                        <span
+                                                            *ngIf="activity.transactionType=='Request'">{{activity.amount}}</span>
 
                                                         <p>{{activity.Date}}</p>
                                                         <!-- <p *ngIf="activity.transactionType=='Received'">
