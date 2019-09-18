@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
   otp: any;
   otpCode: string = "";
   otpCodeArr: any;
+  contactUsForm: FormGroup;
+  @ViewChild('contactUsModal') contactUsModal: ElementRef;
   // @ViewChild('otpForm') otpForm: ElementRef;
   constructor(private verificationService: TwoStepsVerificationService, private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
 
@@ -33,9 +35,44 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
       password: ['', Validators.required]
     });
+
+    this.contactUsForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+      url: ['', Validators.required],
+      description: ['', Validators.required],
+      termsAndConditions: ['', Validators.required]
+    })
   }
 
 
+  closeContactUsModal() {
+    this.contactUsModal.nativeElement.click();
+  }
+
+  onSubmitContactUsDetails() {
+    if (this.contactUsForm.invalid) {
+      Swal.fire("Info", "Please check your data", "info");
+    } else {
+      this.spinner.showOrHide(true);
+      this.loginService.postContactUsApi(this.contactUsForm.value).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          Swal.fire("Success", success['message'], "success");
+          this.contactUsForm.reset();
+          this.contactUsModal.nativeElement.click();
+        } else if (success['status'] == "failure") {
+          Swal.fire("Failure", success['message'], "error");
+        }
+
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+        }
+      })
+    }
+  }
 
 
   // OAUTH
@@ -59,6 +96,8 @@ export class LoginComponent implements OnInit {
     }
     // this.login();
   }
+
+
 
   // LOGIN
   login(): void {

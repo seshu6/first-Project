@@ -281,7 +281,7 @@ export class ProfileComponent implements OnInit {
           this.optFive = "";
           this.optSix = "";
           (this.otpShowOrHide) ? this.otpShowOrHide = false : this.otpShowOrHide = true;
-          if (success['message'] == "2FAuthentication Status updated successfully") {
+          if (success['message'] == "2 Factor Authentication Status updated successfully") {
             this.profileShowOrHide = true;
             this.twoFactorShowOrHide = false;
           }

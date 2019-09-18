@@ -70,11 +70,12 @@ export class BuyAndSellComponent implements OnInit {
   gasFee: string | number;
   refreshAlertModalShowOrHide: boolean = false;
   roleName: string = sessionStorage.getItem('roleName');
-  selectedCurrencyFilter: any = "BTC";
+  selectedCurrencyFilter: any = "All";
   searchBy: any = "";
-  searchFilter:any = "";
+  searchFilter: any = "";
   cryptoFilterShowOrHide: boolean = false;
-  selectedCurrencyFilterHistory:any = "BTC";
+  cryptoFilterHistoryShowOrHide: boolean = false;
+  selectedCurrencyFilterHistory: any = "All";
 
 
   // userTabListArr: any[] = [];
@@ -96,8 +97,8 @@ export class BuyAndSellComponent implements OnInit {
     }
 
     this.changeBtcToEthAndViceVersa();
-    this.getRequestedEthOrBtc();
-    this.getBtcOrEthBalance();
+    // this.getRequestedEthOrBtc();
+    this.getBtcOrEthBalance('initial');
     // this.adminExchangeTabData();
     // this.getUserTabListData();
   }
@@ -129,12 +130,12 @@ export class BuyAndSellComponent implements OnInit {
           $("#bitoicnlink1 img").addClass("slideInDown animated");
         }, 10)
       }
-      // this.spinner.showOrHide(true);
+      this.spinner.showOrHide(true);
       let jsonData = {
         "cryptoType": btcOrEth
       }
       this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
-        // this.spinner.showOrHide(false);
+        this.spinner.showOrHide(false);
         if (success['status'] == "success") {
           this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
           this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
@@ -143,7 +144,7 @@ export class BuyAndSellComponent implements OnInit {
           Swal.fire("Failure", success['message'], "error");
         }
       }, error => {
-        // this.spinner.showOrHide(false);
+        this.spinner.showOrHide(false);
         if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
           this.route.navigate(['login']);
@@ -378,10 +379,16 @@ export class BuyAndSellComponent implements OnInit {
       this.platformHistoryShowOrHide = false;
     }
 
+    this.historyTabList();
+
+  }
+
+  historyTabList() {
     this.spinner.showOrHide(true);
     let jsonData = {
-      "userId": sessionStorage.getItem("userId")
-    }
+      "userId": sessionStorage.getItem("userId"),
+      "cryptoType": this.selectedCurrencyFilterHistory
+    };
     this.buyAndSellService.postHistoryTabList(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
@@ -389,8 +396,8 @@ export class BuyAndSellComponent implements OnInit {
         this.currentBtcValue = success['fetchExchageRequestDTO'].btccurrentvalue;
         this.currentEthValue = success['fetchExchageRequestDTO'].ethercurrentvalue;
         console.log("history tab list", this.historyTabUserListArr);
-
-      } else if (success['status'] == "failure") {
+      }
+      else if (success['status'] == "failure") {
         Swal.fire("Error", "Session Expired", "error");
       }
     }, error => {
@@ -399,8 +406,7 @@ export class BuyAndSellComponent implements OnInit {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
       }
-    })
-
+    });
   }
 
   userTabSelected() {
@@ -448,12 +454,14 @@ export class BuyAndSellComponent implements OnInit {
     if (this.whenPlatformIsSelected) {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
-        "exchangeMode": "admin"
+        "exchangeMode": "admin",
+        "cryptoType": this.selectedCurrencyFilter
       }
     } else {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
-        "exchangeMode": "user"
+        "exchangeMode": "user",
+        "cryptoType": this.selectedCurrencyFilter
       }
     }
     this.buyAndSellService.postRequestedEthOrBtc(jsonData).subscribe(success => {
@@ -481,7 +489,7 @@ export class BuyAndSellComponent implements OnInit {
   exchangeCryptoCurrency(data: any) {
     this.currentObj = data;
 
-    if (this.sendOrRequest == "SEND") {
+    if (this.sendOrRequest == "SEND" && this.currentObj.status != 0) {
       if (data.exchangeType == "BTC_ETH_USER" || data.exchangeType == "BTC_ETH_ADMIN") {
 
         this.whetherBtcOrEth = "ETH";
@@ -517,18 +525,33 @@ export class BuyAndSellComponent implements OnInit {
 
 
 
+
+
   checkSendOrRequest() {
     if (this.sendOrRequest == "SEND") {
-      if (this.currentObj.exchangeType == "ETH_BTC_ADMIN") {
-        this.postBtcToEthAdmin();
-      } else if (this.currentObj.exchangeType == "BTC_ETH_ADMIN") {
-        // this.postEthToBtchAdmin();
-        this.postEthToBtchUser();
-      } else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
-        this.postEthToBtchUser();
-      } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
-        this.postBtcToEthUser();
+      if (this.whenPlatformIsSelected) {
+        if (this.currentObj.exchangeType == "BTC_ETH_USER") {
+          this.postEthToBtchAdmin();
+
+        } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
+          this.postBtcToEthAdmin();
+        }
+      } else {
+        if (this.currentObj.exchangeType == "ETH_BTC_ADMIN") {
+          // this.postBtcToEthAdmin();
+          this.postBtcToEthUser();
+
+        } else if (this.currentObj.exchangeType == "BTC_ETH_ADMIN") {
+          // this.postEthToBtchAdmin();
+          this.postEthToBtchUser();
+        }
+        else if (this.currentObj.exchangeType == "BTC_ETH_USER") {
+          this.postEthToBtchUser();
+        } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
+          this.postBtcToEthUser();
+        }
       }
+
     } else if (this.sendOrRequest == "REQUEST") {
       this.onExchangeBtcToEth();
     }
@@ -540,7 +563,7 @@ export class BuyAndSellComponent implements OnInit {
     this.refreshAlertModalShowOrHide = true;
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
-      "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
+      "toBtcWalletAddress": this.currentObj.btcWalletAddress,//ethWalletAddress
       "btcAmount": this.calculatedBtcOrEth,
       "exchangeReqId": this.currentObj.id,//id
       "exchangeStatus": 1
@@ -549,6 +572,8 @@ export class BuyAndSellComponent implements OnInit {
       // this.spinner.showOrHide(false);
       this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
+        this.usdToBtcAndEth = 0;
+        this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
@@ -584,6 +609,8 @@ export class BuyAndSellComponent implements OnInit {
       // this.spinner.showOrHide(false);
       this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
+        this.usdToBtcAndEth = 0;
+        this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
@@ -613,12 +640,15 @@ export class BuyAndSellComponent implements OnInit {
       // "toBtcWalletAddress": this.currentObj.ethWalletAddress,//ethWalletAddress
       "btcAmount": this.calculatedBtcOrEth,
       "exchangeReqId": this.currentObj.id,//id
+      "toBtcWalletAddress": this.currentObj.btcWalletAddress,
       "exchangeStatus": 1
     }
     this.buyAndSellService.postBtcToEthEcxhangeAdmin(jsonData).subscribe(success => {
       // this.spinner.showOrHide(false);
       this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
+        this.usdToBtcAndEth = 0;
+        this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
@@ -646,6 +676,7 @@ export class BuyAndSellComponent implements OnInit {
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
       "etherAmount": this.calculatedBtcOrEth,
+      "toEthWalletAddress": this.currentObj.ethWalletAddress,
       "exchangeReqId": this.currentObj.id,
       "exchangeStatus": 1
     }
@@ -653,6 +684,8 @@ export class BuyAndSellComponent implements OnInit {
       // this.spinner.showOrHide(false);
       this.refreshAlertModalShowOrHide = false;
       if (success['status'] == "success") {
+        this.usdToBtcAndEth = 0;
+        this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
         console.log("***************************BTC TO ETH", success);
@@ -780,7 +813,7 @@ export class BuyAndSellComponent implements OnInit {
 
 
   // CURRENT BTC AND ETH BALANCE
-  getBtcOrEthBalance() {
+  getBtcOrEthBalance(where: string) {
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
@@ -793,6 +826,9 @@ export class BuyAndSellComponent implements OnInit {
         this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
         this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
         this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
+        if (where == "initial") {
+          this.getRequestedEthOrBtc();
+        }
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -806,7 +842,7 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
- 
+
 
 
 

@@ -106,12 +106,12 @@
                                 <span class="iconimg bitcoinimg2"></span>
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="javascript:void(0);">
+                        <li (click)="getActiveVaultInformation('BWN')">
+                            <a [ngClass]="{'active':bwnIsSelected}">
                                 <span class="iconimg bitcoinimg3"></span>
                             </a>
-                        </li> -->
-                        <li>
+                        </li>
+                        <!-- <li>
                             <a href="javascript:void(0);">
                                 <span class="iconimg bitcoinimg4"></span>
                             </a>
@@ -120,7 +120,7 @@
                             <a href="javascript:void(0);">
                                 <span class="iconimg bitcoinimg5"></span>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="alllist" (click)="getActiveVaultInformation('all')">
                             <a>
@@ -261,7 +261,10 @@
                                             <a href="javascript:void(0);">
                                                 <div class="wallet-active">
                                                     <div class="wallet-etherium-icon">
-                                                        <img src="assets/images/blockchainicon2.png">
+                                                        <img *ngIf="completedDetails.typeOfInvestment == 'BTC'"
+                                                            src="assets/images/blockchainicon1.png">
+                                                        <img *ngIf="completedDetails.typeOfInvestment == 'ETH'"
+                                                            src="assets/images/blockchainicon2.png">
                                                     </div>
                                                     <div class="wallet-etherium">
                                                         <h1>{{completedDetails.typeOfInvestment}}</h1>
@@ -270,8 +273,11 @@
                                                     <div class="wallet-etherium text-center">
                                                         <div class="produced-walet">
                                                             <h2>Total</h2>
-                                                            <span>+ $
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BTC'">+ $
                                                                 {{completedDetails.btcValueInUsd + completedDetails.investmentPercentInUsd}}</span>
+
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
+                                                                {{completedDetails.ethValueInUsd + completedDetails.investmentPercentInUsd}}</span>
                                                         </div>
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
@@ -320,8 +326,8 @@
                                         <img src="assets/images/etheriumswipe.png" />
                                     </a>
                                     <a class="carousel-item1">
-                                        <h1>Monero</h1>
-                                        <img src="assets/images/moneroswipe.png" />
+                                        <h1>Bitwings</h1>
+                                        <img src="assets/images/bitwings icon-87.svg" />
                                     </a>
 
                                 </div>

@@ -41,6 +41,7 @@ export class VaultComponent implements OnInit {
   completedCryptoCurrencyDetails: any = [];
   btcIsSelected: boolean = true;
   ethIsSelected: boolean = false;
+  bwnIsSelected: boolean = false;
   allSelected: boolean = false;
   options: any;
   currentlySelectedCryptoType: string;
@@ -51,6 +52,7 @@ export class VaultComponent implements OnInit {
   currentBtcAmountStatus: |number;
   vaultPageShowOrHide: boolean = true;
   vaultHistoryPageShowOrHide: boolean = false;
+  vaultHistoryArr: any[] = [];
   roleName: string = sessionStorage.getItem("roleName");
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
@@ -222,17 +224,25 @@ export class VaultComponent implements OnInit {
 
   // GET ACTIVE VAULT INFORMATION
 
-  vaultHistoryArr: any[] = [];
+
+
   getActiveVaultInformation(cryptoType: string, when?: string) {
     this.currentlySelectedCryptoType = cryptoType;
     if (cryptoType == "BTC") {
       this.btcIsSelected = true;
       this.ethIsSelected = false;
+      this.bwnIsSelected = false;
     } else if (cryptoType == "ETH") {
       this.btcIsSelected = false;
+      this.bwnIsSelected = false;
       this.ethIsSelected = true;
+    } else if (cryptoType == "BWN") {
+      this.btcIsSelected = false;
+      this.bwnIsSelected = true;
+      this.ethIsSelected = false;
     } else if (cryptoType == "all") {
       this.btcIsSelected = true;
+      this.ethIsSelected = true;
       this.ethIsSelected = true;
     }
     if (when != "initial") {

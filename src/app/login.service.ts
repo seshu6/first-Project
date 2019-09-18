@@ -25,6 +25,10 @@ export class LoginService {
     return this.userRole;
   }
 
+  postContactUsApi(data: any) {
+    return this.http.post(this.url.apiUrl + "useractivities/contactus", data, this.header.getHttpHeaderWithoutAccess());
+  }
+
   postForgotPassword(data: any) {
     return this.http.post(this.url.apiUrl + "useractivities/forgot/password", data, this.header.getHttpHeaderWithoutAccess());
   }

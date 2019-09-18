@@ -860,7 +860,10 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.postChangeNotificationStatus(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        if (this.notificationObj.hasOwnProperty("btcWalletAddress")) {
+        
+        if (this.notificationObj.type == "Received" || this.notificationObj.type == "Investment") {
+          this.getActivityList("notification");
+        } else if (this.notificationObj.hasOwnProperty("btcWalletAddress")) {
           this.selectedCurrencyType = "BTC";
           this.getActivityList("notification");
           this.onAutoCompleteUsdToBtcAndETh(this.notificationObj.usdforbtc, 'send');

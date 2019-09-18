@@ -85,21 +85,29 @@
                 <div class="fast-buy-list">
                     <div class="buy-paypal" *ngIf="platformHistoryShowOrHide">
                         <div class="paypal-input-group">
-                            <input type="text" [(ngModel)]="searchBy" />
+                            <input type="text" placeholder="Search" [(ngModel)]="searchBy" />
                             <span>Min. {{minimumBtcOrEthValue}}</span>
                             <div class="list-cop">
-                                <a href="javascript:void(0);">{{selectedCurrencyFilter}}
+                                <a href="javascript:void(0);"
+                                    (click)="cryptoFilterShowOrHide=!cryptoFilterShowOrHide;">{{selectedCurrencyFilter}}
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
-                                <ul class="list-cop-dropdown">
-
+                                <ul class="list-cop-dropdown" style="display: block;" *ngIf="cryptoFilterShowOrHide">
                                     <li>
-                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'BTC'">
+                                        <a href="javascript:void(0);"
+                                            (click)="selectedCurrencyFilter = 'All';cryptoFilterShowOrHide=!cryptoFilterShowOrHide;getRequestedEthOrBtc();">
+                                            All
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            (click)="selectedCurrencyFilter = 'BTC';cryptoFilterShowOrHide=!cryptoFilterShowOrHide;getRequestedEthOrBtc();">
                                             BTC
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'ETH'">
+                                        <a href="javascript:void(0);"
+                                            (click)="selectedCurrencyFilter = 'ETH';cryptoFilterShowOrHide=!cryptoFilterShowOrHide;getRequestedEthOrBtc();">
                                             ETH
                                         </a>
                                     </li>
@@ -112,11 +120,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="paypal-input-group">
+                        <!-- <div class="paypal-input-group">
                             <div class="payment-search">
                                 <button type="type" class="searchbtn">Search</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="payment-method-card">
@@ -226,7 +234,8 @@
                                                 <div class="exchange-dollar">
                                                     <div class="exchange-dol-value">
                                                         <span>$</span>
-                                                        <input type="number" [(ngModel)]="usdToBtcAndEth" [disabled]="sendOrRequest == 'SEND'"
+                                                        <input type="number" [(ngModel)]="usdToBtcAndEth"
+                                                            [disabled]="sendOrRequest == 'SEND'"
                                                             (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
                                                     </div>
@@ -274,7 +283,7 @@
                                                                             <!-- <sup>100+</sup> -->
                                                                         </h1>
                                                                         <p class="exchangetime">{{exchange.date1}}</p>
-                                                                        <p class="exchangetime">02:05:00</p>
+                                                                        <p class="exchangetime">{{exchange.time}}</p>
                                                                     </div>
                                                                     <div class="bank-transfer">
                                                                         <h1>{{exchange.amountToTrade}}
@@ -377,42 +386,51 @@
                     <div class="fastbuysell-tab-content" *ngIf="!platformHistoryShowOrHide">
                         <div class="fast-buy-list">
                             <div class="buy-paypal history-buy-paypal">
-                                <div class="paypal-input-group history-requests">
-                                    <input type="text" placeholder="Requests"/>
-                                </div>
+                                <!-- <div class="paypal-input-group history-requests">
+                                    <input type="text" placeholder="Requests" />
+                                </div> -->
                                 <div class="paypal-input-group">
-                                    <input type="text" [(ngModel)]="searchFilter" />
+                                    <input type="text" placeholder="Search" [(ngModel)]="searchFilter" />
                                     <span>Min. {{minimumBtcOrEthValue}}</span>
                                     <div class="list-cop">
-                                            <a href="javascript:void(0);">{{selectedCurrencyFilterHistory}}
-                                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        <a href="javascript:void(0);"
+                                            (click)="cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;">{{selectedCurrencyFilterHistory}}
+                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        </a>
+                                        <ul class="list-cop-dropdown" style="display: block;"
+                                            *ngIf="cryptoFilterHistoryShowOrHide">
+                                            <li>
+                                                <a href="javascript:void(0);"
+                                                    (click)="selectedCurrencyFilterHistory = 'All';cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;historyTabList();">
+                                                    All
                                                 </a>
-                                                <ul class="list-cop-dropdown">
-                
-                                                    <li>
-                                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilterHistory = 'BTC'">
-                                                            BTC
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilterHistory = 'ETH'">
-                                                            ETH
-                                                        </a>
-                                                    </li>
-                
-                                                    <!-- <li>
-                                                        <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'USD'">
-                                                            USD
-                                                        </a>
-                                                    </li> -->
-                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);"
+                                                    (click)="selectedCurrencyFilterHistory = 'BTC';cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;historyTabList();">
+                                                    BTC
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);"
+                                                    (click)="selectedCurrencyFilterHistory = 'ETH';cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;historyTabList();">
+                                                    ETH
+                                                </a>
+                                            </li>
+
+                                            <!-- <li>
+                                                <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'USD'">
+                                                    USD
+                                                </a>
+                                            </li> -->
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="paypal-input-group">
+                                <!-- <div class="paypal-input-group">
                                     <div class="payment-search">
                                         <button type="type" class="searchbtn">Search</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="history-reusts-list">
                                 <perfect-scrollbar class="history-list-scroll">
@@ -443,9 +461,16 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="history-panel-rht">
-                                                        <h4>{{currentEthValue}} ETH</h4>
-                                                        <p>{{currentBtcValue}} BTC</p>
+                                                    <div class="history-panel-rht"
+                                                        *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
+                                                        <h4>{{historyObj.amountToTrade}} BTC</h4>
+                                                        <p>{{historyObj.amountYouGet}} ETH</p>
+                                                    </div>
+
+                                                    <div class="history-panel-rht"
+                                                        *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
+                                                        <h4>{{historyObj.amountToTrade}} ETH</h4>
+                                                        <p>{{historyObj.amountYouGet}} BTC</p>
                                                     </div>
                                                 </a>
 
@@ -456,13 +481,27 @@
                                                     <div class="history-body-panel">
                                                         <ul>
                                                             <li>
-                                                                <div class="amounttrade">
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
                                                                     <h4>Amount To Trade</h4>
                                                                     <p>{{historyObj.amountToTrade}} BTC</p>
                                                                 </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
+                                                                    <h4>Amount To Trade</h4>
+                                                                    <p>{{historyObj.amountToTrade}} ETH</p>
+                                                                </div>
                                                             </li>
                                                             <li>
-                                                                <div class="amounttrade">
+                                                                <div class="amounttrade"
+                                                                    *ngIf="!(historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN')">
+                                                                    <h4>Amount You Get</h4>
+                                                                    <p>{{historyObj.amountYouGet}} BTC</p>
+                                                                </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="!(historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN')">
                                                                     <h4>Amount You Get</h4>
                                                                     <p>{{historyObj.amountYouGet}} ETH</p>
                                                                 </div>
@@ -473,9 +512,16 @@
                                                                         <h4>Fee</h4>
                                                                         <h4>TOTAL</h4>
                                                                     </div>
-                                                                    <div class="trade_fee_total">
+                                                                    <div class="trade_fee_total"
+                                                                        *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
                                                                         <p>{{historyObj.transactionFee}} BTC</p>
                                                                         <p>{{historyObj.totalAmount}} BTC</p>
+                                                                    </div>
+
+                                                                    <div class="trade_fee_total"
+                                                                        *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
+                                                                        <p>{{historyObj.transactionFee}} ETH</p>
+                                                                        <p>{{historyObj.totalAmount}} ETH</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -487,8 +533,11 @@
                                                             </li>
                                                         </ul>
                                                         <div class="history-exchange-bttn">
-                                                            <button type="button"
+                                                            <button type="button" *ngIf="historyObj.status != 0"
                                                                 class="hisexchange_btn">Exchange</button>
+
+                                                            <button type="button" *ngIf="historyObj.status == 0"
+                                                                class="hisexchange_btn">Exchanged</button>
                                                         </div>
                                                     </div>
                                                 </div>

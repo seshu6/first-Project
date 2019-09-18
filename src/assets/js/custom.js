@@ -35,9 +35,9 @@ $(document).ready(function () {
         $('#fastbuyview').hide();
     });
 
-    $('.list-cop').on("click", "a", function () {
-        $('.list-cop-dropdown').toggle();
-    });
+    // $('.list-cop').on("click", "a", function () {
+    //     $('.list-cop-dropdown').toggle();
+    // });
     $('.list-cop1').on("click", "a", function () {
         $('.list-cop-dropdown').toggle();
     });

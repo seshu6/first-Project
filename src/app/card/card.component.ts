@@ -158,7 +158,7 @@ export class CardComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
-    this.getChartDetails();
+    // this.getChartDetails();
   }
 
   // ngOnDestroy(){

@@ -13,4 +13,9 @@ export class CreateWalletService {
   postCreateWallet(data: any) {
     return this.http.post(this.url.apiUrl + "mobile/mobileregister", data, this.header.getHttpHeaderWithoutAccess());
   }
+
+  postContactUsApi(data: any) {
+    return this.http.post(this.url.apiUrl + "useractivities/contactus", data, this.header.getHttpHeaderWithoutAccess());
+  }
+
 }
