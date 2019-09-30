@@ -59,7 +59,10 @@ export class BuyAndSellService {
     return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/admin/exchange", data, this.header.getHttpHeader());
   }
 
-
+ // BTC TO BWN AND VICE VERSA
+ postBTCAndEthToBwn(data: any) {
+  return this.http.post(this.url.apiUrl + "bluewallet/bitwings/admin/exchange", data, this.header.getHttpHeader());
+}
 
 
   postEthToBtcEcxhange(data: any) {
@@ -73,4 +76,6 @@ export class BuyAndSellService {
   postBtcOrEthBalance(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.header.getHttpHeader());
   }
+
+ 
 }

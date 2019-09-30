@@ -4,7 +4,7 @@
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
         <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-            <div class="profile-setting">
+            <div class="profile-setting"> 
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
                 </div>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="blue-value-dollar">
                             <h4>{{usdForEthOrBtc}}</h4>
-                            <p>USDollar</p>
+                            <p>USDollar</p> 
                         </div>
                     </li>
                 </ul>
@@ -152,6 +152,8 @@
                                                                 *ngIf="cryptoData.typeOfInvestment == 'ETH'">
                                                             <img src="assets/images/blockchainicon1.png"
                                                                 *ngIf="cryptoData.typeOfInvestment == 'BTC'">
+                                                                <img src="assets/images/bitwings icon magenta-87.svg"
+                                                                *ngIf="cryptoData.typeOfInvestment == 'BWN'">
                                                         </div>
                                                         <div class="wallet-etherium">
                                                             <h1>{{cryptoData.typeOfInvestment}}</h1>
@@ -173,6 +175,10 @@
                                                                 <!-- ETH -->
                                                                 <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
                                                                     {{cryptoData.ethValueInUsd}}
+                                                                </span>
+                                                                <!-- BWN -->
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BWN'">+ $
+                                                                    {{cryptoData.bwnValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -208,6 +214,10 @@
                                                                 <!-- ETH -->
                                                                 <span *ngIf="cryptoData.typeOfInvestment == 'ETH'">+ $
                                                                     {{cryptoData.ethValueInUsd}}
+                                                                </span>
+                                                                <!-- BWN -->
+                                                                <span *ngIf="cryptoData.typeOfInvestment == 'BWN'">+ $
+                                                                    {{cryptoData.bwnValueInUsd}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -265,6 +275,8 @@
                                                             src="assets/images/blockchainicon1.png">
                                                         <img *ngIf="completedDetails.typeOfInvestment == 'ETH'"
                                                             src="assets/images/blockchainicon2.png">
+                                                            <img *ngIf="completedDetails.typeOfInvestment == 'BWN'"
+                                                            src="assets/images/assets/images/bitwings icon magenta-87.svg">
                                                     </div>
                                                     <div class="wallet-etherium">
                                                         <h1>{{completedDetails.typeOfInvestment}}</h1>
@@ -278,6 +290,9 @@
 
                                                             <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
                                                                 {{completedDetails.ethValueInUsd + completedDetails.investmentPercentInUsd}}</span>
+
+                                                                <span *ngIf="completedDetails.typeOfInvestment == 'BWN'">+ $
+                                                                    {{completedDetails.bwnValueInUsd + completedDetails.investmentPercentInUsd}}</span>
                                                         </div>
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
@@ -288,6 +303,10 @@
                                                             <!-- ETH -->
                                                             <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+
                                                                 {{completedDetails.ethValueInUsd}}
+                                                            </span>
+                                                            <!-- BWN -->
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BWN'">+
+                                                                {{completedDetails.bwnValueInUsd}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -325,7 +344,7 @@
                                         <h1>Ethereum</h1>
                                         <img src="assets/images/etheriumswipe.png" />
                                     </a>
-                                    <a class="carousel-item1">
+                                    <a class="carousel-item1" (click)="onSliderCryptoCurrency('BWN')">
                                         <h1>Bitwings</h1>
                                         <img src="assets/images/bitwings icon-87.svg" />
                                     </a>

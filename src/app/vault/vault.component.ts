@@ -88,14 +88,20 @@ export class VaultComponent implements OnInit {
     if (Boolean(this.estimatedEth)) {
 
       if (this.estimatedEth != "") {
-        if (this.ethOrBtc == "ETH") {
+        if (this.ethOrBtc == "BTC") {
+          jsonData = {
+            "btcAmount": this.estimatedEth,
+            "cryptoType": this.ethOrBtc
+          }
+        }
+        else if (this.ethOrBtc == "ETH") {
           jsonData = {
             "etherAmount": this.estimatedEth,
             "cryptoType": this.ethOrBtc
           }
-        } else {
+        } else if (this.ethOrBtc == "BWN") {
           jsonData = {
-            "btcAmount": this.estimatedEth,
+            "bwnAmount": this.estimatedEth,
             "cryptoType": this.ethOrBtc
           }
         }
@@ -106,7 +112,7 @@ export class VaultComponent implements OnInit {
         if (success['status'] == "success") {
           console.log("response", success);
           // this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
-          if (this.ethOrBtc == "ETH") {
+          if (this.ethOrBtc == "ETH" || this.ethOrBtc == "BWN") {
             this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
             this.estimatedTotal = success['CalculatingAmountDTO'].totalamount;
             this.usdBtc = success['CalculatingAmountDTO'].usdforEther;
@@ -161,14 +167,17 @@ export class VaultComponent implements OnInit {
         this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
         this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
         this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
-        if (this.ethOrBtc == "ETH") {
-          // this.availabeBalance = success['CalculatingAmountDTO'].ethercurrentvalue;
-          this.availabeBalance = success['CalculatingAmountDTO'].etherAmount;
-          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforEther;
-        } else {
+        if (this.ethOrBtc == "BTC") {
           this.availabeBalance = success['CalculatingAmountDTO'].btcAmount;
           this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforBtc;
+        } else if (this.ethOrBtc == "ETH") {
+          this.availabeBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdforEther;
+        } else if (this.ethOrBtc == "BWN") {
+          this.availabeBalance = success['CalculatingAmountDTO'].bwnAmount;
+          this.usdForEthOrBtc = success['CalculatingAmountDTO'].usdForBwn;
         }
+
         if (index == undefined) {
           this.getActiveVaultInformation(this.ethOrBtc, "notinitial");
         }
@@ -243,7 +252,7 @@ export class VaultComponent implements OnInit {
     } else if (cryptoType == "all") {
       this.btcIsSelected = true;
       this.ethIsSelected = true;
-      this.ethIsSelected = true;
+      this.bwnIsSelected = true;
     }
     if (when != "initial") {
       this.spinner.showOrHide(true);
@@ -264,7 +273,7 @@ export class VaultComponent implements OnInit {
         this.completedCryptoCurrencyDetails = [];
         this.vaultHistoryArr = [];
         this.vaultHistoryArr = success['listofuserCryptoinvestmentdto'];
-        console.log("vault history", this.vaultHistoryArr);
+        // console.log("vault history", this.vaultHistoryArr);
         for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
           if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
             this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
@@ -272,13 +281,15 @@ export class VaultComponent implements OnInit {
             this.completedCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
           }
         }
-        console.log("active", this.activeCryptoCurrencyDetails);
-        console.log("complete", this.completedCryptoCurrencyDetails);
+        // console.log("active", this.activeCryptoCurrencyDetails);
+        // console.log("complete", this.completedCryptoCurrencyDetails);
         if (this.currentlySelectedCryptoType != "all" && when != "initial") {
           if (this.currentlySelectedCryptoType == "BTC") {
             this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 0);
           } else if (this.currentlySelectedCryptoType == "ETH") {
             this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 1);
+          } else if (this.currentlySelectedCryptoType == "BWN") {
+            this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 2);
           }
         }
 

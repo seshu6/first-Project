@@ -27,7 +27,8 @@ export class HomeAddressComponent implements OnInit {
   addressShowOrHide: boolean = false;
   profileShowOrHide: boolean = true;
   countryResidenceShowOrHide: boolean = false;
-  selectedDate: any = new Date();
+  // selectedDate: any = new Date();
+  selectedDate: any;
   selectedCountry: string;
   selectedCity: string;
   selectedstate: string;
@@ -54,7 +55,7 @@ export class HomeAddressComponent implements OnInit {
       firstName: ['', Validators.required],
       middleName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dateOfBirth: [{}],
+      dateOfBirth: [{}, Validators.required]
     });
     this.dynamicScriptLoader.load('custom').then(data => {
 
@@ -88,13 +89,18 @@ export class HomeAddressComponent implements OnInit {
     this.dashboardServices.postBtcOrEthBalance(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        if (this.btcOrEth == "ETH") {
-          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
-          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        if (success['CalculatingAmountDTO'].profileStatus == 1) {
+          this.route.navigate(['login']);
         } else {
-          this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
-          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+          if (this.btcOrEth == "ETH") {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+          } else {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
+          }
         }
+
 
       } else if (success['status'] == "failure") {
 
@@ -125,14 +131,16 @@ export class HomeAddressComponent implements OnInit {
       || this.homeAddressForm.controls.country.invalid || this.homeAddressForm.controls.postalCode.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
-      this.countryResidenceShowOrHide = !this.countryResidenceShowOrHide;
+
+      // this.countryResidenceShowOrHide = !this.countryResidenceShowOrHide;
+      this.countryResidenceShowOrHide = true;
     }
   }
 
   validateNameDetails() {
     console.log("date", this.homeAddressForm.controls.dateOfBirth);
     if (this.homeAddressForm.controls.firstName.invalid || this.homeAddressForm.controls.lastName.invalid
-      || this.homeAddressForm.controls.middleName.invalid) {
+      || this.homeAddressForm.controls.middleName.invalid || this.homeAddressForm.controls.dateOfBirth.invalid) {
       Swal.fire("Info", "Please check your data", "info");
     } else {
       this.addressShowOrHide = !this.addressShowOrHide;
@@ -140,45 +148,45 @@ export class HomeAddressComponent implements OnInit {
   }
 
 
-  
+
 
   addHomeAddressForm() {
     console.log("selected date", this.selectedDate);
     // if (this.homeAddressForm.invalid) {
     //   Swal.fire("Info", "Please check your data", "info");
     // } else {
-      this.spinner.showOrHide(true);
-      let jsonData = {
-        "address": this.homeAddressForm.controls.addressLine1.value,
-        "address1": this.homeAddressForm.controls.addressLine2.value,
-        "postalCode": this.homeAddressForm.controls.postalCode.value,
-        "countryId": this.selectedCountryAddress,
-        "stateId": this.selectedstate,
-        "cityId": this.selectedCity,
-        "userId": sessionStorage.getItem("userId"),
-        "firstName": this.homeAddressForm.controls.firstName.value,
-        "middleName": this.homeAddressForm.controls.middleName.value,
-        "lastName": this.homeAddressForm.controls.lastName.value,
-        "dob": this.homeAddressForm.controls.dateOfBirth.value
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "address": this.homeAddressForm.controls.addressLine1.value,
+      "address1": this.homeAddressForm.controls.addressLine2.value,
+      "postalCode": this.homeAddressForm.controls.postalCode.value,
+      "countryId": this.selectedCountryAddress,
+      "stateId": this.selectedstate,
+      "cityId": this.selectedCity,
+      "userId": sessionStorage.getItem("userId"),
+      "firstName": this.homeAddressForm.controls.firstName.value,
+      "middleName": this.homeAddressForm.controls.middleName.value,
+      "lastName": this.homeAddressForm.controls.lastName.value,
+      "dob": this.homeAddressForm.controls.dateOfBirth.value
+    }
+    this.dashboardServices.postAddHomeAddressDetails(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        // this.homeAddressForm.reset();
+        Swal.fire("Success", success['message'], "success");
+        this.route.navigate(['dashboard']);
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
       }
-      this.dashboardServices.postAddHomeAddressDetails(jsonData).subscribe(success => {
-        this.spinner.showOrHide(false);
-        if (success['status'] == "success") {
-          // this.homeAddressForm.reset();
-          Swal.fire("Success", success['message'], "success");
-          this.route.navigate(['dashboard']);
 
-        } else if (success['status'] == "failure") {
-          Swal.fire("Error", success['message'], "error");
-        }
-
-      }, error => {
-        this.spinner.showOrHide(false);
-        if (error.error.error == "invalid_token") {
-          Swal.fire("Info", "Session Expired", "info");
-          this.route.navigate(['login']);
-        }
-      })
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
     // }
   }
 

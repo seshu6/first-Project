@@ -87,7 +87,7 @@
                 <div class="profile-form">
                     <form [formGroup]="profileForm">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-12">  
+                            <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-group">
                                     <div class="inputeffect">
                                         <label>
@@ -104,7 +104,14 @@
                                             Mobile
                                         </label>
                                         <input type="number" placeholder="Mobile" formControlName="mobile"
-                                            (keypress)="avoidNumber($event)">
+                                            [(ngModel)]="mobileNo" (keypress)="avoidNumber($event)"
+                                            (ngModelChange)="checkMobileLengthFun($event)">
+                                        <span class="validationError" *ngIf="checkMobileLength">
+                                            <span class="clrred">
+                                                Must
+                                                be more than 7 and less than 15</span>
+
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -170,7 +177,7 @@
                                     <div class="inputeffect">
                                         <button class="create-walbtn" type="button"
                                             (click)="updateProfileDetails()">Save</button>
-                                        <button class="create-walbtn" type="button">Cancel</button>
+                                        <!-- <button class="create-walbtn" type="button">Cancel</button> -->
                                     </div>
                                 </div>
                             </div>

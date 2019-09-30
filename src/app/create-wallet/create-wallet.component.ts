@@ -55,7 +55,7 @@ export class CreateWalletComponent implements OnInit {
   // CREATE NEW WALLET
   onCreateNewWallet() {
     if (this.createWalletForm.invalid) {
-      Swal.fire("Error", "Please check details", "error");
+      Swal.fire("Info", "Please check details", "info");
     } else {
       this.spinner.showOrHide(true);
       this.createWalletService.postCreateWallet(this.createWalletForm.value).subscribe(success => {

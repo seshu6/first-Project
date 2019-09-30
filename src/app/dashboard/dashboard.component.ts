@@ -263,15 +263,22 @@ export class DashboardComponent implements OnInit {
         this.todayAmount = success['CalculatingAmountDTO'].todayAmount;
         this.weekAmount = success['CalculatingAmountDTO'].weekaAmount;
         this.monthAmount = success['CalculatingAmountDTO'].monthAmount;
-        if (this.selectedCurrencyType == "ETH") {
-          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
-          this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdforEther;
-          this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType, this.btcOrEthBalance, this.btcOrEthUsdDollar);
-        } else {
+
+
+        if (this.selectedCurrencyType == "BTC") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
           this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdforBtc;
           this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType, this.btcOrEthBalance, this.btcOrEthUsdDollar);
+        } else if (this.selectedCurrencyType == "ETH") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
+          this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdforEther;
+          this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType, this.btcOrEthBalance, this.btcOrEthUsdDollar);
+        } else if (this.selectedCurrencyType == "BWN") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].bwnAmount;
+          this.btcOrEthUsdDollar = success['CalculatingAmountDTO'].usdForBwn;
+          this.dashboardService.sliderFromDashboardToParent(this.selectedCurrencyType, this.btcOrEthBalance, this.btcOrEthUsdDollar);
         }
+
 
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
@@ -316,12 +323,10 @@ export class DashboardComponent implements OnInit {
           this.qrCodeAmount = success['loginInfo'].btcAmount;
           this.qrImgSrc = success['loginInfo'].qrCode;
           this.qrWalletAddress = success['loginInfo'].bitcoinWalletAddress;
-          console.log("BTC");
-        } else if (this.selectedCurrencyType == "ETH") {
+        } else if (this.selectedCurrencyType == "ETH" || this.selectedCurrencyType == "BWN") {
           this.qrCodeAmount = success['loginInfo'].etherAmount;
           this.qrImgSrc = success['loginInfo'].qrCode;
           this.qrWalletAddress = success['loginInfo'].EtherwalletAddress;
-          console.log("ETH");
         }
         this.copied = "Copy All";
         this.spinner.showOrHide(false);
@@ -384,6 +389,8 @@ export class DashboardComponent implements OnInit {
         index = 0;
       } else if (this.selectedCurrencyType == "ETH") {
         index = 1;
+      } else if (this.selectedCurrencyType == "BWN") {
+        index = 2;
       }
       if (carouselInstances != undefined) {
         carouselInstances.set(index);
@@ -403,22 +410,34 @@ export class DashboardComponent implements OnInit {
     } else if (this.selectedAmountMode == "Request") {
       amountMode = "requested";
     }
-    if (this.selectedCurrencyType == "BTC") {
-      jsonData = {
-        "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": amountMode,
-        "cryptoType": "BTCTEST",
-        "flagfordates": this.dayWeekMonth
-      }
-    } else {
-      jsonData = {
-        "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": amountMode,
-        "cryptoType": "ETH",
-        "flagfordates": this.dayWeekMonth
-      }
+    // if (this.selectedCurrencyType == "BTC") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "BTC",
+    //     "flagfordates": this.dayWeekMonth
+    //   }
+    // } else if (this.selectedCurrencyType == "ETH") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "ETH",
+    //     "flagfordates": this.dayWeekMonth
+    //   }
+    // } else if (this.selectedCurrencyType == "BWN") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "BWN",
+    //     "flagfordates": this.dayWeekMonth
+    //   }
+    // }
+    jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "fetchAmountFlag": amountMode,
+      "cryptoType": this.selectedCurrencyType,
+      "flagfordates": this.dayWeekMonth
     }
-
     this.dashboardService.postActivityList(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
@@ -452,21 +471,35 @@ export class DashboardComponent implements OnInit {
     } else {
       amountMode = "all";
     }
-    if (this.selectedCurrencyType == "BTC") {
-      jsonData = {
-        "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": amountMode,
-        "cryptoType": "BTCTEST",
-        "month": this.selectedMonth
-      }
-    } else {
-      jsonData = {
-        "userId": sessionStorage.getItem("userId"),
-        "fetchAmountFlag": amountMode,
-        "cryptoType": "ETH",
-        "month": this.selectedMonth
-      }
+    // if (this.selectedCurrencyType == "BTC") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "BTC",
+    //     "month": this.selectedMonth
+    //   }
+    // } else if (this.selectedCurrencyType == "ETH") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "ETH",
+    //     "month": this.selectedMonth
+    //   }
+    // } else if (this.selectedCurrencyType == "BWN") {
+    //   jsonData = {
+    //     "userId": sessionStorage.getItem("userId"),
+    //     "fetchAmountFlag": amountMode,
+    //     "cryptoType": "BWN",
+    //     "month": this.selectedMonth
+    //   }
+    // }
+    jsonData = {
+      "userId": sessionStorage.getItem("userId"),
+      "fetchAmountFlag": amountMode,
+      "cryptoType": this.selectedCurrencyType,
+      "month": this.selectedMonth
     }
+
     this.dashboardService.postDashboardChartDetails(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
@@ -724,6 +757,8 @@ export class DashboardComponent implements OnInit {
       this.sendBtcCryptoCurrency();
     } else if (this.selectedCurrencyType == "ETH") {
       this.sendEthCryptoCurrency();
+    } else if (this.selectedCurrencyType == "BWN") {
+      this.sendBwnCryptoCurrency();
     }
   }
 
@@ -816,6 +851,46 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  // SEND BWN
+  sendBwnCryptoCurrency() {
+    this.refreshAlertModalShowOrHide = true;
+    let jsonData = {};
+    if (this.requestIdCounter == 1) {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toEthWalletAddress": this.sendWalletAddress,
+        "bitwingsAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0,
+        "requestId": this.requestId
+      };
+    } else {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toEthWalletAddress": this.sendWalletAddress,
+        "bitwingsAmount": this.sendEthOrBtcAmount,
+        "exchangeStatus": 0
+      };
+    }
+    this.dashboardService.postSendBwnCryptoCurrency(jsonData).subscribe(success => {
+      this.refreshAlertModalShowOrHide = false;
+      if (success['status'] == "success") {
+        this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
+          this.route.navigate(["dashboard"]));
+        this.requestIdCounter = 0;
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
+      }
+    }, error => {
+      this.refreshAlertModalShowOrHide = false;
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
+
+
   // NOTIFICATION LIST
 
   getNotificationList() {
@@ -860,7 +935,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.postChangeNotificationStatus(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        
+
         if (this.notificationObj.type == "Received" || this.notificationObj.type == "Investment") {
           this.getActivityList("notification");
         } else if (this.notificationObj.hasOwnProperty("btcWalletAddress")) {

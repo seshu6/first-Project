@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import $ from "jquery";
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import { LoaderService } from '../loader.service';
+import { Attribute } from '@angular/compiler';
 
 // import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -76,6 +77,12 @@ export class BuyAndSellComponent implements OnInit {
   cryptoFilterShowOrHide: boolean = false;
   cryptoFilterHistoryShowOrHide: boolean = false;
   selectedCurrencyFilterHistory: any = "All";
+  requestCryptoDropDown: boolean = false;
+  requestedCryptoCurrency: string = "Bitcoin";
+  requestCryptoDropDownRhs: boolean = false;
+  requestedCryptoCurrencyRhs: string = "Ethereum";
+  exchangeSendCryptoTypeLhs: string = "Bitcoin";
+  exchangeSendCryptoTypeRhs: string = "Ethereum";
 
 
   // userTabListArr: any[] = [];
@@ -107,123 +114,186 @@ export class BuyAndSellComponent implements OnInit {
   //   sessionStorage.setItem("active","buyandsell");
   // }
 
-  // CHANGE FROM BTC TO ETH AND VICE VERSA
-  changeBtcToEthAndViceVersa(where?: string) {
-    if (where != "exchange") {
-      let btcOrEth: string = "btc";
-      this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
-      this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
-      $("#bitoicnlink img").addClass("bounceInDown");
-      if (this.lhsBtcShowOrHide) {
-        this.whetherBtcOrEth = "BTC";
-        btcOrEth = "btc";
-        setTimeout(function () {
-          $("#bitoicnlink img").addClass("slideInUp animated");
-          $("#bitoicnlink1 img").addClass("slideInUp animated");
-        }, 10)
-      } else {
-        this.whetherBtcOrEth = "ETH";
-        btcOrEth = "eth";
-        setTimeout(function () {
-          this.whetherBtcOrEth = "ETH";
-          $("#bitoicnlink img").addClass("slideInDown animated");
-          $("#bitoicnlink1 img").addClass("slideInDown animated");
-        }, 10)
-      }
-      this.spinner.showOrHide(true);
-      let jsonData = {
-        "cryptoType": btcOrEth
-      }
-      this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
-        this.spinner.showOrHide(false);
-        if (success['status'] == "success") {
-          this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
-          this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
-          // this.adminExchangeTabData();
-        } else if (success['status'] == "failure") {
-          Swal.fire("Failure", success['message'], "error");
-        }
-      }, error => {
-        this.spinner.showOrHide(false);
-        if (error.error.error == "invalid_token") {
-          Swal.fire("Info", "Session Expired", "info");
-          this.route.navigate(['login']);
-        }
-      })
-      if (this.usdToBtcAndEth != 0) {
-        this.onAutoCompleteUsdToBtcAndETh();
-      }
 
-    } else {
-      // this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
-      // this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
-      if (this.whetherBtcOrEth == "BTC") {
-        this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
-        this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
-      } else {
-        this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
-        this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
+
+  onChangeRequestDropDown(crypto: string) {
+    this.requestCryptoDropDown = !this.requestCryptoDropDown;
+    if (crypto == "Bitcoin") {
+      this.requestedCryptoCurrency = 'Bitcoin';
+      this.whetherBtcOrEth = 'BTC';
+      this.requestedCryptoCurrencyRhs = 'Ethereum';
+      this.changeBtcToEthAndViceVersa();
+
+    } else if (crypto == "Ethereum") {
+      this.requestedCryptoCurrency = 'Ethereum';
+      this.whetherBtcOrEth = 'ETH';
+      this.requestedCryptoCurrencyRhs = 'Bitcoin';
+      this.changeBtcToEthAndViceVersa();
+
+    }
+  }
+
+
+
+
+
+  // CHANGE FROM BTC TO ETH AND VICE VERSA
+  // changeBtcToEthAndViceVersa(where?: string) {
+  //   if (where != "exchange") {
+  //     let btcOrEth: string = "btc";
+  //     this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
+  //     this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
+  //     $("#bitoicnlink img").addClass("bounceInDown");
+  //     if (this.lhsBtcShowOrHide) {
+  //       this.whetherBtcOrEth = "BTC";
+  //       btcOrEth = "btc";
+  //       setTimeout(function () {
+  //         $("#bitoicnlink img").addClass("slideInUp animated");
+  //         $("#bitoicnlink1 img").addClass("slideInUp animated");
+  //       }, 10)
+  //     } else {
+  //       this.whetherBtcOrEth = "ETH";
+  //       btcOrEth = "eth";
+  //       setTimeout(function () {
+  //         this.whetherBtcOrEth = "ETH";
+  //         $("#bitoicnlink img").addClass("slideInDown animated");
+  //         $("#bitoicnlink1 img").addClass("slideInDown animated");
+  //       }, 10)
+  //     }
+  //     this.spinner.showOrHide(true);
+  //     let jsonData = {
+  //       "cryptoType": btcOrEth
+  //     }
+  //     this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
+  //       this.spinner.showOrHide(false);
+  //       if (success['status'] == "success") {
+  //         this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
+  //         this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
+  //         // this.adminExchangeTabData();
+  //       } else if (success['status'] == "failure") {
+  //         Swal.fire("Failure", success['message'], "error");
+  //       }
+  //     }, error => {
+  //       this.spinner.showOrHide(false);
+  //       if (error.error.error == "invalid_token") {
+  //         Swal.fire("Info", "Session Expired", "info");
+  //         this.route.navigate(['login']);
+  //       }
+  //     })
+  //     if (this.usdToBtcAndEth != 0) {
+  //       this.onAutoCompleteUsdToBtcAndETh();
+  //     }
+
+  //   } else {
+  //     // this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
+  //     // this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide
+  //     if (this.whetherBtcOrEth == "BTC") {
+  //       this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
+  //       this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
+  //     } else {
+  //       this.lhsBtcShowOrHide = !this.lhsBtcShowOrHide;
+  //       this.rhsEtherShowOrHide = !this.rhsEtherShowOrHide;
+  //     }
+  //     $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
+  //     $("#bitoicnlink img").addClass("bounceInDown");
+  //     if (this.lhsBtcShowOrHide) {
+  //       setTimeout(function () {
+  //         $("#bitoicnlink img").addClass("slideInUp animated");
+  //         $("#bitoicnlink1 img").addClass("slideInUp animated");
+  //       }, 10)
+  //     } else {
+  //       setTimeout(function () {
+  //         this.whetherBtcOrEth = "ETH";
+  //         $("#bitoicnlink img").addClass("slideInDown animated");
+  //         $("#bitoicnlink1 img").addClass("slideInDown animated");
+  //       }, 10)
+  //     }
+  //     // this.spinner.showOrHide(true);
+  //     let jsonData = {
+  //       "cryptoType": this.whetherBtcOrEth
+  //     }
+  //     this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
+  //       // this.spinner.showOrHide(false);
+  //       if (success['status'] == "success") {
+  //         this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
+  //         this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
+  //         // this.adminExchangeTabData();
+  //       } else if (success['status'] == "failure") {
+  //         Swal.fire("Failure", success['message'], "error");
+  //       }
+  //     }, error => {
+  //       // this.spinner.showOrHide(false);
+  //       if (error.error.error == "invalid_token") {
+  //         Swal.fire("Info", "Session Expired", "info");
+  //         this.route.navigate(['login']);
+  //       }
+  //     })
+  //     if (this.usdToBtcAndEth != 0) {
+  //       this.onAutoCompleteUsdToBtcAndETh();
+  //     }
+  //   }
+
+
+  // }
+
+
+  changeBtcToEthAndViceVersa() {
+    let btcOrEth: string = (this.whetherBtcOrEth == "BTC") ? "btc" : "eth";
+
+    this.spinner.showOrHide(true);
+    let jsonData = {
+      "cryptoType": btcOrEth
+    }
+    this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
+        this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
+        // this.adminExchangeTabData();
+      } else if (success['status'] == "failure") {
+        Swal.fire("Failure", success['message'], "error");
       }
-      $("#activyscroll").niceScroll({ cursorborder: "", cursorcolor: "#abb3d0", cursorwidth: '6px', background: "#e5e7ef", autohidemode: false });
-      $("#bitoicnlink img").addClass("bounceInDown");
-      if (this.lhsBtcShowOrHide) {
-        setTimeout(function () {
-          $("#bitoicnlink img").addClass("slideInUp animated");
-          $("#bitoicnlink1 img").addClass("slideInUp animated");
-        }, 10)
-      } else {
-        setTimeout(function () {
-          this.whetherBtcOrEth = "ETH";
-          $("#bitoicnlink img").addClass("slideInDown animated");
-          $("#bitoicnlink1 img").addClass("slideInDown animated");
-        }, 10)
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
       }
-      // this.spinner.showOrHide(true);
-      let jsonData = {
-        "cryptoType": this.whetherBtcOrEth
-      }
-      this.buyAndSellService.postBtcOrEthMinAndMaxValue(jsonData).subscribe(success => {
-        // this.spinner.showOrHide(false);
-        if (success['status'] == "success") {
-          this.minimumBtcOrEthValue = success['CalculatingAmountDTO'].minimumCryptoValue;
-          this.maximumBtcOrEthValue = success['CalculatingAmountDTO'].maximumCryptoValue;
-          // this.adminExchangeTabData();
-        } else if (success['status'] == "failure") {
-          Swal.fire("Failure", success['message'], "error");
-        }
-      }, error => {
-        // this.spinner.showOrHide(false);
-        if (error.error.error == "invalid_token") {
-          Swal.fire("Info", "Session Expired", "info");
-          this.route.navigate(['login']);
-        }
-      })
-      if (this.usdToBtcAndEth != 0) {
-        this.onAutoCompleteUsdToBtcAndETh();
-      }
+    })
+    if (this.usdToBtcAndEth != 0) {
+      this.onAutoCompleteUsdToBtcAndETh();
     }
 
 
   }
+
+  inValidAmount: boolean = false;
 
   // AUTO COMPLETE(CONVERSION OF USD TO BTC AND ETH)
   onAutoCompleteUsdToBtcAndETh() {
     if (!Boolean(this.usdToBtcAndEth)) {
       this.calculatedBtcOrEth = 0;
       this.usdToBtcAndEth = 0;
-      Swal.fire("Info", "Please enter amount to proceed", "info");
+      // Swal.fire("Info", "Please enter amount to proceed", "info");
+      this.inValidAmount = true;
 
     } else {
+      this.inValidAmount = false;
       let jsonData = {};
       if (this.whetherBtcOrEth == "BTC") {
         jsonData = {
           "usd": this.usdToBtcAndEth,
           "cryptoType": "btc"
         }
-      } else {
+      } else if (this.whetherBtcOrEth == "ETH") {
         jsonData = {
           "usd": this.usdToBtcAndEth,
           "cryptoType": "eth"
+        }
+      } else if (this.whetherBtcOrEth == "BWN") {
+        jsonData = {
+          "usd": this.usdToBtcAndEth,
+          "cryptoType": "bwn"
         }
       }
 
@@ -262,31 +332,31 @@ export class BuyAndSellComponent implements OnInit {
       // this.spinner.showOrHide(true);
       this.refreshAlertModalShowOrHide = true;
       let jsonData = {};
-      if (this.lhsBtcShowOrHide && this.whenPlatformIsSelected) {
-        jsonData = {
-          "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "BTC_ETH_ADMIN",
-          "amountToTrade": this.calculatedBtcOrEth
-        }
-      } else if ((!this.lhsBtcShowOrHide) && (this.whenPlatformIsSelected)) {
-        jsonData = {
-          "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "ETH_BTC_ADMIN",
-          "amountToTrade": this.calculatedBtcOrEth
-        }
-      } else if ((this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
-        jsonData = {
-          "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "BTC_ETH_USER",
-          "amountToTrade": this.calculatedBtcOrEth
-        }
-      } else if ((!this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
-        jsonData = {
-          "userId": sessionStorage.getItem("userId"),
-          "exchangeMode": "ETH_BTC_USER",
-          "amountToTrade": this.calculatedBtcOrEth
-        }
-      }
+      // if (this.lhsBtcShowOrHide && this.whenPlatformIsSelected) {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "BTC_ETH_ADMIN",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // } else if ((!this.lhsBtcShowOrHide) && (this.whenPlatformIsSelected)) {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "ETH_BTC_ADMIN",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // } else if ((this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "BTC_ETH_USER",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // } else if ((!this.lhsBtcShowOrHide) && (!this.whenPlatformIsSelected)) {
+      //   jsonData = {
+      //     "userId": sessionStorage.getItem("userId"),
+      //     "exchangeMode": "ETH_BTC_USER",
+      //     "amountToTrade": this.calculatedBtcOrEth
+      //   }
+      // } 
       // if (this.lhsBtcShowOrHide) {
       //   jsonData = {
       //     "userId": sessionStorage.getItem("userId"),
@@ -300,6 +370,44 @@ export class BuyAndSellComponent implements OnInit {
       //     "amountToTrade": this.calculatedBtcOrEth
       //   }
       // }
+
+      if ((this.requestedCryptoCurrency == "Bitcoin" && this.requestedCryptoCurrencyRhs == "Ethereum") && this.whenPlatformIsSelected) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "BTC_ETH_ADMIN",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Ethereum" && this.requestedCryptoCurrencyRhs == "Bitcoin") && (this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "ETH_BTC_ADMIN",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Bitcoin" && this.requestedCryptoCurrencyRhs == "Ethereum") && (!this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "BTC_ETH_USER",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Ethereum" && this.requestedCryptoCurrencyRhs == "Bitcoin") && (!this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "ETH_BTC_USER",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Bitcoin" && this.requestedCryptoCurrencyRhs == "Bitwings") && (this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "BTC_BWN_ADMIN",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Ethereum" && this.requestedCryptoCurrencyRhs == "Bitwings") && (this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "ETH_BWN_ADMIN",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      }
       this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
         // this.spinner.showOrHide(false);
         this.refreshAlertModalShowOrHide = false;
@@ -484,7 +592,6 @@ export class BuyAndSellComponent implements OnInit {
 
 
 
-
   // EXCHANGE CRYPTOCURRENCY API
   exchangeCryptoCurrency(data: any) {
     this.currentObj = data;
@@ -495,6 +602,8 @@ export class BuyAndSellComponent implements OnInit {
         this.whetherBtcOrEth = "ETH";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "eth";
+        this.exchangeSendCryptoTypeLhs = "Bitcoin";
+        this.exchangeSendCryptoTypeRhs = "Ethereum";
         this.onAutoCompleteUsdToBtcAndETh();
         // this.changeBtcToEthAndViceVersa("exchange");
         // this.postBtcToEthUser(data);
@@ -504,9 +613,27 @@ export class BuyAndSellComponent implements OnInit {
         this.whetherBtcOrEth = "BTC";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "btc";
+        this.exchangeSendCryptoTypeLhs = "Ethereum";
+        this.exchangeSendCryptoTypeRhs = "Bitcoin";
         this.onAutoCompleteUsdToBtcAndETh();
         // this.changeBtcToEthAndViceVersa("exchange");
         // this.postEthToBtchUser(data);
+      } else if (data.exchangeType == "BTC_BWN_ADMIN") {
+
+        this.whetherBtcOrEth = "BWN";
+        this.usdToBtcAndEth = data.cryptoinusd;
+        this.exchangeBtcOrEth = "bwn";
+        this.exchangeSendCryptoTypeLhs = "Bitcoin";
+        this.exchangeSendCryptoTypeRhs = "Bitwings";
+        this.onAutoCompleteUsdToBtcAndETh();
+
+      } else if (data.exchangeType == "ETH_BWN_ADMIN") {
+        this.whetherBtcOrEth = "BWN";
+        this.usdToBtcAndEth = data.cryptoinusd;
+        this.exchangeBtcOrEth = "bwn";
+        this.exchangeSendCryptoTypeLhs = "Ethereum";
+        this.exchangeSendCryptoTypeRhs = "Bitwings";
+        this.onAutoCompleteUsdToBtcAndETh();
       }
     } else {
       Swal.fire("Info", "Not allowed", "info");
@@ -535,6 +662,8 @@ export class BuyAndSellComponent implements OnInit {
 
         } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
           this.postBtcToEthAdmin();
+        } else if (this.currentObj.exchangeType == "BTC_BWN_ADMIN" || this.currentObj.exchangeType == "ETH_BWN_ADMIN") {
+          this.postBtcToBwnAndViceVersa();
         }
       } else {
         if (this.currentObj.exchangeType == "ETH_BTC_ADMIN") {
@@ -549,6 +678,8 @@ export class BuyAndSellComponent implements OnInit {
           this.postEthToBtchUser();
         } else if (this.currentObj.exchangeType == "ETH_BTC_USER") {
           this.postBtcToEthUser();
+        } else if (this.currentObj.exchangeType == "BTC_BWN_ADMIN" || this.currentObj.exchangeType == "ETH_BWN_ADMIN") {
+          this.postBtcToBwnAndViceVersa();
         }
       }
 
@@ -703,6 +834,48 @@ export class BuyAndSellComponent implements OnInit {
   }
 
 
+  // BTC TO BWN AND VICE VERSA
+  postBtcToBwnAndViceVersa() {
+    let jsonData = {};
+    this.refreshAlertModalShowOrHide = true;
+    if (this.currentObj.exchangeType == "BTC_BWN_ADMIN") {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toBtcWalletAddress": this.currentObj.ethWalletAddress,
+        "exchangeType": this.currentObj.exchangeType,
+        "exchangeReqId": this.currentObj.id,
+        "exchangeStatus": 1
+      }
+    } else if (this.currentObj.exchangeType == "ETH_BWN_ADMIN") {
+      jsonData = {
+        "userId": sessionStorage.getItem("userId"),
+        "toEthWalletAddress": this.currentObj.ethWalletAddress,
+        "exchangeType": this.currentObj.exchangeType,
+        "exchangeReqId": this.currentObj.id,
+        "exchangeStatus": 1
+      }
+    }
+
+    this.buyAndSellService.postBTCAndEthToBwn(jsonData).subscribe(success => {
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
+      if (success['status'] == "success") {
+        this.usdToBtcAndEth = 0;
+        this.calculatedBtcOrEth = 0;
+        this.getRequestedEthOrBtc();
+        Swal.fire("Success", success['message'], "success");
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      // this.spinner.showOrHide(false);
+      this.refreshAlertModalShowOrHide = false;
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
+  }
 
 
 

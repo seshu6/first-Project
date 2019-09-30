@@ -111,6 +111,12 @@
                                             ETH
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="javascript:void(0);"
+                                            (click)="selectedCurrencyFilter = 'BWN';cryptoFilterShowOrHide=!cryptoFilterShowOrHide;getRequestedEthOrBtc();">
+                                            BWN
+                                        </a>
+                                    </li>
 
                                     <!-- <li>
                                         <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'USD'">
@@ -149,7 +155,7 @@
                                                 <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'REQUEST'">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
-                                                            <div class="transfer-bitcoin">
+                                                            <!-- <div class="transfer-bitcoin">
                                                                 <a class="bitoicnlink" id="bitoicnlink"
                                                                     href="javascript:void(0);">
                                                                     <img src="assets/images/bitcoin-icon.png"
@@ -161,16 +167,61 @@
                                                                         *ngIf="!lhsBtcShowOrHide">
                                                                     <span *ngIf="!lhsBtcShowOrHide">Ethereum</span>
                                                                 </a>
+                                                            </div> -->
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink"
+                                                                    (click)="requestCryptoDropDown = !requestCryptoDropDown;">
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="requestedCryptoCurrency == 'Bitcoin'" />
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="requestedCryptoCurrency == 'Ethereum'" />
+                                                                    <img src="assets/images/bitwingswhite.svg"
+                                                                        *ngIf="requestedCryptoCurrency == 'Bitwings'" />
+                                                                    <span>{{requestedCryptoCurrency}}</span>
+                                                                </a>
+                                                                <div class="coin-list-view"
+                                                                    *ngIf="requestCryptoDropDown">
+                                                                    <ul>
+                                                                        <li *ngIf="requestedCryptoCurrency!='Bitcoin'">
+                                                                            <a
+                                                                                (click)="onChangeRequestDropDown('Bitcoin')">
+                                                                                <img
+                                                                                    src="assets/images/bitcoin-icon.png" />
+                                                                                <span>Bitcoin</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li *ngIf="requestedCryptoCurrency!='Ethereum'">
+                                                                            <a
+                                                                                (click)="onChangeRequestDropDown('Ethereum')">
+                                                                                <img
+                                                                                    src="assets/images/etherium-icon.png" />
+                                                                                <span>Ethereum</span>
+                                                                            </a>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-2 col-md-2 col-12"
+
+
+
+
+
+
+                                                        <!-- <div class="col-lg-2 col-md-2 col-12"
                                                             (click)="changeBtcToEthAndViceVersa()">
+                                                            <div class="exchange-icn-center">
+                                                                <img src="assets/images/exchange-icon.png" />
+                                                            </div>
+                                                        </div> -->
+                                                        <div class="col-lg-2 col-md-2 col-12">
                                                             <div class="exchange-icn-center">
                                                                 <img src="assets/images/exchange-icon.png" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-5 col-md-5 col-12">
-                                                            <div class="transfer-bitcoin">
+                                                            <!-- <div class="transfer-bitcoin">
                                                                 <a class="bitoicnlink1" id="bitoicnlink1"
                                                                     href="javascript:void(0);">
                                                                     <img src="assets/images/etherium-icon.png"
@@ -181,6 +232,50 @@
                                                                         *ngIf="!rhsEtherShowOrHide">
                                                                     <span *ngIf="!rhsEtherShowOrHide">Bitcoin</span>
                                                                 </a>
+                                                            </div> -->
+
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink1"
+                                                                    (click)="requestCryptoDropDownRhs = !requestCryptoDropDownRhs;">
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="requestedCryptoCurrencyRhs == 'Bitcoin'" />
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="requestedCryptoCurrencyRhs == 'Ethereum'" />
+                                                                    <img src="assets/images/bitwingswhite.svg"
+                                                                        *ngIf="requestedCryptoCurrencyRhs == 'Bitwings'" />
+                                                                    <span>{{requestedCryptoCurrencyRhs}}</span>
+                                                                </a>
+                                                                <div class="coin-list-view1"
+                                                                    *ngIf="requestCryptoDropDownRhs">
+                                                                    <ul>
+                                                                        <li
+                                                                            *ngIf="requestedCryptoCurrencyRhs!='Bitcoin'">
+                                                                            <a
+                                                                                (click)="requestedCryptoCurrencyRhs = 'Bitcoin';requestCryptoDropDownRhs = !requestCryptoDropDownRhs;">
+                                                                                <img
+                                                                                    src="assets/images/bitcoin-icon.png" />
+                                                                                <span>Bitcoin</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li
+                                                                            *ngIf="requestedCryptoCurrencyRhs!='Ethereum'">
+                                                                            <a
+                                                                                (click)="requestedCryptoCurrencyRhs = 'Ethereum';requestCryptoDropDownRhs = !requestCryptoDropDownRhs;">
+                                                                                <img
+                                                                                    src="assets/images/etherium-icon.png" />
+                                                                                <span>Ethereum</span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li *ngIf="whenPlatformIsSelected">
+                                                                            <a
+                                                                                (click)="requestedCryptoCurrencyRhs = 'Bitwings';requestCryptoDropDownRhs = !requestCryptoDropDownRhs;">
+                                                                                <img
+                                                                                    src="assets/images/bitwingswhite.svg" />
+                                                                                <span>Bitwings</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -188,8 +283,8 @@
                                                 <!-- ENDS HERE -->
 
 
-                                                <!-- SEND BTC AND ETH STARTS -->
-                                                <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'SEND'">
+                                                <!-- OLD SEND BTC AND ETH STARTS -->
+                                                <!-- <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'SEND'">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-5 col-12">
                                                             <div class="transfer-bitcoin">
@@ -227,8 +322,49 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div> -->
+                                                <!-- ENDS HERE -->
+
+                                                <!-- NEW SEND BTC AND ETH STARTS -->
+                                                <div class="coin-transfer-exchange" *ngIf="sendOrRequest == 'SEND'">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-5 col-md-5 col-12">
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink">
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="exchangeSendCryptoTypeLhs == 'Bitcoin'" />
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="exchangeSendCryptoTypeLhs == 'Ethereum'" />
+                                                                    <img src="assets/images/bitwingswhite.svg"
+                                                                        *ngIf="exchangeSendCryptoTypeLhs == 'Bitwings'" />
+                                                                    <span>{{exchangeSendCryptoTypeLhs}}</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-2 col-md-2 col-12">
+                                                            <div class="exchange-icn-center">
+                                                                <img src="assets/images/exchange-icon.png" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5 col-12">
+
+                                                            <div class="transfer-bitcoin">
+                                                                <a class="bitoicnlink1">
+                                                                    <img src="assets/images/bitcoin-icon.png"
+                                                                        *ngIf="exchangeSendCryptoTypeRhs == 'Bitcoin'" />
+                                                                    <img src="assets/images/etherium-icon.png"
+                                                                        *ngIf="exchangeSendCryptoTypeRhs == 'Ethereum'" />
+                                                                    <img src="assets/images/bitwingswhite.svg"
+                                                                        *ngIf="exchangeSendCryptoTypeRhs == 'Bitwings'" />
+                                                                    <span>{{exchangeSendCryptoTypeRhs}}</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- ENDS HERE -->
+
 
 
                                                 <div class="exchange-dollar">
@@ -238,6 +374,10 @@
                                                             [disabled]="sendOrRequest == 'SEND'"
                                                             (ngModelChange)="onAutoCompleteUsdToBtcAndETh()">
                                                         <p>{{calculatedBtcOrEth}} {{whetherBtcOrEth}}</p>
+                                                        <span class="validationError" *ngIf="inValidAmount">
+                                                            <p class="clrred" style="font-size: 20px;color:#F44336;">
+                                                                Enter valid amount</p>
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <div class="minmax-value">
@@ -289,9 +429,10 @@
                                                                         <h1>{{exchange.amountToTrade}}
                                                                         </h1>
                                                                         <span
-                                                                            *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN'">BTC</span>
+                                                                            *ngIf="exchange.exchangeType == 'BTC_ETH_USER' || exchange.exchangeType == 'BTC_ETH_ADMIN' || exchange.exchangeType == 'BTC_BWN_USER' || exchange.exchangeType == 'BTC_BWN_ADMIN'">BTC</span>
                                                                         <span
-                                                                            *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN'">ETH</span>
+                                                                            *ngIf="exchange.exchangeType == 'ETH_BTC_USER' || exchange.exchangeType == 'ETH_BTC_ADMIN' || exchange.exchangeType == 'ETH_BWN_USER' || exchange.exchangeType == 'ETH_BWN_ADMIN'">ETH</span>
+
                                                                     </div>
                                                                     <div class="bank-transfer">
                                                                         <button type="button"
@@ -417,6 +558,18 @@
                                                     ETH
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a href="javascript:void(0);"
+                                                    (click)="selectedCurrencyFilterHistory = 'BWN';cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;historyTabList();">
+                                                    BWN
+                                                </a>
+                                            </li>
+                                            <!-- <li>
+                                                <a href="javascript:void(0);"
+                                                    (click)="selectedCurrencyFilterHistory = 'BWN';cryptoFilterHistoryShowOrHide=!cryptoFilterHistoryShowOrHide;historyTabList();">
+                                                    BWN
+                                                </a>
+                                            </li> -->
 
                                             <!-- <li>
                                                 <a href="javascript:void(0);" (click)="selectedCurrencyFilter = 'USD'">

@@ -183,7 +183,7 @@ export class CardComponent implements OnInit {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
         "fetchAmountFlag": amountMode,
-        "cryptoType": "BTCTEST",
+        "cryptoType": "BTC",
         "month": this.selectedMonth
       }
     } else {

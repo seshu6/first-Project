@@ -2977,7 +2977,8 @@ footer {
 }
 .select-crytocurrency-list .carousel .carousel-item1>img {
 	width: 100%;
-	height: 120px;
+	/* height: 120px; */
+	height: 105px;
 	object-fit: contain;
 }
 .platform-user-tabs {
@@ -4059,6 +4060,7 @@ footer {
 	border-radius: 6px;
 	font-weight: 500;
 	padding: 12px 12px;
+	cursor: pointer;
 }
 .transfer-bitcoin a.bitoicnlink::after {
 	position: absolute;
@@ -4067,6 +4069,7 @@ footer {
 	right: 10px;
 	font-size: 18px;
 	top: 10px;
+	color: #ffffff;
 }
 .transfer-bitcoin a.bitoicnlink img {
 	width: 22px;
@@ -4075,8 +4078,9 @@ footer {
 	object-position: center;
 	margin-right: 6px;
 }
-.transfer-bitcoin a.bitoicnlink span {
+.transfer-bitcoin a.bitoicnlink span , .transfer-bitcoin a.bitoicnlink span:hover{
 	font-size: 16px;
+	color:#ffffff;
 }
 .transfer-bitcoin .coin-list-view {
 	width: 100%;
@@ -4089,16 +4093,17 @@ footer {
 	background: -ms-linear-gradient(0deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
 	background: linear-gradient(90deg, rgba(65,218,156,1) 0%, rgba(21,233,233,1) 100%);
 	border-radius: 6px;
-	display: none;
+	/* display: none; */
 }
 .transfer-bitcoin .coin-list-view ul li {
 	display: block;
 }
-.transfer-bitcoin .coin-list-view ul li a {
+.transfer-bitcoin .coin-list-view ul li a, .transfer-bitcoin .coin-list-view ul li a:hover {
 	display: block;
 	text-decoration: none;
 	padding: 6px 12px;
 	color: #ffffff;
+	cursor: pointer;
 }
 .transfer-bitcoin .coin-list-view ul li a img {
 	width: 22px;
@@ -4125,6 +4130,10 @@ footer {
 	border-radius: 6px;
 	font-weight: 500;
 	padding: 12px 12px;
+	cursor: pointer;
+}
+.transfer-bitcoin a.bitoicnlink1:hover{
+	color: #ffffff;
 }
 .transfer-bitcoin a.bitoicnlink1::after {
 	position: absolute;
@@ -4133,6 +4142,7 @@ footer {
 	right: 10px;
 	font-size: 18px;
 	top: 10px;
+	color:#ffffff;
 }
 .transfer-bitcoin a.bitoicnlink1 img {
 	width: 22px;
@@ -4141,8 +4151,10 @@ footer {
 	object-position: center;
 	margin-right: 6px;
 }
-.transfer-bitcoin a.bitoicnlink1 span {
+.transfer-bitcoin a.bitoicnlink1 span, .transfer-bitcoin a.bitoicnlink1 span:hover {
 	font-size: 16px;
+	color: #ffffff;
+	cursor: pointer;
 }
 .transfer-bitcoin .coin-list-view1 {
 	width: 100%;
@@ -4155,7 +4167,7 @@ footer {
 	background: -ms-linear-gradient(0deg, rgba(255,124,110,1) 0%, rgba(244,49,127,1) 100%);
 	background: linear-gradient(90deg, rgba(255,124,110,1) 0%, rgba(244,49,127,1) 100%);
 	border-radius: 6px;
-	display: none;
+	/* display: none; */
 }
 .transfer-bitcoin .coin-list-view1 ul li {
 	display: block;
@@ -4165,6 +4177,7 @@ footer {
 	text-decoration: none;
 	padding: 6px 12px;
 	color: #ffffff;
+	cursor: pointer;
 }
 .transfer-bitcoin .coin-list-view1 ul li a img {
 	width: 22px;
@@ -4173,8 +4186,9 @@ footer {
 	object-position: center;
 	margin-right: 6px;
 }
-.transfer-bitcoin .coin-list-view1 ul li a span {
+.transfer-bitcoin .coin-list-view1 ul li a span, .transfer-bitcoin .coin-list-view1 ul li a span:hover {
 	font-size: 16px;
+	color: #ffffff;
 }
 .exchange-icn-center {
 	text-align: center;

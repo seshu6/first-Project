@@ -43,6 +43,7 @@
                 </div>
             </div>
             <!-- ENDS HERE -->
+            
             <div class="wallet-eth-list">
                 <div class="select-crytocurrency-list dashboardwal-carousel blockelemtn">
                     <h1>Select Your cryptocurrency</h1>
@@ -55,9 +56,9 @@
                             <h1>Ethereum</h1>
                             <img src="assets/images/etheriumswipe.png" />
                         </a>
-                        <a class="carousel-item1">
-                            <h1>Monero</h1>
-                            <img src="assets/images/moneroswipe.png" />
+                        <a class="carousel-item1" (click)="onSelectSliderCryptoCurrency('BWN')">
+                            <h1>Bitwing</h1>
+                            <img src="assets/images/bitwings icon-87.svg" />
                         </a>
 
                     </div>
@@ -147,6 +148,7 @@
 
                     <li class="col-lg-4 col-md-4 col-xs-12">
                         <div class="complete-profile" *ngIf="profileShowOrHide == 0 && roleName == 'user'">
+                                
                             <!-- <div class="complete-profile"> -->
                             <div class="profile-comp">
                                 <div class="profile-content">
@@ -155,7 +157,7 @@
                                     <button type="button" class="cntinuebtn" (click)="goToSmsVerify()">Continue</button>
                                 </div>
                                 <div class="profile-content-logo">
-                                    <img src="assets/images/logo.png" />
+                                    <img src="assets/images/bluewallet-logo.png" />
                                 </div>
                             </div>
                         </div>
@@ -226,6 +228,9 @@
                                 <li (click)="selectedCurrencyType = 'BTC';getActivityList()">
                                     <a>BTC</a>
                                 </li>
+                                <li (click)="selectedCurrencyType = 'BWN';getActivityList()">
+                                    <a>BWN</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -291,13 +296,16 @@
                                                                 *ngIf="activity.transactionType=='Received' || activity.transactionType == 'Request'">
                                                         </div>
                                                         <div class="activy-paid-text">
-                                                            <h1 *ngIf="activity.transactionType=='Received'">
-                                                                {{activity.transactionType}}</h1>
+                                                            <!-- <h1 *ngIf="activity.transactionType=='Received'">
+                                                                {{activity.transactionType}}</h1> -->
 
                                                             <p *ngIf="activity.transactionType=='Send'">Send to
                                                                 {{activity.sendto}}
                                                             </p>
                                                             <p *ngIf="activity.transactionType=='Request'">Request by
+                                                                {{activity.sendby}}
+                                                            </p>
+                                                            <p *ngIf="activity.transactionType=='Received'">Received from
                                                                 {{activity.sendby}}
                                                             </p>
                                                         </div>
@@ -319,9 +327,9 @@
                                                 </div>
                                                 <div class="activity-receipt-view collapse" id="h{{i}}"
                                                     aria-labelledby="headingOne" data-parent="#accordion">
-                                                    <h1 *ngIf="activity.transactionType=='Received'">Receipt
+                                                    <!-- <h1 *ngIf="activity.transactionType=='Received'">Receipt
                                                         #:{{activity.sendby}}
-                                                    </h1>
+                                                    </h1> -->
                                                     <p>
                                                         {{activity.time}}</p>
                                                 </div>

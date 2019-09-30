@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
   enableOrDisable: string;
   profileUploadCounter: number = 0;
   uploadProfileImg: any;
+  checkMobileLength: boolean = false;
   clock_tick: any = Date.now();
 
   @ViewChild('profileImage') profileImage: ElementRef;
@@ -63,13 +64,14 @@ export class ProfileComponent implements OnInit {
 
     this.profileForm = this.formBuilder.group({
       "name": ['', Validators.required],
-      "mobile": ['', Validators.required],
+      "mobile": ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
       "registry": [{ value: '', disabled: true }, Validators.required],
       "country": [{ value: '', disabled: true }, Validators.required],
       "email": [{ value: '', disabled: true }, Validators.required],
       "coinPurse": [{ value: '', disabled: true }, Validators.required],
       "version": [{ value: '', disabled: true }, Validators.required],
     })
+
 
     this.getProfileDetails("initial");
     // this.getBtcOrEthBalance();
@@ -360,10 +362,25 @@ export class ProfileComponent implements OnInit {
   }
 
 
+  mobileNo: number;
+  checkMobileLengthFun(num: any) {
+    if(Boolean(num)){
+      (num.toString().length > 15 || num.toString().length < 7) ? this.checkMobileLength = true : this.checkMobileLength = false;
+    }
+      
+    
+  }
+
+
   avoidNumber(e: any) {
     if (["e", "+", "-"].includes(e.key)) {
       e.preventDefault();
     }
+
+    // if (this.profileForm.controls.mobile.value != null) {
+    //   (this.profileForm.controls.mobile.value.toString().length > 15 || this.profileForm.controls.mobile.value.toString().length < 7) ? this.checkMobileLength = true : this.checkMobileLength = false;
+    // }
+
   }
 
 

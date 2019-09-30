@@ -17,6 +17,7 @@ export class HostUrlService {
   apiUrl: string = "http://192.168.2.19:9091/API/";
 
   // TEMPORARY SERVER
-  // tokenUrl: string = "http://bluwallet.colan.in/oauth/token";
+  // tokenUrl: string = "http://bluwallet.colan.in/oauth/token";'
   // apiUrl: string = "http://bluwallet.colan.in/API/";
 }
+

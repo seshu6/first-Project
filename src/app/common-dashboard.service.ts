@@ -92,6 +92,10 @@ export class CommonDashboardService {
   postSendEthCryptoCurrency(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/eth/transfer", data, this.header.getHttpHeader());
   }
+  
+  postSendBwnCryptoCurrency(data:any){
+    return this.http.post(this.url.apiUrl + "bluewallet/bwn/transfer", data, this.header.getHttpHeader());
+  }
 
   postKycUpload(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/upload/kyc", data, this.header.getUploadHttpHeader());

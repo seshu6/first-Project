@@ -31,7 +31,7 @@ export class AdminUserDetailsComponent implements OnInit {
   kycPageShowOrHide: boolean = false;
   userListShowOrHide: boolean = true;
   currentKycZoomImage: string;
-  searchFilter:any;
+  searchFilter: any;
   btcOrEthBalance: any;
   btcOrEthUsdDollar: any;
   btcOrEth: string = "BTC";
@@ -39,6 +39,7 @@ export class AdminUserDetailsComponent implements OnInit {
   currentBtcAmount: string | number;
   currentEthAmountStatus: string | number;
   currentBtcAmountStatus: string | number;
+  roleName = sessionStorage.getItem("roleName");
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private adminService: AdminUserService) { }
 
   ngOnInit() {
@@ -47,8 +48,12 @@ export class AdminUserDetailsComponent implements OnInit {
     }).catch(error => {
       console.log("Error occur in loading dynamic script");
     })
+    if (this.roleName == "admin") {
+      this.getUserList();
+    } else {
+      this.route.navigate(['login']);
+    }
 
-    this.getUserList();
 
   }
 
@@ -71,7 +76,7 @@ export class AdminUserDetailsComponent implements OnInit {
     })
   }
 
-  
+
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
     this.spinner.showOrHide(true);
