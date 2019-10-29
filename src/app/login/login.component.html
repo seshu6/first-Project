@@ -37,7 +37,7 @@
     <div class="center-form-login">
       <div class="loging-form-center">
         <div class="login-form-div">
-          <form [formGroup]="loginForm" *ngIf="loginOrForgotShowOrHide">
+          <form [formGroup]="loginForm" *ngIf="loginShowOrHide">
             <h1>{{loginOrForgot}}</h1>
             <div class="form-group">
               <input type="text" placeholder="Email" formControlName="email">
@@ -67,8 +67,12 @@
             </div>
             <div class="form-group">
               <a class="forgotpassword"
-                (click)="loginOrForgotShowOrHide=!loginOrForgotShowOrHide;loginOrForgot='Forgot Password';">Did you
+                (click)="forgotPasswordClicked()">Did you
                 forgot your password?
+              </a>
+              <a class="forgotpassword d-flex resend-email"
+                (click)="resendEmailClicked()">
+                Resend Email Verification Link
               </a>
             </div>
             <div class="form-group text-center">
@@ -76,7 +80,7 @@
             </div>
           </form>
           <!-- FORGOT PASSWORD FORM STARTS HERE -->
-          <form *ngIf="!loginOrForgotShowOrHide">
+          <form *ngIf="forgotPasswordShowOrHide">
             <h1>
               <h1>{{loginOrForgot}}</h1>
             </h1>
@@ -92,7 +96,26 @@
 
           </form>
           <!-- ENDS HERE -->
+          <!-- VERFICATION EMAIL STARTS HERE -->
+          <form *ngIf="resendEmailShowOrHide" class="verify-email">
+            <h1>
+              <h1>Resend Email Verification</h1>
+            </h1>
 
+
+            <p>Enter your registered email address below. Don't forget to check your spam folder</p>
+            <div class="form-group">
+              <input type="text" placeholder="Email" name="resendEmail" [(ngModel)]="resendEmail">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="form-group text-center">
+              <button type="button" class="loginbtn" (click)="resendVerificationEmail()">Send Email</button>
+              <a class="forgotpassword" (click)="showForgotPassword()">Back to login</a>
+            </div>
+
+
+          </form>
+          <!-- ENDS HERE -->
 
         </div>
       </div>

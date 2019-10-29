@@ -1,4 +1,4 @@
 {
-    "tokenUrl": "https://coinways.io/bluewallet-0.0.1-SNAPSHOT/oauth/token",
-    "apiUrl": "https://coinways.io/bluewallet-0.0.1-SNAPSHOT/API/"
+    "tokenUrl": "http://192.168.2.19:9091/oauth/token",
+    "apiUrl": "http://192.168.2.19:9091/API/"
 }

@@ -138,6 +138,7 @@
                   <th>S.NO</th>
                   <th>Name</th>
                   <th>E-mail</th>
+                  <th>Verification status</th>
                   <th>Wallet</th>
                   <th>KYC View</th>
                 </tr>
@@ -146,18 +147,20 @@
                 <tr *ngFor="let user of userListArr | filter:searchFilter;let i=index;">
                   <td class="idview">{{i+1}}</td>
                   <td>{{user.userName}}</td>
-                  <td>{{user.emailId}}</td>
+                  <td>{{user.email}}</td>
+                  <td *ngIf="user.gmailstatus == 0">Not verified</td>
+                  <td *ngIf="user.gmailstatus == 1">Verified</td>
                   <td>
                     <div class="idview">
                       <!-- <h1>Wallet</h1> -->
                       <span class="idviewimg">
-                        <a href="javascript:void(0);" (click)="openVaultModal(user.bitCoinAddress)">
+                        <a href="javascript:void(0);" (click)="openVaultModal(user.btcWalletAddress)">
                           <img src="assets/images/blockchainicon1.png">
                         </a>
-                        <a href="javascript:void(0);" (click)="openVaultModal(user.etherWalletAddress)">
+                        <a href="javascript:void(0);" (click)="openVaultModal(user.ethWalletAddress)">
                           <img src="assets/images/blockchainicon2.png">
                         </a>
-                        <a href="javascript:void(0);" (click)="openVaultModal(user.etherWalletAddress)">
+                        <a href="javascript:void(0);" (click)="openVaultModal(user.ethWalletAddress)">
                           <img src="assets/images/bitwings icon magenta-87.svg">
                         </a>
                       </span>

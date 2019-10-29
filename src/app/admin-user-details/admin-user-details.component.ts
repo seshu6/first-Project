@@ -46,7 +46,7 @@ export class AdminUserDetailsComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      
+
     })
     if (this.roleName == "admin") {
       this.getUserList();
@@ -65,12 +65,12 @@ export class AdminUserDetailsComponent implements OnInit {
     this.spinner.showOrHide(true);
     this.adminService.getUserKycList().subscribe(success => {
       this.spinner.showOrHide(false);
-      this.userListArr = success['kycList'];
+      this.userListArr = success['kycList1'];
       this.getBtcOrEthBalance("BTC");
     }, error => {
       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info"); 
+        Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
       }
     })
@@ -130,11 +130,43 @@ export class AdminUserDetailsComponent implements OnInit {
   }
 
   openKycDocument(obj: any) {
-    this.currentModalObj = obj;
-    this.userListShowOrHide = false;
-    this.kycPageShowOrHide = true;
+    this.spinner.showOrHide(true);
+    this.adminService.getKycDocumnets(obj.userId).subscribe(success => {
+      this.spinner.showOrHide(false);
+      if (success['status'] == "success") {
+        this.currentModalObj = success['kycDocList'];
+        this.userListShowOrHide = false;
+        this.kycPageShowOrHide = true;
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+    }, error => {
+      this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+    })
 
   }
+
+  // getKycDocumentDetails(id: any) {
+  //   this.spinner.showOrHide(true);
+  //   this.adminService.getKycDocumnets(id).subscribe(success => {
+  //     this.spinner.showOrHide(false);
+  //     if (success['status'] == "success") {
+  //       console.log("kyc photos---------->", success);
+  //     } else if (success['status'] == "failure") {
+  //       Swal.fire("Error", success['message'], "error");
+  //     }
+  //   }, error => {
+  //     this.spinner.showOrHide(false);
+  //     if (error.error.error == "invalid_token") {
+  //       Swal.fire("Info", "Session Expired", "info");
+  //       this.route.navigate(['login']);
+  //     }
+  //   })
+  // }
 
   // openKycDocsModal(imgSrc: string) {
   //   this.currentKycZoomImage = imgSrc;

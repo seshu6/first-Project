@@ -19,13 +19,18 @@ import { ViewChild, ElementRef } from '@angular/core';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginOrForgot: string = "Login";
-  loginOrForgotShowOrHide: boolean = true;
+  loginShowOrHide: boolean = true;
+  forgotPasswordShowOrHide: boolean = false;
+  resendEmailShowOrHide: boolean = false;
+  // loginOrForgotShowOrHide: boolean = true;
   forgotPasswordEmail: string;
   otpModalShowOrHide: boolean = false;
+
   otp: any;
   otpCode: string = "";
   otpCodeArr: any;
   contactUsForm: FormGroup;
+  resendEmail: any = "";
   @ViewChild('contactUsModal') contactUsModal: ElementRef;
   // @ViewChild('otpForm') otpForm: ElementRef;
   constructor(private verificationService: TwoStepsVerificationService, private formBuilder: FormBuilder, private loginService: LoginService, private route: Router, private spinner: LoaderService) { }
@@ -45,6 +50,20 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
+  forgotPasswordClicked() {
+    this.loginShowOrHide = false;
+    this.forgotPasswordShowOrHide = true;
+    this.resendEmailShowOrHide = false;
+    this.loginOrForgot = 'Forgot Password';
+  }
+
+
+  resendEmailClicked() {
+    this.loginShowOrHide = false;
+    this.forgotPasswordShowOrHide = false;
+    this.resendEmailShowOrHide = true;
+  }
 
   closeContactUsModal() {
     this.contactUsModal.nativeElement.click();
@@ -171,7 +190,10 @@ export class LoginComponent implements OnInit {
         if (success['status'] == "success") {
           Swal.fire("Success", success['message'], "success");
           this.forgotPasswordEmail = "";
-          this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+          // this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+          this.loginShowOrHide = true;
+          this.forgotPasswordShowOrHide = false;
+          this.resendEmailShowOrHide = false;
           this.loginOrForgot = "Login";
           // this.route.navigate(['link/notactivation'])
         } else if (success['status'] == "failure") {
@@ -188,10 +210,50 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // RESEND EMAIL
+
+  resendVerificationEmail() {
+    let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!Boolean(this.resendEmail)) {
+      Swal.fire("Info", "Email id is empty", "info");
+    } else if (!(emailPattern.test(this.resendEmail))) {
+      Swal.fire("Info", "Invalid email format", "info");
+    } else {
+      this.spinner.showOrHide(true);
+      let jsonData = {
+        "email": this.resendEmail
+      }
+      this.loginService.resendEmail(jsonData).subscribe(success => {
+        this.spinner.showOrHide(false);
+        if (success['status'] == "success") {
+          Swal.fire("Success", success['message'], "success");
+          this.loginShowOrHide = true;
+          this.forgotPasswordShowOrHide = false;
+          this.resendEmailShowOrHide = false;
+          this.resendEmail = "";
+        } else if (success['status'] == "failure") {
+          Swal.fire("Error", success['message'], "error");
+        }
+      }, error => {
+        this.spinner.showOrHide(false);
+        if (error.error.error == "invalid_token") {
+          Swal.fire("Info", "Session Expired", "info");
+          this.route.navigate(['login']);
+        }
+      })
+    }
+
+
+  }
+
   showForgotPassword() {
-    this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+    // this.loginOrForgotShowOrHide = !this.loginOrForgotShowOrHide;
+    this.loginShowOrHide = true;
+    this.forgotPasswordShowOrHide = false;
+    this.resendEmailShowOrHide = false;
     this.loginOrForgot = 'Login';
     this.forgotPasswordEmail = "";
+    this.resendEmail = "";
     this.loginForm.reset();
   }
 

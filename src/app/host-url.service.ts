@@ -30,7 +30,7 @@ export class HostUrlService {
   // apiUrl: string = "http://192.168.2.37:9091/API/";
 
   // PUBLIC IP
-  // tokenUrl: string = "http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/oauth/token";
+  // tokenUrl: string = "http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/oauth/token"; 
   // apiUrl: string = "http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/";
 
   // PUBLIC DOMAIN

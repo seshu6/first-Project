@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HostUrlService } from './host-url.service';
-import { CommonAuthenticationService } from './common-authentication.service'; 
+import { CommonAuthenticationService } from './common-authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,10 @@ export class LoginService {
 
   postForgotPassword(data: any) {
     return this.http.post(this.url.apiUrl + "useractivities/forgot/password", data, this.header.getHttpHeaderWithoutAccess());
+  }
+
+  resendEmail(data: any) {
+    return this.http.post(this.url.apiUrl + "mobile/email/resend", data, this.header.getHttpHeaderWithoutAccess());
   }
 
 }

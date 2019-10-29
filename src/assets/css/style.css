@@ -2085,7 +2085,7 @@ word-break: break-all;
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
-.select-your-cryptocurrency ul li a {
+.select-your-cryptocurrency ul li a { 
 	display: block;
 	text-decoration: none;
 	opacity: 0.4
@@ -8698,5 +8698,25 @@ font-weight: 600;
 
 .btn:focus{
 	box-shadow: none;
+}
+/* ENDS HERE */
+
+
+/* RESEND EMAIL STARTS HERE */
+.verify-email p{
+	color:#fff;
+	margin-bottom: 20px;
+}
+
+.resend-email{
+	 color: #fff !important;
+	margin-top: 10px;
+}
+
+.verify-email h1 > h1{
+	font-size: 26px;
+}
+.resend-email:hover{
+ color: #fff !important;
 }
 /* ENDS HERE */

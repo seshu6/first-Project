@@ -14,6 +14,10 @@ export class AdminUserService {
     return this.http.get(this.url.apiUrl + "bluewallet/list/kyc", this.commonHeaders.getHttpHeader());
   }
 
+  getKycDocumnets(data: any) {
+    return this.http.get(this.url.apiUrl + "bluewallet/list/kycdoc?userId=" + data, this.commonHeaders.getHttpHeader());
+  }
+
   postBtcOrEthBalance(data: any) {
     return this.http.post(this.url.apiUrl + "bluewallet/currentcryptovalue", data, this.commonHeaders.getHttpHeader());
   }
