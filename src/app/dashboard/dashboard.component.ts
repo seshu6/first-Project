@@ -10,6 +10,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { trigger, state, style, transition, animate, keyframes, group } from '@angular/animations';
 import * as M from 'src/assets/materialize/js/materialize';
+
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
@@ -77,6 +78,10 @@ export class DashboardComponent implements OnInit {
   currentClickedIndex: string | number;
   previousClickedIndex: string | number;
   notificationObj: any = {};
+  currentEthAmount: string | number;
+  currentBtcAmount: string | number;
+  currentEthAmountStatus: number;
+  currentBtcAmountStatus: |number;
 
 
   // CHART CONFIGURATIONS STARTS HERE
@@ -183,16 +188,57 @@ export class DashboardComponent implements OnInit {
   webSocketObj: any;
 
   // ENDS HERE
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private dashboardService: CommonDashboardService) { }
+
+
+
+
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private spinner: LoaderService, private dashboardService: CommonDashboardService) {
+
+  }
 
   ngOnInit() {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     })
+    // $('.carousel-item1').carousel({
+    //   onCycleTo: function (data) {
+    //     alert("changed");
+    //   }
+    // });
+
+
     this.getActivityList();
   }
+
+
+  // ngAfterViewInit() {
+    // let elems = document.querySelectorAll('.carousel');
+    // let instances = M.Carousel.getInstance(elems);
+
+    // setTimeout(() => {
+    //   let elem = document.querySelector('.carousel');
+    //   let carouselInstances = M.Carousel.getInstance(elem);
+    //   console.log("one");
+    //   // if (Boolean(carouselInstances)) {
+
+    //   // }
+    //   carouselInstances.options.onCycleTo = (index) => {
+    //     console.log(index);
+    //     this.slideCrptoChange(index);
+    //   };
+
+    // }, 500);
+
+    // let elem = document.querySelector('.carousel');
+    // // let carouselInstances = M.Carousel.init(elem, this.options);
+    // let carouselInstances = M.Carousel.getInstance(elem);
+    // console.log(carouselInstances);
+    // if (Boolean(carouselInstances)) {
+    //   carouselInstances.options.onCycleTo = this.sayHello;
+    // }
+  // }
 
 
   // @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
@@ -200,11 +246,57 @@ export class DashboardComponent implements OnInit {
   // }
 
 
+  slideCrptoChange(index) {
+    if (index.innerText == "BitCoin") {
+      this.onSelectSliderCryptoCurrency("BTC");
+    } else if (index.innerText == "Ethereum") {
+      this.onSelectSliderCryptoCurrency("ETH");
+    } else if (index.innerText == "Bitwing") {
+      this.onSelectSliderCryptoCurrency("BWN");
+    }
+
+  }
+
+  toggleDropDown(filter: string) {
+    if (filter == "month") {
+      this.showOrHideMonthList = !this.showOrHideMonthList;
+      if (this.showOrHideAmountMode) {
+        this.showOrHideAmountMode = false;
+      }
+      if (this.showOrHideCryptoType) {
+        this.showOrHideCryptoType = false;
+      }
+    } else if (filter == "amount") {
+      this.showOrHideAmountMode = !this.showOrHideAmountMode;
+      if (this.showOrHideMonthList) {
+        this.showOrHideMonthList = false;
+      }
+      if (this.showOrHideCryptoType) {
+        this.showOrHideCryptoType = false;
+      }
+    } else if (filter == "crypto") {
+      this.showOrHideCryptoType = !this.showOrHideCryptoType;
+      if (this.showOrHideAmountMode) {
+        this.showOrHideAmountMode = false;
+      }
+      if (this.showOrHideMonthList) {
+        this.showOrHideMonthList = false;
+      }
+    }
+  }
 
   onSelectSliderCryptoCurrency(crypto: string) {
+    this.sendEthOrBtcAmount = "";
+    this.sendEthOrBtcAmountUsd = "";
+    this.requestEthOrBtcAmountUsd = "";
+    this.requestEthOrBtcAmount = "";
+    this.requestWalletAddress = "";
+    this.sendWalletAddress = "";
     this.selectedCurrencyType = crypto;
     this.getActivityList("slider");
   }
+
+
 
   connect() {
     this.ws = new SockJS(this.webSocketEndPoint);
@@ -218,8 +310,7 @@ export class DashboardComponent implements OnInit {
         if (this.userId == branchData['showNotificationid']) {
           this.notificationArr.push(branchData);
         }
-        console.log(branchData['userName']);
-        console.log(branchData['showNotificationid']);
+
       })
 
     }, this.errorCallBack);
@@ -230,11 +321,11 @@ export class DashboardComponent implements OnInit {
     if (this.stompClient !== null) {
       this.stompClient.disconnect();
     }
-    console.log("Disconnected");
+
   }
 
   errorCallBack(error) {
-    console.log("errorCallBack -> " + error)
+
     setTimeout(() => {
       this.connect();
     }, 5000);
@@ -250,6 +341,7 @@ export class DashboardComponent implements OnInit {
 
   getBtcOrEthBalance(cryptoCurrency: string) {
     let currency = cryptoCurrency;
+
     this.spinner.showOrHide(true);
     let jsonData = {
       "userId": sessionStorage.getItem("userId"),
@@ -257,13 +349,17 @@ export class DashboardComponent implements OnInit {
     }
     this.dashboardService.postBtcOrEthBalance(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
+
       if (success['status'] == "success") {
         this.kycShowOrHide = success['CalculatingAmountDTO'].kycStatus;
         this.profileShowOrHide = success['CalculatingAmountDTO'].profileStatus;
         this.todayAmount = success['CalculatingAmountDTO'].todayAmount;
         this.weekAmount = success['CalculatingAmountDTO'].weekaAmount;
         this.monthAmount = success['CalculatingAmountDTO'].monthAmount;
-
+        this.currentEthAmount = success['CalculatingAmountDTO'].currentUsdforEther;
+        this.currentBtcAmount = success['CalculatingAmountDTO'].currentUsdforBtc;
+        this.currentEthAmountStatus = success['CalculatingAmountDTO'].ethStatus;
+        this.currentBtcAmountStatus = success['CalculatingAmountDTO'].btcStatus;
 
         if (this.selectedCurrencyType == "BTC") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
@@ -285,6 +381,7 @@ export class DashboardComponent implements OnInit {
       }
     }, error => {
       this.spinner.showOrHide(false);
+
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -302,7 +399,6 @@ export class DashboardComponent implements OnInit {
   }
 
   goToSmsVerify() {
-
     this.route.navigate(['verify']);
   }
 
@@ -376,7 +472,14 @@ export class DashboardComponent implements OnInit {
   }
 
 
-
+  // setCarouselSlidingFun() {
+  //   let elem = document.querySelector('.carousel');
+  //   let carouselInstances = M.Carousel.getInstance(elem);
+  //   carouselInstances.options.onCycleTo = (index) => {
+  //     console.log(index);
+  //     this.slideCrptoChange(index);
+  //   };
+  // }
 
 
   getActivityList(fromSlider?: string) {
@@ -385,6 +488,17 @@ export class DashboardComponent implements OnInit {
       let index: number = 0;
       let elem = document.querySelector('.carousel');
       let carouselInstances = M.Carousel.getInstance(elem);
+      // carouselInstances.options.onCycleTo = (index) => {
+      //   console.log(index);
+      //   this.slideCrptoChange(index);
+      // };
+      // if (carouselInstances != undefined) {
+      //   carouselInstances.options.draggable = false;
+      // }
+
+      // carouselInstances.onCycleTo = () => {
+      //   alert("changed");
+      // }
       if (this.selectedCurrencyType == "BTC") {
         index = 0;
       } else if (this.selectedCurrencyType == "ETH") {
@@ -399,6 +513,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.spinner.showOrHide(true);
+
     let amountMode: string;
     let jsonData = {};
     if (this.selectedAmountMode == "All") {
@@ -440,6 +555,7 @@ export class DashboardComponent implements OnInit {
     }
     this.dashboardService.postActivityList(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
+
       if (success['status'] == "success") {
         this.increOrDecreHistoryIndex = 0;
         this.activityListArr = success['listCalculatingAmountDTO'];
@@ -450,6 +566,7 @@ export class DashboardComponent implements OnInit {
       }
     }, error => {
       this.spinner.showOrHide(false);
+
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -461,6 +578,7 @@ export class DashboardComponent implements OnInit {
   // DASHBOARD CHART DETAILS
   getDashboardChartDetails() {
     this.spinner.showOrHide(true);
+
     let jsonData = {};
     let amountMode: string;
 
@@ -502,6 +620,7 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.postDashboardChartDetails(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
+
       if (success['status'] == "success") {
         this.lineChartColors = [];
         this.lineChartData = [];
@@ -671,6 +790,7 @@ export class DashboardComponent implements OnInit {
       }
     }, error => {
       this.spinner.showOrHide(false);
+
       if (error.error.error == "invalid_token") {
         Swal.fire("Info", "Session Expired", "info");
         this.route.navigate(['login']);
@@ -693,7 +813,7 @@ export class DashboardComponent implements OnInit {
       "cryptoType": this.selectedCurrencyType
     }
     this.dashboardService.postAutoCompleteUsdToBtcAndEth(jsonData).subscribe(success => {
-      console.log("AutoComplete", success);
+
       if (success['status'] == "success") {
         if (sendOrRequest == "send") {
           this.sendEthOrBtcAmount = success['CalculatingAmountDTO'].cryptoAmount;
@@ -708,7 +828,7 @@ export class DashboardComponent implements OnInit {
         } else {
           this.requestEthOrBtcAmount = 0;
         }
-        Swal.fire("Failure", success['message'], "error");
+        // Swal.fire("Failure", success['message'], "error");
       }
     }, error => {
       this.spinner.showOrHide(false);
@@ -719,6 +839,71 @@ export class DashboardComponent implements OnInit {
 
     })
   }
+
+
+  // AUTO COMPLETE(CONVERSION OF BTC,ETH,BWN TO USD)
+  onAutoCompleteUsdToCrypto(cryptoAmount: number | string, sendOrRequest: string) {
+    let jsonData = {};
+    if (this.selectedCurrencyType == "BTC") {
+      jsonData = {
+        "btcAmount": cryptoAmount,
+        "cryptoType": this.selectedCurrencyType,
+        "where": "dashboard",
+        "userId":sessionStorage.getItem("userId")
+      }
+    } else if (this.selectedCurrencyType == "ETH") {
+      jsonData = {
+        "etherAmount": cryptoAmount,
+        "cryptoType": this.selectedCurrencyType,
+        "where": "dashboard",
+        "userId":sessionStorage.getItem("userId")
+      }
+    } else if (this.selectedCurrencyType == "BWN") {
+      jsonData = {
+        "bwnAmount": cryptoAmount,
+        "cryptoType": this.selectedCurrencyType,
+        "where": "dashboard",
+        "userId":sessionStorage.getItem("userId")
+      }
+    }
+
+    this.dashboardService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
+      if (success['status'] == "success") {
+        if (sendOrRequest == "Send") {
+          if (this.selectedCurrencyType == "BTC") {
+            this.sendEthOrBtcAmountUsd = success['CalculatingAmountDTO'].usdforBtc;
+          } else if (this.selectedCurrencyType == "ETH" || this.selectedCurrencyType == "BWN") {
+            this.sendEthOrBtcAmountUsd = success['CalculatingAmountDTO'].usdforEther;
+          }
+        } else if (sendOrRequest == "Received") {
+          if (this.selectedCurrencyType == "BTC") {
+            this.requestEthOrBtcAmountUsd = success['CalculatingAmountDTO'].usdforBtc;
+          } else if (this.selectedCurrencyType == "ETH" || this.selectedCurrencyType == "BWN") {
+            this.requestEthOrBtcAmountUsd = success['CalculatingAmountDTO'].usdforEther;
+          }
+        }
+
+      } else if (success['status'] == "failure") {
+        Swal.fire("Error", success['message'], "error");
+      }
+
+
+
+    }, error => {
+      // this.spinner.showOrHide(false);
+      if (error.error.error == "invalid_token") {
+        Swal.fire("Info", "Session Expired", "info");
+        this.route.navigate(['login']);
+      }
+
+    })
+
+
+
+  }
+
+
+
 
 
   // REQUEST CRYPTO
@@ -741,6 +926,8 @@ export class DashboardComponent implements OnInit {
         Swal.fire("Success", success['message'], "success");
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
+      }else if (success['status'] == "info") {
+        Swal.fire("Info", success['message'], "info");
       }
     }, error => {
       // this.spinner.showOrHide(false);
@@ -833,7 +1020,7 @@ export class DashboardComponent implements OnInit {
       if (success['status'] == "success") {
         this.route.navigateByUrl('vault', { skipLocationChange: true }).then(() =>
           this.route.navigate(["dashboard"]));
-        console.log("ETH sended", success);
+
         this.requestIdCounter = 0;
         // this.successShowOrHide = true;
         Swal.fire("Success", success['message'], "success");
@@ -880,6 +1067,8 @@ export class DashboardComponent implements OnInit {
         Swal.fire("Success", success['message'], "success");
       } else if (success['status'] == "failure") {
         Swal.fire("Failure", success['message'], "error");
+      } else if (success['status'] == "info") {
+        Swal.fire("Info", success['message'], "info");
       }
     }, error => {
       this.refreshAlertModalShowOrHide = false;
@@ -983,6 +1172,9 @@ export class DashboardComponent implements OnInit {
   //   this.previousClickedIndex = this.currentClickedIndex;
   // }
 
+
+
+
   autoFillSendDetails(obj: any, index: string | number) {
     this.increOrDecreHistoryIndex++;
     this.currentClickedIndex = index;
@@ -1005,6 +1197,8 @@ export class DashboardComponent implements OnInit {
       this.requestIdCounter++;
     }
   }
+
+
 
 }
 

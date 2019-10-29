@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { ParentDashboardComponent } from './parent-dashboard/parent-dashboard.co
 import { KycComponent } from './kyc/kyc.component';
 import { HomeAddressComponent } from './home-address/home-address.component';
 import { SmsVerifyComponent } from './sms-verify/sms-verify.component';
+import { HostUrlService } from './host-url.service';
 
 
 // PACKAGES
@@ -101,7 +103,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   providers: [{
     provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-  }],
+  }, 
+  {
+    provide: APP_INITIALIZER,
+    useFactory: (hostUrl: HostUrlService) => function() {return hostUrl.getJsonDetails()},
+    deps: [HostUrlService],
+    multi: true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

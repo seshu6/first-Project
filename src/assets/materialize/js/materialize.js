@@ -10466,7 +10466,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     numVisible: 5, // Number of visible items in carousel
     fullWidth: false, // Change to full width styles
     indicators: false, // Toggle indicators
-    noWrap: false, // Don't wrap around and cycle through items.
+    noWrap: true, // Don't wrap around and cycle through items.
     onCycleTo: null // Callback for when a new slide is cycled to.
   };
 

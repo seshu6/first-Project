@@ -3,6 +3,7 @@ import { TwoStepsVerificationService } from '../two-steps-verification.service';
 import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HostUrlService } from '../host-url.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -13,8 +14,9 @@ export class ForgotPasswordComponent implements OnInit {
   oldPassword: string;
   confirmPassword: string;
   whetherPasswordSame: boolean = false;
+  apiUrl:string;
 
-  constructor(private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
+  constructor(private url:HostUrlService,private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -23,6 +25,12 @@ export class ForgotPasswordComponent implements OnInit {
     this.checkForgotPasswordLink();
   }
 
+  // initializeApiUrl() {
+  //   this.url.getSettingJson().subscribe(url => {
+  //     this.apiUrl = url.apiUrl;
+  //     this.checkForgotPasswordLink();
+  //   })
+  // }
 
   checkForgotPasswordLink() {
     this.twoStepsVerification.postForgotPasswordLink(this.userId).subscribe(success => {
@@ -43,7 +51,7 @@ export class ForgotPasswordComponent implements OnInit {
 
 
     }, error => {
-      console.log("success", error);
+      
     })
   }
 

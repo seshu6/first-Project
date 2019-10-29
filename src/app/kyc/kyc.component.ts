@@ -104,7 +104,7 @@ export class KycComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     })
     this.getBtcOrEthBalance("BTC");
 
@@ -112,7 +112,7 @@ export class KycComponent implements OnInit {
   }
 
   // onUploadedKycDocument(event: any) {
-  // console.log(event);
+
   // if (whichFile === "passport") {
   //   this.passportDocument = event.target.files[0];
   //   this.fileUploadedOrNot = true;
@@ -123,13 +123,14 @@ export class KycComponent implements OnInit {
   //   this.residenceDocument = event.target.files[0];
   //   this.fileUploadedOrNot = true;
   // }
-  // console.log(event.target.files[0]);
+
   // }
 
 
   setFileDetails(fileName: string, docs: string, event: any) {
     let extension = event.target.files[0].name.split(".");
-    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg") {
+    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg" ||
+      extension[extension.length - 1] == "PNG" || extension[extension.length - 1] == "JPEG" || extension[extension.length - 1] == "JPG") {
       switch (fileName) {
         case "passport":
           switch (docs) {
@@ -320,6 +321,9 @@ export class KycComponent implements OnInit {
           if (this.btcOrEth == "ETH") {
             this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
             this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+          } else if (this.btcOrEth == "BWN") {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].bwnAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdForBwn;
           } else {
             this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
             this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
@@ -357,34 +361,27 @@ export class KycComponent implements OnInit {
   //       formVal.append("kycDoc2", this.nationalDocument);
   //       formVal.append("kycDoc3", this.residenceDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("passport nationalid residence");
   //     } else if (this.passportDocument != undefined && this.nationalDocument != undefined) {
   //       formVal.append("kycDoc1", this.passportDocument);
   //       formVal.append("kycDoc2", this.nationalDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("passport nationalid");
   //     } else if (this.nationalDocument != undefined && this.residenceDocument != undefined) {
   //       formVal.append("kycDoc1", this.nationalDocument);
   //       formVal.append("kycDoc2", this.residenceDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("nationalid residence");
   //     } else if (this.residenceDocument != undefined && this.passportDocument != undefined) {
   //       formVal.append("kycDoc1", this.residenceDocument);
   //       formVal.append("kycDoc2", this.passportDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("residence passport");
   //     } else if (this.passportDocument != undefined) {
   //       formVal.append("kycDoc1", this.passportDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("passport");
   //     } else if (this.nationalDocument != undefined) {
   //       formVal.append("kycDoc1", this.nationalDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("nationalid");
   //     } else if (this.residenceDocument != undefined) {
   //       formVal.append("kycDoc1", this.residenceDocument);
   //       formVal.append("userInfo", JSON.stringify(jsonData));
-  //       console.log("residence");
   //     }
   //     this.dashBoardServices.postUploadKycDocument(formVal).subscribe(success => {
   //       if (success['status'] == "success") {

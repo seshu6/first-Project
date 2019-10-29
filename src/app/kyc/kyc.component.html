@@ -21,9 +21,9 @@
               <h1>Ethereum</h1>
               <img src="assets/images/etheriumswipe.png" />
             </a>
-            <a class="carousel-item1">
-              <h1>Monero</h1>
-              <img src="assets/images/moneroswipe.png" /> 
+            <a class="carousel-item1" (click)="getBtcOrEthBalance('BWN')">
+              <h1>Bitwing</h1>
+              <img src="assets/images/bitwings icon-87.svg" />
             </a>
 
           </div>
@@ -37,8 +37,8 @@
           <div class="etherum-blance">
             <h2>{{btcOrEthBalance}}</h2>
             <div class="etherum-usdolar">
-                <p>{{btcOrEthUsdDollar}} USDollar</p>
-                <!-- <div class="bal-exchange-dollar">
+              <p>{{btcOrEthBalanceUsd}} USDollar</p>
+              <!-- <div class="bal-exchange-dollar">
                     <select>
                         <option value="usdollar">USDollar</option>
                         <option value="usdollar1">USDollar</option>
@@ -46,7 +46,7 @@
                     </select>
                 </div> -->
             </div>
-        </div>
+          </div>
           <div class="refresh-btn">
             <a href="javascript:void(0);" (click)="getBtcOrEthBalance(btcOrEth)">
               <img src="assets/images/refresh.png" />
@@ -81,7 +81,7 @@
             <div class="row">
               <div class="col-lg-12 col-md-12 col-12">
                 <div class="bluletverified">
-                    <h1>Lets Verified!</h1>
+                  <h1>Lets Verified!</h1>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">

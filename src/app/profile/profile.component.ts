@@ -46,9 +46,11 @@ export class ProfileComponent implements OnInit {
   profileUploadCounter: number = 0;
   uploadProfileImg: any;
   checkMobileLength: boolean = false;
+  mobileNo: number;
   clock_tick: any = Date.now();
 
   @ViewChild('profileImage') profileImage: ElementRef;
+  @ViewChild("factorToggle") factorToggle: ElementRef;
   @ViewChildren('otpElement') otpElement: QueryList<ElementRef>;
   // @ViewChild('profileImage') uploadImages: ElementRef;
 
@@ -59,12 +61,12 @@ export class ProfileComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+      
     })
 
     this.profileForm = this.formBuilder.group({
       "name": ['', Validators.required],
-      "mobile": ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
+      "mobile": ['', Validators.required],
       "registry": [{ value: '', disabled: true }, Validators.required],
       "country": [{ value: '', disabled: true }, Validators.required],
       "email": [{ value: '', disabled: true }, Validators.required],
@@ -94,7 +96,8 @@ export class ProfileComponent implements OnInit {
         if (where == "initial") {
           this.getCountryDetails();
         }
-        this.profileForm.controls.name.setValue(success['retrieveData'].userName);
+        this.profileForm.controls.name.setValue(success['retrieveData'].firstName +" "+ success['retrieveData'].lastName);
+        this.profileForm.controls.country.setValue(success['retrieveData'].countryName);
         this.profileForm.controls.email.setValue(success['retrieveData'].email);
         this.profileForm.controls.mobile.setValue(success['retrieveData'].mobileNo);
         this.profileImageSrc = "";
@@ -123,6 +126,7 @@ export class ProfileComponent implements OnInit {
   }
 
 
+
   getCountryDetails() {
     this.spinner.showOrHide(true);
 
@@ -146,6 +150,8 @@ export class ProfileComponent implements OnInit {
   updateProfileDetails() {
     if (this.profileForm.controls.name.invalid || this.profileForm.controls.mobile.invalid) {
       Swal.fire("Info", "Please check your data", "info");
+    } else if (this.checkMobileLength) {
+      Swal.fire("Info", "Mobile no must be more than 7 and less than 15", "info");
     } else {
       this.spinner.showOrHide(true);
       let jsonData = {
@@ -207,7 +213,8 @@ export class ProfileComponent implements OnInit {
 
   uploadProfileImgage(images: any, files: any) {
     let extension = files[0].name.split(".");
-    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg") {
+    if (extension[extension.length - 1] == "png" || extension[extension.length - 1] == "jpeg" || extension[extension.length - 1] == "jpg" || 
+    extension[extension.length - 1] == "PNG" || extension[extension.length - 1] == "JPEG" || extension[extension.length - 1] == "JPG") {
       this.spinner.showOrHide(true);
       let formData = new FormData();
       formData.set("profileimg", files[0]);
@@ -238,6 +245,15 @@ export class ProfileComponent implements OnInit {
 
   }
 
+
+  toggleEnableDisable() {
+    if (this.factorToggle.nativeElement.className == "btn btn-lg btn-toggle focus") {
+      this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle active focus";
+    } else if (this.factorToggle.nativeElement.className == "btn btn-lg btn-toggle active focus") {
+      this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle focus";
+    }
+    this.getEnableOrDisable('click');
+  }
 
   getEnableOrDisable(when: string) {
 
@@ -274,7 +290,15 @@ export class ProfileComponent implements OnInit {
     this.dashboardService.postEnableOrDisable(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
+        if (success['twoFactorStatus'] == 1) {
+
+          this.enableOrDisable = "Enable"
+          this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle active focus";
+        } else {
+          this.enableOrDisable = "Disable";
+          this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle focus";
+        }
+
         if (this.initialStatus != "initial") {
           this.optOne = "";
           this.optTwo = "";
@@ -341,6 +365,30 @@ export class ProfileComponent implements OnInit {
     return false;
   }
 
+  copyOtp(otpNo: any) {
+    let copiedOtpArr = otpNo.clipboardData.getData("Text").split("");
+    if (copiedOtpArr.length == 6) { 
+      this.optOne = copiedOtpArr[0];
+      this.optTwo = copiedOtpArr[1];
+      this.optThree = copiedOtpArr[2];
+      this.optFour = copiedOtpArr[3];
+      this.optFive = copiedOtpArr[4];
+      this.optSix = copiedOtpArr[5];
+    } else {
+      this.optOne = "";
+      this.optTwo = "";
+      this.optThree = "";
+      this.optFour = "";
+      this.optFive = "";
+      this.optSix = "";
+      Swal.fire("Info", "Please check OTP length", "info");
+    }
+    return false;
+
+  }
+
+
+
   allowOnlyNumber(number: any, e: any, index: number) {
     if (number != null) {
       if (["e", "+", "-"].includes(e.key)) {
@@ -362,13 +410,13 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  mobileNo: number;
+  
   checkMobileLengthFun(num: any) {
-    if(Boolean(num)){
+    if (Boolean(num)) {
       (num.toString().length > 15 || num.toString().length < 7) ? this.checkMobileLength = true : this.checkMobileLength = false;
     }
-      
-    
+
+
   }
 
 

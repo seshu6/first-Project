@@ -60,7 +60,7 @@ export class HomeAddressComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     })
 
     this.getCountryList();
@@ -95,6 +95,9 @@ export class HomeAddressComponent implements OnInit {
           if (this.btcOrEth == "ETH") {
             this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
             this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+          } else if (this.btcOrEth == "BWN") {
+            this.btcOrEthBalance = success['CalculatingAmountDTO'].bwnAmount;
+            this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdForBwn;
           } else {
             this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
             this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
@@ -138,7 +141,7 @@ export class HomeAddressComponent implements OnInit {
   }
 
   validateNameDetails() {
-    console.log("date", this.homeAddressForm.controls.dateOfBirth);
+
     if (this.homeAddressForm.controls.firstName.invalid || this.homeAddressForm.controls.lastName.invalid
       || this.homeAddressForm.controls.middleName.invalid || this.homeAddressForm.controls.dateOfBirth.invalid) {
       Swal.fire("Info", "Please check your data", "info");
@@ -151,7 +154,7 @@ export class HomeAddressComponent implements OnInit {
 
 
   addHomeAddressForm() {
-    console.log("selected date", this.selectedDate);
+
     // if (this.homeAddressForm.invalid) {
     //   Swal.fire("Info", "Please check your data", "info");
     // } else {

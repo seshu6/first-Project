@@ -20,7 +20,8 @@ $(document).ready(function () {
         $("html, body").animate({ scrollTop: 0 }, 800);
     });
 
-    $('.carousel').carousel();
+    $('.carousel').carousel({ preventLoop: false, onCycleTo: null });
+
 
     $('.fastbuy').click(function () {
         $('.fastbuy').addClass('active');
@@ -63,7 +64,7 @@ $(document).ready(function () {
     // $('.bitoicnlink1').click(function () {
     //     $('.coin-list-view1').toggle();
     // });
-    
+
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.walletlist-slider').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme3' });
     $('.fadeOut').owlCarousel({ animateOut: 'fadeOut', items: 1, loop: true, nav: true, margin: 0, smartSpeed: 450, autoplay: true, autoplayTimeout: 2000, themeClass: 'owl-theme' });

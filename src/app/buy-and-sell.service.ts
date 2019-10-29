@@ -45,7 +45,7 @@ export class BuyAndSellService {
 
   // ETH TO BTC USER
   postEthToBtcEcxhangeUser(data: any) {
-    return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/user/exchange", data, this.header.getHttpHeader());
+    return this.http.post(this.url.apiUrl + "bluewallet/eth_btc/user/exchange", data, this.header.getHttpHeader()); 
   }
 
 

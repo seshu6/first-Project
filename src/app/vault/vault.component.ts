@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +26,8 @@ import { LoaderService } from '../loader.service';
 })
 export class VaultComponent implements OnInit {
   estimatedTime: number | string = "3";
-  estimatedEth: number | string;
+  // estimatedEth: number | string;
+  estimatedEth: any;
   estimatedFee: number | string;
   estimatedTotal: number | string;
   estimatedWallet: number | string;
@@ -34,10 +35,6 @@ export class VaultComponent implements OnInit {
   usdBtc: number | string;
   usdEstimation: number | string;
   termsAndCondition: boolean = false;
-  ethOrBtc: string = "BTC";
-  usdForEthOrBtc: number | string;
-  addVaultForm: FormGroup;
-  activeCryptoCurrencyDetails: any = [];
   completedCryptoCurrencyDetails: any = [];
   btcIsSelected: boolean = true;
   ethIsSelected: boolean = false;
@@ -54,6 +51,12 @@ export class VaultComponent implements OnInit {
   vaultHistoryPageShowOrHide: boolean = false;
   vaultHistoryArr: any[] = [];
   roleName: string = sessionStorage.getItem("roleName");
+  ethOrBtc: string = "BTC";
+  usdForEthOrBtc: number | string;
+  addVaultForm: FormGroup;
+  activeCryptoCurrencyDetails: any = [];
+
+  // @ViewChild("walletPassword") walletPassword: any;
 
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private fb: FormBuilder, private route: Router, private vaultService: VaultService, private spinner: LoaderService) { }
 
@@ -63,7 +66,7 @@ export class VaultComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     });
     this.onSliderCryptoCurrency("BTC");
     this.getActiveVaultInformation("BTC", "initial");
@@ -80,6 +83,24 @@ export class VaultComponent implements OnInit {
   // }
 
 
+  avoidString() {
+    if (isNaN(this.estimatedEth)) {
+      return false;
+    } else {
+      this.onAutoChangeEthOrBtcEstimation();
+    }
+  }
+
+  avoidAlpha(e:any) {
+    if (typeof this.estimatedEth) {
+      e.preventDefault();
+    }else{
+      this.onAutoChangeEthOrBtcEstimation();
+    }
+    
+  }
+
+
   // AUTO COMPLETE BTC AND ETH ESTIMATION 
   onAutoChangeEthOrBtcEstimation() {
     let jsonData = {};
@@ -91,18 +112,24 @@ export class VaultComponent implements OnInit {
         if (this.ethOrBtc == "BTC") {
           jsonData = {
             "btcAmount": this.estimatedEth,
-            "cryptoType": this.ethOrBtc
+            "cryptoType": this.ethOrBtc,
+            "where": "vault",
+            "userId": sessionStorage.getItem("userId")
           }
         }
         else if (this.ethOrBtc == "ETH") {
           jsonData = {
             "etherAmount": this.estimatedEth,
-            "cryptoType": this.ethOrBtc
+            "cryptoType": this.ethOrBtc,
+            "where": "vault",
+            "userId": sessionStorage.getItem("userId")
           }
         } else if (this.ethOrBtc == "BWN") {
           jsonData = {
             "bwnAmount": this.estimatedEth,
-            "cryptoType": this.ethOrBtc
+            "cryptoType": this.ethOrBtc,
+            "where": "vault",
+            "userId": sessionStorage.getItem("userId")
           }
         }
       }
@@ -110,7 +137,7 @@ export class VaultComponent implements OnInit {
 
       this.vaultService.postAutoCompleteEthOrBtcEstimation(jsonData).subscribe(success => {
         if (success['status'] == "success") {
-          console.log("response", success);
+
           // this.estimatedEth = success['CalculatingAmountDTO'].etherAmount;
           if (this.ethOrBtc == "ETH" || this.ethOrBtc == "BWN") {
             this.estimatedFee = success['CalculatingAmountDTO'].gasfee;
@@ -125,9 +152,12 @@ export class VaultComponent implements OnInit {
           }
 
 
-        } else if (success['status'] == "failure") {
-          Swal.fire("Error", success['message'], "error");
-        }
+        } 
+        // else if (success['status'] == "failure") {
+        //   console.log("repeated", this.estimatedEth);
+        //   Swal.fire("Error", success['message'], "error");
+        //   return false;
+        // }
       }, error => {
         if (error.error.error == "invalid_token") {
           Swal.fire("Info", "Session Expired", "info");
@@ -145,6 +175,12 @@ export class VaultComponent implements OnInit {
 
   }
 
+  avoidAutoComplete(input: any) {
+    if (input.type == "text") {
+      input.type = "password";
+    }
+
+  }
 
   // SLIDER SELECTED CRYPTOCURRENCY
   onSliderCryptoCurrency(data: string, index?: number | string) {
@@ -273,7 +309,7 @@ export class VaultComponent implements OnInit {
         this.completedCryptoCurrencyDetails = [];
         this.vaultHistoryArr = [];
         this.vaultHistoryArr = success['listofuserCryptoinvestmentdto'];
-        // console.log("vault history", this.vaultHistoryArr);
+
         for (let i = 0; i < success['listofuserCryptoinvestmentdto'].length; i++) {
           if (success['listofuserCryptoinvestmentdto'][i].status == 1) {
             this.activeCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
@@ -281,8 +317,6 @@ export class VaultComponent implements OnInit {
             this.completedCryptoCurrencyDetails.push(success['listofuserCryptoinvestmentdto'][i]);
           }
         }
-        // console.log("active", this.activeCryptoCurrencyDetails);
-        // console.log("complete", this.completedCryptoCurrencyDetails);
         if (this.currentlySelectedCryptoType != "all" && when != "initial") {
           if (this.currentlySelectedCryptoType == "BTC") {
             this.onSliderCryptoCurrency(this.currentlySelectedCryptoType, 0);
@@ -349,6 +383,8 @@ export class VaultComponent implements OnInit {
 
         } else if (success['status'] == "failure") {
           Swal.fire("Error", success['message'], "error");
+        } else if (success['status'] == "info") {
+          Swal.fire("Info", success['message'], "info");
         }
       }, error => {
         this.spinner.showOrHide(false);
@@ -402,7 +438,7 @@ export class VaultComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     });
     this.vaultHistoryPageShowOrHide = false;
     this.vaultPageShowOrHide = true;

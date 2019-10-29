@@ -21,9 +21,9 @@
                             <h1>Ethereum</h1>
                             <img src="assets/images/etheriumswipe.png" />
                         </a>
-                        <a class="carousel-item1">
-                            <h1>Monero</h1>
-                            <img src="assets/images/moneroswipe.png" />
+                        <a class="carousel-item1" (click)="getBtcOrEthBalance('BWN')">
+                            <h1>Bitwing</h1>
+                            <img src="assets/images/bitwings icon-87.svg" />
                         </a>
 
                     </div>
@@ -52,14 +52,14 @@
                             <img src="assets/images/refresh.png" />
                         </a>
                     </div>
-                    <div class="send-receive-bttngrup">
+                    <!-- <div class="send-receive-bttngrup">
                         <button type="button" class="sendbtn">Send
                             <img src="assets/images/sendicon.png" />
                         </button>
                         <button type="button" class="requestbtn">Request
                             <img src="assets/images/receiveicon.png" />
                         </button>
-                    </div>
+                    </div> -->
                     <div class="info">
                         <a href="javascript:void(0);" class="infobtn">Information</a>
                     </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="welcomewallet-padd">
                 <div class="welcome-wallet-blue">
-                   
+
                     <div class="wallet-sms-logo">
                         <h1>Welcome</h1>
                         <img class="heightauto" src="assets/images/bluewallet-logo.png" />
@@ -111,12 +111,17 @@
                             security
                             on your wallet</p>
                         <div class="beginnowbtn">
-                            <button type="button" class="create-walbtn"
-                                (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                            <button type="button" class="btn btn-lg btn-toggle" data-toggle="button"
+                                [disabled]="otpShowOrHide" (click)="toggleEnableDisable()" aria-pressed="false"
+                                autocomplete="off" #factorToggle>
+                                <div class="handle"></div>
+                            </button>
+                            <!-- <button type="button" class="create-walbtn"
+                                (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button> -->
                         </div>
                         <div class="enableotp" *ngIf="otpShowOrHide">
                             <div class="enable-otp-verify" #otpElement>
-                                <input type="number" name="optOne" (paste)="avoidCopyAndPaste()"
+                                <input type="number" name="optOne" (paste)="copyOtp($event)"
                                     (copy)="avoidCopyAndPaste()" [(ngModel)]="optOne"
                                     (keypress)="allowOnlyNumber(optOne,$event,1)" />
                                 <input type="number" name="optTwo" (paste)="avoidCopyAndPaste()"

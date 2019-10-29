@@ -122,6 +122,10 @@ export class CommonDashboardService {
     return this.http.post(this.url.apiUrl + "bluewallet/updatenotification", data, this.header.getHttpHeader());
   }
 
+// CONVERSION FROM BTC,ETH,BWN TO USD
+  postAutoCompleteEthOrBtcEstimation(data: any) {
+    return this.http.post(this.url.apiUrl + "bluewallet/vaultcalculation", data, this.header.getHttpHeader());
+  }
 
     // GETTER AND SETTERS
 

@@ -132,11 +132,12 @@
                                             Country
                                         </label>
                                         <div class="selecgroup">
-                                            <select formControlName="country" [(ngModel)]="selectedCountry">
+                                            <input type="text" formControlName="country">
+                                            <!-- <select formControlName="country" [(ngModel)]="selectedCountry">
                                                 <option value="undefined">Select Country</option>
                                                 <option *ngFor="let country of countryListArr;let i = index;"
                                                     value="{{country.id}}">{{country.countryName}}</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
                                 </div>
@@ -197,16 +198,20 @@
                     <img src="assets/images/verify-sms-icon.png" />
                 </div>
                 <div class="wallet-sms-content">
-                    <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade the
+                    <p>Avoid the no authorized access to your wallet. Enable the verification of 2 steps to upgrade the 
                         security
                         on your wallet</p>
                     <div class="beginnowbtn">
-                        <button type="button" class="create-walbtn"
-                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button>
+                        <button type="button" class="btn btn-lg btn-toggle" data-toggle="button" [disabled] = "otpShowOrHide"
+                            (click)="toggleEnableDisable()" aria-pressed="false" autocomplete="off" #factorToggle>
+                            <div class="handle"></div>
+                        </button>
+                        <!-- <button type="button" class="create-walbtn"
+                            (click)="getEnableOrDisable('click')">{{enableOrDisable}}</button> -->
                     </div>
                     <div class="enableotp" *ngIf="otpShowOrHide">
                         <div class="enable-otp-verify" #otpElement>
-                            <input type="number" name="optOne" class="input" [(ngModel)]="optOne" (paste)="avoidPaste()"
+                            <input type="number" name="optOne" class="input" [(ngModel)]="optOne" (paste)="copyOtp($event)"
                                 (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optOne,$event,1)" />
                             <input type="number" name="optTwo" class="input" [(ngModel)]="optTwo" (paste)="avoidPaste()"
                                 (copy)="avoidPaste()" (keypress)="allowOnlyNumber(optTwo,$event,2)" />

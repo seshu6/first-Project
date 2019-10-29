@@ -95,7 +95,7 @@ export class BuyAndSellComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     })
     if (this.roleName == "admin") {
       this.whenPlatformIsSelected = false;
@@ -407,6 +407,18 @@ export class BuyAndSellComponent implements OnInit {
           "exchangeMode": "ETH_BWN_ADMIN",
           "amountToTrade": this.calculatedBtcOrEth
         }
+      } else if ((this.requestedCryptoCurrency == "Bitcoin" && this.requestedCryptoCurrencyRhs == "Bitwings") && (!this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "BTC_BWN_USER",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
+      } else if ((this.requestedCryptoCurrency == "Ethereum" && this.requestedCryptoCurrencyRhs == "Bitwings") && (!this.whenPlatformIsSelected)) {
+        jsonData = {
+          "userId": sessionStorage.getItem("userId"),
+          "exchangeMode": "ETH_BWN_USER",
+          "amountToTrade": this.calculatedBtcOrEth
+        }
       }
       this.buyAndSellService.postExchangeBtcToEth(jsonData).subscribe(success => {
         // this.spinner.showOrHide(false);
@@ -421,6 +433,8 @@ export class BuyAndSellComponent implements OnInit {
           this.calculatedBtcOrEth = 0;
         } else if (success['status'] == "failure") {
           Swal.fire("Error", success['message'], "error");
+        } else if (success['status'] == "info") {
+          Swal.fire("Info", success['message'], "info");
         }
       }, error => {
         // this.spinner.showOrHide(false);
@@ -503,7 +517,7 @@ export class BuyAndSellComponent implements OnInit {
         this.historyTabUserListArr = success['fetchExchageRequestDTO'].exchangeDTOList;
         this.currentBtcValue = success['fetchExchageRequestDTO'].btccurrentvalue;
         this.currentEthValue = success['fetchExchageRequestDTO'].ethercurrentvalue;
-        console.log("history tab list", this.historyTabUserListArr);
+
       }
       else if (success['status'] == "failure") {
         Swal.fire("Error", "Session Expired", "error");
@@ -531,9 +545,9 @@ export class BuyAndSellComponent implements OnInit {
     this.getRequestedEthOrBtc();
   }
 
-  userExchangeTabSelected() {
+  // userExchangeTabSelected() {
 
-  }
+  // }
 
 
 
@@ -602,8 +616,8 @@ export class BuyAndSellComponent implements OnInit {
         this.whetherBtcOrEth = "ETH";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "eth";
-        this.exchangeSendCryptoTypeLhs = "Bitcoin";
-        this.exchangeSendCryptoTypeRhs = "Ethereum";
+        this.exchangeSendCryptoTypeLhs = "Ethereum";
+        this.exchangeSendCryptoTypeRhs = "Bitcoin";
         this.onAutoCompleteUsdToBtcAndETh();
         // this.changeBtcToEthAndViceVersa("exchange");
         // this.postBtcToEthUser(data);
@@ -613,8 +627,8 @@ export class BuyAndSellComponent implements OnInit {
         this.whetherBtcOrEth = "BTC";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "btc";
-        this.exchangeSendCryptoTypeLhs = "Ethereum";
-        this.exchangeSendCryptoTypeRhs = "Bitcoin";
+        this.exchangeSendCryptoTypeLhs = "Bitcoin";
+        this.exchangeSendCryptoTypeRhs = "Ethereum";
         this.onAutoCompleteUsdToBtcAndETh();
         // this.changeBtcToEthAndViceVersa("exchange");
         // this.postEthToBtchUser(data);
@@ -623,16 +637,16 @@ export class BuyAndSellComponent implements OnInit {
         this.whetherBtcOrEth = "BWN";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "bwn";
-        this.exchangeSendCryptoTypeLhs = "Bitcoin";
-        this.exchangeSendCryptoTypeRhs = "Bitwings";
+        this.exchangeSendCryptoTypeLhs = "Bitwings";
+        this.exchangeSendCryptoTypeRhs = "Bitcoin";
         this.onAutoCompleteUsdToBtcAndETh();
 
       } else if (data.exchangeType == "ETH_BWN_ADMIN") {
         this.whetherBtcOrEth = "BWN";
         this.usdToBtcAndEth = data.cryptoinusd;
         this.exchangeBtcOrEth = "bwn";
-        this.exchangeSendCryptoTypeLhs = "Ethereum";
-        this.exchangeSendCryptoTypeRhs = "Bitwings";
+        this.exchangeSendCryptoTypeLhs = "Bitwings";
+        this.exchangeSendCryptoTypeRhs = "Ethereum";
         this.onAutoCompleteUsdToBtcAndETh();
       }
     } else {
@@ -707,7 +721,7 @@ export class BuyAndSellComponent implements OnInit {
         this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
-        console.log("***************************BTC TO ETH", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -744,7 +758,7 @@ export class BuyAndSellComponent implements OnInit {
         this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
-        console.log("***************************BTC TO ETH", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -782,7 +796,7 @@ export class BuyAndSellComponent implements OnInit {
         this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
-        console.log("***************************BTC TO ETH", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -819,7 +833,7 @@ export class BuyAndSellComponent implements OnInit {
         this.calculatedBtcOrEth = 0;
         this.getRequestedEthOrBtc();
         Swal.fire("Success", success['message'], "success");
-        console.log("***************************BTC TO ETH", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -892,7 +906,7 @@ export class BuyAndSellComponent implements OnInit {
     this.buyAndSellService.postEthToBtcEcxhange(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        console.log("***************************ETH TO BTC", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }
@@ -927,7 +941,7 @@ export class BuyAndSellComponent implements OnInit {
   //   this.buyAndSellService.postUserTabList(jsonData).subscribe(success => {
   // this.spinner.showOrHide(false);
   //     if (success['status'] == "success") {
-  //       console.log("***************************user tab details", success);
+
   //       this.userTabListArr = success['fetchExchageRequestDTO'].exchangeDTOList;
   //     } else if (success['status'] == "failure") {
   //       Swal.fire("Error", success['message'], "error");
@@ -969,7 +983,7 @@ export class BuyAndSellComponent implements OnInit {
         this.send = success['CalculatingAmountDTO']['paidAmount'];
         this.receive = success['CalculatingAmountDTO']['receivedAmount'];
 
-        console.log("admin exchange tab details", success);
+
       } else if (success['status'] == "failure") {
         Swal.fire("Error", success['message'], "error");
       }

@@ -32,6 +32,6 @@ export class CommonService {
     this.customUrl = url;
   }
   getCustomUrl() {
-    return this.customUrl;
+    return this.customUrl; 
   }
 }

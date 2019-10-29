@@ -1395,15 +1395,16 @@ footer {
 .wallet-eth-list ul {
 	list-style: none;
 	margin-top: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	flex-wrap: wrap;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-evenly !important;
+	flex-wrap: wrap !important;
 }
 .wallet-eth-list ul li a {
 	display: block;
 	text-decoration: none;
 	color: #ffffff;
+	opacity: 1 !important;
 }
 .wallet-eth-list ul li a span {
 	display: block;
@@ -1822,10 +1823,13 @@ footer {
 	color: #5496FF;
 }
 .activity-receipt-view{
-	display: flex;
+	/* display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
 	padding: 0 0 0 38px;
+}
+.activity-receipt-view .wallet-add{
+word-break: break-all;
 }
 .activity-receipt-view h1{
 	font-size: 14px;
@@ -2976,7 +2980,7 @@ footer {
 	font-weight: 600;
 }
 .select-crytocurrency-list .carousel .carousel-item1>img {
-	width: 100%;
+	width: 100% !important;
 	/* height: 120px; */
 	height: 105px;
 	object-fit: contain;
@@ -8545,3 +8549,154 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: none;
     font-size: 14px;
 }
+.bg-overlay{
+background: rgba(45, 63, 117,0.7);
+right: 0;
+top: 0;
+bottom: 0;
+width: calc(100% - 110px);
+
+position: fixed;
+z-index: 11;
+
+
+}
+.bg-overlay p{
+position: absolute;
+font-size: 26px;
+z-index: 111;
+top: 50%;
+text-align: center;
+width: 100%;
+color: #fff;
+text-transform: capitalize;
+font-weight: 600;
+}
+
+/* TWO FACTOR AUTHENTICATION */
+.btn-toggle {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.btn-toggle {
+	margin: 0 4rem;
+	padding: 0;
+	position: relative;
+	border: none;
+	height: 1.5rem;
+	width: 3rem;
+	border-radius: 1.5rem;
+	color: #6b7381;
+	background: #bdc1c8 !important;
+}
+
+.btn-toggle.btn-lg {
+	margin: 1rem 5rem !important;
+	padding: 0 !important;
+	position: relative !important;
+	border: none !important;
+	height: 2rem !important;
+	width: 5rem !important;
+	border-radius: 2.5rem !important;
+}
+
+.btn-toggle.btn-lg:before {
+	content: 'Disable';
+	left: -6.5rem;
+}
+
+.btn-toggle.btn-lg:before, .btn-toggle.btn-lg:after {
+	line-height: 2.5rem;
+	width: 5rem;
+	text-align: center;
+	font-weight: 600;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	position: absolute;
+	bottom: -4px;
+	transition: opacity 0.25s;
+}
+
+.btn-toggle:before, .btn-toggle:after {
+	color: #6b7381;
+}
+
+.btn-toggle:before, .btn-toggle:after {
+	line-height: 1.5rem;
+	width: 4rem;
+	text-align: center;
+	font-weight: 600;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	position: absolute;
+	bottom: 0;
+	transition: opacity 0.25s;
+}
+
+.btn-toggle:before {
+	content: 'Disable';
+	left: -4rem;
+}	
+
+.btn-toggle > .handle {
+	position: absolute;
+	top: 0.1875rem;
+	left: 0.1875rem;
+	width: 1.125rem;
+	height: 1.125rem;
+	border-radius: 1.125rem;
+	background: #fff;
+	transition: left 0.25s;
+}
+
+.btn-toggle.btn-lg > .handle {
+	position: absolute;
+	top: 0.1rem;
+	left: 0.1rem;
+	width: 1.7rem;
+	height: 1.7rem;
+	border-radius: 1.875rem;
+	background: #fff;
+	transition: left 0.25s;
+}
+
+.btn-toggle.btn-lg.active {
+	transition: background-color 0.25s;
+}
+
+.btn-toggle.active {
+	/* background-color: #29b5a8; */
+	background-image: linear-gradient(90deg, rgba(120,148,247,1) 0%, rgba(120,148,247,1) 23%, rgba(155,138,250,1) 41%, rgba(181,127,251,1) 63%, rgba(207,121,246,1) 100%) !important;
+}
+
+.btn-toggle.btn-lg.active:before {
+	opacity: 0.5;
+}
+
+.btn-toggle.btn-lg.active > .handle {
+	left:3.2rem;
+	transition: left 0.25s;
+}
+
+.btn-toggle.active > .handle {
+	left: 1.6875rem;
+	transition: left 0.25s;
+}
+
+.btn-toggle.btn-lg.active:after {
+	opacity: 1;
+}
+
+.btn-toggle.btn-lg:after {
+	content: 'Enable';
+	right: -6rem;
+	opacity: 0.5;
+}
+
+.btn:focus{
+	box-shadow: none;
+}
+/* ENDS HERE */

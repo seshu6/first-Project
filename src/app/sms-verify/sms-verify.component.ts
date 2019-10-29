@@ -35,6 +35,7 @@ export class SmsVerifyComponent implements OnInit {
   optFive: any;
   optSix: any;
   otpShowOrHide: boolean = false;
+  @ViewChild("factorToggle") factorToggle: ElementRef;
   @ViewChildren('otpElement') otpElement: QueryList<ElementRef>;
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private route: Router, private dashboardService: CommonDashboardService, private spinner: LoaderService) { }
 
@@ -42,7 +43,7 @@ export class SmsVerifyComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+
     })
 
     this.getEnableOrDisable("initial");
@@ -65,6 +66,9 @@ export class SmsVerifyComponent implements OnInit {
         if (this.btcOrEth == "ETH") {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].etherAmount;
           this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforEther;
+        } else if (this.btcOrEth == "BWN") {
+          this.btcOrEthBalance = success['CalculatingAmountDTO'].bwnAmount;
+          this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdForBwn;
         } else {
           this.btcOrEthBalance = success['CalculatingAmountDTO'].btcAmount;
           this.btcOrEthBalanceUsd = success['CalculatingAmountDTO'].usdforBtc;
@@ -84,6 +88,15 @@ export class SmsVerifyComponent implements OnInit {
 
   }
 
+  toggleEnableDisable() {
+    if (this.factorToggle.nativeElement.className == "btn btn-lg btn-toggle focus") {
+      this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle active focus";
+    } else if (this.factorToggle.nativeElement.className == "btn btn-lg btn-toggle active focus") {
+      this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle focus";
+    }
+    this.getEnableOrDisable('click');
+  }
+
   // showOtp(){
   //   this.otpShowOrHide = true;
   // }
@@ -97,8 +110,7 @@ export class SmsVerifyComponent implements OnInit {
       jsonData = {
         "userId": sessionStorage.getItem("userId")
       }
-    }
-    else if (this.otpShowOrHide) {
+    } else if (this.otpShowOrHide) {
       if (otp.toString().length != 6) {
         Swal.fire("Info", "Please check your OTP", "info");
         return false;
@@ -110,8 +122,7 @@ export class SmsVerifyComponent implements OnInit {
         }
       }
 
-    }
-    else {
+    } else {
       jsonData = {
         "userId": sessionStorage.getItem("userId"),
         "twoFactorAuthenticationStatus": (this.enableOrDisable == "Enable") ? 1 : 0
@@ -121,7 +132,14 @@ export class SmsVerifyComponent implements OnInit {
     this.dashboardService.postEnableOrDisable(jsonData).subscribe(success => {
       this.spinner.showOrHide(false);
       if (success['status'] == "success") {
-        (success['twoFactorStatus'] == 1) ? this.enableOrDisable = "Enable" : this.enableOrDisable = "Disable";
+        if (success['twoFactorStatus'] == 1) {
+
+          this.enableOrDisable = "Enable"
+          this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle active focus";
+        } else {
+          this.enableOrDisable = "Disable";
+          this.factorToggle.nativeElement.className = "btn btn-lg btn-toggle focus";
+        }
         if (this.initialStatus != "initial") {
           this.optOne = "";
           this.optTwo = "";
@@ -153,6 +171,27 @@ export class SmsVerifyComponent implements OnInit {
     return false;
   }
 
+  copyOtp(otpNo: any) {
+    let copiedOtpArr = otpNo.clipboardData.getData("Text").split("");
+    if (copiedOtpArr.length == 6) {
+      this.optOne = copiedOtpArr[0];
+      this.optTwo = copiedOtpArr[1];
+      this.optThree = copiedOtpArr[2];
+      this.optFour = copiedOtpArr[3];
+      this.optFive = copiedOtpArr[4];
+      this.optSix = copiedOtpArr[5];
+    } else {
+      this.optOne = "";
+      this.optTwo = "";
+      this.optThree = "";
+      this.optFour = "";
+      this.optFive = "";
+      this.optSix = "";
+      Swal.fire("Info", "Please check OTP length", "info");
+    }
+    return false;
+
+  }
 
   allowOnlyNumber(number: any, e: any, index: number) {
     if (number != null) {
@@ -171,11 +210,6 @@ export class SmsVerifyComponent implements OnInit {
       }
     }
 
-
-  }
-
-
-  checkTwoFactorOtp(otp: number) {
 
   }
 

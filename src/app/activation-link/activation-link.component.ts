@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { LoaderService } from '../loader.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonService } from '../common.service';
+import { HostUrlService } from '../host-url.service';
 
 @Component({
   selector: 'app-activation-link',
@@ -26,7 +27,8 @@ export class ActivationLinkComponent implements OnInit {
   mediumPassword: boolean = false;
   strongPassword: boolean = false;
   passwordMeterShowOrHide: boolean = false;
-  constructor(private commonService: CommonService, private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
+  apiUrl: string;
+  constructor(private url: HostUrlService, private commonService: CommonService, private twoStepsVerification: TwoStepsVerificationService, private route: Router, private spinner: LoaderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -34,6 +36,14 @@ export class ActivationLinkComponent implements OnInit {
     })
     this.userActivationLink();
   }
+
+  // initializeApiUrl() {
+  //   this.url.getSettingJson().subscribe(url => {
+  //     this.apiUrl = url.apiUrl;
+  //     this.userActivationLink();
+  //   })
+  // }
+
 
   userActivationLink() {
 
@@ -120,7 +130,7 @@ export class ActivationLinkComponent implements OnInit {
   checkPasswordStrength() {
     this.passwordMeterShowOrHide = true;
     this.weakPassword = true;
-    if (!Boolean(this.oldPassword)) { 
+    if (!Boolean(this.oldPassword)) {
       this.passwordMeterShowOrHide = true;
       this.weakPassword = true;
       this.mediumPassword = false;
@@ -143,8 +153,6 @@ export class ActivationLinkComponent implements OnInit {
         this.strongPassword = true;
       }
     }
-
-    console.log(this.weakPassword + " " + this.mediumPassword + " " + this.strongPassword);
   }
 
   // CHECK LINK FOR PASSWORD

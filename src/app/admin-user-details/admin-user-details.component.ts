@@ -46,7 +46,7 @@ export class AdminUserDetailsComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+      
     })
     if (this.roleName == "admin") {
       this.getUserList();
@@ -70,7 +70,7 @@ export class AdminUserDetailsComponent implements OnInit {
     }, error => {
       this.spinner.showOrHide(false);
       if (error.error.error == "invalid_token") {
-        Swal.fire("Info", "Session Expired", "info");
+        Swal.fire("Info", "Session Expired", "info"); 
         this.route.navigate(['login']);
       }
     })

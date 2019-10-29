@@ -156,7 +156,7 @@ export class CardComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+      
     })
     // this.getChartDetails();
   }

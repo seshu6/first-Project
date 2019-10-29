@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-api-terms-services',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiTermsServicesComponent implements OnInit {
 
-  constructor() { }
+  contactUsForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.contactUsForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+      url: ['', Validators.required],
+      description: ['', Validators.required]
+    })
+  }
+
+  onSubmitContactUsDetails(){
+
+  }
+
+  closeContactUsModal(){
+    
   }
 
 }

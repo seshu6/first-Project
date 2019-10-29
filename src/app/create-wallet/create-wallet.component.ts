@@ -29,7 +29,7 @@ export class CreateWalletComponent implements OnInit {
     this.dynamicScriptLoader.load('custom').then(data => {
 
     }).catch(error => {
-      console.log("Error occur in loading dynamic script");
+      
     })
 
     this.createWalletForm = this.fb.group({
@@ -137,7 +137,7 @@ export class CreateWalletComponent implements OnInit {
       }
     }
 
-    console.log(this.weakPassword + " " + this.mediumPassword + " " + this.strongPassword);
+    
   }
 
   confirmPasswordChecker() {

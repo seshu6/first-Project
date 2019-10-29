@@ -4,7 +4,7 @@
     <!-- Bluewallet-second-sidebar -->
     <div class="bluewallet-profile-sidebar">
         <perfect-scrollbar class="profile-setting-sidebar primaryscroll" id="boxscroll1" [@slideUp]>
-            <div class="profile-setting"> 
+            <div class="profile-setting">
                 <div class="setting-image">
                     <img src="assets/images/profile.jpg" alt="image" />
                 </div>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="blue-value-dollar">
                             <h4>{{usdForEthOrBtc}}</h4>
-                            <p>USDollar</p> 
+                            <p>USDollar</p>
                         </div>
                     </li>
                 </ul>
@@ -152,7 +152,7 @@
                                                                 *ngIf="cryptoData.typeOfInvestment == 'ETH'">
                                                             <img src="assets/images/blockchainicon1.png"
                                                                 *ngIf="cryptoData.typeOfInvestment == 'BTC'">
-                                                                <img src="assets/images/bitwings icon magenta-87.svg"
+                                                            <img src="assets/images/bitwings icon magenta-87.svg"
                                                                 *ngIf="cryptoData.typeOfInvestment == 'BWN'">
                                                         </div>
                                                         <div class="wallet-etherium">
@@ -275,7 +275,7 @@
                                                             src="assets/images/blockchainicon1.png">
                                                         <img *ngIf="completedDetails.typeOfInvestment == 'ETH'"
                                                             src="assets/images/blockchainicon2.png">
-                                                            <img *ngIf="completedDetails.typeOfInvestment == 'BWN'"
+                                                        <img *ngIf="completedDetails.typeOfInvestment == 'BWN'"
                                                             src="assets/images/assets/images/bitwings icon magenta-87.svg">
                                                     </div>
                                                     <div class="wallet-etherium">
@@ -291,8 +291,8 @@
                                                             <span *ngIf="completedDetails.typeOfInvestment == 'ETH'">+ $
                                                                 {{completedDetails.ethValueInUsd + completedDetails.investmentPercentInUsd}}</span>
 
-                                                                <span *ngIf="completedDetails.typeOfInvestment == 'BWN'">+ $
-                                                                    {{completedDetails.bwnValueInUsd + completedDetails.investmentPercentInUsd}}</span>
+                                                            <span *ngIf="completedDetails.typeOfInvestment == 'BWN'">+ $
+                                                                {{completedDetails.bwnValueInUsd + completedDetails.investmentPercentInUsd}}</span>
                                                         </div>
                                                         <div class="produced-walet">
                                                             <h2>Coins</h2>
@@ -351,96 +351,102 @@
 
                                 </div>
                             </div>
+
+
+
                             <div class="crytocurrency-view-form">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>Time</label>
-                                            <div class="select-group">
-                                                <select [(ngModel)]="estimatedTime">
-                                                    <option value="3">3 Months - 3%</option>
-                                                    <option value="6">6 Months - 6%</option>
-                                                    <option value="12">12 Months - 12%</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>Available Amount</label>
-                                            <p>{{availabeBalance}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>{{ethOrBtc}}</label>
-                                            <div class="select-group">
-                                                <input type="number" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth"
-                                                    (ngModelChange)="onAutoChangeEthOrBtcEstimation()"
-                                                    autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>USD</label>
-                                            <p>{{usdBtc}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>Fee</label>
-                                            <p>{{estimatedFee}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>USD</label>
-                                            <p>{{usdEstimation}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group">
-                                            <label>Total</label>
-                                            <p class="total-amt">{{estimatedTotal}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group borderremove">
-                                            <div class="term-condition">
-                                                <p>I accept terms and conditions</p>
-                                                <div class="accet-toggle">
-                                                    <label class="label acttogle">
-                                                        <div class="toggle">
-                                                            <input class="toggle-state" type="checkbox" name="check"
-                                                                [(ngModel)]="termsAndCondition">
-                                                            <div class="toggle-inner">
-                                                                <div class="indicator"></div>
-                                                            </div>
-                                                            <div class="active-bg"></div>
-                                                        </div>
-                                                    </label>
+                                <!-- <form autocomplete="off"> -->
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>Time</label>
+                                                <div class="select-group">
+                                                    <select [(ngModel)]="estimatedTime" name="selectTime">
+                                                        <option value="3">3 Months - 3%</option>
+                                                        <option value="6">6 Months - 6%</option>
+                                                        <option value="12">12 Months - 12%</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group" *ngIf="ethOrBtc == 'ETH'">
-                                            <label>Wallet Password</label>
-                                            <div class="select-group">
-                                                <input type="password" [(ngModel)]="estimatedWallet">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>Available Amount</label>
+                                                <p>{{availabeBalance}}</p>
                                             </div>
-                                            <!-- <p class="wallet-01">{{estimatedWallet}}</p> -->
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>{{ethOrBtc}}</label>
+                                                <div class="select-group">
+                                                    <input type="number" [placeholder]="ethOrBtc" [(ngModel)]="estimatedEth" name="crypto"
+                                                        (ngModelChange)="onAutoChangeEthOrBtcEstimation()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>USD</label>
+                                                <p>{{usdBtc}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>Fee</label>
+                                                <p>{{estimatedFee}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>USD</label>
+                                                <p>{{usdEstimation}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group">
+                                                <label>Total</label>
+                                                <p class="total-amt">{{estimatedTotal}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group borderremove">
+                                                <div class="term-condition">
+                                                    <p>I accept terms and conditions</p>
+                                                    <div class="accet-toggle">
+                                                        <label class="label acttogle">
+                                                            <div class="toggle">
+                                                                <input class="toggle-state" type="checkbox" name="check"
+                                                                    [(ngModel)]="termsAndCondition">
+                                                                <div class="toggle-inner">
+                                                                    <div class="indicator"></div>
+                                                                </div>
+                                                                <div class="active-bg"></div>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group" *ngIf="ethOrBtc == 'ETH'">
+                                                <label name="wallet-password">Wallet Password</label>
+                                                <div class="select-group">
+                                                        <input type="text" style="display:none" />
+                                                    <input type="password"  autocomplete="new-password"  [(ngModel)]="estimatedWallet">
+                                                </div>
+                                                <!-- <p class="wallet-01">{{estimatedWallet}}</p> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="form-group borderremove">
+                                                <button type="button" class="wallet-01btn" (click)="onAddVault()">
+                                                    <img src="assets/images/vault.png"> Add Vault</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <div class="form-group borderremove">
-                                            <button type="button" class="wallet-01btn" (click)="onAddVault()">
-                                                <img src="assets/images/vault.png"> Add Vault</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- </form> -->
                             </div>
+
                         </div>
                     </div>
                 </div>

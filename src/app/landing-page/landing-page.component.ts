@@ -15,7 +15,7 @@ import { ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  requestApiForm: FormGroup;
+  requestApiForm: FormGroup; 
   contactUsForm: FormGroup;
   @ViewChild('closeRequestApiModal') closeRequestApiModal: ElementRef;
   @ViewChild('contactUsModal') contactUsModal: ElementRef;

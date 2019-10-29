@@ -266,7 +266,7 @@
                                                                                 <span>Ethereum</span>
                                                                             </a>
                                                                         </li>
-                                                                        <li *ngIf="whenPlatformIsSelected">
+                                                                        <li>
                                                                             <a
                                                                                 (click)="requestedCryptoCurrencyRhs = 'Bitwings';requestCryptoDropDownRhs = !requestCryptoDropDownRhs;">
                                                                                 <img
@@ -616,14 +616,26 @@
                                                     </div>
                                                     <div class="history-panel-rht"
                                                         *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
-                                                        <h4>{{historyObj.amountToTrade}} BTC</h4>
-                                                        <p>{{historyObj.amountYouGet}} ETH</p>
+                                                        <h4>Send - {{historyObj.amountToTrade}} BTC</h4>
+                                                        <p>Receive - {{historyObj.amountYouGet}} ETH</p>
                                                     </div>
 
                                                     <div class="history-panel-rht"
                                                         *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
-                                                        <h4>{{historyObj.amountToTrade}} ETH</h4>
-                                                        <p>{{historyObj.amountYouGet}} BTC</p>
+                                                        <h4>Send - {{historyObj.amountToTrade}} ETH</h4>
+                                                        <p>Receive - {{historyObj.amountYouGet}} BTC</p>
+                                                    </div>
+
+                                                    <div class="history-panel-rht"
+                                                        *ngIf="historyObj.exchangeType == 'ETH_BWN_ADMIN' || historyObj.exchangeType == 'ETH_BWN_USER'">
+                                                        <h4>Send - {{historyObj.amountToTrade}} ETH</h4>
+                                                        <p>Receive - {{historyObj.amountYouGet}} BWN</p>
+                                                    </div>
+
+                                                    <div class="history-panel-rht"
+                                                        *ngIf="historyObj.exchangeType == 'BTC_BWN_ADMIN' || historyObj.exchangeType == 'BTC_BWN_USER'">
+                                                        <h4>Send - {{historyObj.amountToTrade}} BTC</h4>
+                                                        <p>Receive - {{historyObj.amountYouGet}} BWN</p>
                                                     </div>
                                                 </a>
 
@@ -645,19 +657,50 @@
                                                                     <h4>Amount To Trade</h4>
                                                                     <p>{{historyObj.amountToTrade}} ETH</p>
                                                                 </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'BTC_BWN_ADMIN'">
+                                                                    <h4>Amount To Trade</h4>
+                                                                    <p>{{historyObj.amountToTrade}} BTC</p>
+                                                                </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'ETH_BWN_ADMIN'">
+                                                                    <h4>Amount To Trade</h4>
+                                                                    <p>{{historyObj.amountToTrade}} ETH</p>
+                                                                </div>
                                                             </li>
                                                             <li>
-                                                                <div class="amounttrade"
+                                                                <!-- <div class="amounttrade"
                                                                     *ngIf="!(historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN')">
-                                                                    <h4>Amount You Get</h4>
+                                                                    <h4>Amount You Get1</h4>
                                                                     <p>{{historyObj.amountYouGet}} BTC</p>
                                                                 </div>
 
                                                                 <div class="amounttrade"
                                                                     *ngIf="!(historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN')">
+                                                                    <h4>Amount You Get2</h4>
+                                                                    <p>{{historyObj.amountYouGet}} ETH</p>
+                                                                </div> -->
+                                                                <!-- ETH_BTC_ADMIN -->
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
+                                                                    <h4>Amount You Get</h4>
+                                                                    <p>{{historyObj.amountYouGet}} BTC</p>
+                                                                </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
                                                                     <h4>Amount You Get</h4>
                                                                     <p>{{historyObj.amountYouGet}} ETH</p>
                                                                 </div>
+
+                                                                <div class="amounttrade"
+                                                                    *ngIf="historyObj.exchangeType == 'ETH_BWN_ADMIN' || historyObj.exchangeType == 'BTC_BWN_ADMIN'">
+                                                                    <h4>Amount You Get</h4>
+                                                                    <p>{{historyObj.amountYouGet}} BWN</p>
+                                                                </div>
+
                                                             </li>
                                                             <li>
                                                                 <div class="amounttrade">
@@ -666,13 +709,13 @@
                                                                         <h4>TOTAL</h4>
                                                                     </div>
                                                                     <div class="trade_fee_total"
-                                                                        *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN'">
+                                                                        *ngIf="historyObj.exchangeType == 'BTC_ETH_USER' || historyObj.exchangeType == 'BTC_ETH_ADMIN' || historyObj.exchangeType == 'BTC_BWN_ADMIN'">
                                                                         <p>{{historyObj.transactionFee}} BTC</p>
                                                                         <p>{{historyObj.totalAmount}} BTC</p>
                                                                     </div>
 
                                                                     <div class="trade_fee_total"
-                                                                        *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN'">
+                                                                        *ngIf="historyObj.exchangeType == 'ETH_BTC_USER' || historyObj.exchangeType == 'ETH_BTC_ADMIN' ||  historyObj.exchangeType == 'ETH_BWN_ADMIN'">
                                                                         <p>{{historyObj.transactionFee}} ETH</p>
                                                                         <p>{{historyObj.totalAmount}} ETH</p>
                                                                     </div>
