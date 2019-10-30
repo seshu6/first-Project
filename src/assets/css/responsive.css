@@ -951,3 +951,9 @@
         margin-bottom: 10px;
     }
 }
+
+@media only screen and (max-width:1398px) and (min-width:1256px)   {
+	.custom-width{
+		width: 20% !important;
+	}
+}
