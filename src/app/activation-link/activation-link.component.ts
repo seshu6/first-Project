@@ -24,6 +24,7 @@ export class ActivationLinkComponent implements OnInit {
   // encodeOrDecodeUrl: string;
   urlIndex: number;
   weakPassword: boolean = false;
+  testingPassword: boolean = false;
   mediumPassword: boolean = false;
   strongPassword: boolean = false;
   passwordMeterShowOrHide: boolean = false;
